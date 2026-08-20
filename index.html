@@ -188,7 +188,6 @@
 
     .button:hover { background: #fff; color: #050505; border-color: #fff; }
 
-    /* Header */
     .site-header {
       position: fixed;
       z-index: 100;
@@ -233,7 +232,6 @@
     .header-cta { justify-self: end; }
     .menu-toggle { display: none; }
 
-    /* Hero */
     .hero {
       min-height: 100svh;
       padding: calc(var(--header-height) + 118px) 0 80px;
@@ -341,7 +339,6 @@
       gap: 5px;
     }
 
-    /* Split layout */
     .split {
       display: grid;
       grid-template-columns: 220px minmax(0, 1fr);
@@ -369,7 +366,6 @@
     .statement + .statement { padding-left: 30px; border-left: 1px solid var(--line); }
     .statement p { max-width: 520px; color: #c6c6c3; }
 
-    /* Data */
     .data-grid {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -406,7 +402,6 @@
       letter-spacing: -.035em;
     }
 
-    /* Flow */
     .flow {
       display: grid;
       grid-template-columns: repeat(5, minmax(0, 1fr));
@@ -435,7 +430,6 @@
       align-items: end;
     }
 
-    /* Technology */
     .tech-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -455,7 +449,6 @@
 
     .tech-card p { color: #bcbcb9; font-size: 16px; }
 
-    /* Products */
     .products { display: grid; gap: 0; border-top: 1px solid var(--line); }
 
     .product-row {
@@ -510,7 +503,6 @@
       line-height: 1.7;
     }
 
-    /* Closing message */
     .closing {
       min-height: 72svh;
       display: flex;
@@ -526,7 +518,6 @@
     }
     .closing-copy p { margin-top: 34px; max-width: 760px; color: #bdbdba; }
 
-    /* Contact */
     .contact-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -545,8 +536,8 @@
     }
 
     .contact-card p { color: #bcbcb9; font-size: 16px; max-width: 340px; }
+    .pending-link { color: var(--muted); cursor: default; }
 
-    /* Footer */
     .footer {
       padding: 48px 0 34px;
       border-top: 1px solid var(--line);
@@ -991,7 +982,7 @@
               <h3 class="card-h3">무료 샘플 신청</h3>
               <p style="margin-top:16px;">TerraPack 또는 TerraShield를 직접 테스트해보세요.</p>
             </div>
-            <a class="text-link" href="mailto:contact@terracle.im?subject=TerraSave%20무료%20샘플%20신청">REQUEST SAMPLE ↗</a>
+            <span class="text-link pending-link">REQUEST SAMPLE ↗</span>
           </article>
           <article class="contact-card">
             <span class="meta">02 / B2B</span>
@@ -999,7 +990,7 @@
               <h3 class="card-h3">도입 견적 문의</h3>
               <p style="margin-top:16px;">제품 규격과 적용 대상에 맞는 B2B 도입을 문의하세요.</p>
             </div>
-            <a class="text-link" href="mailto:contact@terracle.im?subject=TerraSave%20B2B%20도입%20문의">B2B INQUIRY ↗</a>
+            <span class="text-link pending-link">B2B INQUIRY ↗</span>
           </article>
           <article class="contact-card">
             <span class="meta">03 / TERRASAVE X</span>
@@ -1007,7 +998,7 @@
               <h3 class="card-h3">미팅 요청</h3>
               <p style="margin-top:16px;">공동 연구 및 검증을 통한 전용 제품 개발을 논의하세요.</p>
             </div>
-            <a class="text-link" href="mailto:contact@terracle.im?subject=TerraSave%20X%20미팅%20요청">REQUEST A MEETING ↗</a>
+            <span class="text-link pending-link">REQUEST A MEETING ↗</span>
           </article>
         </div>
       </div>
