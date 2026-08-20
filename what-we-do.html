@@ -7,8 +7,9 @@
   <meta name="theme-color" content="#050505" />
   <title>What we do — TerraSave</title>
   <link rel="stylesheet" href="assets/css/styles.css" />
+  <link rel="stylesheet" href="assets/css/what-we-do.css" />
 </head>
-<body>
+<body class="what-page">
   <header class="site-header" id="siteHeader">
     <div class="shell header-inner">
       <a class="brand" href="index.html">TerraSave</a>
@@ -28,70 +29,128 @@
     <section class="page-hero">
       <div class="shell page-hero-grid">
         <span class="label">02 / WHAT WE DO</span>
-        <div class="page-hero-copy">
+        <div class="page-hero-copy" data-reveal>
           <h1 class="page-h1">과일부터 꽃까지,<br />유통 과정에서 발생하는 손실을 줄입니다.</h1>
           <p class="intro">TerraSave는 지구가 선물한 신선함을 지키고, 유통 과정의 폐기를 감소시킵니다.</p>
         </div>
       </div>
+
+      <nav class="what-subnav" aria-label="What we do page navigation">
+        <div class="what-subnav-inner">
+          <a href="#problem" class="is-active">01 / Problem</a>
+          <a href="#solutions">02 / Solutions</a>
+        </div>
+      </nav>
     </section>
 
-    <section class="section" id="problem">
+    <section class="what-section" id="problem">
       <div class="shell">
-        <div class="section-heading">
-          <div class="section-heading-copy">
-            <span class="eyebrow">PROBLEM</span>
+        <div class="editorial-head" data-reveal>
+          <div><span class="eyebrow">PROBLEM</span></div>
+          <div class="editorial-head-main">
             <h2 class="section-h2">전 세계 식품의 1/3,<br />약 13억 톤이 유통 및 소비 과정에서 폐기됩니다.</h2>
+            <span class="meta">FOOD LOSS / DISTRIBUTION</span>
           </div>
-          <span class="meta">FOOD LOSS / DISTRIBUTION</span>
         </div>
 
-        <div class="data-grid">
-          <article class="data-card">
-            <div class="data-number">$9360억</div>
-            <div class="data-copy"><span class="meta">ANNUAL ECONOMIC LOSS</span><p>연간 경제적 손실</p><span class="meta">UN FAO · 세계식량농업기구</span></div>
+        <div class="stat-list" aria-label="식품 폐기 관련 주요 데이터">
+          <article class="stat-row" tabindex="0" data-reveal>
+            <span class="stat-index">01</span>
+            <div class="stat-number">$9360억</div>
+            <div class="stat-copy">
+              <div class="stat-title">연간 경제적 손실</div>
+              <div class="stat-description">
+                <p>전 세계 식품 폐기로 인해 발생하는 연간 경제적 손실입니다.</p>
+                <span class="meta">UN FAO · 세계식량농업기구</span>
+              </div>
+            </div>
           </article>
-          <article class="data-card">
-            <div class="data-number">45% / 40%</div>
-            <div class="data-copy"><span class="meta">DISTRIBUTION LOSS</span><p>과일·채소의 높은 유통 폐기율 45% 및 생화의 유통 손실률 40%</p><span class="meta">SOURCE · UN FAO / WUR</span></div>
+
+          <article class="stat-row" tabindex="0" data-reveal>
+            <span class="stat-index">02</span>
+            <div class="stat-number">45% / 40%</div>
+            <div class="stat-copy">
+              <div class="stat-title">Distribution Loss</div>
+              <div class="stat-description">
+                <p>과일·채소의 높은 유통 폐기율 45% 및 생화의 유통 손실률 40%.</p>
+                <span class="meta">SOURCE · UN FAO / WUR</span>
+              </div>
+            </div>
           </article>
-          <article class="data-card">
-            <div class="data-number">36%</div>
-            <div class="data-copy"><span class="meta">QUALITY LOSS</span><p>저장·운송 과정의 품질 손실</p><span class="meta">UN FAO</span></div>
+
+          <article class="stat-row" tabindex="0" data-reveal>
+            <span class="stat-index">03</span>
+            <div class="stat-number">36%</div>
+            <div class="stat-copy">
+              <div class="stat-title">Quality Loss</div>
+              <div class="stat-description">
+                <p>저장·운송 과정에서 발생하는 품질 손실입니다.</p>
+                <span class="meta">UN FAO</span>
+              </div>
+            </div>
           </article>
-          <article class="data-card">
-            <div class="data-number">1 : 14</div>
-            <div class="data-copy"><span class="meta">COST REDUCTION</span><p>식품 폐기 감축에 $1를 투자할 때 기업은 평균 $14의 비용 절감 효과를 얻습니다.</p><span class="meta">WRI CHAMPIONS 12.3 REPORT</span></div>
+
+          <article class="stat-row" tabindex="0" data-reveal>
+            <span class="stat-index">04</span>
+            <div class="stat-number">1 : 14</div>
+            <div class="stat-copy">
+              <div class="stat-title">Cost Reduction</div>
+              <div class="stat-description">
+                <p>식품 폐기 감축에 $1를 투자할 때 기업은 평균 $14의 비용 절감 효과를 얻습니다.</p>
+                <span class="meta">WRI CHAMPIONS 12.3 REPORT</span>
+              </div>
+            </div>
           </article>
         </div>
 
-        <p class="problem-message">과일부터 꽃까지, 자연이 준 결실의 30~45%가 유통 과정에서 버려집니다. TerraSave의 기술은 에틸렌 포집 기술로 파트너사의 손실을 지켜드립니다.</p>
+        <div class="problem-conclusion" data-reveal>
+          <span class="label">WHY TERRASAVE</span>
+          <p>과일부터 꽃까지, 자연이 준 결실의 30~45%가 유통 과정에서 버려집니다. TerraSave의 기술은 에틸렌 포집 기술로 파트너사의 손실을 지켜드립니다.</p>
+        </div>
       </div>
     </section>
 
-    <section class="section" id="solutions">
-      <div class="shell split">
-        <div><span class="label">SOLUTIONS</span></div>
-        <div class="split-content">
-          <div class="section-heading-copy">
+    <section class="what-section" id="solutions">
+      <div class="shell">
+        <div class="solution-intro" data-reveal>
+          <div><span class="label">SOLUTIONS</span></div>
+          <div class="solution-copy">
             <h2 class="section-h2">From Farm to Customer</h2>
             <p class="intro">TerraSave는 지구가 선물한 신선함을 지키고, 유통 과정의 폐기를 감소시킵니다.</p>
           </div>
+        </div>
 
-          <div class="flow" aria-label="From Farm to Customer 유통 과정">
-            <div class="flow-step"><span class="meta">01</span><span>Farm</span></div>
-            <div class="flow-step"><span class="meta">02</span><span>Storage</span></div>
-            <div class="flow-step"><span class="meta">03</span><span>Transport</span></div>
-            <div class="flow-step"><span class="meta">04</span><span>Distribution</span></div>
-            <div class="flow-step"><span class="meta">05</span><span>Customer</span></div>
-          </div>
-
-          <div class="solution-close">
-            <div>
-              <h3 class="card-h3">결국 더 오래 신선함을 지킵니다.</h3>
-              <p class="intro" style="margin-top:16px;">우리의 기술은 이미 검증을 통해 제품화되었습니다.</p>
+        <div class="journey-wrap">
+          <div class="journey" aria-label="From Farm to Customer 유통 과정">
+            <div class="journey-step" tabindex="0" style="--delay:0ms">
+              <span class="meta">01</span>
+              <div><div class="step-name">Farm</div><div class="step-copy">생산</div></div>
             </div>
-            <a class="button" href="contact.html">REQUEST A MEETING</a>
+            <div class="journey-step" tabindex="0" style="--delay:90ms">
+              <span class="meta">02</span>
+              <div><div class="step-name">Storage</div><div class="step-copy">저장</div></div>
+            </div>
+            <div class="journey-step" tabindex="0" style="--delay:180ms">
+              <span class="meta">03</span>
+              <div><div class="step-name">Transport</div><div class="step-copy">운송</div></div>
+            </div>
+            <div class="journey-step" tabindex="0" style="--delay:270ms">
+              <span class="meta">04</span>
+              <div><div class="step-name">Distribution</div><div class="step-copy">유통</div></div>
+            </div>
+            <div class="journey-step" tabindex="0" style="--delay:360ms">
+              <span class="meta">05</span>
+              <div><div class="step-name">Customer</div><div class="step-copy">소비자</div></div>
+            </div>
           </div>
+        </div>
+
+        <div class="solution-final" data-reveal>
+          <div class="solution-final-copy">
+            <h3 class="card-h3">결국 더 오래 신선함을 지킵니다.</h3>
+            <p class="intro">우리의 기술은 이미 검증을 통해 제품화되었습니다.</p>
+          </div>
+          <a class="button" href="contact.html">REQUEST A MEETING</a>
         </div>
       </div>
     </section>
@@ -106,6 +165,8 @@
       <div class="footer-bottom"><span class="meta">A SUB-BRAND OF TERRACLE</span><span class="meta">© 2026 TERRASAVE. ALL RIGHTS RESERVED.</span></div>
     </div>
   </footer>
+
   <script src="assets/js/main.js"></script>
+  <script src="assets/js/what-we-do.js"></script>
 </body>
 </html>
