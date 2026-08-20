@@ -18,6 +18,12 @@ if (header && toggle && nav) {
   });
 }
 
+// Shared refinement layer for the whole TerraSave site.
+const refinementStyle = document.createElement('link');
+refinementStyle.rel = 'stylesheet';
+refinementStyle.href = 'assets/css/refinement.css';
+document.head.appendChild(refinementStyle);
+
 // Shared Terracle-inspired footer for every TerraSave page.
 const footerStyle = document.createElement('link');
 footerStyle.rel = 'stylesheet';
