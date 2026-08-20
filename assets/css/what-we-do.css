@@ -25,7 +25,13 @@
 }
 
 .what-subnav{
+  position:sticky;
+  top:var(--header-height);
+  z-index:30;
   margin-top:50px;
+  background:rgba(5,5,5,.94);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
   border-top:1px solid var(--line);
   border-bottom:1px solid var(--line);
 }
@@ -47,7 +53,7 @@
   letter-spacing:.085em;
   text-transform:uppercase;
   border-right:1px solid var(--line);
-  transition:color .2s ease,padding-left .25s ease;
+  transition:color .2s ease,padding-left .25s ease,background-color .2s ease;
 }
 
 .what-subnav a:first-child{
@@ -63,11 +69,13 @@
 .what-subnav a.is-active{
   color:#fff;
   padding-left:24px;
+  background:#0a0a0a;
 }
 
 .what-section{
   padding:96px 0;
   border-top:0;
+  scroll-margin-top:calc(var(--header-height) + 54px);
 }
 
 .what-section + .what-section{
@@ -116,6 +124,7 @@
   border-bottom:1px solid var(--line);
   transition:background-color .28s ease,padding-left .28s ease;
   overflow:hidden;
+  outline:none;
 }
 
 .stat-row::before{
@@ -132,13 +141,13 @@
 }
 
 .stat-row:hover,
-.stat-row:focus-within{
+.stat-row:focus{
   background:#0b0b0b;
   padding-left:18px;
 }
 
 .stat-row:hover::before,
-.stat-row:focus-within::before{
+.stat-row:focus::before{
   transform:scaleY(1);
 }
 
@@ -262,6 +271,7 @@
   transform:translateY(10px);
   transition:opacity .45s ease,transform .45s ease,background-color .25s ease,padding-left .25s ease;
   transition-delay:var(--delay,0ms);
+  outline:none;
 }
 
 .journey-step + .journey-step{
@@ -290,11 +300,13 @@
   left:22px;
 }
 
-.journey-step:hover{
+.journey-step:hover,
+.journey-step:focus{
   background:#0b0b0b;
 }
 
-.journey-step:hover::before{
+.journey-step:hover::before,
+.journey-step:focus::before{
   background:#fff;
   transform:scale(1.35);
 }
@@ -385,6 +397,7 @@
   }
   .what-section{
     padding:72px 0;
+    scroll-margin-top:calc(var(--header-height) + 48px);
   }
   .editorial-head,
   .solution-intro,
@@ -408,7 +421,8 @@
     min-height:auto;
     padding:26px 0;
   }
-  .stat-row:hover{
+  .stat-row:hover,
+  .stat-row:focus{
     padding-left:0;
   }
   .stat-number{
@@ -430,13 +444,13 @@
     padding-left:0;
     overflow-x:auto;
     scrollbar-width:none;
+    scroll-snap-type:x mandatory;
   }
   .journey-wrap::-webkit-scrollbar{display:none}
   .journey{
-    grid-template-columns:repeat(5,minmax(165px,1fr));
+    grid-template-columns:repeat(5,165px);
     width:max-content;
     min-width:100%;
-    scroll-snap-type:x mandatory;
   }
   .journey-step{
     min-height:170px;
