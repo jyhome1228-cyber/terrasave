@@ -51,6 +51,12 @@ footerStyle.rel = 'stylesheet';
 footerStyle.href = 'assets/css/footer.css';
 document.head.appendChild(footerStyle);
 
+// Shared interaction language: neutral boxes with orange bottom-edge hover only.
+const interactionStyle = document.createElement('link');
+interactionStyle.rel = 'stylesheet';
+interactionStyle.href = 'assets/css/interaction.css';
+document.head.appendChild(interactionStyle);
+
 const footer = document.querySelector('footer.footer');
 if (footer) {
   footer.innerHTML = `
