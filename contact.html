@@ -7,6 +7,7 @@
   <meta name="theme-color" content="#050505" />
   <title>Contact — TerraSave</title>
   <link rel="stylesheet" href="assets/css/styles.css" />
+  <link rel="stylesheet" href="assets/css/contact.css" />
 </head>
 <body>
   <header class="site-header" id="siteHeader">
@@ -19,7 +20,7 @@
         <a href="product.html">PRODUCT</a>
         <a href="contact.html" aria-current="page">CONTACT</a>
       </nav>
-      <a class="button header-cta" href="contact.html">REQUEST A SAMPLE</a>
+      <a class="button header-cta" href="#contact-form">REQUEST A SAMPLE</a>
       <button class="menu-toggle" id="menuToggle" type="button" aria-label="메뉴 열기" aria-expanded="false"></button>
     </div>
   </header>
@@ -42,64 +43,106 @@
             <span class="eyebrow">CONTACT OPTIONS</span>
             <h2 class="section-h2">필요한 문의 유형을 선택하세요.</h2>
           </div>
-          <span class="meta">SAMPLE / B2B / R&D</span>
+          <span class="meta">SAMPLE / B2B / R&amp;D</span>
         </div>
 
         <div class="contact-grid">
-          <article class="contact-card" id="sample">
+          <a class="contact-card" id="sample" href="#contact-form" data-inquiry-type="무료 샘플 신청">
             <span class="meta">01 / FREE SAMPLE</span>
             <div>
               <h3 class="card-h3">무료 샘플 신청</h3>
               <p style="margin-top:16px;">TerraPack 또는 TerraShield를 무료 샘플을 통해 직접 테스트해보세요.</p>
             </div>
             <span class="text-link">REQUEST SAMPLE ↗</span>
-          </article>
+          </a>
 
-          <article class="contact-card" id="b2b">
+          <a class="contact-card" id="b2b" href="#contact-form" data-inquiry-type="B2B 도입 견적 문의">
             <span class="meta">02 / B2B</span>
             <div>
               <h3 class="card-h3">B2B 도입 견적 문의</h3>
               <p style="margin-top:16px;">제품 적용, 규격, 주문 제작 및 도입 견적에 대한 문의를 진행합니다.</p>
             </div>
             <span class="text-link">B2B INQUIRY ↗</span>
-          </article>
+          </a>
 
-          <article class="contact-card" id="meeting">
+          <a class="contact-card" id="meeting" href="#contact-form" data-inquiry-type="TerraSave X 공동 연구 / 미팅">
             <span class="meta">03 / TERRASAVE X</span>
             <div>
               <h3 class="card-h3">미팅 요청</h3>
               <p style="margin-top:16px;">공동 연구 및 검증을 통해 자사의 브랜드에 맞는 전용 제품 설계를 논의합니다.</p>
             </div>
             <span class="text-link">REQUEST A MEETING ↗</span>
-          </article>
+          </a>
         </div>
       </div>
     </section>
 
-    <section class="section secondary">
-      <div class="shell split">
-        <div><span class="label">FORM / LINK</span></div>
-        <div class="split-content">
-          <h2 class="section-h2">문의 폼 또는 실제 연락처 연결 영역</h2>
-          <p class="body-copy" style="margin-top:20px;">현재 제공된 기획안에는 실제 문의 이메일이나 폼 주소가 없어 임의 연결하지 않고 디자인 영역만 구성했습니다. 실제 연락처 또는 폼 URL이 확정되면 위 3개 문의 버튼에 연결할 수 있습니다.</p>
-          <div class="media-slot" style="margin-top:48px;min-height:320px;">
-            <span class="meta">CONTACT FORM / EMBED SLOT</span>
-            <span class="meta">TO BE CONNECTED</span>
+    <section class="section secondary contact-form-section" id="contact-form">
+      <div class="shell contact-form-layout">
+        <div><span class="label">INQUIRY</span></div>
+        <div>
+          <div class="contact-form-heading">
+            <h2 class="section-h2">TerraSave에 문의하기</h2>
+            <p class="body-copy">샘플 테스트부터 B2B 도입, 공동 연구까지 필요한 내용을 남겨주세요. 작성한 내용은 TerraSave 담당 이메일로 연결됩니다.</p>
           </div>
+
+          <form class="contact-form" id="contactForm">
+            <div class="form-grid">
+              <label class="form-field full">
+                <span class="form-label">Inquiry type *</span>
+                <select class="form-select" id="inquiryType" name="inquiryType" required>
+                  <option value="">문의 유형을 선택하세요</option>
+                  <option value="무료 샘플 신청">무료 샘플 신청</option>
+                  <option value="B2B 도입 견적 문의">B2B 도입 견적 문의</option>
+                  <option value="TerraSave X 공동 연구 / 미팅">TerraSave X 공동 연구 / 미팅</option>
+                  <option value="일반 문의">일반 문의</option>
+                </select>
+              </label>
+
+              <label class="form-field">
+                <span class="form-label">Name *</span>
+                <input class="form-input" type="text" name="name" placeholder="이름" autocomplete="name" required />
+              </label>
+
+              <label class="form-field">
+                <span class="form-label">Company</span>
+                <input class="form-input" type="text" name="company" placeholder="회사명" autocomplete="organization" />
+              </label>
+
+              <label class="form-field">
+                <span class="form-label">Email *</span>
+                <input class="form-input" type="email" name="email" placeholder="name@company.com" autocomplete="email" required />
+              </label>
+
+              <label class="form-field">
+                <span class="form-label">Phone</span>
+                <input class="form-input" type="tel" name="phone" placeholder="010-0000-0000" autocomplete="tel" />
+              </label>
+
+              <label class="form-field full">
+                <span class="form-label">Message *</span>
+                <textarea class="form-textarea" name="message" placeholder="테스트를 원하는 제품, 작물, 규격, 예상 수량 또는 논의가 필요한 내용을 입력해주세요." required></textarea>
+              </label>
+            </div>
+
+            <label class="form-consent">
+              <input type="checkbox" required />
+              <span>문의 처리를 위한 이름, 이메일, 연락처 등 입력 정보의 이용에 동의합니다.</span>
+            </label>
+
+            <div class="form-actions">
+              <p class="form-note">제출 시 기본 메일 앱이 열리며 작성 내용이 info@terracle.im 앞으로 자동 입력됩니다.</p>
+              <button class="button form-submit" type="submit">SEND INQUIRY</button>
+            </div>
+            <p class="form-status" id="formStatus" aria-live="polite"></p>
+          </form>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="footer">
-    <div class="shell">
-      <div class="footer-top">
-        <div><div class="footer-brand">TerraSave</div><p class="muted" style="margin-top:10px;">Keep Fresh, Save Loss.</p></div>
-        <nav class="footer-nav"><a href="about.html">About us</a><a href="what-we-do.html">What we do</a><a href="technology.html">Technology</a><a href="product.html">Product</a><a href="contact.html">Contact</a></nav>
-      </div>
-      <div class="footer-bottom"><span class="meta">A SUB-BRAND OF TERRACLE</span><span class="meta">© 2026 TERRASAVE. ALL RIGHTS RESERVED.</span></div>
-    </div>
-  </footer>
+  <footer class="footer"></footer>
   <script src="assets/js/main.js"></script>
+  <script src="assets/js/contact.js"></script>
 </body>
 </html>
