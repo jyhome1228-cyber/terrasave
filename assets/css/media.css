@@ -24,6 +24,15 @@
 .home-hero-feature{display:grid;grid-template-columns:minmax(0,.86fr) minmax(460px,1.14fr);gap:clamp(46px,5.5vw,82px);align-items:end}
 .home-hero-clean .home-copy{max-width:720px}
 .home-hero-clean .home-copy .intro{max-width:680px}
+
+.home-visual-intro{display:grid;grid-template-columns:var(--rail) minmax(0,1fr);gap:var(--layout-gap);align-items:start;padding:72px 0 62px;border-top:1px solid var(--line)}
+.home-visual-intro-label{padding-top:3px}
+.home-visual-intro-copy{max-width:760px;display:grid;gap:18px}
+.home-visual-intro-copy h2{max-width:680px;margin:0;font-size:clamp(21px,1.55vw,25px);font-weight:470;line-height:1.46;letter-spacing:-.032em}
+.home-visual-intro-copy p{max-width:650px;color:#9f9f9b;font-size:15px;line-height:1.78}
+.home-visual-intro-links{display:flex;flex-wrap:wrap;gap:22px;margin-top:4px}
+.home-visual-intro-links .text-link{font-size:12px}
+
 .product-roll-wrap{display:grid;gap:14px;padding-top:4px}
 .product-roll{position:relative;width:100%;overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#050505}
 .product-roll::before,.product-roll::after{content:'';position:absolute;top:0;bottom:0;width:72px;z-index:2;pointer-events:none}
@@ -40,6 +49,7 @@
 @media(max-width:1100px){
   .home-hero-feature{grid-template-columns:1fr;gap:36px}
   .home-hero-feature .hero-brand-image{max-width:none}
+  .home-visual-intro{grid-template-columns:var(--rail) minmax(0,1fr);gap:var(--layout-gap);padding:64px 0 54px}
 }
 
 @media(max-width:900px){
@@ -56,6 +66,11 @@
   .home-hero-clean{padding:54px 0 54px!important}
   .home-hero-clean-shell{gap:34px}
   .home-hero-feature{gap:28px}
+  .home-visual-intro{grid-template-columns:1fr;gap:18px;padding:54px 0 44px}
+  .home-visual-intro-copy{gap:15px}
+  .home-visual-intro-copy h2{font-size:21px}
+  .home-visual-intro-copy p{font-size:14px}
+  .home-visual-intro-links{gap:18px}
   .product-roll::before,.product-roll::after{width:24px}
   .product-roll-track{gap:10px;padding:12px 0;animation-duration:34s}
   .product-roll-item{flex-basis:78vw}
