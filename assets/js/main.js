@@ -39,6 +39,12 @@ refinementStyle.rel = 'stylesheet';
 refinementStyle.href = 'assets/css/refinement.css';
 document.head.appendChild(refinementStyle);
 
+// Shared image and gallery layouts.
+const mediaStyle = document.createElement('link');
+mediaStyle.rel = 'stylesheet';
+mediaStyle.href = 'assets/css/media.css';
+document.head.appendChild(mediaStyle);
+
 // Compact TerraSave footer shared across all pages.
 const footerStyle = document.createElement('link');
 footerStyle.rel = 'stylesheet';
