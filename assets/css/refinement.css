@@ -1,6 +1,7 @@
 /* TerraSave shared refinement — production layout system */
 :root{
   --accent:#E95A20;
+  --accent-soft:rgba(233,90,32,.34);
   --fs-display:clamp(32px,2.85vw,42px);
   --fs-h1:clamp(29px,2.55vw,38px);
   --fs-h2:clamp(23px,1.75vw,29px);
@@ -23,6 +24,25 @@ body{font-size:16px;line-height:1.72}
 .section{padding:var(--section-xl) 0}
 .section.secondary{padding:var(--section-lg) 0}
 
+/* Subpages now enter directly into their actual content */
+.page-hero,.what-page .page-hero{display:none!important}
+main>.page-hero+.section{padding-top:76px}
+.what-subnav+.what-section{padding-top:72px}
+
+/* Restrained brand accents */
+.eyebrow::before{background:var(--accent)}
+.header-cta{gap:9px}
+.header-cta::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--accent);flex:0 0 auto}
+.text-link:hover{color:var(--accent);opacity:1}
+.notice{border-left-color:var(--accent-soft)}
+.summary-card,.contact-card,.tech-card,.data-card,.product-row,.media-slot{transition:border-color .22s ease,background-color .22s ease,color .22s ease}
+.summary-card:hover,.contact-card:hover,.tech-card:hover,.data-card:hover,.media-slot:hover{border-color:var(--accent-soft)}
+.summary-card:hover>.meta,.contact-card:hover>.meta,.tech-card:hover>.meta,.data-card:hover .meta,.product-row:hover .label,.product-row:hover .product-title>.meta{color:var(--accent)}
+.what-subnav a{position:relative}
+.what-subnav a.is-active::after{content:'';position:absolute;left:50%;bottom:8px;width:3px;height:3px;border-radius:50%;background:var(--accent);transform:translateX(-50%)}
+.problem-card:hover{border-color:var(--accent-soft)}
+.journey-step:hover::before,.journey-step:focus::before{background:var(--accent)}
+
 /* Header */
 .site-header{height:var(--header-height)}
 .header-inner{grid-template-columns:minmax(180px,1fr) auto minmax(180px,1fr);gap:32px}
@@ -35,7 +55,6 @@ body{font-size:16px;line-height:1.72}
 .header-cta:hover{border-color:var(--accent)}
 .button{min-height:44px;padding:0 17px}
 .button.primary:hover{border-color:var(--accent)}
-.text-link:hover{color:#fff}
 
 /* Shared editorial grid */
 .page-hero{min-height:auto;padding:76px 0 70px}
@@ -114,6 +133,8 @@ body{font-size:16px;line-height:1.72}
   :root{--header-height:74px;--rail:auto;--layout-gap:22px}
   .shell{width:calc(100% - 32px)}
   .section{padding:66px 0}.section.secondary{padding:54px 0}
+  main>.page-hero+.section{padding-top:54px}
+  .what-subnav+.what-section{padding-top:52px}
   .display{font-size:clamp(29px,8.7vw,36px)}
   .page-h1{font-size:clamp(27px,8vw,34px)}
   .section-h2{font-size:clamp(21px,6.2vw,27px)}
@@ -132,4 +153,7 @@ body{font-size:16px;line-height:1.72}
   .media-slot{min-height:170px}
   .home-hero{padding:58px 0 58px;min-height:auto}
   .media-panel{min-height:330px}.timelapse{min-height:240px}
+  .header-cta::before{display:none}
 }
+
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important;animation:none!important}}
