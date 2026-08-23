@@ -2,6 +2,16 @@ const header = document.getElementById('siteHeader');
 const toggle = document.getElementById('menuToggle');
 const nav = document.getElementById('siteNav');
 
+// Use the TerraSave symbol from the official logo as the favicon on every page.
+let favicon = document.querySelector('link[rel="icon"]');
+if (!favicon) {
+  favicon = document.createElement('link');
+  favicon.rel = 'icon';
+  document.head.appendChild(favicon);
+}
+favicon.type = 'image/svg+xml';
+favicon.href = 'assets/img/terrasave-favicon.svg';
+
 // Apply the official TerraSave logo to every page header.
 document.querySelectorAll('.brand').forEach((brand) => {
   brand.innerHTML = '<img class="brand-logo" src="assets/img/terrasave-logo.svg" alt="TerraSave" />';
