@@ -86,18 +86,19 @@
             <p class="body-copy">샘플 테스트부터 B2B 도입, 공동 연구까지 필요한 내용을 남겨주세요. 작성한 내용은 TerraSave 담당 이메일로 연결됩니다.</p>
           </div>
 
-          <form class="contact-form" id="contactForm">
+          <form class="contact-form" id="contactForm" novalidate>
             <div class="form-grid">
-              <label class="form-field full">
-                <span class="form-label">Inquiry type *</span>
-                <select class="form-select" id="inquiryType" name="inquiryType" required>
-                  <option value="">문의 유형을 선택하세요</option>
-                  <option value="무료 샘플 신청">무료 샘플 신청</option>
-                  <option value="B2B 도입 견적 문의">B2B 도입 견적 문의</option>
-                  <option value="TerraSave X 공동 연구 / 미팅">TerraSave X 공동 연구 / 미팅</option>
-                  <option value="일반 문의">일반 문의</option>
-                </select>
-              </label>
+              <fieldset class="form-field full inquiry-field">
+                <legend class="form-label">Inquiry type *</legend>
+                <div class="inquiry-options" id="inquiryOptions" role="radiogroup" aria-label="문의 유형">
+                  <button type="button" class="inquiry-option" data-value="무료 샘플 신청" aria-pressed="false"><span>무료 샘플 신청</span></button>
+                  <button type="button" class="inquiry-option" data-value="B2B 도입 견적 문의" aria-pressed="false"><span>B2B 도입 견적 문의</span></button>
+                  <button type="button" class="inquiry-option" data-value="TerraSave X 공동 연구 / 미팅" aria-pressed="false"><span>TerraSave X 공동 연구 / 미팅</span></button>
+                  <button type="button" class="inquiry-option" data-value="일반 문의" aria-pressed="false"><span>일반 문의</span></button>
+                </div>
+                <input type="hidden" id="inquiryType" name="inquiryType" value="" />
+                <span class="field-error" id="inquiryTypeError" aria-live="polite"></span>
+              </fieldset>
 
               <label class="form-field">
                 <span class="form-label">Name *</span>
@@ -119,19 +120,19 @@
                 <input class="form-input" type="tel" name="phone" placeholder="010-0000-0000" autocomplete="tel" />
               </label>
 
-              <label class="form-field full">
+              <label class="form-field full message-field">
                 <span class="form-label">Message *</span>
                 <textarea class="form-textarea" name="message" placeholder="테스트를 원하는 제품, 작물, 규격, 예상 수량 또는 논의가 필요한 내용을 입력해주세요." required></textarea>
               </label>
             </div>
 
             <label class="form-consent">
-              <input type="checkbox" required />
+              <input type="checkbox" name="privacyConsent" required />
               <span>문의 처리를 위한 이름, 이메일, 연락처 등 입력 정보의 이용에 동의합니다.</span>
             </label>
 
             <div class="form-actions">
-              <p class="form-note">제출 시 기본 메일 앱이 열리며 작성 내용이 info@terracle.im 앞으로 자동 입력됩니다.</p>
+              <p class="form-note">제출하면 기본 메일 앱이 열리고, 입력한 내용이 info@terracle.im 앞으로 자동 작성됩니다.</p>
               <button class="button form-submit" type="submit">SEND INQUIRY</button>
             </div>
             <p class="form-status" id="formStatus" aria-live="polite"></p>
