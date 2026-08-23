@@ -29,6 +29,11 @@ body{font-size:16px;line-height:1.72}
 main>.page-hero+.section{padding-top:76px}
 .what-subnav+.what-section{padding-top:72px}
 
+/* Brand word treatment */
+.terrasave-word{white-space:nowrap}
+.terrasave-dot{color:var(--accent);font-weight:700}
+p[data-sentence-breaks='true'] br,.body-copy[data-sentence-breaks='true'] br{display:block;content:''}
+
 /* Restrained brand accents */
 .eyebrow::before{background:var(--accent)}
 .header-cta{gap:9px}
