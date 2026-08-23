@@ -2,6 +2,11 @@ const header = document.getElementById('siteHeader');
 const toggle = document.getElementById('menuToggle');
 const nav = document.getElementById('siteNav');
 
+// Apply the official TerraSave logo to every page header.
+document.querySelectorAll('.brand').forEach((brand) => {
+  brand.innerHTML = '<img class="brand-logo" src="assets/img/terrasave-logo.svg" alt="TerraSave" />';
+});
+
 if (header && toggle && nav) {
   toggle.addEventListener('click', () => {
     const open = header.classList.toggle('menu-open');
@@ -35,8 +40,9 @@ if (footer) {
   footer.innerHTML = `
     <div class="footer-shell">
       <div class="footer-intro">
-        <div>
-          <span class="footer-kicker">TERRASAVE · A BRAND OF TERRACLE</span>
+        <div class="footer-intro-brand">
+          <img class="footer-logo" src="assets/img/terrasave-logo.svg" alt="TerraSave" />
+          <span class="footer-kicker">A BRAND OF TERRACLE</span>
           <h2>Keep Fresh, Save Loss.<br>신선함을 더 오래 지킵니다.</h2>
         </div>
         <p class="footer-intro-copy">TerraSave는 Terracle의 기술을 기반으로 신선 제품의 유통 과정에서 발생하는 손실을 줄이는 솔루션을 제공합니다.</p>
