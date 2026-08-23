@@ -18,6 +18,24 @@
 .product-visual-wrap{display:grid;gap:18px}
 .product-visual-wrap .meta{color:#767672}
 
+/* Home — product visuals only */
+.home-hero-clean{min-height:auto!important;padding:74px 0 70px!important;align-items:stretch!important}
+.home-hero-clean-shell{display:grid;gap:46px}
+.home-hero-clean .home-copy{max-width:720px}
+.home-hero-clean .home-copy .intro{max-width:680px}
+.product-roll-wrap{display:grid;gap:14px;padding-top:4px}
+.product-roll{position:relative;width:100%;overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#050505}
+.product-roll::before,.product-roll::after{content:'';position:absolute;top:0;bottom:0;width:72px;z-index:2;pointer-events:none}
+.product-roll::before{left:0;background:linear-gradient(90deg,#050505,transparent)}
+.product-roll::after{right:0;background:linear-gradient(270deg,#050505,transparent)}
+.product-roll-track{display:flex;gap:14px;width:max-content;padding:16px 0;animation:terrasaveProductRoll 44s linear infinite;will-change:transform}
+.product-roll:hover .product-roll-track{animation-play-state:paused}
+.product-roll-item{flex:0 0 clamp(320px,32vw,500px);margin:0;aspect-ratio:3/2;overflow:hidden;background:#080808;border:1px solid rgba(255,255,255,.11)}
+.product-roll-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .45s cubic-bezier(.2,.7,.2,1)}
+.product-roll-item:hover img{transform:scale(1.012)}
+.product-roll-foot{display:flex;align-items:center;justify-content:space-between;gap:24px}
+@keyframes terrasaveProductRoll{from{transform:translateX(0)}to{transform:translateX(calc(-50% - 35px))}}
+
 @media(max-width:900px){
   .visual-gallery.three-up{grid-template-columns:1fr 1fr}
   .visual-gallery.three-up .visual-item:first-child{grid-column:1/-1}
@@ -29,4 +47,10 @@
   .visual-gallery.three-up,.visual-gallery.product-gallery{grid-template-columns:1fr}
   .visual-gallery.three-up .visual-item:first-child,.visual-item.featured{grid-column:auto;aspect-ratio:3/2}
   .visual-item{aspect-ratio:3/2}
+  .home-hero-clean{padding:54px 0 54px!important}
+  .home-hero-clean-shell{gap:34px}
+  .product-roll::before,.product-roll::after{width:24px}
+  .product-roll-track{gap:10px;padding:12px 0;animation-duration:34s}
+  .product-roll-item{flex-basis:78vw}
+  .product-roll-foot{align-items:flex-start;flex-direction:column;gap:6px}
 }
