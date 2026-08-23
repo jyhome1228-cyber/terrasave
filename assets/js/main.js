@@ -86,3 +86,79 @@ if (footer) {
       </div>
     </div>`;
 }
+
+// In prose, start a new visual line immediately after each full stop.
+function addSentenceBreaks(root = document) {
+  const prose = new Set(root.querySelectorAll('p, .body-copy'));
+
+  prose.forEach((element) => {
+    if (element.dataset.sentenceBreaks === 'true') return;
+    element.dataset.sentenceBreaks = 'true';
+
+    const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT);
+    const nodes = [];
+    while (walker.nextNode()) nodes.push(walker.currentNode);
+
+    nodes.forEach((node) => {
+      if (!/\.\s+\S/.test(node.nodeValue || '')) return;
+
+      const parts = node.nodeValue.split(/(\.\s+)/);
+      const fragment = document.createDocumentFragment();
+
+      parts.forEach((part, index) => {
+        if (!part) return;
+        if (/^\.\s+$/.test(part) && index < parts.length - 1) {
+          fragment.appendChild(document.createTextNode('.'));
+          fragment.appendChild(document.createElement('br'));
+        } else {
+          fragment.appendChild(document.createTextNode(part));
+        }
+      });
+
+      node.parentNode.replaceChild(fragment, node);
+    });
+  });
+}
+
+// Every visible TerraSave word carries the brand orange dot.
+function decorateTerraSaveText(root = document.body) {
+  const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+    acceptNode(node) {
+      if (!node.nodeValue || !/(TerraSave|TERRASAVE)/.test(node.nodeValue)) return NodeFilter.FILTER_REJECT;
+      const parent = node.parentElement;
+      if (!parent) return NodeFilter.FILTER_REJECT;
+      if (['SCRIPT', 'STYLE', 'TEXTAREA', 'OPTION'].includes(parent.tagName)) return NodeFilter.FILTER_REJECT;
+      if (parent.closest('.terrasave-word')) return NodeFilter.FILTER_REJECT;
+      return NodeFilter.FILTER_ACCEPT;
+    }
+  });
+
+  const nodes = [];
+  while (walker.nextNode()) nodes.push(walker.currentNode);
+
+  nodes.forEach((node) => {
+    const parts = node.nodeValue.split(/(TerraSave|TERRASAVE)/g);
+    const fragment = document.createDocumentFragment();
+
+    parts.forEach((part) => {
+      if (part === 'TerraSave' || part === 'TERRASAVE') {
+        const word = document.createElement('span');
+        word.className = 'terrasave-word';
+        word.appendChild(document.createTextNode(part));
+        const dot = document.createElement('span');
+        dot.className = 'terrasave-dot';
+        dot.setAttribute('aria-hidden', 'true');
+        dot.textContent = '.';
+        word.appendChild(dot);
+        fragment.appendChild(word);
+      } else if (part) {
+        fragment.appendChild(document.createTextNode(part));
+      }
+    });
+
+    node.parentNode.replaceChild(fragment, node);
+  });
+}
+
+addSentenceBreaks();
+decorateTerraSaveText();
