@@ -49,11 +49,11 @@ const footer = document.querySelector('footer.footer');
 if (footer) {
   footer.innerHTML = `
     <div class="footer-shell">
-      <div class="footer-topline">
+      <div class="footer-primary">
         <div class="footer-brand-block">
           <img class="footer-logo" src="assets/img/terrasave-logo.svg" alt="TerraSave" />
           <p class="footer-tagline">Keep Fresh, Save Loss.</p>
-          <p class="footer-description">신선함을 더 오래 유지하고 유통 과정의 손실을 줄입니다.</p>
+          <p class="footer-description">신선함을 더 오래 유지하고, 유통 과정의 손실을 줄입니다.</p>
         </div>
 
         <nav class="footer-nav-main" aria-label="Footer navigation">
@@ -65,33 +65,17 @@ if (footer) {
         </nav>
       </div>
 
-      <div class="footer-details">
-        <div class="footer-detail-group">
-          <span class="footer-detail-label">Company</span>
-          <div class="footer-detail-copy">
-            <span>368-81-02387</span>
-            <a href="tel:0327102891">032-710-2891~2</a>
-            <a href="mailto:info@terracle.im">info@terracle.im</a>
-          </div>
+      <div class="footer-secondary">
+        <div class="footer-contact-line">
+          <a href="mailto:info@terracle.im">info@terracle.im</a>
+          <span>032-710-2891~2</span>
+          <span>368-81-02387</span>
         </div>
-
-        <div class="footer-detail-group footer-location-group">
-          <span class="footer-detail-label">Locations</span>
-          <div class="footer-detail-copy">
-            <span>Busan HQ</span>
-            <span>Incheon R&amp;D / Pilot Plant</span>
-            <span>Dangjin Plant</span>
-          </div>
-        </div>
-
-        <div class="footer-detail-group footer-parent-group">
-          <span class="footer-detail-label">Parent company</span>
-          <a class="footer-parent-link" href="https://kr.terracle.im/" target="_blank" rel="noopener noreferrer">Terracle ↗</a>
-        </div>
+        <a class="footer-parent-link" href="https://kr.terracle.im/" target="_blank" rel="noopener noreferrer">A BRAND OF TERRACLE ↗</a>
       </div>
 
       <div class="footer-legal">
-        <span class="footer-brand-note">A BRAND OF TERRACLE</span>
+        <span>TerraSave</span>
         <span>Copyright © 2026 Terracle. All Rights Reserved.</span>
       </div>
     </div>`;
