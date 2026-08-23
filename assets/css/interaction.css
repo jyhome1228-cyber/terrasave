@@ -1,0 +1,92 @@
+/* Shared interaction accents — bottom edge only */
+.summary-card,
+.contact-card,
+.tech-card,
+.data-card,
+.problem-card,
+.inquiry-option,
+.visual-item,
+.product-roll-item,
+.media-slot{
+  position:relative;
+}
+
+.summary-card::after,
+.contact-card::after,
+.tech-card::after,
+.data-card::after,
+.problem-card::after,
+.inquiry-option::after,
+.visual-item::after,
+.product-roll-item::after,
+.media-slot::after{
+  content:'';
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:0;
+  height:1px;
+  background:var(--accent);
+  transform:scaleX(0);
+  transform-origin:left center;
+  transition:transform .25s cubic-bezier(.2,.7,.2,1);
+  pointer-events:none;
+  z-index:4;
+}
+
+.summary-card:hover::after,
+.contact-card:hover::after,
+.tech-card:hover::after,
+.data-card:hover::after,
+.problem-card:hover::after,
+.inquiry-option:hover::after,
+.inquiry-option.is-active::after,
+.visual-item:hover::after,
+.product-roll-item:hover::after,
+.media-slot:hover::after{
+  transform:scaleX(1);
+}
+
+/* Keep the existing neutral box outline on hover. */
+.summary-card:hover,
+.contact-card:hover,
+.tech-card:hover,
+.data-card:hover,
+.problem-card:hover,
+.inquiry-option:hover,
+.visual-item:hover,
+.product-roll-item:hover,
+.media-slot:hover{
+  border-color:var(--line)!important;
+}
+
+/* Inquiry active state still keeps its small orange selection dot. */
+.inquiry-option.is-active{
+  border-color:var(--line)!important;
+}
+
+.product-status{
+  width:max-content;
+  margin-top:6px;
+  padding:6px 9px;
+  border:1px solid rgba(233,90,32,.42);
+  color:var(--accent);
+  font-size:10px;
+  font-weight:600;
+  line-height:1;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+
+.product-disabled{
+  opacity:.45;
+  cursor:not-allowed;
+  pointer-events:none;
+  background:transparent!important;
+  color:#8a8a86!important;
+  border-color:var(--line)!important;
+}
+
+.is-coming-soon .product-title .meta{
+  color:#7c7c78;
+}
