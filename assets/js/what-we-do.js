@@ -18,6 +18,18 @@ const technologyVisuals = [
   }
 ];
 
+const technologyStyle = document.createElement('style');
+technologyStyle.textContent = `
+  .technology-step{min-height:455px;gap:24px}
+  .technology-step-media{position:relative;width:100%;margin:0;aspect-ratio:16/8.6;overflow:hidden;background:#090909;border:1px solid rgba(255,255,255,.07)}
+  .technology-step-media img{display:block;width:100%;height:100%;object-fit:cover;filter:saturate(.94) contrast(1.02)}
+  .technology-step-copy{margin-top:auto}
+  @media(max-width:1100px){.technology-step{min-height:420px}}
+  @media(max-width:900px){.technology-step{min-height:auto}.technology-step-media{aspect-ratio:16/8}}
+  @media(max-width:760px){.technology-step{min-height:auto;gap:20px}.technology-step-media{aspect-ratio:16/9}}
+`;
+document.head.appendChild(technologyStyle);
+
 const technologySteps = document.querySelectorAll('.technology-step');
 technologySteps.forEach((step, index) => {
   const visual = technologyVisuals[index];
