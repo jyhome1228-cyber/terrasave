@@ -3,6 +3,39 @@ const journey = document.querySelector('.journey');
 const subnavLinks = document.querySelectorAll('.what-subnav a');
 const sections = [...document.querySelectorAll('.what-section[id]')];
 
+const technologyVisuals = [
+  {
+    src: 'https://cdn.imweb.me/upload/S20251008dcc1c9d70e3ac/395831bdce7e6.png',
+    alt: '유통 과정에서 발생하는 에틸렌을 표현한 TerraSave 기술 비주얼'
+  },
+  {
+    src: 'https://cdn.imweb.me/upload/S20251008dcc1c9d70e3ac/8d8c6876d1c35.png',
+    alt: '에틸렌 포집 기능을 표현한 TerraSave 기술 비주얼'
+  },
+  {
+    src: 'https://cdn.imweb.me/upload/S20251008dcc1c9d70e3ac/1595c12cc434e.png',
+    alt: '기능성 포장재 제품화를 표현한 TerraSave 기술 비주얼'
+  }
+];
+
+const technologySteps = document.querySelectorAll('.technology-step');
+technologySteps.forEach((step, index) => {
+  const visual = technologyVisuals[index];
+  const copy = step.querySelector('.technology-step-copy');
+  if (!visual || !copy || step.querySelector('.technology-step-media')) return;
+
+  const media = document.createElement('figure');
+  media.className = 'technology-step-media';
+
+  const image = document.createElement('img');
+  image.src = visual.src;
+  image.alt = visual.alt;
+  image.loading = 'lazy';
+
+  media.appendChild(image);
+  step.insertBefore(media, copy);
+});
+
 const revealObserver = new IntersectionObserver((entries, observer) => {
   entries.forEach((entry) => {
     if (!entry.isIntersecting) return;
