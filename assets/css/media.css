@@ -18,9 +18,10 @@
 .product-visual-wrap{display:grid;gap:18px}
 .product-visual-wrap .meta{color:#767672}
 
-/* Home — product visuals only */
+/* Home — restored brand hero + product visuals */
 .home-hero-clean{min-height:auto!important;padding:74px 0 70px!important;align-items:stretch!important}
 .home-hero-clean-shell{display:grid;gap:46px}
+.home-hero-feature{display:grid;grid-template-columns:minmax(0,.86fr) minmax(460px,1.14fr);gap:clamp(46px,5.5vw,82px);align-items:end}
 .home-hero-clean .home-copy{max-width:720px}
 .home-hero-clean .home-copy .intro{max-width:680px}
 .product-roll-wrap{display:grid;gap:14px;padding-top:4px}
@@ -36,6 +37,11 @@
 .product-roll-foot{display:flex;align-items:center;justify-content:space-between;gap:24px}
 @keyframes terrasaveProductRoll{from{transform:translateX(0)}to{transform:translateX(calc(-50% - 35px))}}
 
+@media(max-width:1100px){
+  .home-hero-feature{grid-template-columns:1fr;gap:36px}
+  .home-hero-feature .hero-brand-image{max-width:none}
+}
+
 @media(max-width:900px){
   .visual-gallery.three-up{grid-template-columns:1fr 1fr}
   .visual-gallery.three-up .visual-item:first-child{grid-column:1/-1}
@@ -49,6 +55,7 @@
   .visual-item{aspect-ratio:3/2}
   .home-hero-clean{padding:54px 0 54px!important}
   .home-hero-clean-shell{gap:34px}
+  .home-hero-feature{gap:28px}
   .product-roll::before,.product-roll::after{width:24px}
   .product-roll-track{gap:10px;padding:12px 0;animation-duration:34s}
   .product-roll-item{flex-basis:78vw}
