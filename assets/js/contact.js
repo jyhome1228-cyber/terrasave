@@ -1,11 +1,33 @@
 const contactForm = document.getElementById('contactForm');
 const inquiryType = document.getElementById('inquiryType');
+const inquiryTypeError = document.getElementById('inquiryTypeError');
+const inquiryOptions = document.querySelectorAll('.inquiry-option');
 const formStatus = document.getElementById('formStatus');
 
-// Clicking a contact option preselects the matching inquiry type and moves to the form.
+function setInquiryType(value) {
+  if (!inquiryType) return;
+
+  inquiryType.value = value || '';
+
+  inquiryOptions.forEach((button) => {
+    const active = button.dataset.value === value;
+    button.classList.toggle('is-active', active);
+    button.setAttribute('aria-pressed', String(active));
+  });
+
+  if (inquiryTypeError) inquiryTypeError.textContent = '';
+}
+
+inquiryOptions.forEach((button) => {
+  button.addEventListener('click', () => {
+    setInquiryType(button.dataset.value || '');
+  });
+});
+
+// Clicking an option card above preselects the matching type before moving to the form.
 document.querySelectorAll('[data-inquiry-type]').forEach((card) => {
   card.addEventListener('click', () => {
-    if (inquiryType) inquiryType.value = card.dataset.inquiryType || '';
+    setInquiryType(card.dataset.inquiryType || '');
   });
 });
 
@@ -13,7 +35,18 @@ if (contactForm) {
   contactForm.addEventListener('submit', (event) => {
     event.preventDefault();
 
-    if (!contactForm.reportValidity()) return;
+    if (!inquiryType || !inquiryType.value) {
+      if (inquiryTypeError) inquiryTypeError.textContent = '문의 유형을 선택해 주세요.';
+      if (formStatus) formStatus.textContent = '';
+      const firstOption = inquiryOptions[0];
+      if (firstOption) firstOption.focus();
+      return;
+    }
+
+    if (!contactForm.checkValidity()) {
+      contactForm.reportValidity();
+      return;
+    }
 
     const data = new FormData(contactForm);
     const type = data.get('inquiryType') || '일반 문의';
