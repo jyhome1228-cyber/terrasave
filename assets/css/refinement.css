@@ -1,5 +1,6 @@
 /* TerraSave shared refinement — production layout system */
 :root{
+  --accent:#E95A20;
   --fs-display:clamp(32px,2.85vw,42px);
   --fs-h1:clamp(29px,2.55vw,38px);
   --fs-h2:clamp(23px,1.75vw,29px);
@@ -28,8 +29,13 @@ body{font-size:16px;line-height:1.72}
 .brand{display:inline-flex;align-items:center;justify-self:start;line-height:0}
 .brand-logo{display:block;width:158px;height:auto}
 .nav{gap:clamp(22px,2.1vw,36px);font-size:13px;letter-spacing:.065em}
+.nav a{position:relative}
+.nav a[aria-current='page']::after{content:'';position:absolute;left:50%;bottom:-14px;width:4px;height:4px;border-radius:50%;background:var(--accent);transform:translateX(-50%)}
 .header-cta{justify-self:end;min-height:42px;padding:0 16px;font-size:12px}
+.header-cta:hover{border-color:var(--accent)}
 .button{min-height:44px;padding:0 17px}
+.button.primary:hover{border-color:var(--accent)}
+.text-link:hover{color:#fff}
 
 /* Shared editorial grid */
 .page-hero{min-height:auto;padding:76px 0 70px}
@@ -47,6 +53,7 @@ body{font-size:16px;line-height:1.72}
 .summary-grid,.contact-grid,.tech-grid{gap:0}
 .summary-card,.contact-card,.tech-card{min-height:226px;padding:24px 25px;gap:30px}
 .summary-card p,.contact-card p,.tech-card p{font-size:15px;line-height:1.68}
+.summary-card:hover,.contact-card:hover,.tech-card:hover{background:#090909}
 
 .data-card{min-height:250px;padding:24px 25px}
 .data-number{font-size:clamp(36px,3vw,50px)}
@@ -96,6 +103,7 @@ body{font-size:16px;line-height:1.72}
   .shell{width:calc(100% - 40px)}
   .header-inner{grid-template-columns:1fr auto}
   .brand-logo{width:150px}
+  .nav a[aria-current='page']::after{display:none}
   .page-hero-grid,.split,.closing-copy{grid-template-columns:var(--rail) minmax(0,1fr)}
   .product-row{grid-template-columns:92px minmax(200px,.55fr) minmax(0,1fr);gap:34px}
   .home-hero-grid{grid-template-columns:1fr;gap:52px}
