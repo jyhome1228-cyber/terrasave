@@ -17,19 +17,42 @@ document.querySelectorAll('.brand').forEach((brand) => {
   brand.innerHTML = '<img class="brand-logo" src="assets/img/terrasave-logo.svg" alt="TerraSave" />';
 });
 
+// Mobile menu uses a real hamburger icon instead of the MENU text label.
+if (toggle && !toggle.querySelector('.menu-icon')) {
+  toggle.innerHTML = '<span class="menu-icon" aria-hidden="true"><span></span><span></span><span></span></span>';
+}
+
+function closeMobileMenu() {
+  if (!header || !toggle) return;
+  header.classList.remove('menu-open');
+  document.body.classList.remove('menu-locked');
+  toggle.setAttribute('aria-expanded', 'false');
+  toggle.setAttribute('aria-label', '메뉴 열기');
+}
+
 if (header && toggle && nav) {
   toggle.addEventListener('click', () => {
     const open = header.classList.toggle('menu-open');
+    document.body.classList.toggle('menu-locked', open);
     toggle.setAttribute('aria-expanded', String(open));
     toggle.setAttribute('aria-label', open ? '메뉴 닫기' : '메뉴 열기');
   });
 
   nav.querySelectorAll('a').forEach((link) => {
-    link.addEventListener('click', () => {
-      header.classList.remove('menu-open');
-      toggle.setAttribute('aria-expanded', 'false');
-      toggle.setAttribute('aria-label', '메뉴 열기');
-    });
+    link.addEventListener('click', closeMobileMenu);
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && header.classList.contains('menu-open')) {
+      closeMobileMenu();
+      toggle.focus();
+    }
+  });
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 1100 && header.classList.contains('menu-open')) {
+      closeMobileMenu();
+    }
   });
 }
 
@@ -56,6 +79,12 @@ const interactionStyle = document.createElement('link');
 interactionStyle.rel = 'stylesheet';
 interactionStyle.href = 'assets/css/interaction.css';
 document.head.appendChild(interactionStyle);
+
+// Mobile navigation and media fixes must load last so they can override shared rules safely.
+const mobileFixStyle = document.createElement('link');
+mobileFixStyle.rel = 'stylesheet';
+mobileFixStyle.href = 'assets/css/mobile-fixes.css';
+document.head.appendChild(mobileFixStyle);
 
 const footer = document.querySelector('footer.footer');
 if (footer) {
@@ -92,6 +121,52 @@ if (footer) {
       </div>
     </div>`;
 }
+
+// Some of the first product visual URLs can be unavailable on the CDN.
+// Keep the intended source, but automatically recover with verified TerraSave visual assets
+// instead of leaving an empty black gallery on mobile/desktop.
+const visualFallbacks = [
+  'https://cdn.imweb.me/upload/S20251008dcc1c9d70e3ac/13163c87b102a.png',
+  'https://cdn.imweb.me/upload/S20251008dcc1c9d70e3ac/395831bdce7e6.png',
+  'https://cdn.imweb.me/upload/S20251008dcc1c9d70e3ac/8d8c6876d1c35.png',
+  'https://cdn.imweb.me/upload/S20251008dcc1c9d70e3ac/1595c12cc434e.png'
+];
+
+function installImageFallbacks() {
+  const images = document.querySelectorAll('.product-roll-item img, .product-gallery img');
+
+  images.forEach((img, index) => {
+    if (img.dataset.fallbackBound === 'true') return;
+    img.dataset.fallbackBound = 'true';
+
+    const startIndex = index % visualFallbacks.length;
+    let attempt = 0;
+
+    const tryFallback = () => {
+      while (attempt < visualFallbacks.length) {
+        const candidate = visualFallbacks[(startIndex + attempt) % visualFallbacks.length];
+        attempt += 1;
+
+        if (img.src === candidate) continue;
+
+        img.classList.remove('is-unavailable');
+        img.src = candidate;
+        return;
+      }
+
+      img.classList.add('is-unavailable');
+    };
+
+    img.addEventListener('error', tryFallback);
+
+    // Catch images that failed before this script finished binding the error listener.
+    if (img.complete && img.naturalWidth === 0) {
+      tryFallback();
+    }
+  });
+}
+
+installImageFallbacks();
 
 // In prose, start a new visual line immediately after each full stop.
 function addSentenceBreaks(root = document) {
