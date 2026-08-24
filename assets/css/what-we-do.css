@@ -45,10 +45,11 @@
 .problem-text p{max-width:450px;color:#aaa9a5;font-size:13px;line-height:1.76}
 .problem-text .meta{margin-top:2px;font-size:9px}
 
-.problem-conclusion{margin-top:98px;padding-top:34px;border-top:1px solid var(--line);display:grid;grid-template-columns:var(--what-rail) minmax(0,1fr);gap:var(--what-gap)}
-.bridge-copy{max-width:800px;display:grid;gap:14px}
-.bridge-copy h3{margin:0;font-size:clamp(18px,1.3vw,22px);font-weight:470;line-height:1.58;letter-spacing:-.028em}
-.bridge-copy p{max-width:680px;color:#969692;font-size:14px;line-height:1.78}
+.problem-conclusion{margin-top:98px;padding-top:132px;border-top:1px solid var(--line)}
+.problem-conclusion .section-intro-copy{max-width:760px}
+.problem-conclusion .section-h2{max-width:760px}
+.problem-conclusion .intro{margin-top:20px;max-width:680px;font-size:15px;line-height:1.78}
+.loss-rate{display:inline-block;color:var(--accent);font-size:1.16em;font-weight:560;letter-spacing:-.04em}
 
 /* 02 / Technology */
 .technology-flow{margin-top:78px;margin-left:var(--what-offset);display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--line);border-left:1px solid var(--line)}
@@ -140,7 +141,7 @@
   .problem-media{aspect-ratio:16/9}
   .problem-card-copy{grid-template-columns:1fr;gap:14px}
   .problem-number,.problem-card:nth-child(2) .problem-number{font-size:27px}
-  .problem-conclusion{margin-top:70px;padding-top:24px}
+  .problem-conclusion{margin-top:70px;padding-top:94px}
   .technology-flow,.technology-link-row,.application-note,.impact-flow,.impact-closing{margin-left:0}
   .technology-flow{margin-top:58px}
   .technology-step{min-height:210px;padding:22px}
