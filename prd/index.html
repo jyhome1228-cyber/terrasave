@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="TerraSave 웹사이트 PRD 및 기능명세서 — 프로젝트 목적, 정보구조, 화면과 기능 요구사항" />
+  <meta name="theme-color" content="#050505" />
+  <title>PRD & Functional Specification — TerraSave</title>
+  <link rel="stylesheet" href="prd.css" />
+</head>
+<body>
+  <header class="doc-header">
+    <a class="doc-brand" href="../index.html" aria-label="TerraSave website">
+      <span>TerraSave</span><i></i><small>PRODUCT DOCUMENT</small>
+    </a>
+    <div class="doc-actions">
+      <span class="doc-version">V1.0 · 2026.08.24</span>
+      <button class="print-button" type="button" id="printDocument">EXPORT PDF</button>
+      <a class="site-button" href="../index.html">VIEW WEBSITE ↗</a>
+    </div>
+  </header>
+
+  <div class="doc-layout">
+    <aside class="doc-sidebar">
+      <div class="sidebar-meta">
+        <span class="overline">DOCUMENT</span>
+        <strong>PRD + 기능명세서</strong>
+        <p>TerraSave 브랜드 웹사이트의 제품 요구사항과 구현 기준을 정의합니다.</p>
+      </div>
+      <nav class="doc-nav" aria-label="문서 목차">
+        <a href="#overview" class="is-active"><span>01</span> Overview</a>
+        <a href="#background"><span>02</span> Background</a>
+        <a href="#users"><span>03</span> Users & Goals</a>
+        <a href="#scope"><span>04</span> Scope</a>
+        <a href="#ia"><span>05</span> Information Architecture</a>
+        <a href="#journey"><span>06</span> User Journey</a>
+        <a href="#pages"><span>07</span> Page Requirements</a>
+        <a href="#functions"><span>08</span> Functional Spec</a>
+        <a href="#form"><span>09</span> Inquiry Form</a>
+        <a href="#system"><span>10</span> System Rules</a>
+        <a href="#qa"><span>11</span> QA & Acceptance</a>
+        <a href="#roadmap"><span>12</span> Roadmap</a>
+      </nav>
+      <div class="sidebar-foot"><span>SOST LABS</span><span>WEB PRODUCT ARCHIVE</span></div>
+    </aside>
+
+    <main class="doc-main">
+      <section class="doc-hero" id="overview">
+        <div class="hero-index">TS / PRD / 001</div>
+        <div class="hero-copy">
+          <span class="eyebrow">PRODUCT REQUIREMENTS DOCUMENT</span>
+          <h1>기술을 이해시키고,<br />샘플 문의로 연결하는<br /><em>TerraSave 웹 경험.</em></h1>
+          <p>본 문서는 TerraSave 웹사이트의 사업 목적, 사용자 경험, 정보구조와 기능 요구사항을 하나의 실행 기준으로 통합합니다.</p>
+        </div>
+        <div class="hero-status">
+          <div><span>STATUS</span><strong class="status-live">LIVE</strong></div>
+          <div><span>PLATFORM</span><strong>RESPONSIVE WEB</strong></div>
+          <div><span>TYPE</span><strong>B2B BRAND / PRODUCT</strong></div>
+          <div><span>OWNER</span><strong>TERRACLE · TERRASAVE</strong></div>
+        </div>
+      </section>
+
+      <section class="doc-section" id="background">
+        <header class="section-head"><span>02</span><div><p>BACKGROUND</p><h2>프로젝트 배경과 제품 정의</h2></div></header>
+        <div class="content-offset">
+          <div class="lead-grid">
+            <h3>실험실의 기술이 실제 유통 환경에서 어떤 가치로 작동하는지 명확하게 전달한다.</h3>
+            <p>TerraSave는 Terracle의 에틸렌 포집 기술을 PET·PE 기반 기능성 포장재로 연결하는 브랜드입니다. 웹사이트는 기술 설명에 머무르지 않고, 유통 손실이라는 문제에서 제품 적용과 B2B 문의까지 자연스럽게 이어져야 합니다.</p>
+          </div>
+          <div class="problem-solution">
+            <article><span class="overline">PROBLEM</span><strong>기술의 가치가 어렵게 인식됨</strong><p>에틸렌 포집과 소재 적용 원리를 비전문 사용자도 빠르게 이해해야 합니다.</p></article>
+            <article><span class="overline">SOLUTION</span><strong>문제 → 기술 → 제품의 서사</strong><p>손실 데이터와 적용 과정을 구조화해 제품의 필요성과 도입 가능성을 연결합니다.</p></article>
+            <article><span class="overline">OUTCOME</span><strong>샘플·견적·공동연구 문의</strong><p>사용자 목적에 맞는 문의 유형을 제공해 실질적인 B2B 리드로 전환합니다.</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="doc-section" id="users">
+        <header class="section-head"><span>03</span><div><p>USERS & GOALS</p><h2>핵심 사용자와 성공 기준</h2></div></header>
+        <div class="content-offset">
+          <div class="persona-grid">
+            <article><div class="persona-no">01</div><span class="overline">B2B BUYER</span><h3>유통·식품·패키징 담당자</h3><p>적용 소재, 규격, 기대 효과와 도입 가능성을 검토한 뒤 샘플 또는 견적을 요청합니다.</p><ul><li>제품 적용 범위 확인</li><li>PET·PE 제품 차이 이해</li><li>샘플 테스트 신청</li></ul></article>
+            <article><div class="persona-no">02</div><span class="overline">R&D PARTNER</span><h3>연구·제품개발 파트너</h3><p>기술 원리와 공동 검증 범위를 확인하고 TerraSave X 미팅을 요청합니다.</p><ul><li>에틸렌 포집 원리 확인</li><li>소재 적용 방식 검토</li><li>공동 연구 가능성 문의</li></ul></article>
+            <article><div class="persona-no">03</div><span class="overline">STAKEHOLDER</span><h3>투자·협력·일반 방문자</h3><p>브랜드의 미션, 시장 문제, 기술 경쟁력과 제품 포트폴리오를 빠르게 파악합니다.</p><ul><li>브랜드 신뢰도 판단</li><li>사업 구조 이해</li><li>문의 채널 탐색</li></ul></article>
+          </div>
+          <div class="kpi-row"><div><span>PRIMARY KPI</span><strong>문의 폼 진입 및 메일 작성 전환</strong></div><div><span>SECONDARY KPI</span><strong>Technology → Product 탐색</strong></div><div><span>QUALITY KPI</span><strong>모바일 핵심 정보 접근성</strong></div></div>
+        </div>
+      </section>
+
+      <section class="doc-section" id="scope">
+        <header class="section-head"><span>04</span><div><p>PRODUCT SCOPE</p><h2>구현 범위와 제외 범위</h2></div></header>
+        <div class="content-offset scope-grid">
+          <div><span class="scope-label in">IN SCOPE</span><ul class="check-list"><li>브랜드 및 미션 소개</li><li>유통 손실 문제 데이터 시각화</li><li>에틸렌 포집 기술 설명</li><li>TerraPack·TerraShield·TerraSave X 제품 안내</li><li>샘플·B2B·공동연구 문의 유형 제공</li><li>반응형 내비게이션과 모바일 최적화</li><li>기본 SEO 메타데이터와 접근성 구조</li></ul></div>
+          <div><span class="scope-label out">OUT OF SCOPE / CURRENT</span><ul class="check-list muted"><li>회원가입 및 사용자 계정</li><li>온라인 결제와 주문 처리</li><li>서버 데이터베이스 저장</li><li>다국어 전환</li><li>CMS 기반 콘텐츠 관리</li><li>관리자 대시보드</li><li>실시간 재고 및 배송 조회</li></ul></div>
+        </div>
+      </section>
+
+      <section class="doc-section" id="ia">
+        <header class="section-head"><span>05</span><div><p>INFORMATION ARCHITECTURE</p><h2>사이트 구조</h2></div></header>
+        <div class="content-offset">
+          <div class="sitemap">
+            <div class="site-root"><span>ROOT</span><strong>TerraSave</strong><small>/</small></div>
+            <div class="site-pages">
+              <a href="../about.html"><span>01</span><strong>ABOUT US</strong><small>Mission · Vision · Values</small></a>
+              <a href="../what-we-do.html"><span>02</span><strong>WHAT WE DO</strong><small>Problem · Technology · Application · Impact</small></a>
+              <a href="../technology.html"><span>03</span><strong>TECHNOLOGY</strong><small>Ethylene · Capture · Material</small></a>
+              <a href="../product.html"><span>04</span><strong>PRODUCT</strong><small>TerraPack · TerraShield · TerraSave X</small></a>
+              <a href="../contact.html"><span>05</span><strong>CONTACT</strong><small>Sample · B2B · R&D Inquiry</small></a>
+            </div>
+          </div>
+          <p class="note">전역 헤더와 푸터에서 핵심 페이지로 접근하며, 모든 주요 페이지의 CTA는 Product 또는 Contact로 수렴합니다.</p>
+        </div>
+      </section>
+
+      <section class="doc-section" id="journey">
+        <header class="section-head"><span>06</span><div><p>CORE USER JOURNEY</p><h2>핵심 전환 흐름</h2></div></header>
+        <div class="content-offset">
+          <div class="journey-flow">
+            <article><span>01 / DISCOVER</span><strong>브랜드 발견</strong><p>메인 비주얼과 슬로건으로 기능성 패키징 브랜드임을 인지</p></article>
+            <i>→</i><article><span>02 / UNDERSTAND</span><strong>문제와 기술 이해</strong><p>유통 손실 데이터와 에틸렌 포집·소재 적용 구조 확인</p></article>
+            <i>→</i><article><span>03 / EVALUATE</span><strong>제품 검토</strong><p>TerraPack·TerraShield·TerraSave X의 적용 대상 비교</p></article>
+            <i>→</i><article><span>04 / CONVERT</span><strong>문의 전환</strong><p>샘플, B2B 견적 또는 공동 연구 유형을 선택해 메일 작성</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="doc-section" id="pages">
+        <header class="section-head"><span>07</span><div><p>PAGE REQUIREMENTS</p><h2>페이지별 역할과 필수 콘텐츠</h2></div></header>
+        <div class="content-offset table-wrap">
+          <table><thead><tr><th>ID</th><th>페이지</th><th>사용자 질문</th><th>필수 콘텐츠</th><th>주요 CTA</th></tr></thead><tbody>
+            <tr><td>PG-01</td><td>Home</td><td>무엇을 제공하는 브랜드인가?</td><td>슬로건, 브랜드 소개, 제품 비주얼 갤러리</td><td>제품 보기 / 샘플 요청</td></tr>
+            <tr><td>PG-02</td><td>About us</td><td>왜 이 일을 하는가?</td><td>미션, 비전, 슬로건, 핵심 가치</td><td>기술 / 제품 보기</td></tr>
+            <tr><td>PG-03</td><td>What we do</td><td>어떤 문제를 어떻게 해결하는가?</td><td>손실 데이터, 기술 흐름, 적용 과정, 기대 효과</td><td>기술 상세 보기</td></tr>
+            <tr><td>PG-04</td><td>Technology</td><td>기술은 어떤 원리로 작동하는가?</td><td>에틸렌, 포집, 소재 적용의 3단계 설명</td><td>제품 / 샘플 요청</td></tr>
+            <tr><td>PG-05</td><td>Product</td><td>우리 환경에는 어떤 제품이 맞는가?</td><td>3개 제품군, 소재, 적용 대상, 상태 정보</td><td>제품별 문의</td></tr>
+            <tr><td>PG-06</td><td>Contact</td><td>어떻게 테스트하거나 도입할 수 있는가?</td><td>문의 유형 카드, 입력 폼, 개인정보 동의</td><td>메일 작성</td></tr>
+          </tbody></table>
+        </div>
+      </section>
+
+      <section class="doc-section" id="functions">
+        <header class="section-head"><span>08</span><div><p>FUNCTIONAL SPECIFICATION</p><h2>공통 및 핵심 기능 명세</h2></div></header>
+        <div class="content-offset table-wrap">
+          <table class="spec-table"><thead><tr><th>ID</th><th>기능명</th><th>요구사항</th><th>완료 조건</th><th>상태</th></tr></thead><tbody>
+            <tr><td>FN-001</td><td>전역 내비게이션</td><td>모든 페이지에서 5개 주 메뉴와 샘플 요청 CTA를 제공한다.</td><td>현재 페이지 표시 및 링크 정상 이동</td><td><b>LIVE</b></td></tr>
+            <tr><td>FN-002</td><td>모바일 메뉴</td><td>1100px 이하에서 메뉴 버튼으로 전환하고 열림 상태를 aria-expanded로 전달한다.</td><td>키보드·터치 조작 및 링크 선택 후 닫힘</td><td><b>LIVE</b></td></tr>
+            <tr><td>FN-003</td><td>브랜드 로고</td><td>공식 SVG 로고를 헤더·푸터에 일관되게 노출한다.</td><td>모든 페이지에서 선명하게 표시</td><td><b>LIVE</b></td></tr>
+            <tr><td>FN-004</td><td>제품 비주얼 롤</td><td>홈에서 제품 이미지가 연속 이동하며 제품 페이지로 연결된다.</td><td>루프 단절 없음, 이미지 alt 제공</td><td><b>LIVE</b></td></tr>
+            <tr><td>FN-005</td><td>콘텐츠 서브내비</td><td>What we do 페이지에서 4개 섹션 앵커와 현재 구간을 표시한다.</td><td>스크롤 위치에 따라 활성 상태 갱신</td><td><b>LIVE</b></td></tr>
+            <tr><td>FN-006</td><td>스크롤 리빌</td><td>콘텐츠 진입 시 절제된 노출 전환을 제공하고 감소 모션 설정을 존중한다.</td><td>prefers-reduced-motion에서 애니메이션 제거</td><td><b>LIVE</b></td></tr>
+            <tr><td>FN-007</td><td>문의 유형 사전 선택</td><td>상단 문의 카드를 선택하면 해당 문의 유형이 폼에 자동 반영된다.</td><td>선택 상태와 hidden 값 일치</td><td><b>LIVE</b></td></tr>
+            <tr><td>FN-008</td><td>문의 폼 검증</td><td>필수값과 개인정보 동의를 확인하고 오류 발생 지점으로 안내한다.</td><td>미입력 제출 차단 및 오류 메시지 표시</td><td><b>LIVE</b></td></tr>
+            <tr><td>FN-009</td><td>메일 작성 연결</td><td>입력값으로 제목과 본문을 구성해 info@terracle.im 메일 작성 화면을 연다.</td><td>한글·특수문자 URL 인코딩 및 상태 문구 표시</td><td><b>LIVE</b></td></tr>
+            <tr><td>FN-010</td><td>반응형 레이아웃</td><td>데스크톱, 태블릿, 모바일에서 콘텐츠 위계와 CTA 접근성을 유지한다.</td><td>320px 이상 가로 스크롤 없이 핵심 기능 사용</td><td><b>LIVE</b></td></tr>
+          </tbody></table>
+        </div>
+      </section>
+
+      <section class="doc-section" id="form">
+        <header class="section-head"><span>09</span><div><p>INQUIRY FORM SPEC</p><h2>문의 데이터와 검증 규칙</h2></div></header>
+        <div class="content-offset">
+          <div class="form-spec-grid">
+            <div class="field-list">
+              <div><code>inquiryType</code><strong>문의 유형</strong><span>필수 · 4개 선택지</span></div>
+              <div><code>name</code><strong>이름</strong><span>필수 · text</span></div>
+              <div><code>company</code><strong>회사명</strong><span>선택 · text</span></div>
+              <div><code>email</code><strong>이메일</strong><span>필수 · email</span></div>
+              <div><code>phone</code><strong>연락처</strong><span>선택 · tel</span></div>
+              <div><code>message</code><strong>문의 내용</strong><span>필수 · textarea</span></div>
+              <div><code>privacyConsent</code><strong>개인정보 이용 동의</strong><span>필수 · checkbox</span></div>
+            </div>
+            <div class="logic-list"><span class="overline">SUBMISSION LOGIC</span><ol><li>문의 유형 선택 여부 확인</li><li>브라우저 기본 유효성 검사 실행</li><li>입력값을 메일 제목·본문 형식으로 조합</li><li>encodeURIComponent로 안전하게 인코딩</li><li>기본 메일 앱에서 작성 화면 실행</li><li>사용자에게 후속 안내 상태 표시</li></ol><p class="warning">현재 서버 저장은 제공하지 않습니다. 메일 앱이 설정되지 않은 환경에서는 전송이 완료되지 않을 수 있습니다.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="doc-section" id="system">
+        <header class="section-head"><span>10</span><div><p>SYSTEM RULES</p><h2>디자인·반응형·접근성 기준</h2></div></header>
+        <div class="content-offset system-grid">
+          <article><span>DESIGN</span><h3>절제된 기술 브랜드</h3><p>블랙·화이트를 기반으로 #E95A20을 제한적으로 사용합니다. Pretendard, 1440px 컨테이너, 명확한 선과 여백을 공통 언어로 유지합니다.</p></article>
+          <article><span>RESPONSIVE</span><h3>콘텐츠 우선 재배치</h3><p>1100px에서 전역 메뉴를 축소하고, 760px에서 다단 그리드를 단일 열 또는 가로 탐색 구조로 전환합니다.</p></article>
+          <article><span>ACCESSIBILITY</span><h3>의미와 상태 전달</h3><p>시맨틱 구조, 이미지 대체 텍스트, 폼 레이블, aria-live 오류 안내, 키보드 탐색과 감소 모션 설정을 지원합니다.</p></article>
+          <article><span>SEO</span><h3>페이지별 검색 문맥</h3><p>고유 title과 description, 올바른 heading 구조, 실제 텍스트 콘텐츠를 유지하며 핵심 페이지 간 내부 링크를 제공합니다.</p></article>
+        </div>
+      </section>
+
+      <section class="doc-section" id="qa">
+        <header class="section-head"><span>11</span><div><p>QA & ACCEPTANCE</p><h2>출시 승인 기준</h2></div></header>
+        <div class="content-offset qa-list">
+          <label><input type="checkbox" checked disabled /><span><strong>Navigation</strong>모든 전역·본문·푸터 링크가 올바른 상대 경로로 이동한다.</span></label>
+          <label><input type="checkbox" checked disabled /><span><strong>Responsive</strong>데스크톱·태블릿·모바일에서 콘텐츠가 잘리거나 겹치지 않는다.</span></label>
+          <label><input type="checkbox" checked disabled /><span><strong>Content</strong>TerraSave, Terracle, TerraPack, TerraShield, TerraSave X 명칭이 일관된다.</span></label>
+          <label><input type="checkbox" checked disabled /><span><strong>Form</strong>필수값·이메일 형식·동의 검증 후 올바른 메일 본문을 생성한다.</span></label>
+          <label><input type="checkbox" checked disabled /><span><strong>Accessibility</strong>키보드 접근, focus 상태, alt, label, aria 상태가 제공된다.</span></label>
+          <label><input type="checkbox" checked disabled /><span><strong>Performance</strong>주요 이미지는 우선 로드하고 비핵심 이미지는 지연 로드한다.</span></label>
+        </div>
+      </section>
+
+      <section class="doc-section" id="roadmap">
+        <header class="section-head"><span>12</span><div><p>ROADMAP</p><h2>향후 확장 제안</h2></div></header>
+        <div class="content-offset roadmap-grid">
+          <article class="current"><span>NOW</span><h3>브랜드·제품 정보 플랫폼</h3><p>기술 이해, 제품 탐색, 메일 기반 문의 전환</p></article>
+          <article><span>NEXT 01</span><h3>문의 데이터베이스</h3><p>서버 전송, 문의 상태 관리, 자동 회신 및 담당자 알림</p></article>
+          <article><span>NEXT 02</span><h3>콘텐츠 운영 시스템</h3><p>뉴스·검증 데이터·적용 사례를 직접 관리하는 CMS</p></article>
+          <article><span>NEXT 03</span><h3>글로벌·파트너 확장</h3><p>다국어, 제품별 기술자료 다운로드, 파트너 전용 자료실</p></article>
+        </div>
+        <div class="doc-closing content-offset"><span class="eyebrow">DOCUMENT END</span><h2>기획과 기능을 기록하면,<br />웹사이트는 운영 가능한 제품이 됩니다.</h2><div><p>TerraSave Website PRD & Functional Specification</p><button type="button" onclick="window.print()">EXPORT DOCUMENT ↗</button></div></div>
+      </section>
+    </main>
+  </div>
+  <script src="prd.js"></script>
+</body>
+</html>
