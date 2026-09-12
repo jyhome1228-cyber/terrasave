@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="TerraSave Fruit Database — 과일별 저장·유통·후숙·에틸렌 특성을 공개 가능한 범위에서 탐색합니다." />
+  <meta name="theme-color" content="#ffffff" />
+  <title>Fruits — TerraSave</title>
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <link rel="stylesheet" href="assets/css/redesign.css" />
+</head>
+<body>
+  <header class="site-header" id="siteHeader">
+    <div class="ts-shell header-inner">
+      <a class="brand" href="index.html" aria-label="TerraSave Home">TerraSave</a>
+      <nav class="nav" id="siteNav" aria-label="Primary navigation">
+        <a href="fruits.html" aria-current="page">Fruits</a>
+        <a href="product.html">Net System</a>
+        <a href="technology.html">Technology</a>
+        <a href="what-we-do.html">Research</a>
+        <a href="about.html">About</a>
+      </nav>
+      <a class="ts-button header-cta" href="contact.html">Request a solution</a>
+      <button class="menu-toggle" id="menuToggle" type="button" aria-label="메뉴 열기" aria-expanded="false"></button>
+    </div>
+  </header>
+
+  <main>
+    <section class="ts-page-hero">
+      <div class="ts-shell">
+        <div class="ts-breadcrumb">Home / Fruits</div>
+        <div class="ts-section-head" style="margin-bottom:0">
+          <span class="ts-kicker">Fruit Database / 18 items</span>
+          <div>
+            <h1 class="ts-h1">Fruit intelligence,<br />organized by fruit.</h1>
+            <p class="ts-body-lg ts-section-copy">현재 확보된 18개 품목의 저장·유통·후숙·에틸렌 데이터를 과일별로 정리합니다. 상세 페이지에서는 공개 가능한 관리 지표와 TerraSave의 보호 방향만 제공합니다.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ts-section" style="border-top:0">
+      <div class="ts-shell">
+        <div class="ts-fruit-toolbar">
+          <div class="ts-pills" aria-label="Fruit database filters">
+            <button class="ts-pill is-active" type="button" data-filter="all">All</button>
+            <button class="ts-pill" type="button" data-filter="climacteric">Climacteric</button>
+            <button class="ts-pill" type="button" data-filter="non">Non-climacteric</button>
+            <button class="ts-pill" type="button" data-filter="high">High sensitivity</button>
+          </div>
+          <span class="ts-fruit-count" id="fruitCount">18 items</span>
+        </div>
+        <div class="ts-fruit-grid" id="fruitGrid" aria-live="polite"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer"></footer>
+  <script src="assets/js/fruits.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    (function(){
+      const data = window.TERRASAVE_FRUITS || [];
+      const grid = document.getElementById('fruitGrid');
+      const count = document.getElementById('fruitCount');
+      const buttons = Array.from(document.querySelectorAll('[data-filter]'));
+      const getFiltered = (filter) => {
+        if (filter === 'climacteric') return data.filter(item => item.ripening.includes('클라이맥테릭') && !item.ripening.includes('비클라이맥테릭'));
+        if (filter === 'non') return data.filter(item => item.ripening.includes('비클라이맥테릭'));
+        if (filter === 'high') return data.filter(item => ['High','Very High','Extremely High'].includes(item.ethylene));
+        return data;
+      };
+      const render = (filter='all') => {
+        const items = getFiltered(filter);
+        count.textContent = `${items.length} items`;
+        grid.innerHTML = items.map(item => `
+          <a class="ts-fruit-card" href="fruit.html?fruit=${item.slug}">
+            <div class="ts-fruit-visual"><div class="ts-fruit-shape shape-${item.shape || 'round'}"></div></div>
+            <div class="ts-fruit-meta">
+              <div class="ts-fruit-name"><strong>${item.en}</strong><span>${item.ko}</span></div>
+              <span class="ts-fruit-tag">${item.focus}</span>
+            </div>
+          </a>`).join('');
+      };
+      buttons.forEach(button => button.addEventListener('click', () => {
+        buttons.forEach(item => item.classList.remove('is-active'));
+        button.classList.add('is-active');
+        render(button.dataset.filter);
+      }));
+      render();
+    })();
+  </script>
+</body>
+</html>
