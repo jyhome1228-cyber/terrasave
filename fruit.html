@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="TerraSave Fruit Detail" />
+  <meta name="description" content="TerraSave Fruit Profile — 과일별 저장·후숙·에틸렌 특성과 보호 방향." />
   <meta name="theme-color" content="#ffffff" />
-  <title>Fruit Detail — TerraSave</title>
+  <title>Fruit Profile — TerraSave</title>
   <link rel="stylesheet" href="assets/css/styles.css" />
   <link rel="stylesheet" href="assets/css/redesign.css" />
 </head>
@@ -13,13 +13,7 @@
   <header class="site-header" id="siteHeader">
     <div class="ts-shell header-inner">
       <a class="brand" href="index.html" aria-label="TerraSave Home">TerraSave</a>
-      <nav class="nav" id="siteNav" aria-label="Primary navigation">
-        <a href="fruits.html" aria-current="page">Fruits</a>
-        <a href="product.html">Net System</a>
-        <a href="technology.html">Technology</a>
-        <a href="what-we-do.html">Research</a>
-        <a href="about.html">About</a>
-      </nav>
+      <nav class="nav" id="siteNav" aria-label="Primary navigation"></nav>
       <a class="ts-button header-cta" href="contact.html">Request a solution</a>
       <button class="menu-toggle" id="menuToggle" type="button" aria-label="메뉴 열기" aria-expanded="false"></button>
     </div>
@@ -32,38 +26,41 @@
   <script src="assets/js/main.js"></script>
   <script>
     (function(){
+      const data = window.TERRASAVE_FRUITS || [];
       const params = new URLSearchParams(location.search);
       const slug = params.get('fruit') || 'apple';
-      const fruit = (window.TERRASAVE_FRUITS || []).find(item => item.slug === slug) || (window.TERRASAVE_FRUITS || [])[0];
+      const fruitIndex = Math.max(0, data.findIndex(item => item.slug === slug));
+      const fruit = data[fruitIndex] || data[0];
       const root = document.getElementById('fruitDetail');
       if (!fruit || !root) return;
-      document.title = `${fruit.en} — TerraSave`;
+
+      document.title = `${fruit.en} — TerraSave Fruit Profile`;
+      const previous = data[(fruitIndex - 1 + data.length) % data.length];
+      const next = data[(fruitIndex + 1) % data.length];
       const approach = fruit.approach.map((item, index) => `
         <article class="ts-approach">
           <span class="ts-kicker">0${index + 1}</span>
-          <div><h3 class="ts-h3">${item}</h3><p>과일 특성과 유통 조건을 기준으로 적용 가능성을 검토합니다.</p></div>
+          <div><h3 class="ts-h3">${item}</h3><p>품목 특성, 현재 포장 방식과 유통 조건을 기준으로 실제 적용 가능성을 검토합니다.</p></div>
         </article>`).join('');
+
       root.innerHTML = `
         <section class="ts-page-hero">
           <div class="ts-shell">
-            <div class="ts-breadcrumb"><a href="index.html">Home</a> / <a href="fruits.html">Fruits</a> / ${fruit.en}</div>
+            <div class="ts-breadcrumb"><a href="index.html">Home</a> / <a href="fruits.html">Fruit Database</a> / ${fruit.en}</div>
             <div class="ts-detail-hero">
-              <div class="ts-detail-image"><div class="ts-fruit-shape shape-${fruit.shape || 'round'}"></div></div>
+              <div class="ts-detail-image" aria-label="${fruit.ko} profile visual"><div class="ts-fruit-shape shape-${fruit.shape || 'round'}"></div></div>
               <div class="ts-detail-copy">
                 <div class="ts-kicker">Fruit Profile / ${fruit.ko}</div>
                 <h1 class="ts-h1">${fruit.en}</h1>
                 <p class="ts-detail-lead">${fruit.summary}</p>
+                <p style="margin:28px 0 0"><a class="ts-button is-dark" href="contact.html">Study this fruit</a></p>
               </div>
             </div>
           </div>
         </section>
 
-        <section class="ts-section">
+        <section class="ts-section is-compact">
           <div class="ts-shell">
-            <div class="ts-section-head">
-              <span class="ts-kicker">Public Data</span>
-              <div><h2 class="ts-h2">Storage & ripening profile</h2><p class="ts-body ts-section-copy">홈페이지에는 관리 방향을 이해하는 데 필요한 공개 지표만 표시합니다.</p></div>
-            </div>
             <div class="ts-data-grid">
               <div class="ts-data-cell"><span class="ts-data-label">Ripening</span><strong class="ts-data-value">${fruit.ripening}</strong></div>
               <div class="ts-data-cell"><span class="ts-data-label">Storage</span><strong class="ts-data-value">${fruit.storage}</strong></div>
@@ -78,8 +75,23 @@
         <section class="ts-section">
           <div class="ts-shell">
             <div class="ts-story-grid">
-              <span class="ts-kicker">Why it matters</span>
-              <p>${fruit.summary}</p>
+              <span class="ts-kicker">What it means</span>
+              <p>${fruit.summary} 이 프로필은 유지기간을 단정하기 위한 수치가 아니라, 어떤 변수와 리스크를 먼저 확인해야 하는지 판단하기 위한 적용 검토의 출발점입니다.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="ts-section is-soft">
+          <div class="ts-shell">
+            <div class="ts-section-head">
+              <span class="ts-kicker">Protection logic</span>
+              <div><h2 class="ts-h2">From fruit profile<br />to protection direction.</h2><p class="ts-body ts-section-copy">데이터를 그대로 제품 사양으로 바꾸지 않습니다. 품목별 리스크를 현재 물류·포장 환경과 연결해 필요한 역할을 단계적으로 정의합니다.</p></div>
+            </div>
+            <div class="ts-application-list">
+              <div class="ts-application-row"><span class="ts-kicker">01 / RISK</span><strong>${fruit.focus}</strong><p>품질 저하에 영향을 주는 우선 관리 요소를 기준으로 검토합니다.</p></div>
+              <div class="ts-application-row"><span class="ts-kicker">02 / CONDITION</span><strong>${fruit.storage}</strong><p>권장 저장 조건을 실제 유통 온도와 숙도, 기간에 맞춰 해석합니다.</p></div>
+              <div class="ts-application-row"><span class="ts-kicker">03 / PRIORITY</span><strong>${fruit.priority}</strong><p>에틸렌 또는 저장환경 제어의 상대적 중요도를 다른 리스크와 함께 비교합니다.</p></div>
+              <div class="ts-application-row"><span class="ts-kicker">04 / APPLY</span><strong>PoC direction</strong><p>Fruit Foam Net과 기능성 소재는 필요한 역할이 명확할 때 적용 가능성을 검토합니다.</p></div>
             </div>
           </div>
         </section>
@@ -91,15 +103,15 @@
               <div><h2 class="ts-h2">Protection direction,<br />not a disclosed recipe.</h2><p class="ts-body ts-section-copy">과일에 필요한 기능의 방향은 설명하되 소재 조성, 배합, 제조 공정, 상세 설계값은 공개하지 않습니다.</p></div>
             </div>
             <div class="ts-approach-grid">${approach}</div>
-            <div class="ts-research-note" style="margin-top:36px">본 페이지의 저장·후숙·에틸렌 정보는 TerraSave 내부 과일 신선도 유지 포장재 라이브러리에 정리된 문헌 자료를 홈페이지용으로 요약한 것입니다. 실제 제품 적용과 성능 표기는 별도의 검증 조건을 기준으로 판단합니다.</div>
+            <div class="ts-research-note" style="margin-top:32px">본 페이지의 저장·후숙·에틸렌 정보는 TerraSave 과일 신선도 유지 포장재 라이브러리에 정리된 문헌 자료를 홈페이지용으로 요약한 것입니다. 실제 적용 조건과 성능 표기는 별도의 시험·검증 자료를 기준으로 판단합니다.</div>
           </div>
         </section>
 
-        <section class="ts-section">
+        <section class="ts-section is-soft">
           <div class="ts-shell">
-            <div class="ts-section-head" style="margin-bottom:0">
-              <span class="ts-kicker">Request</span>
-              <div><h2 class="ts-h2">Need protection for ${fruit.ko}?</h2><p class="ts-body ts-section-copy">현재 포장 방식과 유통 환경을 알려주시면 적용 가능한 보호 방향을 함께 검토합니다.</p><p style="margin:28px 0 0"><a class="ts-button is-dark" href="contact.html">Request a solution</a></p></div>
+            <div class="ts-cta">
+              <div class="ts-cta-copy"><span class="ts-kicker">Next profile</span><h2 class="ts-h2">Compare another fruit.</h2><p class="ts-body ts-section-copy"><a class="ts-link" href="fruit.html?fruit=${previous.slug}">← ${previous.en}</a>&nbsp;&nbsp;&nbsp;<a class="ts-link" href="fruit.html?fruit=${next.slug}">${next.en} →</a></p></div>
+              <div class="ts-cta-action"><a class="ts-button is-dark is-large" href="contact.html">Request a solution</a></div>
             </div>
           </div>
         </section>`;
