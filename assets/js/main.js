@@ -9,6 +9,13 @@ if (!document.querySelector('link[href="assets/css/redesign.css"]')) {
   document.head.appendChild(redesignStyle);
 }
 
+if (!document.querySelector('link[href="assets/css/layout-overrides.css"]')) {
+  const layoutStyle = document.createElement('link');
+  layoutStyle.rel = 'stylesheet';
+  layoutStyle.href = 'assets/css/layout-overrides.css';
+  document.head.appendChild(layoutStyle);
+}
+
 let favicon = document.querySelector('link[rel="icon"]');
 if (!favicon) {
   favicon = document.createElement('link');
