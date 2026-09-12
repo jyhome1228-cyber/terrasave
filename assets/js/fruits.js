@@ -1,92 +1,290 @@
 window.TERRASAVE_FRUITS = [
   {
     slug:'avocado', ko:'아보카도', en:'Avocado', shape:'tall', ripening:'클라이맥테릭', storage:'미숙과 5–13℃ / 완숙과 2–4℃', humidity:'90–95%', ethylene:'Very High', priority:'5 / 5', focus:'Ripening · Ethylene',
-    summary:'후숙 과정에서 에틸렌 생성이 크게 증가하며 외부 에틸렌에도 민감한 과일입니다. 저장·수송 단계와 판매 전 후숙 단계를 구분해 관리하는 것이 중요합니다.',
-    approach:['Physical Protection','Ripening Management','Functional Material Study']
+    ripeningPlain:'수확 후에도 계속 익는 과일', ethylenePlain:'매우 민감', priorityPlain:'매우 중요 · 5/5', focusKo:'후숙 속도 · 에틸렌',
+    intro:'아보카도는 수확한 뒤에도 계속 익으면서 단단한 상태에서 부드러운 상태로 빠르게 변하는 과일입니다. 운송 중 너무 빨리 익으면 판매 전에 물러질 수 있어, 덜 익은 상태로 이동할 때와 먹기 좋은 상태로 판매할 때의 온도를 나눠 관리하는 것이 중요합니다.',
+    easyHeadline:'아보카도는 수확 후에도 계속 익습니다, 그래서 유통 중 익는 속도를 관리해야 합니다.',
+    traits:[
+      ['과일 특징','처음에는 단단하지만 후숙이 시작되면 짧은 기간 안에 빠르게 부드러워집니다.'],
+      ['유통 중 변화','주변의 익은 과일에서 나오는 에틸렌에 노출되면 예상보다 빨리 익고 색과 경도가 빠르게 변할 수 있습니다.'],
+      ['포장 시 주의','눌림을 줄이는 물리적 보호와 함께, 운송 중 후숙이 너무 빨라지지 않도록 저장 환경을 같이 살펴야 합니다.']
+    ],
+    riskExplain:'가장 큰 변수는 후숙 속도입니다. 너무 빨리 익으면 유통 중 물러지고 상품성이 떨어질 수 있습니다.',
+    storageExplain:'덜 익은 과일은 비교적 높은 냉장 온도에서, 먹기 좋게 익은 과일은 더 낮은 온도에서 관리하는 방식이 일반적입니다.',
+    priorityExplain:'아보카도는 에틸렌의 영향을 크게 받기 때문에 장거리 운송이나 보관에서는 관리 우선순위가 높은 편입니다.',
+    packagingGuide:'과일이 눌리지 않도록 보호하면서, 현재 유통 기간과 숙도에 맞춰 에틸렌 저감 또는 후숙 관리 기능의 필요성을 시험합니다.',
+    approach:['눌림과 충격 보호','후숙 속도 관리','기능성 소재 적용 검토']
   },
   {
     slug:'blueberry', ko:'블루베리', en:'Blueberry', shape:'cluster', ripening:'비클라이맥테릭*', storage:'-0.6–0℃', humidity:'90–95%', ethylene:'Medium*', priority:'3 / 5', focus:'Moisture · Mold',
-    summary:'품종과 유전자형에 따라 에틸렌 반응 차이가 크며, 장거리 유통에서는 저온·수분·곰팡이 관리가 핵심입니다.',
-    approach:['Moisture Control','Mold Management','Cold-chain Fit']
+    ripeningPlain:'수확 후 크게 더 익지 않는 과일', ethylenePlain:'품종에 따라 보통', priorityPlain:'보통 · 3/5', focusKo:'수분 유지 · 곰팡이',
+    intro:'블루베리는 작은 열매가 한 팩 안에 많이 담기고 표면이 쉽게 마르거나 무를 수 있는 과일입니다. 상온에서는 품질 저하가 빨라질 수 있어 낮은 온도를 유지하고, 팩 안에 물방울이 맺히지 않도록 관리하는 것이 중요합니다.',
+    easyHeadline:'블루베리는 작고 수분에 민감합니다, 차갑게 보관하면서 곰팡이와 건조를 함께 막아야 합니다.',
+    traits:[
+      ['과일 특징','수확 후 맛이 크게 더 좋아지는 과일이 아니어서 수확 당시의 품질을 오래 지키는 것이 중요합니다.'],
+      ['유통 중 변화','온도가 올라가거나 결로가 생기면 곰팡이와 물러짐이 빨라지고, 반대로 너무 건조하면 중량과 탄력이 떨어질 수 있습니다.'],
+      ['포장 시 주의','통풍과 수분 유지의 균형이 중요하며, 장거리 유통에서는 품종별 차이도 함께 확인해야 합니다.']
+    ],
+    riskExplain:'곰팡이, 결로, 수분 손실이 동시에 문제가 되기 쉬운 과일입니다.',
+    storageExplain:'0℃에 가까운 낮은 온도를 유지할수록 품질 저하 속도를 늦추는 데 유리합니다.',
+    priorityExplain:'에틸렌보다 온도와 수분, 곰팡이 관리가 더 중요하며 품종에 따라 추가 검토가 필요합니다.',
+    packagingGuide:'팩 안의 과도한 습기를 줄이면서 열매가 마르지 않도록 하는 방향을 우선 검토하고, 필요 시 에틸렌 저감 기능을 보조적으로 시험합니다.',
+    approach:['수분 균형 관리','곰팡이 위험 관리','저온 유통 적합성 검토']
   },
   {
     slug:'cherry', ko:'체리', en:'Cherry', shape:'cluster', ripening:'비클라이맥테릭', storage:'-0.5±0.5℃', humidity:'90–95%', ethylene:'Low', priority:'1 / 5', focus:'Cold Chain · Humidity',
-    summary:'에틸렌 반응이 크지 않아 에틸렌 제어보다 0℃ 부근 냉장, 높은 상대습도, 곰팡이 관리가 더 중요합니다.',
-    approach:['Cold-chain Fit','Moisture Control','Mold Management']
+    ripeningPlain:'수확 후 크게 더 익지 않는 과일', ethylenePlain:'영향이 낮음', priorityPlain:'낮음 · 1/5', focusKo:'저온 유지 · 수분 유지',
+    intro:'체리는 수확 후 더 익혀서 품질을 높이기보다 수확 당시의 단단함과 신선한 꼭지를 유지하는 것이 중요한 과일입니다. 온도가 높아지면 꼭지가 마르고 과육이 빠르게 무를 수 있어 차가운 유통 환경과 높은 습도 유지가 중요합니다.',
+    easyHeadline:'체리는 차갑고 촉촉하게 유지해야 합니다, 특히 꼭지 건조와 곰팡이를 주의해야 합니다.',
+    traits:[
+      ['과일 특징','수확 후 후숙 효과가 크지 않아 처음의 단단함과 외관을 오래 유지하는 것이 핵심입니다.'],
+      ['유통 중 변화','온도가 오르거나 습도가 낮아지면 꼭지가 갈변하고 마르며, 장거리 유통에서는 곰팡이 위험도 커질 수 있습니다.'],
+      ['포장 시 주의','에틸렌 관리보다는 냉장 유지, 수분 보존, 곰팡이 억제 조건을 먼저 살펴야 합니다.']
+    ],
+    riskExplain:'꼭지 건조, 수분 손실, 곰팡이가 주요 품질 저하 요인입니다.',
+    storageExplain:'0℃에 가까운 냉장 환경과 높은 습도를 유지하는 것이 일반적으로 유리합니다.',
+    priorityExplain:'에틸렌 영향은 낮아 포장의 기능 우선순위를 다른 요소에 두는 편이 적절합니다.',
+    packagingGuide:'과일이 움직이며 부딪히는 것을 줄이고, 냉장 상태에서 수분과 곰팡이를 안정적으로 관리할 수 있는 포장 방향을 검토합니다.',
+    approach:['충격과 흔들림 보호','수분 유지','곰팡이 관리']
   },
   {
     slug:'mango', ko:'망고', en:'Mango', shape:'long', ripening:'클라이맥테릭', storage:'미숙과 13℃ / 완숙과 10℃', humidity:'90–95%', ethylene:'High', priority:'5 / 5', focus:'Ripening · Chilling',
-    summary:'외부 에틸렌이 후숙을 빠르고 균일하게 만들 수 있으며, 저장 중에는 에틸렌 축적 억제와 저온장해 관리가 중요합니다.',
-    approach:['Physical Protection','Ripening Management','Functional Material Study']
+    ripeningPlain:'수확 후에도 계속 익는 과일', ethylenePlain:'민감함', priorityPlain:'매우 중요 · 5/5', focusKo:'후숙 속도 · 저온장해',
+    intro:'망고는 수확 후에도 계속 익는 과일이지만 너무 차갑게 보관하면 저온장해가 생길 수 있습니다. 따라서 단순히 낮은 온도로 보관하는 것이 아니라, 현재 숙도에 맞는 온도를 유지하면서 익는 속도까지 함께 관리해야 합니다.',
+    easyHeadline:'망고는 계속 익지만 너무 차가워도 문제입니다, 후숙과 온도를 함께 맞춰야 합니다.',
+    traits:[
+      ['과일 특징','수확 후 향과 부드러움이 발달하며, 유통 과정에서 숙도가 계속 변합니다.'],
+      ['유통 중 변화','에틸렌에 노출되면 빨리 익을 수 있고, 반대로 지나치게 낮은 온도에서는 껍질과 과육에 저온장해가 나타날 수 있습니다.'],
+      ['포장 시 주의','눌림을 줄이는 동시에 숙도와 운송 기간에 맞는 온도·후숙 관리가 필요합니다.']
+    ],
+    riskExplain:'너무 빨리 익는 문제와 너무 낮은 온도에서 생기는 저온장해를 동시에 봐야 합니다.',
+    storageExplain:'덜 익은 망고는 약 13℃, 더 익은 상태는 약 10℃ 수준이 일반적인 기준이며 품종과 숙도에 따라 조정이 필요합니다.',
+    priorityExplain:'후숙 속도가 상품성에 직접 영향을 주므로 유통 단계별 관리 중요도가 높은 과일입니다.',
+    packagingGuide:'충격을 줄이는 보호 구조와 함께, 운송 중 후숙이 과도하게 진행되지 않도록 기능성 소재의 필요성을 실제 조건에서 시험합니다.',
+    approach:['눌림과 충격 보호','후숙 속도 관리','저온장해 위험 검토']
   },
   {
     slug:'banana', ko:'바나나', en:'Banana', shape:'long', ripening:'클라이맥테릭', storage:'녹숙과 13–14℃', humidity:'90–95%', ethylene:'Very High', priority:'5 / 5', focus:'Ripening · Ethylene',
-    summary:'에틸렌이 황변, 연화, 향 생성 등 후숙 전반을 크게 촉진합니다. 수송과 판매용 후숙의 관리 목적을 분리해야 합니다.',
-    approach:['Ripening Management','Ethylene Management','Distribution Fit']
+    ripeningPlain:'수확 후에도 계속 익는 과일', ethylenePlain:'매우 민감', priorityPlain:'매우 중요 · 5/5', focusKo:'후숙 속도 · 에틸렌',
+    intro:'바나나는 보통 초록색 상태로 이동한 뒤 판매 전에 노랗게 익혀 판매합니다. 에틸렌의 영향을 크게 받아 색, 향, 단단함이 빠르게 바뀌기 때문에 운송 단계와 판매 전 후숙 단계를 분리해서 관리하는 것이 중요합니다.',
+    easyHeadline:'바나나는 운송할 때와 판매할 때 관리 목적이 다릅니다, 에틸렌이 익는 속도를 크게 바꿉니다.',
+    traits:[
+      ['과일 특징','수확 후에도 계속 익으며 초록색에서 노란색으로 변하고 과육이 부드러워집니다.'],
+      ['유통 중 변화','에틸렌이 쌓이면 예상보다 빨리 노랗게 변하고 물러질 수 있으며, 너무 낮은 온도에서는 껍질 변색이 생길 수 있습니다.'],
+      ['포장 시 주의','운송 중에는 후숙을 늦추고 판매 전에는 계획적으로 익힐 수 있도록 단계별 조건을 나눠야 합니다.']
+    ],
+    riskExplain:'가장 큰 변수는 에틸렌에 따른 후숙 속도입니다.',
+    storageExplain:'초록색 바나나는 보통 13–14℃ 수준에서 운송·보관하며 지나치게 낮은 온도는 피해야 합니다.',
+    priorityExplain:'에틸렌 영향을 매우 크게 받기 때문에 관리 우선순위가 높은 과일입니다.',
+    packagingGuide:'운송 중 과도한 후숙을 막는 방향을 우선 검토하고, 판매 전 후숙 공정과 충돌하지 않도록 포장 기능을 설계합니다.',
+    approach:['후숙 속도 관리','에틸렌 관리','운송 단계별 조건 검토']
   },
   {
     slug:'strawberry', ko:'딸기', en:'Strawberry', shape:'cluster', ripening:'비클라이맥테릭', storage:'0±0.5℃', humidity:'90–95%', ethylene:'Low', priority:'2 / 5', focus:'Condensation · Mold',
-    summary:'후숙보다 저온 유지, 결로 억제, 곰팡이 관리가 저장품질에 큰 영향을 미치는 과일입니다.',
-    approach:['Moisture Control','Mold Management','Cold-chain Fit']
+    ripeningPlain:'수확 후 크게 더 익지 않는 과일', ethylenePlain:'영향이 낮음', priorityPlain:'보조 관리 · 2/5', focusKo:'결로 · 곰팡이',
+    intro:'딸기는 껍질이 얇고 조직이 부드러워 작은 충격과 온도 변화에도 쉽게 상하는 과일입니다. 수확 후 더 맛있게 익기보다는 처음의 품질을 얼마나 오래 유지하느냐가 중요하고, 특히 물방울이 맺히는 결로와 곰팡이를 주의해야 합니다.',
+    easyHeadline:'딸기는 아주 쉽게 눌리고 상합니다, 낮은 온도와 결로 관리가 가장 중요합니다.',
+    traits:[
+      ['과일 특징','과육이 부드럽고 표면 손상에 민감해 작은 압력에도 멍과 눌림이 생기기 쉽습니다.'],
+      ['유통 중 변화','온도가 올라가거나 포장 안에 물방울이 생기면 곰팡이와 무름이 빠르게 진행될 수 있습니다.'],
+      ['포장 시 주의','과일끼리 눌리지 않게 보호하면서 냉장 상태를 유지하고, 포장 내부의 과도한 습기를 줄이는 것이 중요합니다.']
+    ],
+    riskExplain:'눌림, 결로, 곰팡이가 짧은 유통기한을 더 줄이는 주요 원인입니다.',
+    storageExplain:'0℃에 가까운 낮은 온도를 꾸준히 유지하는 것이 품질 유지에 중요합니다.',
+    priorityExplain:'에틸렌 관리 자체는 우선순위가 낮고 저온·수분·곰팡이 관리가 핵심입니다.',
+    packagingGuide:'과일끼리 닿아 눌리는 것을 줄이고, 냉장 유통 중 결로와 곰팡이 발생을 낮출 수 있는 구조를 우선 시험합니다.',
+    approach:['부드러운 물리적 보호','결로 관리','곰팡이 위험 관리']
   },
   {
     slug:'shine-muscat', ko:'샤인머스캣', en:'Shine Muscat', shape:'cluster', ripening:'비클라이맥테릭', storage:'약 0℃', humidity:'85–90%', ethylene:'Medium', priority:'3 / 5', focus:'Moisture · Botrytis',
-    summary:'장기 저장에서는 줄기 수분손실, 탈립, 곰팡이 관리가 중요하며 에틸렌 제어는 보조적인 관리 요소입니다.',
-    approach:['Moisture Control','Mold Management','Distribution Fit']
+    ripeningPlain:'수확 후 크게 더 익지 않는 과일', ethylenePlain:'보통', priorityPlain:'보통 · 3/5', focusKo:'줄기 수분 · 탈립 · 곰팡이',
+    intro:'샤인머스캣은 수확 후 더 익혀 품질을 높이기보다 알의 탄력과 줄기의 신선함을 오래 유지하는 것이 중요합니다. 장기 저장이나 수출에서는 줄기가 마르거나 알이 떨어지는 탈립, 곰팡이가 주요 문제가 됩니다.',
+    easyHeadline:'샤인머스캣은 알보다 줄기에서 신선도가 먼저 보입니다, 수분과 탈립 관리가 중요합니다.',
+    traits:[
+      ['과일 특징','송이째 유통되기 때문에 알의 상태뿐 아니라 줄기 색과 탄력도 상품성을 크게 좌우합니다.'],
+      ['유통 중 변화','줄기가 마르면 갈변하고 알이 쉽게 떨어질 수 있으며, 장기 저장에서는 곰팡이 위험도 높아집니다.'],
+      ['포장 시 주의','저온을 유지하면서 줄기 수분 손실과 탈립, 곰팡이를 함께 줄이는 포장 조건을 검토해야 합니다.']
+    ],
+    riskExplain:'줄기 건조, 탈립, 곰팡이가 장기 저장과 수출에서 중요한 관리 요소입니다.',
+    storageExplain:'0℃에 가까운 낮은 온도와 적정 습도를 유지하는 것이 기본 방향입니다.',
+    priorityExplain:'에틸렌은 보조적인 관리 요소이며 수분과 곰팡이 관리가 더 우선합니다.',
+    packagingGuide:'송이가 흔들리지 않도록 보호하면서 줄기가 마르지 않고 곰팡이가 과도하게 늘지 않는 조건을 우선 시험합니다.',
+    approach:['송이 흔들림 보호','줄기 수분 유지','탈립과 곰팡이 관리']
   },
   {
     slug:'table-grape', ko:'일반 포도', en:'Table Grape', shape:'cluster', ripening:'비클라이맥테릭', storage:'-1–0℃', humidity:'90–95%', ethylene:'Low', priority:'2 / 5', focus:'Moisture · Shatter',
-    summary:'저온·고습 유지와 줄기 수분손실 억제, Botrytis 관리가 핵심입니다.',
-    approach:['Moisture Control','Mold Management','Distribution Fit']
+    ripeningPlain:'수확 후 크게 더 익지 않는 과일', ethylenePlain:'영향이 낮음', priorityPlain:'보조 관리 · 2/5', focusKo:'수분 유지 · 탈립 · 곰팡이',
+    intro:'포도는 수확 후 더 익혀 품질을 높이는 과일이 아니어서 줄기와 알의 수분을 지키는 것이 중요합니다. 장거리 유통에서는 줄기가 마르고 알이 떨어지거나 곰팡이가 생기는 문제가 자주 발생합니다.',
+    easyHeadline:'포도는 줄기와 알의 수분을 오래 지켜야 합니다, 건조와 탈립이 상품성을 빠르게 떨어뜨립니다.',
+    traits:[
+      ['과일 특징','송이 구조라서 흔들림과 마찰이 반복되면 알이 떨어지거나 표면이 손상될 수 있습니다.'],
+      ['유통 중 변화','습도가 낮으면 줄기가 마르고, 저장 기간이 길어질수록 곰팡이와 탈립 위험이 커집니다.'],
+      ['포장 시 주의','송이를 안정적으로 고정하고 저온·고습 환경을 유지하는 방향이 중요합니다.']
+    ],
+    riskExplain:'수분 손실, 탈립, 곰팡이가 핵심 관리 요소입니다.',
+    storageExplain:'-1~0℃ 수준의 저온과 높은 습도가 일반적인 장기 저장 조건입니다.',
+    priorityExplain:'에틸렌보다 저온·수분·곰팡이 관리의 중요도가 더 높습니다.',
+    packagingGuide:'송이가 움직이며 알이 떨어지는 것을 줄이고, 줄기 수분과 곰팡이 관리에 도움이 되는 포장 구조를 우선 검토합니다.',
+    approach:['송이 고정과 충격 보호','수분 유지','탈립과 곰팡이 관리']
   },
   {
     slug:'apple', ko:'사과', en:'Apple', shape:'round', ripening:'클라이맥테릭', storage:'0±1℃', humidity:'90–95%', ethylene:'Very High', priority:'5 / 5', focus:'Ethylene · Softening',
-    summary:'에틸렌이 숙성·노화와 경도 저하를 촉진할 수 있어 장기 저장에서는 에틸렌 관리의 중요도가 높은 과일입니다.',
-    approach:['Physical Protection','Ethylene Management','Long-storage Fit']
+    ripeningPlain:'수확 후에도 계속 익는 과일', ethylenePlain:'매우 민감', priorityPlain:'매우 중요 · 5/5', focusKo:'에틸렌 · 단단함 유지',
+    intro:'사과는 비교적 오래 저장할 수 있지만 저장 중에도 계속 숙성하고 노화하는 과일입니다. 장기 저장에서는 단단함이 떨어지고 수분이 줄 수 있으며, 사과에서 나오는 에틸렌이 주변의 민감한 과일에도 영향을 줄 수 있습니다.',
+    easyHeadline:'사과는 오래 보관할 수 있지만 계속 늙어갑니다, 장기 저장에서는 에틸렌과 단단함을 함께 봐야 합니다.',
+    traits:[
+      ['과일 특징','저장성이 좋은 편이지만 수확 후에도 천천히 익고 노화가 진행됩니다.'],
+      ['유통 중 변화','보관 기간이 길어지면 단단함과 수분이 떨어질 수 있고 에틸렌 발생량도 관리 요소가 됩니다.'],
+      ['포장 시 주의','충격과 멍을 줄이는 동시에 장기 저장에서는 에틸렌과 수분 손실을 함께 검토해야 합니다.']
+    ],
+    riskExplain:'장기 저장 중 단단함 저하, 수분 손실, 에틸렌 축적이 주요 관리 요소입니다.',
+    storageExplain:'0℃ 안팎의 저온과 높은 습도를 유지하면 장기 저장에 유리합니다.',
+    priorityExplain:'장기 저장 시장이 크고 에틸렌 영향도 높아 관리 중요도가 큰 과일입니다.',
+    packagingGuide:'개별 충격 보호를 기본으로 하고 저장 기간이 길수록 에틸렌 저감과 수분 유지 기능의 필요성을 함께 시험합니다.',
+    approach:['멍과 충격 보호','에틸렌 관리','장기 저장 적합성 검토']
   },
   {
     slug:'asian-pear', ko:'배·한국배', en:'Asian Pear', shape:'round', ripening:'품종 의존', storage:'0±1℃', humidity:'90–95%', ethylene:'Medium*', priority:'3 / 5', focus:'Long Storage · Moisture',
-    summary:'품종별 후숙 특성이 다르고 장기 저온저장에서 수분 및 에틸렌 관리가 보조적으로 중요합니다. 실제 적용은 품종 단위 검증이 필요합니다.',
-    approach:['Physical Protection','Moisture Control','Variety-specific Study']
+    ripeningPlain:'품종에 따라 익는 방식이 다름', ethylenePlain:'품종에 따라 보통', priorityPlain:'보통 · 3/5', focusKo:'장기 저장 · 수분 · 충격',
+    intro:'한국배는 수분이 많고 단단한 과육이 특징이지만 표면 충격과 수분 손실에 민감합니다. 비교적 장기 저장이 가능한 품목이지만 품종마다 저장성과 후숙 특성이 달라 실제 포장 적용은 품종과 유통 기간을 함께 봐야 합니다.',
+    easyHeadline:'배는 단단해 보여도 멍과 수분 손실에 민감합니다, 품종과 저장 기간을 함께 봐야 합니다.',
+    traits:[
+      ['과일 특징','수분이 많고 크기가 커서 개별 과일이 받는 압력과 충격이 상품성에 영향을 줄 수 있습니다.'],
+      ['유통 중 변화','장기 저장에서는 수분이 빠지고 과육 품질이 떨어질 수 있으며 품종에 따라 에틸렌 반응도 달라집니다.'],
+      ['포장 시 주의','개별 충격 보호를 기본으로 하고 실제 품종과 저장 기간에 맞춰 수분·에틸렌 기능을 추가 검토해야 합니다.']
+    ],
+    riskExplain:'멍과 충격, 수분 손실, 장기 저장 중 품질 변화가 주요 관리 요소입니다.',
+    storageExplain:'0℃ 안팎의 저온과 높은 습도를 유지하는 방식이 일반적인 장기 저장 기준입니다.',
+    priorityExplain:'에틸렌 영향은 품종마다 달라 일괄 적용보다 품종별 시험이 중요합니다.',
+    packagingGuide:'과일 표면의 압력과 충격을 줄이는 보호망을 기본으로 하고, 장기 저장 조건에 맞춰 수분 유지 기능을 추가 검토합니다.',
+    approach:['개별 충격 보호','수분 유지','품종별 적용 검토']
   },
   {
     slug:'kiwi', ko:'키위', en:'Kiwifruit', shape:'tall', ripening:'클라이맥테릭', storage:'약 0℃', humidity:'90–95%', ethylene:'Extremely High', priority:'5 / 5', focus:'Ethylene · Softening',
-    summary:'미숙과도 극미량의 에틸렌에 의해 연화될 수 있어 저장·수송 시 에틸렌 배제와 분리 보관이 특히 중요합니다.',
-    approach:['Physical Protection','Ethylene Management','Storage Separation']
+    ripeningPlain:'수확 후에도 계속 익는 과일', ethylenePlain:'극도로 민감', priorityPlain:'매우 중요 · 5/5', focusKo:'에틸렌 · 빠른 연화',
+    intro:'키위는 저장 중에는 단단하게 유지할 수 있지만 아주 적은 양의 에틸렌에도 빠르게 부드러워질 수 있는 과일입니다. 사과나 바나나처럼 에틸렌을 많이 내는 과일과 함께 두면 예상보다 빨리 익을 수 있어 분리 보관이 특히 중요합니다.',
+    easyHeadline:'키위는 아주 적은 에틸렌에도 빨리 부드러워집니다, 함께 보관하는 과일까지 중요합니다.',
+    traits:[
+      ['과일 특징','미숙한 상태에서는 단단하지만 후숙이 시작되면 빠르게 부드러워집니다.'],
+      ['유통 중 변화','사과·바나나 등에서 나온 소량의 에틸렌만 있어도 연화가 빨라질 수 있습니다.'],
+      ['포장 시 주의','저온 유지와 함께 에틸렌이 많은 과일과의 분리, 필요 시 에틸렌 저감 기능을 우선 검토해야 합니다.']
+    ],
+    riskExplain:'예상보다 빨리 물러지는 것이 가장 큰 유통 리스크입니다.',
+    storageExplain:'저장·수송 단계에서는 0℃에 가까운 저온 유지가 일반적입니다.',
+    priorityExplain:'에틸렌에 매우 민감하기 때문에 장거리 저장과 혼재 적재에서는 관리 중요도가 매우 높습니다.',
+    packagingGuide:'에틸렌 노출을 줄이는 유통 조건을 먼저 만들고, 필요할 경우 포장 내부의 에틸렌 저감 기능을 시험합니다.',
+    approach:['눌림 보호','에틸렌 노출 저감','혼재 적재 조건 검토']
   },
   {
     slug:'peach', ko:'복숭아', en:'Peach', shape:'round', ripening:'클라이맥테릭', storage:'-1–0℃', humidity:'90–95%', ethylene:'High', priority:'4 / 5', focus:'Softening · Chilling',
-    summary:'연화와 저온장해가 주요 관리 포인트이며 장기 저장·유통에서는 에틸렌 축적을 최소화하는 것이 중요합니다.',
-    approach:['Gentle Protection','Ripening Management','Cold-chain Fit']
+    ripeningPlain:'수확 후에도 계속 익는 과일', ethylenePlain:'민감함', priorityPlain:'높음 · 4/5', focusKo:'빠른 연화 · 저온장해',
+    intro:'복숭아는 과육이 매우 부드럽고 후숙이 빠르게 진행되어 작은 충격에도 멍이 생기기 쉬운 과일입니다. 오래 보관하려고 어중간한 저온에 두면 내부 갈변이나 푸석해지는 저온장해가 생길 수 있어 충격 보호와 온도 관리가 모두 중요합니다.',
+    easyHeadline:'복숭아는 쉽게 눌리고 빨리 부드러워집니다, 충격과 저장 온도를 함께 관리해야 합니다.',
+    traits:[
+      ['과일 특징','표면과 과육이 부드러워 작은 압력에도 멍과 눌림이 생기기 쉽습니다.'],
+      ['유통 중 변화','후숙이 진행되면 빠르게 부드러워지고, 2–8℃ 부근의 장기 저장에서는 내부 품질 문제가 생길 수 있습니다.'],
+      ['포장 시 주의','과일을 부드럽게 받쳐주는 보호와 함께 0℃에 가까운 안정적인 저온 유통을 고려해야 합니다.']
+    ],
+    riskExplain:'눌림, 빠른 연화, 저온장해가 주요 관리 요소입니다.',
+    storageExplain:'장기 저장은 -1~0℃ 부근이 일반적으로 유리하며 후숙 단계에서는 실온을 사용합니다.',
+    priorityExplain:'후숙 속도와 온도 모두 상품성에 큰 영향을 주어 관리 중요도가 높은 편입니다.',
+    packagingGuide:'접촉 압력을 줄이는 보호 구조를 기본으로 하고, 유통 기간에 맞춰 후숙과 냉장 조건을 함께 검토합니다.',
+    approach:['부드러운 접촉 보호','후숙 속도 관리','저온 유통 적합성 검토']
   },
   {
     slug:'nectarine', ko:'천도복숭아', en:'Nectarine', shape:'round', ripening:'클라이맥테릭', storage:'-1–0℃', humidity:'90–95%', ethylene:'High', priority:'4 / 5', focus:'Softening · Chilling',
-    summary:'복숭아와 유사하게 후숙과 연화가 빠르게 진행될 수 있어 저온관리와 저장 단계의 에틸렌 억제가 중요합니다.',
-    approach:['Gentle Protection','Ripening Management','Cold-chain Fit']
+    ripeningPlain:'수확 후에도 계속 익는 과일', ethylenePlain:'민감함', priorityPlain:'높음 · 4/5', focusKo:'빠른 연화 · 저온장해',
+    intro:'천도복숭아는 복숭아처럼 수확 후에도 계속 익으며 시간이 지나면 빠르게 부드러워집니다. 표면에 털이 없지만 과피와 과육은 여전히 충격에 민감하고, 장기 저장에서는 온도 조건을 잘못 잡으면 내부 품질이 떨어질 수 있습니다.',
+    easyHeadline:'천도복숭아도 빠르게 부드러워집니다, 표면 충격과 저장 온도를 함께 봐야 합니다.',
+    traits:[
+      ['과일 특징','복숭아와 비슷하게 후숙이 빠르고 압력에 민감한 과일입니다.'],
+      ['유통 중 변화','시간이 지나면 과육이 부드러워지고, 장기 저장 시 저온장해 위험이 있습니다.'],
+      ['포장 시 주의','과일끼리 부딪히는 것을 줄이고 일정한 저온을 유지하는 포장·유통 조건이 중요합니다.']
+    ],
+    riskExplain:'빠른 연화와 충격 손상, 저온장해가 주요 리스크입니다.',
+    storageExplain:'-1~0℃ 부근의 저온 저장이 일반적이며 후숙이 필요할 때만 실온을 사용합니다.',
+    priorityExplain:'후숙과 온도가 상품성에 큰 영향을 주기 때문에 관리 중요도가 높은 편입니다.',
+    packagingGuide:'부드러운 물리적 보호와 함께 실제 운송 기간에 맞는 냉장 조건을 우선 시험합니다.',
+    approach:['부드러운 접촉 보호','후숙 속도 관리','저온 유통 적합성 검토']
   },
   {
     slug:'persimmon', ko:'단감', en:'Fuyu Persimmon', shape:'round', ripening:'클라이맥테릭 성향', storage:'0±1℃', humidity:'90–95%', ethylene:'Very High', priority:'5 / 5', focus:'Ethylene · Softening',
-    summary:'자체 에틸렌 생성량은 낮을 수 있지만 외부 에틸렌에 매우 민감해 빠른 연화가 발생할 수 있습니다.',
-    approach:['Physical Protection','Ethylene Management','Long-storage Fit']
+    ripeningPlain:'외부 에틸렌에 쉽게 반응하는 과일', ethylenePlain:'매우 민감', priorityPlain:'매우 중요 · 5/5', focusKo:'에틸렌 · 빠른 연화',
+    intro:'단감은 스스로 내는 에틸렌 양은 많지 않지만 주변 과일에서 나오는 에틸렌에는 매우 민감합니다. 사과나 바나나와 함께 보관하면 빠르게 물러질 수 있어 장기 저장에서는 에틸렌을 멀리하는 관리가 특히 중요합니다.',
+    easyHeadline:'단감은 에틸렌을 많이 만들지는 않지만 아주 민감합니다, 주변 과일 때문에 빨리 물러질 수 있습니다.',
+    traits:[
+      ['과일 특징','단단한 식감이 중요한 품목이라 연화가 시작되면 상품성이 빠르게 떨어집니다.'],
+      ['유통 중 변화','주변의 에틸렌에 노출되면 예상보다 훨씬 빨리 부드러워질 수 있습니다.'],
+      ['포장 시 주의','저온 유지와 함께 사과·바나나 같은 에틸렌 발생 과일과 분리하고 필요 시 저감 기능을 검토해야 합니다.']
+    ],
+    riskExplain:'외부 에틸렌으로 인한 급격한 연화가 가장 중요한 관리 요소입니다.',
+    storageExplain:'0℃ 안팎의 저온과 높은 습도를 유지하는 것이 일반적인 장기 저장 방향입니다.',
+    priorityExplain:'적은 에틸렌에도 민감해 장기 저장에서는 관리 중요도가 매우 높습니다.',
+    packagingGuide:'물리적 보호와 함께 에틸렌이 많은 품목과의 분리 조건을 먼저 만들고, 필요 시 흡착·저감 기능을 시험합니다.',
+    approach:['개별 충격 보호','에틸렌 노출 저감','장기 저장 적합성 검토']
   },
   {
     slug:'mandarin', ko:'감귤·만다린', en:'Mandarin', shape:'round', ripening:'비클라이맥테릭', storage:'약 5–8℃', humidity:'90–95%', ethylene:'Medium', priority:'3 / 5', focus:'Peel · Decay',
-    summary:'에틸렌은 착색에 이용될 수 있지만 장기 노출은 노화와 부패 민감성을 높일 수 있어 사용 목적을 구분해야 합니다.',
-    approach:['Moisture Control','Decay Management','Distribution Fit']
+    ripeningPlain:'수확 후 크게 더 익지 않는 과일', ethylenePlain:'보통', priorityPlain:'보통 · 3/5', focusKo:'과피 수분 · 부패',
+    intro:'감귤과 만다린은 수확 후 더 달아지기보다 껍질의 신선함과 수분을 오래 지키는 것이 중요합니다. 장기 저장에서는 껍질이 마르거나 주름지고 부패가 생길 수 있어 수분 유지와 곰팡이·부패 관리가 핵심입니다.',
+    easyHeadline:'감귤은 껍질 상태가 신선도를 보여줍니다, 수분 손실과 부패를 함께 관리해야 합니다.',
+    traits:[
+      ['과일 특징','수확 후 맛이 크게 더 좋아지는 과일이 아니어서 과피 상태와 수분 유지가 중요합니다.'],
+      ['유통 중 변화','수분이 빠지면 껍질이 마르고 주름지며, 저장 기간이 길어지면 부패 위험도 커집니다.'],
+      ['포장 시 주의','과도한 습기로 곰팡이가 생기지 않으면서도 과피가 마르지 않는 균형이 필요합니다.']
+    ],
+    riskExplain:'과피 수분 손실과 부패가 주요 품질 저하 요인입니다.',
+    storageExplain:'약 5–8℃와 높은 습도가 일반적인 저장 기준이며 품종과 기간에 따라 조정합니다.',
+    priorityExplain:'에틸렌은 일부 착색 과정에 쓰일 수 있지만 장기 유통에서는 수분과 부패 관리가 더 중요합니다.',
+    packagingGuide:'과피 건조를 줄이면서 포장 내부 습기가 과도하게 차지 않도록 수분과 통기 조건을 함께 시험합니다.',
+    approach:['표면 충격 보호','과피 수분 유지','부패 위험 관리']
   },
   {
     slug:'pomegranate', ko:'석류', en:'Pomegranate', shape:'round', ripening:'비클라이맥테릭', storage:'5℃ 단기 / 약 7℃ 장기', humidity:'90–95%', ethylene:'Low', priority:'1 / 5', focus:'Moisture · Chilling',
-    summary:'에틸렌 제어 우선순위는 낮고 과피의 수분손실과 저온장해를 줄이는 포장 방향이 더 중요합니다.',
-    approach:['Physical Protection','Moisture Control','Chilling Management']
+    ripeningPlain:'수확 후 크게 더 익지 않는 과일', ethylenePlain:'영향이 낮음', priorityPlain:'낮음 · 1/5', focusKo:'과피 수분 · 저온장해',
+    intro:'석류는 껍질이 단단해 보여도 저장 중 수분이 빠지면 과피가 마르고 상품성이 떨어질 수 있습니다. 에틸렌보다는 수분 손실을 줄이고 너무 낮은 온도에서 생길 수 있는 저온장해를 피하는 것이 더 중요합니다.',
+    easyHeadline:'석류는 단단해 보여도 수분을 잃기 쉽습니다, 껍질 건조와 저온장해를 먼저 봐야 합니다.',
+    traits:[
+      ['과일 특징','껍질이 두껍지만 장기 저장 중 과피에서 수분이 빠지면 중량과 외관이 떨어질 수 있습니다.'],
+      ['유통 중 변화','너무 건조하면 껍질이 거칠어지고, 온도가 지나치게 낮으면 저온장해 위험이 있습니다.'],
+      ['포장 시 주의','에틸렌 기능보다 수분 유지와 적정 온도 확보에 포장 기능을 집중하는 편이 적절합니다.']
+    ],
+    riskExplain:'과피 수분 손실과 저온장해가 핵심 관리 요소입니다.',
+    storageExplain:'단기에는 약 5℃, 장기에는 약 7℃ 수준이 일반적인 참고 조건입니다.',
+    priorityExplain:'에틸렌 영향이 낮아 관련 기능의 우선순위는 낮습니다.',
+    packagingGuide:'과피가 마르지 않도록 수분 손실을 줄이면서 적정 온도 범위를 유지할 수 있는 포장 구조를 우선 검토합니다.',
+    approach:['물리적 표면 보호','수분 손실 저감','저온장해 위험 검토']
   },
   {
     slug:'pineapple', ko:'파인애플', en:'Pineapple', shape:'tall', ripening:'비클라이맥테릭', storage:'부분후숙 10–13℃ / 완숙 7–10℃', humidity:'85–90%', ethylene:'Low', priority:'1 / 5', focus:'Temperature · Moisture',
-    summary:'수확 후 실질적인 당도 후숙은 거의 없으며 에틸렌보다 온도, 저온장해, 수분 관리가 핵심입니다.',
-    approach:['Physical Protection','Temperature Fit','Moisture Control']
+    ripeningPlain:'수확 후 단맛이 크게 늘지 않는 과일', ethylenePlain:'영향이 낮음', priorityPlain:'낮음 · 1/5', focusKo:'온도 · 수분',
+    intro:'파인애플은 수확한 뒤 오래 둔다고 단맛이 크게 늘어나는 과일이 아닙니다. 따라서 후숙을 기다리기보다 수확 당시의 품질을 유지하는 것이 중요하고, 너무 낮은 온도에서는 저온장해가 생길 수 있어 온도 관리가 핵심입니다.',
+    easyHeadline:'파인애플은 수확 후 더 달아지는 과일이 아닙니다, 적정 온도와 수분 유지가 더 중요합니다.',
+    traits:[
+      ['과일 특징','수확 후 실질적인 당도 후숙이 거의 없어 처음의 맛과 외관을 유지하는 것이 중요합니다.'],
+      ['유통 중 변화','너무 낮은 온도에서는 껍질과 내부 조직에 저온장해가 생길 수 있고 장기 저장에서는 수분 손실도 발생합니다.'],
+      ['포장 시 주의','에틸렌보다는 운송 온도, 통기, 수분 유지와 외부 충격 보호를 우선 검토해야 합니다.']
+    ],
+    riskExplain:'저온장해와 수분 손실, 외부 충격이 주요 관리 요소입니다.',
+    storageExplain:'숙도에 따라 약 7–13℃ 범위에서 관리하며 지나치게 낮은 온도는 피하는 것이 중요합니다.',
+    priorityExplain:'에틸렌 기능의 필요성은 낮고 온도와 수분 관리가 더 중요합니다.',
+    packagingGuide:'크고 무거운 과일이 흔들리지 않도록 보호하고, 운송 중 적정 온도와 통기 조건을 유지하는 방향을 우선 시험합니다.',
+    approach:['외부 충격 보호','온도 조건 검토','수분 유지']
   },
   {
     slug:'plum', ko:'자두', en:'Plum', shape:'round', ripening:'클라이맥테릭', storage:'-1–0℃', humidity:'90–95%', ethylene:'High', priority:'4 / 5', focus:'Ripening · Softening',
-    summary:'품종별 저장 잠재력 차이가 크며 일반 저장에서는 에틸렌 축적 억제와 저온관리가 중요합니다.',
-    approach:['Gentle Protection','Ripening Management','Cold-chain Fit']
+    ripeningPlain:'수확 후에도 계속 익는 과일', ethylenePlain:'민감함', priorityPlain:'높음 · 4/5', focusKo:'후숙 속도 · 연화',
+    intro:'자두는 수확 후에도 계속 익고 품종에 따라 부드러워지는 속도와 저장 가능 기간의 차이가 큰 과일입니다. 장기 유통에서는 후숙이 너무 빨라지지 않도록 관리하면서 일정한 저온을 유지하는 것이 중요합니다.',
+    easyHeadline:'자두는 품종마다 익는 속도가 다릅니다, 후숙과 저온 조건을 함께 맞춰야 합니다.',
+    traits:[
+      ['과일 특징','품종에 따라 단단함과 숙성 속도, 저장성이 크게 달라질 수 있습니다.'],
+      ['유통 중 변화','후숙이 진행되면 과육이 빠르게 부드러워지고 일부 품종은 에틸렌의 영향을 크게 받을 수 있습니다.'],
+      ['포장 시 주의','충격을 줄이면서 실제 품종과 판매 시점에 맞는 후숙·저온 조건을 설정해야 합니다.']
+    ],
+    riskExplain:'빠른 연화와 품종별 저장성 차이가 주요 리스크입니다.',
+    storageExplain:'일반적으로 -1~0℃ 부근의 저온 저장이 활용되며 후숙 단계에서는 실온을 사용할 수 있습니다.',
+    priorityExplain:'에틸렌과 후숙의 영향이 큰 편이지만 품종 차이가 있어 실제 조건별 확인이 필요합니다.',
+    packagingGuide:'부드러운 물리적 보호를 기본으로 하고, 품종과 유통 기간에 맞춰 후숙 속도와 냉장 조건을 함께 시험합니다.',
+    approach:['부드러운 충격 보호','후숙 속도 관리','품종별 저온 조건 검토']
   }
 ];
