@@ -22,14 +22,21 @@ document.querySelectorAll('.brand').forEach((brand) => {
   brand.innerHTML = '<img class="brand-logo" src="assets/img/terrasave-logo.svg" alt="TerraSave" />';
 });
 
-// Normalize navigation on any legacy deep-link that still uses the old menu labels.
+const navItems = [
+  ['fruits.html', 'Fruits'],
+  ['product.html', 'Net System'],
+  ['technology.html', 'Technology'],
+  ['what-we-do.html', 'Research'],
+  ['about.html', 'About']
+];
+
 if (nav) {
-  nav.innerHTML = `
-    <a href="fruits.html">Fruits</a>
-    <a href="product.html">Net System</a>
-    <a href="technology.html">Technology</a>
-    <a href="what-we-do.html">Research</a>
-    <a href="about.html">About</a>`;
+  const currentPath = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
+  nav.innerHTML = navItems.map(([href, label]) => {
+    const isFruitDetail = currentPath === 'fruit.html' && href === 'fruits.html';
+    const isCurrent = currentPath === href || isFruitDetail;
+    return `<a href="${href}"${isCurrent ? ' aria-current="page"' : ''}>${label}</a>`;
+  }).join('');
 }
 
 if (toggle && !toggle.querySelector('.menu-icon')) {
@@ -56,7 +63,7 @@ if (header && toggle && nav) {
     if (event.key === 'Escape') closeMobileMenu();
   });
   window.addEventListener('resize', () => {
-    if (window.innerWidth > 1100) closeMobileMenu();
+    if (window.innerWidth >= 768) closeMobileMenu();
   });
 }
 
@@ -68,7 +75,7 @@ if (footer) {
         <div class="footer-brand-block">
           <img class="footer-logo" src="assets/img/terrasave-logo.svg" alt="TerraSave" />
           <p class="footer-tagline">Fruit Protection Intelligence.</p>
-          <p class="footer-description">과일별 데이터를 바탕으로 보호 패키징 방향을 연구합니다.</p>
+          <p class="footer-description">과일별 데이터를 바탕으로 보호 패키징의 적용 방향을 연구합니다.</p>
         </div>
         <nav class="footer-nav-main" aria-label="Footer navigation">
           <a href="fruits.html">Fruits</a>
