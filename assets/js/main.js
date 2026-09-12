@@ -2,7 +2,6 @@ const header = document.getElementById('siteHeader');
 const toggle = document.getElementById('menuToggle');
 const nav = document.getElementById('siteNav');
 
-// New light editorial design is shared across the whole site.
 if (!document.querySelector('link[href="assets/css/redesign.css"]')) {
   const redesignStyle = document.createElement('link');
   redesignStyle.rel = 'stylesheet';
@@ -10,7 +9,6 @@ if (!document.querySelector('link[href="assets/css/redesign.css"]')) {
   document.head.appendChild(redesignStyle);
 }
 
-// Favicon.
 let favicon = document.querySelector('link[rel="icon"]');
 if (!favicon) {
   favicon = document.createElement('link');
@@ -20,10 +18,19 @@ if (!favicon) {
 favicon.type = 'image/svg+xml';
 favicon.href = 'assets/img/terrasave-favicon.svg';
 
-// Official logo. The redesign stylesheet inverts the existing white SVG for use on white.
 document.querySelectorAll('.brand').forEach((brand) => {
   brand.innerHTML = '<img class="brand-logo" src="assets/img/terrasave-logo.svg" alt="TerraSave" />';
 });
+
+// Normalize navigation on any legacy deep-link that still uses the old menu labels.
+if (nav) {
+  nav.innerHTML = `
+    <a href="fruits.html">Fruits</a>
+    <a href="product.html">Net System</a>
+    <a href="technology.html">Technology</a>
+    <a href="what-we-do.html">Research</a>
+    <a href="about.html">About</a>`;
+}
 
 if (toggle && !toggle.querySelector('.menu-icon')) {
   toggle.innerHTML = '<span class="menu-icon" aria-hidden="true"><span></span><span></span><span></span></span>';
@@ -44,7 +51,6 @@ if (header && toggle && nav) {
     toggle.setAttribute('aria-expanded', String(open));
     toggle.setAttribute('aria-label', open ? '메뉴 닫기' : '메뉴 열기');
   });
-
   nav.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMobileMenu));
   document.addEventListener('keydown', (event) => {
     if (event.key === 'Escape') closeMobileMenu();
@@ -54,7 +60,6 @@ if (header && toggle && nav) {
   });
 }
 
-// Compact shared footer. Keeps the site closer to an editorial / product catalogue than a corporate portal.
 const footer = document.querySelector('footer.footer');
 if (footer) {
   footer.innerHTML = `
