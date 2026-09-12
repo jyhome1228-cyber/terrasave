@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="TerraSave Fruit Profile — 과일별 저장·후숙·에틸렌 특성과 보호 방향." />
+  <meta name="description" content="TerraSave Fruit Profile — 과일별 특성과 보관 조건, 포장 시 주의점과 보호 방향을 쉽게 설명합니다." />
   <meta name="theme-color" content="#ffffff" />
   <title>Fruit Profile — TerraSave</title>
   <link rel="stylesheet" href="assets/css/styles.css" />
@@ -34,13 +34,31 @@
       const root = document.getElementById('fruitDetail');
       if (!fruit || !root) return;
 
+      const breakHeading = (text='') => text.replace(/([,.!?])\s+/g, '$1<br />');
+      const plainStorage = (text='') => text
+        .replaceAll('미숙과', '덜 익은 상태')
+        .replaceAll('완숙과', '먹기 좋은 상태')
+        .replaceAll('녹숙과', '초록색 상태')
+        .replaceAll('부분후숙', '덜 익은 상태');
+
       document.title = `${fruit.en} — TerraSave Fruit Profile`;
       const previous = data[(fruitIndex - 1 + data.length) % data.length];
       const next = data[(fruitIndex + 1) % data.length];
+
+      const characteristics = (fruit.traits || []).map((item, index) => `
+        <div class="ts-application-row">
+          <span class="ts-kicker">0${index + 1}</span>
+          <strong>${item[0]}</strong>
+          <p>${item[1]}</p>
+        </div>`).join('');
+
       const approach = fruit.approach.map((item, index) => `
         <article class="ts-approach">
           <span class="ts-kicker">0${index + 1}</span>
-          <div><h3 class="ts-h3">${item}</h3><p>품목 특성, 현재 포장 방식과 유통 조건을 기준으로 실제 적용 가능성을 검토합니다.</p></div>
+          <div>
+            <h3 class="ts-h3">${item}</h3>
+            <p>현재 포장 방식, 유통 거리와 기간을 함께 보고 실제로 필요한 기능인지 확인합니다.</p>
+          </div>
         </article>`).join('');
 
       root.innerHTML = `
@@ -52,8 +70,8 @@
               <div class="ts-detail-copy">
                 <div class="ts-kicker">Fruit Profile / ${fruit.ko}</div>
                 <h1 class="ts-h1">${fruit.en}</h1>
-                <p class="ts-detail-lead">${fruit.summary}</p>
-                <p style="margin:28px 0 0"><a class="ts-button is-dark" href="contact.html">Study this fruit</a></p>
+                <p class="ts-detail-lead">${fruit.intro || fruit.summary}</p>
+                <p style="margin:28px 0 0"><a class="ts-button is-dark" href="contact.html">${fruit.ko} 포장 상담하기</a></p>
               </div>
             </div>
           </div>
@@ -62,36 +80,43 @@
         <section class="ts-section is-compact">
           <div class="ts-shell">
             <div class="ts-data-grid">
-              <div class="ts-data-cell"><span class="ts-data-label">Ripening</span><strong class="ts-data-value">${fruit.ripening}</strong></div>
-              <div class="ts-data-cell"><span class="ts-data-label">Storage</span><strong class="ts-data-value">${fruit.storage}</strong></div>
-              <div class="ts-data-cell"><span class="ts-data-label">Relative humidity</span><strong class="ts-data-value">${fruit.humidity}</strong></div>
-              <div class="ts-data-cell"><span class="ts-data-label">Ethylene sensitivity</span><strong class="ts-data-value">${fruit.ethylene}</strong></div>
-              <div class="ts-data-cell"><span class="ts-data-label">Control priority</span><strong class="ts-data-value">${fruit.priority}</strong></div>
-              <div class="ts-data-cell"><span class="ts-data-label">Primary focus</span><strong class="ts-data-value">${fruit.focus}</strong></div>
+              <div class="ts-data-cell"><span class="ts-data-label">익는 방식</span><strong class="ts-data-value">${fruit.ripeningPlain}</strong></div>
+              <div class="ts-data-cell"><span class="ts-data-label">권장 보관 온도</span><strong class="ts-data-value">${plainStorage(fruit.storage)}</strong></div>
+              <div class="ts-data-cell"><span class="ts-data-label">권장 습도</span><strong class="ts-data-value">${fruit.humidity}</strong></div>
+              <div class="ts-data-cell"><span class="ts-data-label">에틸렌 영향</span><strong class="ts-data-value">${fruit.ethylenePlain}</strong></div>
+              <div class="ts-data-cell"><span class="ts-data-label">관리 중요도</span><strong class="ts-data-value">${fruit.priorityPlain}</strong></div>
+              <div class="ts-data-cell"><span class="ts-data-label">주요 관리 포인트</span><strong class="ts-data-value">${fruit.focusKo}</strong></div>
             </div>
           </div>
         </section>
 
         <section class="ts-section">
           <div class="ts-shell">
-            <div class="ts-story-grid">
-              <span class="ts-kicker">What it means</span>
-              <p>${fruit.summary} 이 프로필은 유지기간을 단정하기 위한 수치가 아니라, 어떤 변수와 리스크를 먼저 확인해야 하는지 판단하기 위한 적용 검토의 출발점입니다.</p>
+            <div class="ts-section-head">
+              <span class="ts-kicker">Fruit characteristics / 쉽게 보기</span>
+              <div>
+                <h2 class="ts-h2">${breakHeading(fruit.easyHeadline)}</h2>
+                <p class="ts-body ts-section-copy">같은 과일이라도 숙도와 유통 기간에 따라 상태가 달라집니다. 포장재를 고르기 전에 이 과일이 이동 중 어떻게 변하는지부터 이해하는 것이 중요합니다.</p>
+              </div>
             </div>
+            <div class="ts-application-list">${characteristics}</div>
           </div>
         </section>
 
         <section class="ts-section is-soft">
           <div class="ts-shell">
             <div class="ts-section-head">
-              <span class="ts-kicker">Protection logic</span>
-              <div><h2 class="ts-h2">From fruit profile<br />to protection direction.</h2><p class="ts-body ts-section-copy">데이터를 그대로 제품 사양으로 바꾸지 않습니다. 품목별 리스크를 현재 물류·포장 환경과 연결해 필요한 역할을 단계적으로 정의합니다.</p></div>
+              <span class="ts-kicker">Packaging guide</span>
+              <div>
+                <h2 class="ts-h2">이 과일에서 먼저 볼 문제,<br />포장 방향은 여기서 정해집니다.</h2>
+                <p class="ts-body ts-section-copy">보관 온도 숫자만 보고 포장 사양을 정하지 않습니다. 현재 숙도, 유통 거리와 기간, 기존 포장 방식까지 함께 보고 어떤 보호가 실제로 필요한지 정합니다.</p>
+              </div>
             </div>
             <div class="ts-application-list">
-              <div class="ts-application-row"><span class="ts-kicker">01 / RISK</span><strong>${fruit.focus}</strong><p>품질 저하에 영향을 주는 우선 관리 요소를 기준으로 검토합니다.</p></div>
-              <div class="ts-application-row"><span class="ts-kicker">02 / CONDITION</span><strong>${fruit.storage}</strong><p>권장 저장 조건을 실제 유통 온도와 숙도, 기간에 맞춰 해석합니다.</p></div>
-              <div class="ts-application-row"><span class="ts-kicker">03 / PRIORITY</span><strong>${fruit.priority}</strong><p>에틸렌 또는 저장환경 제어의 상대적 중요도를 다른 리스크와 함께 비교합니다.</p></div>
-              <div class="ts-application-row"><span class="ts-kicker">04 / APPLY</span><strong>PoC direction</strong><p>Fruit Foam Net과 기능성 소재는 필요한 역할이 명확할 때 적용 가능성을 검토합니다.</p></div>
+              <div class="ts-application-row"><span class="ts-kicker">01 / 먼저 볼 문제</span><strong>${fruit.focusKo}</strong><p>${fruit.riskExplain}</p></div>
+              <div class="ts-application-row"><span class="ts-kicker">02 / 보관할 때</span><strong>${plainStorage(fruit.storage)}</strong><p>${fruit.storageExplain}</p></div>
+              <div class="ts-application-row"><span class="ts-kicker">03 / 관리 중요도</span><strong>${fruit.priorityPlain}</strong><p>${fruit.priorityExplain}</p></div>
+              <div class="ts-application-row"><span class="ts-kicker">04 / 포장 방향</span><strong>시험 적용 방향</strong><p>${fruit.packagingGuide}</p></div>
             </div>
           </div>
         </section>
@@ -100,18 +125,25 @@
           <div class="ts-shell">
             <div class="ts-section-head">
               <span class="ts-kicker">TerraSave Approach</span>
-              <div><h2 class="ts-h2">Protection direction,<br />not a disclosed recipe.</h2><p class="ts-body ts-section-copy">과일에 필요한 기능의 방향은 설명하되 소재 조성, 배합, 제조 공정, 상세 설계값은 공개하지 않습니다.</p></div>
+              <div>
+                <h2 class="ts-h2">필요한 기능은 설명합니다,<br />핵심 기술은 보호합니다.</h2>
+                <p class="ts-body ts-section-copy">고객이 포장을 검토하는 데 필요한 역할과 방향은 쉽게 설명합니다. 다만 소재의 정확한 조성, 배합비, 제조 공정처럼 그대로 복제할 수 있는 기술 정보는 공개하지 않습니다.</p>
+              </div>
             </div>
             <div class="ts-approach-grid">${approach}</div>
-            <div class="ts-research-note" style="margin-top:32px">본 페이지의 저장·후숙·에틸렌 정보는 TerraSave 과일 신선도 유지 포장재 라이브러리에 정리된 문헌 자료를 홈페이지용으로 요약한 것입니다. 실제 적용 조건과 성능 표기는 별도의 시험·검증 자료를 기준으로 판단합니다.</div>
+            <div class="ts-research-note" style="margin-top:32px">위 보관 조건과 과일 특성은 TerraSave가 정리한 문헌 자료를 홈페이지용으로 쉽게 풀어쓴 내용입니다. 실제 포장 적용 결과는 품종, 숙도, 포장 규격, 유통 온도와 기간에 따라 달라질 수 있어 별도의 시험을 통해 확인합니다.</div>
           </div>
         </section>
 
         <section class="ts-section is-soft">
           <div class="ts-shell">
             <div class="ts-cta">
-              <div class="ts-cta-copy"><span class="ts-kicker">Next profile</span><h2 class="ts-h2">Compare another fruit.</h2><p class="ts-body ts-section-copy"><a class="ts-link" href="fruit.html?fruit=${previous.slug}">← ${previous.en}</a>&nbsp;&nbsp;&nbsp;<a class="ts-link" href="fruit.html?fruit=${next.slug}">${next.en} →</a></p></div>
-              <div class="ts-cta-action"><a class="ts-button is-dark is-large" href="contact.html">Request a solution</a></div>
+              <div class="ts-cta-copy">
+                <span class="ts-kicker">Next profile</span>
+                <h2 class="ts-h2">다른 과일도,<br />같은 기준으로 비교해보세요.</h2>
+                <p class="ts-body ts-section-copy"><a class="ts-link" href="fruit.html?fruit=${previous.slug}">← ${previous.ko}</a>&nbsp;&nbsp;&nbsp;<a class="ts-link" href="fruit.html?fruit=${next.slug}">${next.ko} →</a></p>
+              </div>
+              <div class="ts-cta-action"><a class="ts-button is-dark is-large" href="contact.html">포장 솔루션 문의하기</a></div>
             </div>
           </div>
         </section>`;
