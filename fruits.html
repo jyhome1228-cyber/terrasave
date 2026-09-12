@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="TerraSave Fruit Database — 과일별 저장·유통·후숙·에틸렌 특성을 공개 가능한 범위에서 탐색합니다." />
+  <meta name="description" content="TerraSave Fruit Database — 18개 과일의 저장·유통·후숙·에틸렌 특성과 주요 보호 포인트를 탐색합니다." />
   <meta name="theme-color" content="#ffffff" />
-  <title>Fruits — TerraSave</title>
+  <title>Fruit Database — TerraSave</title>
   <link rel="stylesheet" href="assets/css/styles.css" />
   <link rel="stylesheet" href="assets/css/redesign.css" />
 </head>
@@ -13,13 +13,7 @@
   <header class="site-header" id="siteHeader">
     <div class="ts-shell header-inner">
       <a class="brand" href="index.html" aria-label="TerraSave Home">TerraSave</a>
-      <nav class="nav" id="siteNav" aria-label="Primary navigation">
-        <a href="fruits.html" aria-current="page">Fruits</a>
-        <a href="product.html">Net System</a>
-        <a href="technology.html">Technology</a>
-        <a href="what-we-do.html">Research</a>
-        <a href="about.html">About</a>
-      </nav>
+      <nav class="nav" id="siteNav" aria-label="Primary navigation"></nav>
       <a class="ts-button header-cta" href="contact.html">Request a solution</a>
       <button class="menu-toggle" id="menuToggle" type="button" aria-label="메뉴 열기" aria-expanded="false"></button>
     </div>
@@ -28,13 +22,23 @@
   <main>
     <section class="ts-page-hero">
       <div class="ts-shell">
-        <div class="ts-breadcrumb">Home / Fruits</div>
+        <div class="ts-breadcrumb"><a href="index.html">Home</a> / Fruit Database</div>
         <div class="ts-section-head" style="margin-bottom:0">
-          <span class="ts-kicker">Fruit Database / 18 items</span>
+          <span class="ts-kicker">Fruit Database / 18 profiles</span>
           <div>
-            <h1 class="ts-h1">Fruit intelligence,<br />organized by fruit.</h1>
-            <p class="ts-body-lg ts-section-copy">현재 확보된 18개 품목의 저장·유통·후숙·에틸렌 데이터를 과일별로 정리합니다. 상세 페이지에서는 공개 가능한 관리 지표와 TerraSave의 보호 방향만 제공합니다.</p>
+            <h1 class="ts-h1">Different fruit.<br />Different protection logic.</h1>
+            <p class="ts-body-lg ts-section-copy">18개 품목의 저장온도, 상대습도, 후숙 특성, 에틸렌 민감도와 주요 품질 리스크를 공개 가능한 범위에서 정리합니다. 과일을 선택하면 관리 지표와 TerraSave의 보호 방향을 함께 확인할 수 있습니다.</p>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ts-section is-compact">
+      <div class="ts-shell">
+        <div class="ts-evidence-grid">
+          <div class="ts-evidence-block"><span class="ts-kicker">Profiles</span><strong>18</strong><p>후숙형·비후숙형을 포함한 주요 과일 프로필.</p></div>
+          <div class="ts-evidence-block"><span class="ts-kicker">Core indicators</span><strong>6</strong><p>후숙, 저장, 습도, 에틸렌, 우선순위, 주요 리스크.</p></div>
+          <div class="ts-evidence-block"><span class="ts-kicker">Purpose</span><strong>PoC</strong><p>제품 판매 규격이 아니라 적용 검토를 위한 데이터 출발점.</p></div>
         </div>
       </div>
     </section>
@@ -51,6 +55,29 @@
           <span class="ts-fruit-count" id="fruitCount">18 items</span>
         </div>
         <div class="ts-fruit-grid" id="fruitGrid" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section class="ts-section is-soft">
+      <div class="ts-shell">
+        <div class="ts-section-head">
+          <span class="ts-kicker">How to read</span>
+          <div><h2 class="ts-h2">숫자 하나보다<br />조건의 조합을 봅니다.</h2><p class="ts-body ts-section-copy">저장온도나 에틸렌 등 하나의 지표만으로 포장 방향을 결정하지 않습니다. 품종, 숙도, 저장기간, 물류환경과 현재 포장 방식까지 함께 봐야 실제 적용성이 생깁니다.</p></div>
+        </div>
+        <div class="ts-approach-grid">
+          <article class="ts-approach"><span class="ts-kicker">01 / Storage</span><div><h3 class="ts-h3">온도·습도</h3><p>품질 유지의 기본 조건과 저온장해·수분손실 위험을 함께 봅니다.</p></div></article>
+          <article class="ts-approach"><span class="ts-kicker">02 / Ripening</span><div><h3 class="ts-h3">후숙·에틸렌</h3><p>생성 수준과 외부 에틸렌 민감도를 분리해 해석합니다.</p></div></article>
+          <article class="ts-approach"><span class="ts-kicker">03 / Distribution</span><div><h3 class="ts-h3">유통 리스크</h3><p>충격, 연화, 결로, 곰팡이 등 실제 손상 요인을 적용 방향과 연결합니다.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="ts-section">
+      <div class="ts-shell">
+        <div class="ts-cta">
+          <div class="ts-cta-copy"><span class="ts-kicker">Application study</span><h2 class="ts-h2">찾는 품목이 있거나<br />현재 포장 개선이 필요하신가요?</h2><p class="ts-body ts-section-copy">현재 사용하는 포장 방식과 유통 조건을 알려주시면 과일 데이터와 보호 목적을 기준으로 검토 방향을 정리합니다.</p></div>
+          <div class="ts-cta-action"><a class="ts-button is-dark is-large" href="contact.html">Request a solution</a></div>
+        </div>
       </div>
     </section>
   </main>
@@ -77,8 +104,14 @@
           <a class="ts-fruit-card" href="fruit.html?fruit=${item.slug}">
             <div class="ts-fruit-visual"><div class="ts-fruit-shape shape-${item.shape || 'round'}"></div></div>
             <div class="ts-fruit-meta">
-              <div class="ts-fruit-name"><strong>${item.en}</strong><span>${item.ko}</span></div>
-              <span class="ts-fruit-tag">${item.focus}</span>
+              <div class="ts-fruit-meta-top">
+                <div class="ts-fruit-name"><strong>${item.en}</strong><span>${item.ko}</span></div>
+                <span class="ts-fruit-tag">${item.focus}</span>
+              </div>
+              <div class="ts-fruit-data">
+                <span>Storage<strong>${item.storage}</strong></span>
+                <span>Ethylene<strong>${item.ethylene}</strong></span>
+              </div>
             </div>
           </a>`).join('');
       };
