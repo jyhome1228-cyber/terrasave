@@ -8,6 +8,36 @@
   <title>TerraSave — Fruit Protection Intelligence</title>
   <link rel="stylesheet" href="assets/css/styles.css" />
   <link rel="stylesheet" href="assets/css/redesign.css" />
+  <style>
+    .ts-home-hero{
+      padding:24px 0 48px!important;
+    }
+    .ts-home-hero .ts-shell{
+      display:block!important;
+    }
+    .ts-home-hero-image{
+      width:100%;
+      aspect-ratio:2 / 1;
+      border-radius:16px;
+      overflow:hidden;
+      background:#f4f4f0;
+    }
+    .ts-home-hero-image img{
+      width:100%;
+      height:100%;
+      display:block;
+      object-fit:cover;
+      object-position:center center;
+    }
+    @media(max-width:767px){
+      .ts-home-hero{
+        padding:16px 0 32px!important;
+      }
+      .ts-home-hero-image{
+        border-radius:12px;
+      }
+    }
+  </style>
 </head>
 <body>
   <header class="site-header" id="siteHeader">
@@ -26,48 +56,10 @@
   </header>
 
   <main>
-    <section class="ts-home-hero">
+    <section class="ts-home-hero" aria-label="TerraSave hero image">
       <div class="ts-shell">
-        <div class="ts-hero-top">
-          <span class="ts-kicker">Fruit Protection Intelligence / Terracle</span>
-          <p class="ts-hero-note">과일을 먼저 이해하고, 필요한 보호 조건과 적용 방향을 설계합니다.</p>
-        </div>
-
-        <div class="ts-hero-stage">
-          <div class="ts-hero-copy">
-            <span class="ts-kicker">TerraSave Fruit Protection System</span>
-            <h1 class="ts-display">Freshness begins<br />with understanding<br />the fruit.</h1>
-            <p class="ts-body-lg">과일마다 크기와 표면, 후숙 속도, 수분 손실과 에틸렌 반응이 다릅니다. TerraSave는 품목별 데이터를 기준으로 물리적 보호와 저장환경 관리가 필요한 지점을 찾고, 과일에 맞는 보호 패키징 방향을 제안합니다.</p>
-            <div class="ts-hero-actions">
-              <a class="ts-button is-dark is-large" href="fruits.html">Explore fruit database</a>
-              <a class="ts-button is-large" href="product.html">View net system</a>
-            </div>
-          </div>
-
-          <div class="ts-hero-panel" aria-label="TerraSave fruit protection concept">
-            <div class="ts-hero-panel-head">
-              <div>
-                <span class="ts-kicker">Protection layer</span>
-                <p class="ts-hero-panel-label">Fruit Foam Net × Functional Material Study</p>
-              </div>
-              <span class="ts-caption">01 / SYSTEM</span>
-            </div>
-            <div class="ts-hero-fruit" aria-hidden="true">
-              <div class="ts-fruit-core"></div>
-              <div class="ts-net-layer"></div>
-            </div>
-            <div class="ts-hero-panel-data">
-              <div class="ts-mini-stat"><strong>Shape</strong><span>과일별 형상과 접촉면</span></div>
-              <div class="ts-mini-stat"><strong>Risk</strong><span>연화·수분·충격·부패</span></div>
-              <div class="ts-mini-stat"><strong>Route</strong><span>저장·수송·판매 환경</span></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="ts-hero-foot" aria-label="TerraSave research database summary">
-          <div class="ts-stat"><strong>18</strong><span>Fruit profiles</span></div>
-          <div class="ts-stat"><strong>24</strong><span>Packaging studies</span></div>
-          <div class="ts-stat"><strong>43+</strong><span>Research references</span></div>
+        <div class="ts-home-hero-image">
+          <img src="https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20260913-013602-414-1007a215.webp" alt="과일 보호망을 적용한 아보카도" />
         </div>
       </div>
     </section>
