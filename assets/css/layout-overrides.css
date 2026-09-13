@@ -142,6 +142,35 @@
   margin-top:40px;
 }
 
+/* Product page typography: use the same hierarchy as all other subpages */
+.ts-net-hero{
+  padding:72px 0 64px!important;
+}
+
+.ts-net-hero>.ts-shell>.ts-display{
+  max-width:820px!important;
+  font-size:clamp(32px,3.5vw,40px)!important;
+  font-weight:700!important;
+  line-height:1.22!important;
+  letter-spacing:-.04em!important;
+}
+
+.ts-net-intro{
+  margin-top:48px!important;
+}
+
+.ts-net-intro-copy .ts-kicker{
+  font-size:12px!important;
+  line-height:1.4!important;
+  font-weight:600!important;
+}
+
+.ts-net-intro-copy .ts-body-lg{
+  font-size:18px!important;
+  line-height:1.65!important;
+  font-weight:400!important;
+}
+
 /* Section headings: label → heading → description */
 .ts-section-head{
   display:block!important;
@@ -287,6 +316,19 @@
 
   .ts-product-shot-media{
     border-radius:12px;
+  }
+
+  .ts-net-hero{
+    padding:48px 0!important;
+  }
+
+  .ts-net-hero>.ts-shell>.ts-display{
+    font-size:32px!important;
+    line-height:1.22!important;
+  }
+
+  .ts-net-intro{
+    margin-top:32px!important;
   }
 
   .ts-section-head{
