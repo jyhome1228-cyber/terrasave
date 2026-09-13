@@ -7,16 +7,30 @@
 
 .ts-home-hero>.ts-shell{
   display:block!important;
-  aspect-ratio:3 / 2;
-  background-image:url('https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20260913-013602-414-1007a215.webp')!important;
-  background-position:center center!important;
-  background-repeat:no-repeat!important;
-  background-size:cover!important;
-  overflow:hidden;
+  aspect-ratio:auto!important;
+  background:none!important;
+  overflow:visible!important;
 }
 
 .ts-home-hero>.ts-shell>*{
-  display:none!important;
+  display:block!important;
+}
+
+.ts-home-hero-image{
+  width:100%!important;
+  overflow:hidden!important;
+  border-radius:16px!important;
+  background:#f4f4f0!important;
+}
+
+.ts-home-hero-image img{
+  display:block!important;
+  width:100%!important;
+  height:auto!important;
+  aspect-ratio:2 / 1!important;
+  object-fit:cover!important;
+  object-position:center center!important;
+  border-radius:16px!important;
 }
 
 /* Section headings: label → heading → description */
@@ -123,8 +137,9 @@
     padding:16px 0 48px!important;
   }
 
-  .ts-home-hero>.ts-shell{
-    aspect-ratio:3 / 2;
+  .ts-home-hero-image,
+  .ts-home-hero-image img{
+    border-radius:12px!important;
   }
 
   .ts-section-head{
