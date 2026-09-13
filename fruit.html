@@ -8,6 +8,19 @@
   <title>Fruit Profile — TerraSave</title>
   <link rel="stylesheet" href="assets/css/styles.css" />
   <link rel="stylesheet" href="assets/css/redesign.css" />
+  <style>
+    .ts-detail-copy{padding-left:32px!important}
+    .ts-detail-lead{max-width:720px!important;text-wrap:pretty}
+    .ts-detail-lead .ts-lead-sentence{display:block}
+    .ts-detail-lead .ts-lead-sentence + .ts-lead-sentence{margin-top:4px}
+    @media(max-width:767px){
+      .ts-detail-copy{padding-left:0!important}
+      .ts-detail-lead{max-width:none!important}
+      .ts-detail-lead .ts-lead-sentence{display:inline}
+      .ts-detail-lead .ts-lead-sentence + .ts-lead-sentence{margin-top:0}
+      .ts-detail-lead .ts-lead-sentence + .ts-lead-sentence::before{content:' '}
+    }
+  </style>
 </head>
 <body>
   <header class="site-header" id="siteHeader">
@@ -36,6 +49,11 @@
       if (!fruit || !root) return;
 
       const breakHeading = (text='') => text.replace(/([,.!?])\s+/g, '$1<br />');
+      const formatLead = (text='') => text
+        .split(/(?<=\.)\s+/)
+        .filter(Boolean)
+        .map(sentence => `<span class="ts-lead-sentence">${sentence}</span>`)
+        .join('');
       const plainStorage = (text='') => text
         .replaceAll('미숙과', '덜 익은 상태')
         .replaceAll('완숙과', '먹기 좋은 상태')
@@ -81,7 +99,7 @@
               <div class="ts-detail-copy">
                 <div class="ts-kicker">과일 포장 가이드 / ${fruit.ko}</div>
                 <h1 class="ts-h1">${fruit.ko}</h1>
-                <p class="ts-detail-lead">${fruit.intro || fruit.summary}</p>
+                <p class="ts-detail-lead">${formatLead(fruit.intro || fruit.summary)}</p>
                 <p style="margin:28px 0 0"><a class="ts-button is-dark" href="contact.html">${fruit.ko} 포장 상담하기</a></p>
               </div>
             </div>
