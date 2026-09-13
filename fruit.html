@@ -63,27 +63,24 @@
         </article>`).join('');
 
       const media = fruit.imageWhole && fruit.imageCut ? `
-        <div class="ts-detail-image-pair" aria-label="${fruit.ko} 원물과 단면 이미지">
+        <div class="ts-detail-image-pair" aria-label="${fruit.ko} 이미지">
           <figure class="ts-detail-fruit-photo">
-            <img src="${fruit.imageWhole}" alt="${fruit.ko} 원물" />
-            <figcaption>원물</figcaption>
+            <img src="${fruit.imageWhole}" alt="${fruit.ko} 이미지" />
           </figure>
           <figure class="ts-detail-fruit-photo">
-            <img src="${fruit.imageCut}" alt="${fruit.ko} 단면" />
-            <figcaption>단면</figcaption>
+            <img src="${fruit.imageCut}" alt="${fruit.ko} 이미지" />
           </figure>
         </div>` : `
-        <div class="ts-detail-image" aria-label="${fruit.ko} profile visual"><div class="ts-fruit-shape shape-${fruit.shape || 'round'}"></div></div>`;
+        <div class="ts-detail-image" aria-label="${fruit.ko} 이미지"><div class="ts-fruit-shape shape-${fruit.shape || 'round'}"></div></div>`;
 
       root.innerHTML = `
         <section class="ts-page-hero">
           <div class="ts-shell">
-            <div class="ts-breadcrumb"><a href="index.html">Home</a> / <a href="fruits.html">Fruit Database</a> / ${fruit.en}</div>
             <div class="ts-detail-hero">
               ${media}
               <div class="ts-detail-copy">
-                <div class="ts-kicker">Fruit Profile / ${fruit.ko}</div>
-                <h1 class="ts-h1">${fruit.en}</h1>
+                <div class="ts-kicker">과일 포장 가이드 / ${fruit.ko}</div>
+                <h1 class="ts-h1">${fruit.ko}</h1>
                 <p class="ts-detail-lead">${fruit.intro || fruit.summary}</p>
                 <p style="margin:28px 0 0"><a class="ts-button is-dark" href="contact.html">${fruit.ko} 포장 상담하기</a></p>
               </div>
@@ -107,7 +104,7 @@
         <section class="ts-section">
           <div class="ts-shell">
             <div class="ts-section-head">
-              <span class="ts-kicker">Fruit characteristics / 쉽게 보기</span>
+              <span class="ts-kicker">이 과일은 어떤 특징이 있나요?</span>
               <div>
                 <h2 class="ts-h2">${breakHeading(fruit.easyHeadline)}</h2>
                 <p class="ts-body ts-section-copy">같은 과일이라도 숙도와 유통 기간에 따라 상태가 달라집니다. 포장재를 고르기 전에 이 과일이 이동 중 어떻게 변하는지부터 이해하는 것이 중요합니다.</p>
@@ -120,7 +117,7 @@
         <section class="ts-section is-soft">
           <div class="ts-shell">
             <div class="ts-section-head">
-              <span class="ts-kicker">Packaging guide</span>
+              <span class="ts-kicker">포장할 때 무엇을 먼저 볼까요?</span>
               <div>
                 <h2 class="ts-h2">이 과일에서 먼저 볼 문제,<br />포장 방향은 여기서 정해집니다.</h2>
                 <p class="ts-body ts-section-copy">보관 온도 숫자만 보고 포장 사양을 정하지 않습니다. 현재 숙도, 유통 거리와 기간, 기존 포장 방식까지 함께 보고 어떤 보호가 실제로 필요한지 정합니다.</p>
@@ -138,7 +135,7 @@
         <section class="ts-section">
           <div class="ts-shell">
             <div class="ts-section-head">
-              <span class="ts-kicker">TerraSave Approach</span>
+              <span class="ts-kicker">테라세이브는 이렇게 검토합니다</span>
               <div>
                 <h2 class="ts-h2">필요한 기능은 설명합니다,<br />핵심 기술은 보호합니다.</h2>
                 <p class="ts-body ts-section-copy">고객이 포장을 검토하는 데 필요한 역할과 방향은 쉽게 설명합니다. 다만 소재의 정확한 조성, 배합비, 제조 공정처럼 그대로 복제할 수 있는 기술 정보는 공개하지 않습니다.</p>
@@ -153,7 +150,7 @@
           <div class="ts-shell">
             <div class="ts-cta">
               <div class="ts-cta-copy">
-                <span class="ts-kicker">Next profile</span>
+                <span class="ts-kicker">다른 과일 보기</span>
                 <h2 class="ts-h2">다른 과일도,<br />같은 기준으로 비교해보세요.</h2>
                 <p class="ts-body ts-section-copy"><a class="ts-link" href="fruit.html?fruit=${previous.slug}">← ${previous.ko}</a>&nbsp;&nbsp;&nbsp;<a class="ts-link" href="fruit.html?fruit=${next.slug}">${next.ko} →</a></p>
               </div>
