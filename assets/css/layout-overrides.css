@@ -142,6 +142,99 @@
   margin-top:40px;
 }
 
+/* Real fruit cards: whole fruit by default, cut surface on hover */
+.ts-fruit-card .ts-fruit-visual{
+  position:relative!important;
+  background:#fff!important;
+  overflow:hidden!important;
+}
+
+.ts-fruit-card .ts-fruit-shape{
+  display:none!important;
+}
+
+.ts-fruit-card .ts-fruit-visual::before,
+.ts-fruit-card .ts-fruit-visual::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  background-repeat:no-repeat;
+  background-position:center;
+  background-size:cover;
+  transition:opacity .24s ease, transform .3s ease;
+}
+
+.ts-fruit-card .ts-fruit-visual::before{opacity:1}
+.ts-fruit-card .ts-fruit-visual::after{opacity:0}
+.ts-fruit-card:hover .ts-fruit-visual::before{opacity:0;transform:scale(1.015)}
+.ts-fruit-card:hover .ts-fruit-visual::after{opacity:1;transform:scale(1.015)}
+
+.ts-fruit-card[href*="fruit=blueberry"] .ts-fruit-visual::before{background-image:url('https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20260913-031519-01-d433912b.webp')}
+.ts-fruit-card[href*="fruit=blueberry"] .ts-fruit-visual::after{background-image:url('https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20260913-031519-02-1e557965.webp')}
+.ts-fruit-card[href*="fruit=avocado"] .ts-fruit-visual::before{background-image:url('https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20260913-031520-03-77e29826.webp')}
+.ts-fruit-card[href*="fruit=avocado"] .ts-fruit-visual::after{background-image:url('https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20260913-031520-04-5238aadc.webp')}
+.ts-fruit-card[href*="fruit=cherry"] .ts-fruit-visual::before{background-image:url('https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20260913-031521-05-a1c3cb59.webp')}
+.ts-fruit-card[href*="fruit=cherry"] .ts-fruit-visual::after{background-image:url('https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20260913-031522-06-fe4a373e.webp')}
+.ts-fruit-card[href*="fruit=asian-pear"] .ts-fruit-visual::before{background-image:url('https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20260913-031522-07-864f700c.webp')}
+.ts-fruit-card[href*="fruit=asian-pear"] .ts-fruit-visual::after{background-image:url('https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20260913-031523-08-e4ff83fe.webp')}
+.ts-fruit-card[href*="fruit=apple"] .ts-fruit-visual::before{background-image:url('https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20260913-031523-09-6915d149.webp')}
+.ts-fruit-card[href*="fruit=apple"] .ts-fruit-visual::after{background-image:url('https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20260913-031524-10-833b7267.webp')}
+.ts-fruit-card[href*="fruit=pomegranate"] .ts-fruit-visual::before{background-image:url('https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20260913-031524-11-e8312cf9.webp')}
+.ts-fruit-card[href*="fruit=pomegranate"] .ts-fruit-visual::after{background-image:url('https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20260913-031525-12-5a474f1b.webp')}
+.ts-fruit-card[href*="fruit=kiwi"] .ts-fruit-visual::before{background-image:url('https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20260913-031526-13-5bcb2b5b.webp')}
+.ts-fruit-card[href*="fruit=kiwi"] .ts-fruit-visual::after{background-image:url('https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20260913-031526-14-e1722b4d.webp')}
+.ts-fruit-card[href*="fruit=shine-muscat"] .ts-fruit-visual::before{background-image:url('https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20260913-031527-15-7e86a957.webp')}
+.ts-fruit-card[href*="fruit=shine-muscat"] .ts-fruit-visual::after{background-image:url('https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20260913-031527-16-76ce41d8.webp')}
+.ts-fruit-card[href*="fruit=mango"] .ts-fruit-visual::before{background-image:url('https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20260913-031528-17-554a81d6.webp')}
+.ts-fruit-card[href*="fruit=mango"] .ts-fruit-visual::after{background-image:url('https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20260913-031528-18-c2666f75.webp')}
+.ts-fruit-card[href*="fruit=mandarin"] .ts-fruit-visual::before{background-image:url('https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20260913-031528-19-87aca346.webp')}
+.ts-fruit-card[href*="fruit=mandarin"] .ts-fruit-visual::after{background-image:url('https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20260913-031529-20-b4c7223a.webp')}
+.ts-fruit-card[href*="fruit=banana"] .ts-fruit-visual::before{background-image:url('https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20260913-031557-21-724806c4.webp')}
+.ts-fruit-card[href*="fruit=banana"] .ts-fruit-visual::after{background-image:url('https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20260913-031557-22-024b91db.webp')}
+.ts-fruit-card[href*="fruit=persimmon"] .ts-fruit-visual::before{background-image:url('https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20260913-031558-23-1ac6bbb1.webp')}
+.ts-fruit-card[href*="fruit=persimmon"] .ts-fruit-visual::after{background-image:url('https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20260913-031558-24-4d15c4f7.webp')}
+.ts-fruit-card[href*="fruit=table-grape"] .ts-fruit-visual::before{background-image:url('https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20260913-031559-25-5cc8171e.webp')}
+.ts-fruit-card[href*="fruit=table-grape"] .ts-fruit-visual::after{background-image:url('https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20260913-031600-26-12f8e3e3.webp')}
+.ts-fruit-card[href*="fruit=peach"] .ts-fruit-visual::before{background-image:url('https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20260913-031600-27-1f90792a.webp')}
+.ts-fruit-card[href*="fruit=peach"] .ts-fruit-visual::after{background-image:url('https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20260913-031600-28-bc7bd0f6.webp')}
+.ts-fruit-card[href*="fruit=plum"] .ts-fruit-visual::before{background-image:url('https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20260913-031601-29-74a827a1.webp')}
+.ts-fruit-card[href*="fruit=plum"] .ts-fruit-visual::after{background-image:url('https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20260913-031602-30-dbe7030e.webp')}
+.ts-fruit-card[href*="fruit=pineapple"] .ts-fruit-visual::before{background-image:url('https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20260913-031602-31-bb93a75b.webp')}
+.ts-fruit-card[href*="fruit=pineapple"] .ts-fruit-visual::after{background-image:url('https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20260913-031603-32-b685febb.webp')}
+.ts-fruit-card[href*="fruit=nectarine"] .ts-fruit-visual::before{background-image:url('https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20260913-031603-33-3547da73.webp')}
+.ts-fruit-card[href*="fruit=nectarine"] .ts-fruit-visual::after{background-image:url('https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20260913-031604-34-e0589f75.webp')}
+.ts-fruit-card[href*="fruit=strawberry"] .ts-fruit-visual::before{background-image:url('https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20260913-031604-35-3b6c96e3.webp')}
+.ts-fruit-card[href*="fruit=strawberry"] .ts-fruit-visual::after{background-image:url('https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20260913-031604-36-c2ace151.webp')}
+
+/* Fruit detail: show whole fruit and cut surface as separate images */
+.ts-detail-image-pair{
+  grid-column:1/span 6;
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:12px;
+  align-items:start;
+}
+
+.ts-detail-fruit-photo{
+  margin:0;
+  min-width:0;
+}
+
+.ts-detail-fruit-photo img{
+  width:100%;
+  aspect-ratio:1 / 1;
+  object-fit:cover;
+  border-radius:14px;
+  background:#fff;
+  border:1px solid #ededE8;
+}
+
+.ts-detail-fruit-photo figcaption{
+  margin-top:10px;
+  font-size:12px;
+  color:#70706a;
+}
+
 /* Product page typography: use the same hierarchy as all other subpages */
 .ts-net-hero{
   padding:72px 0 64px!important;
@@ -329,6 +422,15 @@
 
   .ts-net-intro{
     margin-top:32px!important;
+  }
+
+  .ts-detail-image-pair{
+    grid-column:1;
+    gap:8px;
+  }
+
+  .ts-detail-fruit-photo img{
+    border-radius:12px;
   }
 
   .ts-section-head{
