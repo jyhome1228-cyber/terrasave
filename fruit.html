@@ -23,6 +23,7 @@
 
   <footer class="footer"></footer>
   <script src="assets/js/fruits.js"></script>
+  <script src="assets/js/fruit-images.js"></script>
   <script src="assets/js/main.js"></script>
   <script>
     (function(){
@@ -41,7 +42,7 @@
         .replaceAll('녹숙과', '초록색 상태')
         .replaceAll('부분후숙', '덜 익은 상태');
 
-      document.title = `${fruit.en} — TerraSave Fruit Profile`;
+      document.title = `${fruit.ko} 보관·포장 가이드 — TerraSave`;
       const previous = data[(fruitIndex - 1 + data.length) % data.length];
       const next = data[(fruitIndex + 1) % data.length];
 
@@ -61,12 +62,25 @@
           </div>
         </article>`).join('');
 
+      const media = fruit.imageWhole && fruit.imageCut ? `
+        <div class="ts-detail-image-pair" aria-label="${fruit.ko} 원물과 단면 이미지">
+          <figure class="ts-detail-fruit-photo">
+            <img src="${fruit.imageWhole}" alt="${fruit.ko} 원물" />
+            <figcaption>원물</figcaption>
+          </figure>
+          <figure class="ts-detail-fruit-photo">
+            <img src="${fruit.imageCut}" alt="${fruit.ko} 단면" />
+            <figcaption>단면</figcaption>
+          </figure>
+        </div>` : `
+        <div class="ts-detail-image" aria-label="${fruit.ko} profile visual"><div class="ts-fruit-shape shape-${fruit.shape || 'round'}"></div></div>`;
+
       root.innerHTML = `
         <section class="ts-page-hero">
           <div class="ts-shell">
             <div class="ts-breadcrumb"><a href="index.html">Home</a> / <a href="fruits.html">Fruit Database</a> / ${fruit.en}</div>
             <div class="ts-detail-hero">
-              <div class="ts-detail-image" aria-label="${fruit.ko} profile visual"><div class="ts-fruit-shape shape-${fruit.shape || 'round'}"></div></div>
+              ${media}
               <div class="ts-detail-copy">
                 <div class="ts-kicker">Fruit Profile / ${fruit.ko}</div>
                 <h1 class="ts-h1">${fruit.en}</h1>
