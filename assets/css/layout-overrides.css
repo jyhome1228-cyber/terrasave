@@ -1,5 +1,24 @@
 /* TerraSave layout refinement — single-column reading flow */
 
+/* Homepage hero: image only, aligned to the same shell as the header */
+.ts-home-hero{
+  padding:24px 0 64px!important;
+}
+
+.ts-home-hero>.ts-shell{
+  display:block!important;
+  aspect-ratio:3 / 2;
+  background-image:url('https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20260913-013602-414-1007a215.webp')!important;
+  background-position:center center!important;
+  background-repeat:no-repeat!important;
+  background-size:cover!important;
+  overflow:hidden;
+}
+
+.ts-home-hero>.ts-shell>*{
+  display:none!important;
+}
+
 /* Section headings: label → heading → description */
 .ts-section-head{
   display:block!important;
@@ -100,6 +119,14 @@
 }
 
 @media(max-width:767px){
+  .ts-home-hero{
+    padding:16px 0 48px!important;
+  }
+
+  .ts-home-hero>.ts-shell{
+    aspect-ratio:3 / 2;
+  }
+
   .ts-section-head{
     margin-bottom:32px!important;
   }
