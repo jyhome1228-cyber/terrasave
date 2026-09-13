@@ -8,6 +8,44 @@
   <title>소개 — TerraSave</title>
   <link rel="stylesheet" href="assets/css/styles.css" />
   <link rel="stylesheet" href="assets/css/redesign.css" />
+  <style>
+    .ts-about-visual{
+      margin:48px 0 0;
+      width:100%;
+      overflow:hidden;
+      border-radius:16px;
+      background:#f4f4f0;
+    }
+    .ts-about-visual img{
+      display:block;
+      width:100%;
+      aspect-ratio:16 / 9;
+      object-fit:cover;
+      object-position:center;
+    }
+    .ts-about-visual.is-pattern img{
+      aspect-ratio:2 / 1;
+    }
+    .ts-about-visual.is-kiwi img{
+      object-position:center 48%;
+    }
+    .ts-about-divider-visual{
+      margin-top:48px;
+    }
+    @media(max-width:767px){
+      .ts-about-visual{
+        margin-top:32px;
+        border-radius:12px;
+      }
+      .ts-about-visual img,
+      .ts-about-visual.is-pattern img{
+        aspect-ratio:4 / 3;
+      }
+      .ts-about-divider-visual{
+        margin-top:32px;
+      }
+    }
+  </style>
 </head>
 <body>
   <header class="site-header" id="siteHeader">
@@ -30,6 +68,9 @@
             <p class="ts-body-lg ts-section-copy">같은 과일망을 모든 과일에 똑같이 적용하기보다, 과일의 크기와 표면, 익는 속도와 유통 중 문제를 먼저 확인하고 필요한 보호 방향을 찾습니다.</p>
           </div>
         </div>
+        <figure class="ts-about-visual is-pattern" aria-label="과일 보호망이 적용된 감 이미지">
+          <img src="https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20260913-015906-3f466a8c-d89f-412b-ab5c-62a1a2cbf138-ac756194.webp" alt="과일 보호망을 적용한 감과 단면 이미지" />
+        </figure>
       </div>
     </section>
 
@@ -57,6 +98,9 @@
           <article class="ts-step"><span class="ts-step-no">03</span><div class="ts-step-copy"><h3 class="ts-h3">과일망 적용</h3><p>과일 크기와 유통 환경에 맞는 보호망 방향을 검토합니다.</p></div></article>
           <article class="ts-step"><span class="ts-step-no">04</span><div class="ts-step-copy"><h3 class="ts-h3">기능성 보호 확장</h3><p>필요성이 확인된 경우에만 기능성 소재 적용을 시험합니다.</p></div></article>
         </div>
+        <figure class="ts-about-visual is-pattern is-kiwi ts-about-divider-visual" aria-label="과일 보호망이 적용된 키위 이미지">
+          <img src="https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20260913-015909-c5e72004-ccca-4a72-a6a3-e5e788d15b63-cc692055.webp" alt="과일 보호망을 적용한 키위와 단면 이미지" />
+        </figure>
       </div>
     </section>
 
