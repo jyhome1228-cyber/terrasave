@@ -60,6 +60,7 @@
 }
 
 .ts-media-frame{
+  margin:0!important;
   overflow:hidden!important;
   border-radius:16px!important;
   background:#f6f6f3!important;
@@ -68,6 +69,12 @@
 .ts-media-frame::before,
 .ts-media-frame::after{
   display:none!important;
+}
+
+.ts-net-visual.ts-media-frame{
+  min-height:0!important;
+  aspect-ratio:4 / 3!important;
+  display:block!important;
 }
 
 .ts-media-pair{
@@ -260,6 +267,10 @@
   .ts-media-wide.is-banner,
   .ts-media-wide.is-landscape{
     aspect-ratio:4 / 3;
+  }
+
+  .ts-net-visual.ts-media-frame{
+    aspect-ratio:4 / 3!important;
   }
 
   .ts-media-pair{
