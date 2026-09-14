@@ -8,8 +8,95 @@
   <title>Fruit Database — TerraSave</title>
   <link rel="stylesheet" href="assets/css/styles.css" />
   <link rel="stylesheet" href="assets/css/redesign.css" />
+  <style>
+    /* Fruit library page: go straight from the intro to the fruit list. */
+    .fruit-summary-placeholder{display:none!important}
+    .fruit-library-section{
+      padding-top:48px!important;
+      border-top:0!important;
+    }
+    .fruit-library-section .ts-fruit-toolbar{
+      margin-bottom:32px;
+    }
+    .fruit-library-section .ts-fruit-grid{
+      align-items:stretch;
+    }
+    .fruit-library-section .ts-fruit-card{
+      display:flex!important;
+      flex-direction:column;
+      gap:16px!important;
+      height:100%;
+      min-width:0;
+    }
+    .fruit-library-section .ts-fruit-visual{
+      width:100%;
+      aspect-ratio:1 / 1!important;
+      flex:none;
+    }
+    .fruit-library-section .ts-fruit-meta{
+      flex:1;
+      display:flex!important;
+      flex-direction:column;
+      gap:0!important;
+      min-height:164px;
+      padding-top:14px!important;
+      border-top:1px solid var(--line)!important;
+    }
+    .fruit-library-section .ts-fruit-meta-top{
+      display:grid!important;
+      grid-template-columns:minmax(0,1fr) minmax(112px,auto);
+      align-items:start;
+      gap:16px;
+      min-height:58px;
+    }
+    .fruit-library-section .ts-fruit-name{
+      min-width:0;
+      align-content:start;
+    }
+    .fruit-library-section .ts-fruit-tag{
+      max-width:160px;
+      min-height:36px;
+      text-align:right!important;
+      line-height:1.45;
+    }
+    .fruit-library-section .ts-fruit-data{
+      margin-top:auto;
+      padding-top:16px;
+      display:grid!important;
+      grid-template-columns:1fr 1fr!important;
+      gap:16px!important;
+      align-items:start;
+    }
+    .fruit-library-section .ts-fruit-data span{
+      min-width:0;
+    }
+    .fruit-library-section .ts-fruit-data strong{
+      line-height:1.45;
+      min-height:38px;
+    }
+    @media(max-width:767px){
+      .fruit-library-section{padding-top:32px!important}
+      .fruit-library-section .ts-fruit-meta{min-height:0}
+      .fruit-library-section .ts-fruit-meta-top{
+        grid-template-columns:1fr;
+        gap:6px;
+        min-height:82px;
+      }
+      .fruit-library-section .ts-fruit-tag{
+        max-width:none;
+        min-height:0;
+        text-align:left!important;
+      }
+      .fruit-library-section .ts-fruit-data{
+        grid-template-columns:1fr!important;
+        gap:10px!important;
+        padding-top:12px;
+      }
+      .fruit-library-section .ts-fruit-data strong{min-height:0}
+    }
+  </style>
 </head>
-<body>
+<body class="page-fruits">
   <header class="site-header" id="siteHeader">
     <div class="ts-shell header-inner">
       <a class="brand" href="index.html" aria-label="TerraSave Home">TerraSave</a>
@@ -33,17 +120,10 @@
       </div>
     </section>
 
-    <section class="ts-section is-compact">
-      <div class="ts-shell">
-        <div class="ts-evidence-grid">
-          <div class="ts-evidence-block"><span class="ts-kicker">Profiles</span><strong>18</strong><p>후숙형·비후숙형을 포함한 주요 과일 프로필.</p></div>
-          <div class="ts-evidence-block"><span class="ts-kicker">Core indicators</span><strong>6</strong><p>후숙, 저장, 습도, 에틸렌, 우선순위, 주요 리스크.</p></div>
-          <div class="ts-evidence-block"><span class="ts-kicker">Purpose</span><strong>PoC</strong><p>제품 판매 규격이 아니라 적용 검토를 위한 데이터 출발점.</p></div>
-        </div>
-      </div>
-    </section>
+    <!-- Keep an invisible structural placeholder so existing page-copy indexing remains stable. -->
+    <section class="ts-section is-compact fruit-summary-placeholder" aria-hidden="true"></section>
 
-    <section class="ts-section" style="border-top:0">
+    <section class="ts-section fruit-library-section">
       <div class="ts-shell">
         <div class="ts-fruit-toolbar">
           <div class="ts-pills" aria-label="Fruit database filters">
