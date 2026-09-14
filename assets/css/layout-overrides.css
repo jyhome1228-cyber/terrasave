@@ -363,6 +363,11 @@
   max-width:820px;
 }
 
+/* Breadcrumbs are intentionally omitted throughout the site */
+.ts-breadcrumb{
+  display:none!important;
+}
+
 @media(max-width:1023px){
   .ts-product-showcase{
     grid-template-columns:repeat(2,minmax(0,1fr));
