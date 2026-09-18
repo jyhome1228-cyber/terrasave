@@ -3,18 +3,13 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="TerraSave는 과일별 저장·후숙·유통 데이터를 바탕으로 Fruit Foam Net과 기능성 소재의 적용 방향을 연구하는 과일 보호 솔루션입니다." />
+  <meta name="description" content="TerraSave는 과일별 저장·후숙·유통 조건을 바탕으로 필요한 보호 방향을 연구하고 제안하는 과일 포장 솔루션입니다." />
   <meta name="theme-color" content="#ffffff" />
   <title>TerraSave — Fruit Protection Intelligence</title>
   <link rel="stylesheet" href="assets/css/styles.css" />
   <link rel="stylesheet" href="assets/css/redesign.css" />
   <style>
-    .ts-home-hero{
-      padding:24px 0 48px!important;
-    }
-    .ts-home-hero .ts-shell{
-      display:block!important;
-    }
+    .ts-home-hero{padding:24px 0 72px!important}
     .ts-home-hero-image{
       width:100%;
       aspect-ratio:2 / 1;
@@ -29,13 +24,200 @@
       object-fit:cover;
       object-position:center center;
     }
+    .ts-home-intro{
+      display:grid;
+      grid-template-columns:repeat(12,minmax(0,1fr));
+      column-gap:24px;
+      margin-top:44px;
+      align-items:end;
+    }
+    .ts-home-intro-copy{grid-column:1 / span 7}
+    .ts-home-intro-copy .ts-kicker{display:block;margin-bottom:18px}
+    .ts-home-title{
+      margin:0;
+      max-width:760px;
+      font-size:clamp(36px,4.8vw,72px);
+      line-height:1.04;
+      letter-spacing:-.055em;
+      font-weight:700;
+    }
+    .ts-home-intro-side{
+      grid-column:9 / -1;
+      display:grid;
+      gap:22px;
+      align-self:end;
+    }
+    .ts-home-intro-side p{
+      margin:0;
+      color:#5b625e;
+      line-height:1.72;
+      font-size:16px;
+    }
+    .ts-home-actions{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+
+    .ts-home-section{padding:88px 0!important}
+    .ts-home-section.is-soft{background:#f7f8f6}
+    .ts-home-head{
+      display:grid;
+      grid-template-columns:repeat(12,minmax(0,1fr));
+      column-gap:24px;
+      align-items:start;
+      margin-bottom:40px;
+    }
+    .ts-home-head>.ts-kicker{grid-column:1 / span 3}
+    .ts-home-head-copy{grid-column:4 / span 7}
+    .ts-home-head-copy .ts-h2{margin:0}
+    .ts-home-head-copy .ts-section-copy{margin-top:18px;max-width:680px}
+
+    .ts-home-fruit-top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
+      margin-bottom:28px;
+    }
+    .ts-home-fruit-note{
+      margin:0;
+      max-width:660px;
+      color:#626964;
+      line-height:1.7;
+    }
+    .ts-home-fruit-grid{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:16px;
+    }
+    .ts-home-fruit-grid .ts-fruit-card{min-width:0}
+
+    .ts-home-protection{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      border-top:1px solid rgba(20,32,26,.14);
+      border-bottom:1px solid rgba(20,32,26,.14);
+    }
+    .ts-home-protection article{
+      min-height:240px;
+      padding:28px 28px 32px;
+      border-right:1px solid rgba(20,32,26,.12);
+    }
+    .ts-home-protection article:last-child{border-right:0}
+    .ts-home-protection-no{
+      display:block;
+      margin-bottom:62px;
+      color:#7b827e;
+      font-size:12px;
+      letter-spacing:.04em;
+    }
+    .ts-home-protection h3{margin:0 0 12px;font-size:22px;letter-spacing:-.035em}
+    .ts-home-protection p{margin:0;color:#5b625e;line-height:1.7;font-size:15px}
+
+    .ts-home-system{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:16px;
+    }
+    .ts-home-system-card{
+      min-height:330px;
+      border:1px solid rgba(20,32,26,.12);
+      border-radius:16px;
+      padding:32px;
+      background:#fff;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+    }
+    .ts-home-system-card.is-dark{
+      background:#172019;
+      color:#fff;
+      border-color:#172019;
+    }
+    .ts-home-system-card .ts-kicker{display:block;margin-bottom:22px}
+    .ts-home-system-card.is-dark .ts-kicker{color:rgba(255,255,255,.62)}
+    .ts-home-system-card h3{
+      margin:0;
+      max-width:520px;
+      font-size:30px;
+      line-height:1.18;
+      letter-spacing:-.045em;
+    }
+    .ts-home-system-card p{
+      margin:18px 0 0;
+      max-width:560px;
+      color:#626964;
+      line-height:1.72;
+    }
+    .ts-home-system-card.is-dark p{color:rgba(255,255,255,.7)}
+    .ts-home-system-card.is-dark .ts-link{color:#fff;border-color:rgba(255,255,255,.55)}
+
+    .ts-home-research{
+      display:grid;
+      grid-template-columns:repeat(12,minmax(0,1fr));
+      column-gap:24px;
+      align-items:start;
+    }
+    .ts-home-research-main{grid-column:1 / span 7}
+    .ts-home-research-main .ts-h2{margin:0}
+    .ts-home-research-main p{
+      margin:20px 0 0;
+      max-width:720px;
+      color:#59605c;
+      line-height:1.74;
+    }
+    .ts-home-research-side{
+      grid-column:9 / -1;
+      border-top:1px solid rgba(20,32,26,.15);
+    }
+    .ts-home-research-row{
+      display:grid;
+      grid-template-columns:92px 1fr;
+      gap:20px;
+      padding:18px 0;
+      border-bottom:1px solid rgba(20,32,26,.12);
+    }
+    .ts-home-research-row span{font-size:12px;color:#7a817d}
+    .ts-home-research-row strong{font-size:15px;line-height:1.55}
+
+    .ts-home-cta{
+      display:grid;
+      grid-template-columns:repeat(12,minmax(0,1fr));
+      column-gap:24px;
+      align-items:end;
+      padding:8px 0;
+    }
+    .ts-home-cta-copy{grid-column:1 / span 8}
+    .ts-home-cta-copy .ts-h2{margin:12px 0 0}
+    .ts-home-cta-action{grid-column:10 / -1;text-align:right}
+
+    @media(max-width:1023px){
+      .ts-home-intro-copy{grid-column:1 / span 8}
+      .ts-home-intro-side{grid-column:9 / -1}
+      .ts-home-head>.ts-kicker{grid-column:1 / span 3}
+      .ts-home-head-copy{grid-column:4 / -1}
+      .ts-home-fruit-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+    }
+
     @media(max-width:767px){
-      .ts-home-hero{
-        padding:16px 0 32px!important;
-      }
-      .ts-home-hero-image{
-        border-radius:12px;
-      }
+      .ts-home-hero{padding:16px 0 48px!important}
+      .ts-home-hero-image{border-radius:12px;aspect-ratio:4 / 3}
+      .ts-home-intro{grid-template-columns:1fr;gap:24px;margin-top:30px}
+      .ts-home-intro-copy,.ts-home-intro-side{grid-column:1}
+      .ts-home-title{font-size:42px;line-height:1.08}
+      .ts-home-section{padding:64px 0!important}
+      .ts-home-head{grid-template-columns:1fr;gap:14px;margin-bottom:30px}
+      .ts-home-head>.ts-kicker,.ts-home-head-copy{grid-column:1}
+      .ts-home-fruit-top{align-items:flex-start;flex-direction:column}
+      .ts-home-fruit-grid{grid-template-columns:1fr}
+      .ts-home-protection{grid-template-columns:1fr}
+      .ts-home-protection article{min-height:0;border-right:0;border-bottom:1px solid rgba(20,32,26,.12);padding:24px 0}
+      .ts-home-protection article:last-child{border-bottom:0}
+      .ts-home-protection-no{margin-bottom:28px}
+      .ts-home-system{grid-template-columns:1fr}
+      .ts-home-system-card{min-height:280px;padding:26px}
+      .ts-home-research{grid-template-columns:1fr;gap:36px}
+      .ts-home-research-main,.ts-home-research-side{grid-column:1}
+      .ts-home-cta{grid-template-columns:1fr;gap:28px}
+      .ts-home-cta-copy,.ts-home-cta-action{grid-column:1}
+      .ts-home-cta-action{text-align:left}
     }
   </style>
 </head>
@@ -56,162 +238,137 @@
   </header>
 
   <main>
-    <section class="ts-home-hero" aria-label="TerraSave hero image">
+    <section class="ts-home-hero">
       <div class="ts-shell">
         <div class="ts-home-hero-image">
           <img src="https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20260913-013602-414-1007a215.webp" alt="과일 보호망을 적용한 아보카도" />
         </div>
-      </div>
-    </section>
 
-    <section class="ts-section is-soft">
-      <div class="ts-shell">
-        <div class="ts-section-head">
-          <span class="ts-kicker">Why fruit-specific</span>
-          <div>
-            <h2 class="ts-h2">같은 포장이라도<br />과일마다 필요한 보호는 다릅니다.</h2>
-            <p class="ts-body ts-section-copy">신선도 저하의 원인은 하나가 아닙니다. 어떤 과일은 에틸렌과 연화가 중요하고, 어떤 과일은 결로·곰팡이·수분 손실이나 물리적 충격이 더 큰 문제입니다.</p>
+        <div class="ts-home-intro">
+          <div class="ts-home-intro-copy">
+            <span class="ts-kicker">Fruit-specific protection</span>
+            <h1 class="ts-home-title">과일마다 다른 조건에 맞춰<br />필요한 보호만 설계합니다.</h1>
+          </div>
+          <div class="ts-home-intro-side">
+            <p>저장 온도, 후숙 속도, 수분과 충격까지. TerraSave는 과일의 실제 유통 조건을 먼저 보고 포장과 보호 방향을 제안합니다.</p>
+            <div class="ts-home-actions">
+              <a class="ts-button is-dark" href="fruits.html">과일별 보기</a>
+              <a class="ts-link" href="product.html">포장 기술 보기 ↗</a>
+            </div>
           </div>
         </div>
-        <div class="ts-intelligence-list" aria-label="Fruit protection examples">
-          <div class="ts-intelligence-row"><strong>Apple / 사과</strong><span class="ts-risk">Ethylene · Softening</span><span>0±1℃</span><span>Priority 5 / 5</span></div>
-          <div class="ts-intelligence-row"><strong>Strawberry / 딸기</strong><span class="ts-risk">Condensation · Mold</span><span>0±0.5℃</span><span>Priority 2 / 5</span></div>
-          <div class="ts-intelligence-row"><strong>Kiwifruit / 키위</strong><span class="ts-risk">Ethylene · Softening</span><span>약 0℃</span><span>Priority 5 / 5</span></div>
-          <div class="ts-intelligence-row"><strong>Shine Muscat / 샤인머스캣</strong><span class="ts-risk">Moisture · Botrytis</span><span>약 0℃</span><span>Priority 3 / 5</span></div>
-        </div>
       </div>
     </section>
 
-    <section class="ts-section">
+    <section class="ts-home-section is-soft">
       <div class="ts-shell">
-        <div class="ts-section-head">
+        <div class="ts-home-head">
           <span class="ts-kicker">Fruit Database</span>
-          <div>
-            <h2 class="ts-h2">18 fruits, organized<br />by storage and risk.</h2>
-            <p class="ts-body ts-section-copy">보관온도, 상대습도, 후숙 특성, 에틸렌 민감도와 주요 리스크를 한 화면에서 비교하고 필요한 보호 방향을 확인할 수 있습니다.</p>
+          <div class="ts-home-head-copy">
+            <h2 class="ts-h2">과일을 먼저 이해합니다.</h2>
+            <p class="ts-body ts-section-copy">같은 포장이라도 품목마다 필요한 보호는 다릅니다. 보관·후숙·에틸렌 특성과 주요 리스크를 과일 단위로 정리해 적용 방향을 검토합니다.</p>
           </div>
         </div>
 
-        <div class="ts-fruit-toolbar">
-          <div class="ts-pills" aria-label="Fruit categories">
-            <button class="ts-pill is-active" type="button" data-home-filter="all">All fruits</button>
-            <button class="ts-pill" type="button" data-home-filter="climacteric">Climacteric</button>
-            <button class="ts-pill" type="button" data-home-filter="high">High sensitivity</button>
-          </div>
-          <a class="ts-link" href="fruits.html">View all 18 fruits ↗</a>
+        <div class="ts-home-fruit-top">
+          <p class="ts-home-fruit-note">대표 품목만 먼저 보여드립니다. 전체 데이터와 세부 조건은 과일별 페이지에서 확인할 수 있습니다.</p>
+          <a class="ts-link" href="fruits.html">전체 과일 보기 ↗</a>
         </div>
-
-        <div class="ts-fruit-grid" id="homeFruitGrid" aria-live="polite"></div>
+        <div class="ts-home-fruit-grid" id="homeFruitGrid" aria-live="polite"></div>
       </div>
     </section>
 
-    <section class="ts-section is-soft">
+    <section class="ts-home-section">
       <div class="ts-shell">
-        <div class="ts-section-head">
-          <span class="ts-kicker">Freshness challenges</span>
-          <div>
-            <h2 class="ts-h2">문제를 먼저 분류해야<br />솔루션의 역할이 명확해집니다.</h2>
-            <p class="ts-body ts-section-copy">과일 이름만으로 솔루션을 결정하지 않습니다. 실제 유통 과정에서 어떤 변화가 품질 저하를 만드는지부터 나누어 봅니다.</p>
+        <div class="ts-home-head">
+          <span class="ts-kicker">Protection direction</span>
+          <div class="ts-home-head-copy">
+            <h2 class="ts-h2">문제에 맞춰 보호 방식을 나눕니다.</h2>
+            <p class="ts-body ts-section-copy">과일 이름만으로 솔루션을 정하지 않고, 실제 유통 중 무엇이 품질을 떨어뜨리는지를 먼저 봅니다.</p>
           </div>
         </div>
-        <div class="ts-challenge-grid">
-          <article class="ts-challenge"><span class="ts-challenge-no">01</span><div class="ts-challenge-copy"><h3 class="ts-h3">Ethylene & Ripening</h3><p>후숙 속도와 연화에 민감한 품목은 저장 단계와 판매 전 후숙 단계의 목적을 구분해 관리합니다.</p><span class="ts-challenge-fruits">Avocado · Apple · Kiwi · Banana · Mango</span></div></article>
-          <article class="ts-challenge"><span class="ts-challenge-no">02</span><div class="ts-challenge-copy"><h3 class="ts-h3">Moisture & Condensation</h3><p>수분 손실과 결로는 외관, 경도, 줄기 상태와 미생물 리스크에 직접 영향을 줄 수 있습니다.</p><span class="ts-challenge-fruits">Strawberry · Grape · Blueberry · Cherry</span></div></article>
-          <article class="ts-challenge"><span class="ts-challenge-no">03</span><div class="ts-challenge-copy"><h3 class="ts-h3">Impact & Surface Damage</h3><p>압박과 마찰에 민감한 품목은 접촉면과 형상, 적재와 수송 과정까지 포함해 물리적 보호를 검토합니다.</p><span class="ts-challenge-fruits">Pear · Peach · Nectarine · Persimmon</span></div></article>
-          <article class="ts-challenge"><span class="ts-challenge-no">04</span><div class="ts-challenge-copy"><h3 class="ts-h3">Decay & Storage Stress</h3><p>저온장해, 곰팡이, 과피 노화처럼 온도와 저장환경에 영향을 크게 받는 품목은 별도의 관리 논리가 필요합니다.</p><span class="ts-challenge-fruits">Mandarin · Pomegranate · Pineapple · Plum</span></div></article>
+
+        <div class="ts-home-protection">
+          <article>
+            <span class="ts-home-protection-no">01 / PHYSICAL</span>
+            <h3>충격과 접촉 보호</h3>
+            <p>적재와 수송 과정의 압박, 마찰, 표면 손상을 줄이기 위한 개별 보호 방향을 검토합니다.</p>
+          </article>
+          <article>
+            <span class="ts-home-protection-no">02 / ENVIRONMENT</span>
+            <h3>저장 환경 관리</h3>
+            <p>온도, 습도, 결로와 후숙 조건을 함께 살펴 과일이 놓이는 환경을 먼저 정의합니다.</p>
+          </article>
+          <article>
+            <span class="ts-home-protection-no">03 / FUNCTIONAL</span>
+            <h3>기능성 포장 연구</h3>
+            <p>필요한 품목에는 에틸렌과 수분 등 특정 문제를 고려한 기능성 소재 적용 가능성을 검토합니다.</p>
+          </article>
         </div>
       </div>
     </section>
 
-    <section class="ts-section">
+    <section class="ts-home-section is-soft">
       <div class="ts-shell">
-        <div class="ts-section-head">
-          <span class="ts-kicker">How it works</span>
-          <div>
-            <h2 class="ts-h2">Fruit → Data → Risk →<br />Protection Direction</h2>
-            <p class="ts-body ts-section-copy">제품을 먼저 정하고 과일을 끼워 맞추지 않습니다. 과일의 특성과 유통 조건을 먼저 정의한 뒤 필요한 보호 방향을 연결합니다.</p>
-          </div>
-        </div>
-
-        <div class="ts-process">
-          <article class="ts-step"><span class="ts-step-no">01 / FRUIT</span><div class="ts-step-copy"><h3 class="ts-h3">과일 선택</h3><p>품목, 품종, 크기, 표면 특성과 유통 목적을 확인합니다.</p></div></article>
-          <article class="ts-step"><span class="ts-step-no">02 / DATA</span><div class="ts-step-copy"><h3 class="ts-h3">데이터 분석</h3><p>저장온도, 습도, 후숙, 에틸렌과 문헌 시험조건을 검토합니다.</p></div></article>
-          <article class="ts-step"><span class="ts-step-no">03 / RISK</span><div class="ts-step-copy"><h3 class="ts-h3">보호 요구 정의</h3><p>충격, 연화, 수분, 결로, 저장 스트레스 등 우선 관리 요소를 분류합니다.</p></div></article>
-          <article class="ts-step"><span class="ts-step-no">04 / DIRECTION</span><div class="ts-step-copy"><h3 class="ts-h3">적용 방향 제안</h3><p>Fruit Foam Net과 기능성 소재 연구를 필요한 범위에서 연결합니다.</p></div></article>
-        </div>
-        <p class="ts-safety-note">홈페이지에는 기술의 목적과 적용 방향만 공개합니다. 소재 조성, 배합, 제조 공정, 세부 설계값처럼 복제 가능한 기술 정보는 공개 범위에서 제외합니다.</p>
-      </div>
-    </section>
-
-    <section class="ts-section is-soft">
-      <div class="ts-shell">
-        <div class="ts-section-head">
+        <div class="ts-home-head">
           <span class="ts-kicker">TerraSave System</span>
-          <div>
-            <h2 class="ts-h2">Physical protection first.<br />Functional protection next.</h2>
-            <p class="ts-body ts-section-copy">첫 번째 제품 축은 과일을 개별로 감싸는 Fruit Foam Net입니다. 이후 품목별 요구와 검증 범위에 따라 기능성 소재와 저장환경 관리 연구를 확장합니다.</p>
+          <div class="ts-home-head-copy">
+            <h2 class="ts-h2">보호망에서 기능성 포장까지.</h2>
+            <p class="ts-body ts-section-copy">기본은 과일을 직접 보호하는 물리적 포장입니다. 품목과 검증 범위에 따라 기능성 소재 연구를 필요한 만큼 확장합니다.</p>
           </div>
         </div>
-        <div class="ts-solution-layout">
-          <div class="ts-solution-primary">
-            <div><span class="ts-kicker">01 / Fruit Foam Net</span><h3 class="ts-h3" style="margin-top:16px">과일의 형상과 접촉 조건을 고려하는 개별 보호 레이어.</h3></div>
-            <div><a class="ts-link" href="product.html">Explore net system ↗</a></div>
+
+        <div class="ts-home-system">
+          <article class="ts-home-system-card">
+            <div>
+              <span class="ts-kicker">01 / Fruit Foam Net</span>
+              <h3>과일의 형상과 접촉 조건을 고려하는 개별 보호 레이어.</h3>
+              <p>크기, 표면, 적재 조건을 보고 필요한 완충 방향을 정리합니다.</p>
+            </div>
+            <div><a class="ts-link" href="product.html">Net System 보기 ↗</a></div>
+          </article>
+
+          <article class="ts-home-system-card is-dark">
+            <div>
+              <span class="ts-kicker">02 / TERRA Capture-E</span>
+              <h3>과일의 숙성에 영향을 주는 에틸렌 환경을 고려합니다.</h3>
+              <p>에틸렌 흡착 소재를 PET와 PE 포장에 적용하는 연구를 진행하며, 실제 성능은 확보된 시험 범위 안에서만 안내합니다.</p>
+            </div>
+            <div><a class="ts-link" href="product.html">기술 내용 보기 ↗</a></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="ts-home-section">
+      <div class="ts-shell">
+        <div class="ts-home-research">
+          <div class="ts-home-research-main">
+            <span class="ts-kicker">Research before claims</span>
+            <h2 class="ts-h2">근거를 먼저 확인하고,<br />확인된 범위만 말합니다.</h2>
+            <p>과일은 품종과 숙도, 온도와 포장 조건에 따라 결과가 달라집니다. TerraSave는 문헌과 테스트 조건을 함께 기록하고, 제품 성능과 일반적인 연구 결과를 구분해 설명합니다.</p>
+            <p><a class="ts-link" href="what-we-do.html">연구 방식 보기 ↗</a></p>
           </div>
-          <div class="ts-solution-secondary">
-            <div class="ts-solution-item"><strong>Physical</strong><p>운송과 적재 중 접촉, 마찰, 압박에 대한 물리적 보호 방향.</p></div>
-            <div class="ts-solution-item"><strong>Environmental</strong><p>과일별 온도·습도·후숙 조건을 기준으로 저장환경 관리 포인트 정의.</p></div>
-            <div class="ts-solution-item"><strong>Functional</strong><p>에틸렌·수분 등 특정 문제에 대응하는 기능성 소재 적용 가능성 연구.</p></div>
-            <div class="ts-solution-item"><strong>Validation</strong><p>실제 성능은 개별 시험조건과 검증자료가 확보된 범위에서 판단.</p></div>
+
+          <div class="ts-home-research-side">
+            <div class="ts-home-research-row"><span>01</span><strong>과일별 저장·후숙 조건 정리</strong></div>
+            <div class="ts-home-research-row"><span>02</span><strong>포장 구조와 시험 조건 함께 기록</strong></div>
+            <div class="ts-home-research-row"><span>03</span><strong>실제 검증 범위와 적용 가능성 구분</strong></div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="ts-section">
+    <section class="ts-home-section is-soft">
       <div class="ts-shell">
-        <div class="ts-section-head">
-          <span class="ts-kicker">Research before claims</span>
-          <div>
-            <h2 class="ts-h2">문헌 근거와 제품 성능을<br />같은 것으로 말하지 않습니다.</h2>
-            <p class="ts-body ts-section-copy">같은 재질의 포장도 두께, 천공률, 밀봉, 가스 투과도, 품종, 숙도와 시험온도에 따라 결과가 달라집니다. TerraSave는 시험조건을 함께 읽고 제품 성능 주장은 별도 검증합니다.</p>
-          </div>
-        </div>
-        <div class="ts-evidence-grid">
-          <div class="ts-evidence-block"><span class="ts-kicker">Fruit profiles</span><strong>18</strong><p>저장·유통·후숙·에틸렌 특성을 과일 단위로 구조화합니다.</p></div>
-          <div class="ts-evidence-block"><span class="ts-kicker">Packaging studies</span><strong>24</strong><p>포장 구조와 시험조건을 함께 기록해 결과를 맥락 안에서 해석합니다.</p></div>
-          <div class="ts-evidence-block"><span class="ts-kicker">References</span><strong>43+</strong><p>원문 확인이 가능하도록 참고 출처를 보존하고 추가 검증에 활용합니다.</p></div>
-        </div>
-        <p style="margin:32px 0 0"><a class="ts-link" href="what-we-do.html">View research approach ↗</a></p>
-      </div>
-    </section>
-
-    <section class="ts-section is-soft">
-      <div class="ts-shell">
-        <div class="ts-section-head">
-          <span class="ts-kicker">Supply chain view</span>
-          <div>
-            <h2 class="ts-h2">보호는 포장 순간이 아니라<br />유통 흐름 전체에서 설계됩니다.</h2>
-            <p class="ts-body ts-section-copy">농산물의 품질은 수확 직후부터 저장, 수송, 판매까지 계속 변합니다. 적용 목적에 따라 어느 구간에서 무엇을 보호할지 먼저 정의합니다.</p>
-          </div>
-        </div>
-        <div class="ts-chain">
-          <div class="ts-chain-item"><span>01 / HARVEST</span><strong>수확·예냉</strong></div>
-          <div class="ts-chain-item"><span>02 / PACKING</span><strong>선별·개별포장</strong></div>
-          <div class="ts-chain-item"><span>03 / LOGISTICS</span><strong>저장·수송</strong></div>
-          <div class="ts-chain-item"><span>04 / RETAIL</span><strong>진열·판매</strong></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="ts-section">
-      <div class="ts-shell">
-        <div class="ts-cta">
-          <div class="ts-cta-copy">
-            <span class="ts-kicker">Request a fruit study</span>
+        <div class="ts-home-cta">
+          <div class="ts-home-cta-copy">
+            <span class="ts-kicker">Request a solution</span>
             <h2 class="ts-h2">현재 사용하는 과일과 포장 방식부터<br />함께 확인해보세요.</h2>
-            <p class="ts-body ts-section-copy">품목, 현재 포장 형태, 보관·수송 조건을 알려주시면 공개 가능한 데이터와 적용 목적을 기준으로 검토 방향을 정리합니다.</p>
           </div>
-          <div class="ts-cta-action"><a class="ts-button is-dark is-large" href="contact.html">Request a solution</a></div>
+          <div class="ts-home-cta-action">
+            <a class="ts-button is-dark is-large" href="contact.html">포장 상담하기</a>
+          </div>
         </div>
       </div>
     </section>
@@ -224,32 +381,30 @@
     (function(){
       const grid = document.getElementById('homeFruitGrid');
       if (!grid || !window.TERRASAVE_FRUITS) return;
-      const buttons = Array.from(document.querySelectorAll('[data-home-filter]'));
-      const render = (filter='all') => {
-        let items = window.TERRASAVE_FRUITS;
-        if (filter === 'climacteric') items = items.filter(item => item.ripening.includes('클라이맥테릭') && !item.ripening.includes('비클라이맥테릭'));
-        if (filter === 'high') items = items.filter(item => ['Very High','Extremely High','High'].includes(item.ethylene));
-        grid.innerHTML = items.slice(0,8).map(item => `
-          <a class="ts-fruit-card" href="fruit.html?fruit=${item.slug}">
-            <div class="ts-fruit-visual"><div class="ts-fruit-shape shape-${item.shape || 'round'}"></div></div>
-            <div class="ts-fruit-meta">
-              <div class="ts-fruit-meta-top">
-                <div class="ts-fruit-name"><strong>${item.en}</strong><span>${item.ko}</span></div>
-                <span class="ts-fruit-tag">${item.focus}</span>
-              </div>
-              <div class="ts-fruit-data">
-                <span>Storage<strong>${item.storage}</strong></span>
-                <span>Ethylene<strong>${item.ethylene}</strong></span>
-              </div>
+
+      const preferred = ['avocado','kiwi','mango','strawberry','shine-muscat','pear'];
+      const bySlug = new Map(window.TERRASAVE_FRUITS.map(item => [item.slug,item]));
+      let items = preferred.map(slug => bySlug.get(slug)).filter(Boolean);
+
+      if (items.length < 6) {
+        const used = new Set(items.map(item => item.slug));
+        items = items.concat(window.TERRASAVE_FRUITS.filter(item => !used.has(item.slug)).slice(0,6-items.length));
+      }
+
+      grid.innerHTML = items.slice(0,6).map(item => `
+        <a class="ts-fruit-card" href="fruit.html?fruit=${item.slug}">
+          <div class="ts-fruit-visual"><div class="ts-fruit-shape shape-${item.shape || 'round'}"></div></div>
+          <div class="ts-fruit-meta">
+            <div class="ts-fruit-meta-top">
+              <div class="ts-fruit-name"><strong>${item.en}</strong><span>${item.ko}</span></div>
+              <span class="ts-fruit-tag">${item.focus}</span>
             </div>
-          </a>`).join('');
-      };
-      buttons.forEach(btn => btn.addEventListener('click', () => {
-        buttons.forEach(item => item.classList.remove('is-active'));
-        btn.classList.add('is-active');
-        render(btn.dataset.homeFilter);
-      }));
-      render();
+            <div class="ts-fruit-data">
+              <span>Storage<strong>${item.storage}</strong></span>
+              <span>Ethylene<strong>${item.ethylene}</strong></span>
+            </div>
+          </div>
+        </a>`).join('');
     })();
   </script>
 </body>
