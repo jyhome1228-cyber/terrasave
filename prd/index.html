@@ -14,7 +14,7 @@
       <span>TerraSave</span><i></i><small>PRODUCT DOCUMENT</small>
     </a>
     <div class="doc-actions">
-      <span class="doc-version">V1.0 · 2026.08.24</span>
+      <span class="doc-version">V1.1 · 2026.09.19</span>
       <button class="print-button" type="button" id="printDocument">EXPORT PDF</button>
       <a class="site-button" href="../index.html">VIEW WEBSITE ↗</a>
     </div>
@@ -32,7 +32,7 @@
         <a href="#background"><span>02</span> Background</a>
         <a href="#users"><span>03</span> Users & Goals</a>
         <a href="#scope"><span>04</span> Scope</a>
-        <a href="#ia"><span>05</span> Information Architecture</a>
+        <a href="#ia"><span>05</span> Menu Structure</a>
         <a href="#journey"><span>06</span> User Journey</a>
         <a href="#pages"><span>07</span> Page Requirements</a>
         <a href="#functions"><span>08</span> Functional Spec</a>
@@ -96,19 +96,61 @@
       </section>
 
       <section class="doc-section" id="ia">
-        <header class="section-head"><span>05</span><div><p>INFORMATION ARCHITECTURE</p><h2>사이트 구조</h2></div></header>
+        <header class="section-head"><span>05</span><div><p>MENU STRUCTURE / INFORMATION ARCHITECTURE</p><h2>메뉴 구조도</h2></div></header>
         <div class="content-offset">
-          <div class="sitemap">
-            <div class="site-root"><span>ROOT</span><strong>TerraSave</strong><small>/</small></div>
-            <div class="site-pages">
-              <a href="../about.html"><span>01</span><strong>ABOUT US</strong><small>Mission · Vision · Values</small></a>
-              <a href="../what-we-do.html"><span>02</span><strong>WHAT WE DO</strong><small>Problem · Technology · Application · Impact</small></a>
-              <a href="../technology.html"><span>03</span><strong>TECHNOLOGY</strong><small>Ethylene · Capture · Material</small></a>
-              <a href="../product.html"><span>04</span><strong>PRODUCT</strong><small>TerraPack · TerraShield · TerraSave X</small></a>
-              <a href="../contact.html"><span>05</span><strong>CONTACT</strong><small>Sample · B2B · R&D Inquiry</small></a>
+          <div class="menu-structure">
+            <div class="menu-root">
+              <span>ROOT / HOME</span>
+              <strong>TerraSave</strong>
+              <small>index.html</small>
+            </div>
+
+            <div class="menu-branches">
+              <article>
+                <div class="menu-branch-head"><span>01</span><strong>과일별 보기</strong><small>FRUITS</small></div>
+                <a href="../fruits.html"><b>과일 데이터베이스</b><em>fruits.html · 18개 과일 목록 / 필터</em></a>
+                <a href="../fruit.html?fruit=apple"><b>과일 상세</b><em>fruit.html?fruit={slug} · 품목별 동적 상세</em></a>
+              </article>
+
+              <article>
+                <div class="menu-branch-head"><span>02</span><strong>과일망</strong><small>NET SYSTEM</small></div>
+                <a href="../product.html"><b>과일 보호망</b><em>product.html · 적용 기준 / 보호 방향</em></a>
+              </article>
+
+              <article>
+                <div class="menu-branch-head"><span>03</span><strong>기술</strong><small>TECHNOLOGY</small></div>
+                <a href="../technology.html"><b>기술 설명</b><em>technology.html · 물리 보호 / 기능성 소재</em></a>
+              </article>
+
+              <article>
+                <div class="menu-branch-head"><span>04</span><strong>연구자료</strong><small>RESEARCH</small></div>
+                <a href="../what-we-do.html"><b>연구 및 근거</b><em>what-we-do.html · 보관 조건 / 적용 검토</em></a>
+              </article>
+
+              <article>
+                <div class="menu-branch-head"><span>05</span><strong>소개</strong><small>ABOUT</small></div>
+                <a href="../about.html"><b>TerraSave 소개</b><em>about.html · 브랜드 역할 / Terracle 연계</em></a>
+              </article>
+
+              <article class="menu-branch-cta">
+                <div class="menu-branch-head"><span>CTA</span><strong>포장 상담하기</strong><small>CONTACT</small></div>
+                <a href="../contact.html"><b>포장 상담</b><em>contact.html · 적용 / 샘플 / 공급 / 공동연구</em></a>
+              </article>
+            </div>
+
+            <div class="menu-utility">
+              <span>UTILITY / NON-GLOBAL MENU</span>
+              <div><strong>PRD / 기능명세서</strong><em>/prd/ · 내부 기록용 문서, 전역 메뉴에는 미노출</em></div>
             </div>
           </div>
-          <p class="note">전역 헤더와 푸터에서 핵심 페이지로 접근하며, 모든 주요 페이지의 CTA는 Product 또는 Contact로 수렴합니다.</p>
+
+          <div class="menu-rules">
+            <article><span>GLOBAL HEADER</span><strong>5개 주 메뉴 + 상담 CTA</strong><p>과일별 보기 · 과일망 · 기술 · 연구자료 · 소개를 기본 메뉴로 유지하고, 우측에 포장 상담 CTA를 고정합니다.</p></article>
+            <article><span>DETAIL DEPTH</span><strong>최대 2 Depth</strong><p>과일 목록에서 과일 상세로만 한 단계 깊어집니다. 그 외 주요 메뉴는 1 Depth 랜딩 구조로 유지합니다.</p></article>
+            <article><span>CONVERSION</span><strong>Contact로 수렴</strong><p>과일 상세, 과일망, 기술, 연구자료의 주요 행동은 최종적으로 포장 상담 페이지로 연결합니다.</p></article>
+          </div>
+
+          <p class="note">현재 실제 운영 메뉴를 기준으로 작성했습니다. 과일 상세는 별도 메뉴로 노출하지 않고 과일 데이터베이스에서 선택해 진입하는 구조입니다.</p>
         </div>
       </section>
 
@@ -140,19 +182,38 @@
 
       <section class="doc-section" id="functions">
         <header class="section-head"><span>08</span><div><p>FUNCTIONAL SPECIFICATION</p><h2>공통 및 핵심 기능 명세</h2></div></header>
-        <div class="content-offset table-wrap">
-          <table class="spec-table"><thead><tr><th>ID</th><th>기능명</th><th>요구사항</th><th>완료 조건</th><th>상태</th></tr></thead><tbody>
-            <tr><td>FN-001</td><td>전역 내비게이션</td><td>모든 페이지에서 5개 주 메뉴와 샘플 요청 CTA를 제공한다.</td><td>현재 페이지 표시 및 링크 정상 이동</td><td><b>LIVE</b></td></tr>
-            <tr><td>FN-002</td><td>모바일 메뉴</td><td>1100px 이하에서 메뉴 버튼으로 전환하고 열림 상태를 aria-expanded로 전달한다.</td><td>키보드·터치 조작 및 링크 선택 후 닫힘</td><td><b>LIVE</b></td></tr>
-            <tr><td>FN-003</td><td>브랜드 로고</td><td>공식 SVG 로고를 헤더·푸터에 일관되게 노출한다.</td><td>모든 페이지에서 선명하게 표시</td><td><b>LIVE</b></td></tr>
-            <tr><td>FN-004</td><td>제품 비주얼 롤</td><td>홈에서 제품 이미지가 연속 이동하며 제품 페이지로 연결된다.</td><td>루프 단절 없음, 이미지 alt 제공</td><td><b>LIVE</b></td></tr>
-            <tr><td>FN-005</td><td>콘텐츠 서브내비</td><td>What we do 페이지에서 4개 섹션 앵커와 현재 구간을 표시한다.</td><td>스크롤 위치에 따라 활성 상태 갱신</td><td><b>LIVE</b></td></tr>
-            <tr><td>FN-006</td><td>스크롤 리빌</td><td>콘텐츠 진입 시 절제된 노출 전환을 제공하고 감소 모션 설정을 존중한다.</td><td>prefers-reduced-motion에서 애니메이션 제거</td><td><b>LIVE</b></td></tr>
-            <tr><td>FN-007</td><td>문의 유형 사전 선택</td><td>상단 문의 카드를 선택하면 해당 문의 유형이 폼에 자동 반영된다.</td><td>선택 상태와 hidden 값 일치</td><td><b>LIVE</b></td></tr>
-            <tr><td>FN-008</td><td>문의 폼 검증</td><td>필수값과 개인정보 동의를 확인하고 오류 발생 지점으로 안내한다.</td><td>미입력 제출 차단 및 오류 메시지 표시</td><td><b>LIVE</b></td></tr>
-            <tr><td>FN-009</td><td>메일 작성 연결</td><td>입력값으로 제목과 본문을 구성해 info@terracle.im 메일 작성 화면을 연다.</td><td>한글·특수문자 URL 인코딩 및 상태 문구 표시</td><td><b>LIVE</b></td></tr>
-            <tr><td>FN-010</td><td>반응형 레이아웃</td><td>데스크톱, 태블릿, 모바일에서 콘텐츠 위계와 CTA 접근성을 유지한다.</td><td>320px 이상 가로 스크롤 없이 핵심 기능 사용</td><td><b>LIVE</b></td></tr>
-          </tbody></table>
+        <div class="content-offset">
+          <div class="function-summary">
+            <article><span>GLOBAL</span><strong>공통 UI</strong><p>헤더, 모바일 메뉴, 푸터, 로고, 활성 메뉴 표시를 모든 공개 페이지에서 동일하게 사용합니다.</p></article>
+            <article><span>DATA</span><strong>과일 DB</strong><p>18개 과일 데이터를 JavaScript 데이터셋으로 관리하고 목록과 상세 화면에 동적으로 출력합니다.</p></article>
+            <article><span>CONVERSION</span><strong>상담 연결</strong><p>정보 탐색 후 포장 상담으로 이어지도록 주요 페이지와 과일 상세에 CTA를 배치합니다.</p></article>
+          </div>
+
+          <div class="table-wrap function-table-wrap">
+            <table class="spec-table"><thead><tr><th>ID</th><th>영역</th><th>기능명</th><th>요구사항 / 동작</th><th>완료 조건</th><th>상태</th></tr></thead><tbody>
+              <tr><td>FN-001</td><td>GLOBAL</td><td>전역 내비게이션</td><td>과일별 보기, 과일망, 기술, 연구자료, 소개 5개 메뉴와 포장 상담 CTA를 공통 제공한다.</td><td>모든 공개 페이지에서 동일한 메뉴 구성과 정상 링크 이동</td><td><b>LIVE</b></td></tr>
+              <tr><td>FN-002</td><td>GLOBAL</td><td>현재 메뉴 표시</td><td>현재 파일 경로를 기준으로 aria-current="page"를 적용하며, fruit.html은 과일별 보기 메뉴를 활성화한다.</td><td>현재 위치가 시각적·접근성 상태로 동시에 표시</td><td><b>LIVE</b></td></tr>
+              <tr><td>FN-003</td><td>GLOBAL</td><td>모바일 메뉴</td><td>모바일에서 햄버거 버튼으로 메뉴를 열고 닫으며 aria-expanded, ESC 닫기, 링크 선택 후 닫기를 지원한다.</td><td>터치·키보드 조작 가능, 메뉴 열림 시 body 스크롤 제어</td><td><b>LIVE</b></td></tr>
+              <tr><td>FN-004</td><td>GLOBAL</td><td>공통 로고·푸터</td><td>공식 SVG 로고, 연락처, Terracle 연결, 전체 메뉴를 공통 스크립트에서 주입한다.</td><td>페이지별 중복 수정 없이 공통 요소 일관성 유지</td><td><b>LIVE</b></td></tr>
+              <tr><td>FN-005</td><td>GLOBAL</td><td>반응형 레이아웃</td><td>데스크톱·태블릿·모바일에서 다단 그리드와 CTA 위치를 재배치한다.</td><td>320px 이상에서 가로 잘림 없이 핵심 정보 탐색 가능</td><td><b>LIVE</b></td></tr>
+
+              <tr><td>FN-006</td><td>FRUITS</td><td>과일 목록 동적 생성</td><td>fruits.js의 과일 데이터를 읽어 과일 카드, 보관 온도, 에틸렌 영향, 관리 포인트를 자동 렌더링한다.</td><td>등록 데이터와 목록 카드 수·내용이 일치</td><td><b>LIVE</b></td></tr>
+              <tr><td>FN-007</td><td>FRUITS</td><td>과일 필터</td><td>전체, 후숙형, 비후숙형, 에틸렌 영향이 큰 과일 필터를 제공한다.</td><td>필터 선택 시 목록과 개수 표시가 즉시 갱신</td><td><b>LIVE</b></td></tr>
+              <tr><td>FN-008</td><td>FRUITS</td><td>과일 개수 표시</td><td>현재 필터 결과의 품목 수를 실시간으로 표시한다.</td><td>필터 결과 개수와 표시 수량이 항상 일치</td><td><b>LIVE</b></td></tr>
+              <tr><td>FN-009</td><td>FRUIT DETAIL</td><td>URL 기반 과일 상세</td><td>fruit.html?fruit={slug} 쿼리값으로 해당 과일 정보를 찾아 상세 페이지 전체를 동적으로 생성한다.</td><td>유효 slug는 해당 품목 표시, 미지정·오류 값은 기본 품목으로 안전 처리</td><td><b>LIVE</b></td></tr>
+              <tr><td>FN-010</td><td>FRUIT DETAIL</td><td>상세 데이터 출력</td><td>보관 온도, 습도, 익는 방식, 에틸렌 영향, 관리 중요도, 주요 리스크와 포장 방향을 출력한다.</td><td>데이터셋 변경 시 상세 화면이 별도 HTML 수정 없이 반영</td><td><b>LIVE</b></td></tr>
+              <tr><td>FN-011</td><td>FRUIT DETAIL</td><td>과일 이미지 전환</td><td>등록된 전체컷·단면컷이 있으면 2개 이미지를 표시하고, 없으면 기본 과일 그래픽으로 대체한다.</td><td>이미지 데이터 유무에 관계없이 레이아웃이 깨지지 않음</td><td><b>LIVE</b></td></tr>
+              <tr><td>FN-012</td><td>FRUIT DETAIL</td><td>이전·다음 과일</td><td>현재 데이터 순서를 기준으로 이전·다음 품목 링크를 제공하며 마지막 품목 이후에는 처음으로 순환한다.</td><td>18개 품목 전체에서 끊김 없이 순환 탐색</td><td><b>LIVE</b></td></tr>
+
+              <tr><td>FN-013</td><td>HOME</td><td>대표 과일 자동 구성</td><td>홈에서 지정한 대표 과일 6종을 우선 노출하고 누락 시 데이터 목록에서 자동 보충한다.</td><td>항상 최대 6개 카드가 정상 출력되고 상세로 연결</td><td><b>LIVE</b></td></tr>
+              <tr><td>FN-014</td><td>CONTENT</td><td>페이지별 카피 로컬라이징</td><td>공통 main.js에서 메뉴명, 버튼, 메타 정보와 주요 문구를 한국어 서비스 문맥에 맞게 정리한다.</td><td>영문 임시 문구가 주요 사용자 화면에 노출되지 않음</td><td><b>LIVE</b></td></tr>
+              <tr><td>FN-015</td><td>SEO</td><td>동적 메타 정보</td><td>페이지 유형과 과일 slug에 따라 title과 meta description을 갱신한다.</td><td>과일 상세별 고유 제목 및 설명이 브라우저에 반영</td><td><b>LIVE</b></td></tr>
+              <tr><td>FN-016</td><td>ACCESSIBILITY</td><td>접근성 상태 제공</td><td>nav aria-current, menu aria-expanded, 이미지 alt, aria-live 영역 등 탐색 상태를 보조기기에 전달한다.</td><td>핵심 인터랙션에 의미·상태 정보가 제공됨</td><td><b>LIVE</b></td></tr>
+              <tr><td>FN-017</td><td>CONTACT</td><td>포장 상담 진입</td><td>홈, 과일 상세, 과일망, 기술, 연구자료의 주요 CTA를 contact.html로 연결한다.</td><td>핵심 정보 탐색 경로 어디서든 1~2회 내 상담 화면 진입 가능</td><td><b>LIVE</b></td></tr>
+            </tbody></table>
+          </div>
+
+          <p class="note">기능 상태는 현재 GitHub Pages 운영 소스를 기준으로 기록합니다. 신규 데이터베이스, 관리자 기능, 서버 저장이 추가될 경우 별도 버전으로 확장합니다.</p>
         </div>
       </section>
 
@@ -204,7 +265,7 @@
           <article><span>NEXT 02</span><h3>콘텐츠 운영 시스템</h3><p>뉴스·검증 데이터·적용 사례를 직접 관리하는 CMS</p></article>
           <article><span>NEXT 03</span><h3>글로벌·파트너 확장</h3><p>다국어, 제품별 기술자료 다운로드, 파트너 전용 자료실</p></article>
         </div>
-        <div class="doc-closing content-offset"><div class="update-record"><span>LAST UPDATED</span><strong>2026.08.24</strong><p>현재까지의 구현 현황을 기준으로 작성되었으며, 변경 사항 발생 시 갱신됩니다.</p></div><div class="closing-actions"><p>TerraSave Website PRD & Functional Specification</p><button type="button" onclick="window.print()">EXPORT DOCUMENT ↗</button></div></div>
+        <div class="doc-closing content-offset"><div class="update-record"><span>LAST UPDATED</span><strong>2026.09.19</strong><p>현재까지의 구현 현황을 기준으로 작성되었으며, 변경 사항 발생 시 갱신됩니다.</p></div><div class="closing-actions"><p>TerraSave Website PRD & Functional Specification</p><button type="button" onclick="window.print()">EXPORT DOCUMENT ↗</button></div></div>
       </section>
     </main>
   </div>
