@@ -306,21 +306,7 @@ function rewriteResearch() {
 }
 
 function rewriteAbout() {
-  setMeta('소개 — TerraSave', 'TerraSave는 과일별 보관·유통 특성을 먼저 이해하고 필요한 보호 포장 방향을 연구하는 Terracle의 과일 보호 솔루션입니다.');
-  const hero = document.querySelector('.ts-page-hero');
-  if (hero) setHead(hero, '테라세이브는 어떤 일을 하나요?', '포장재보다 먼저,<br />과일부터 봅니다.', '같은 과일망을 모든 과일에 똑같이 적용하기보다, 과일의 크기와 표면, 익는 속도와 유통 중 문제를 먼저 확인하고 필요한 보호 방향을 찾습니다.');
-  const story = document.querySelector('.ts-story-grid');
-  if (story) {
-    setText('.ts-story-grid .ts-kicker', '왜 과일부터 볼까요?');
-    const p = story.querySelector('p');
-    if (p) p.textContent = '사과와 배는 비교적 단단하지만 복숭아는 쉽게 눌리고, 아보카도와 바나나는 유통 중에도 계속 익습니다. 딸기와 포도는 수분과 곰팡이 관리가 중요합니다. 이렇게 과일마다 상하는 이유가 다르기 때문에 포장도 같은 기준으로 고를 수 없습니다.';
-  }
-  const sections = document.querySelectorAll('main > .ts-section');
-  if (sections[1]) setHead(sections[1], '우리가 만드는 것', '과일 데이터를 바탕으로,<br />과일망부터 하나씩 적용합니다.', '첫 번째 적용은 과일을 하나씩 감싸 눌림과 충격을 줄이는 보호망입니다. 이후 실제 필요가 확인되면 신선도 관리 기능을 단계적으로 더합니다.');
-  if (sections[2]) setHead(sections[2], '테라클과 테라세이브', '테라세이브는 테라클의<br />과일 보호 솔루션입니다.', '테라클의 소재·기술 연구를 바탕으로 과일 유통 현장에서 실제로 사용할 수 있는 포장 방향을 연구합니다.');
-  setAllText('.ts-step-copy .ts-h3', ['과일 정보 정리', '상하기 쉬운 원인 확인', '과일망 적용', '기능성 보호 확장']);
-  setAllText('.ts-step-copy p', ['보관 온도와 습도, 익는 방식과 품목 특성을 정리합니다.', '눌림, 물러짐, 수분 손실, 곰팡이 등 우선 문제를 찾습니다.', '과일 크기와 유통 환경에 맞는 보호망 방향을 검토합니다.', '필요성이 확인된 경우에만 기능성 소재 적용을 시험합니다.']);
-  replaceExact('.ts-link', 'Visit Terracle ↗', '테라클 홈페이지 보기 ↗');
+  setMeta('About TerraSAVE — TerraSave', 'TerraSAVE는 품목별 부패 메커니즘과 실제 유통 데이터를 바탕으로 맞춤형 신선도 유지 포장 솔루션을 연구·개발합니다.');
 }
 
 function rewriteContact() {
