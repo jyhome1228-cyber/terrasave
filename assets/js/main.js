@@ -237,7 +237,7 @@ function rewriteFruits() {
 }
 
 function rewriteProduct() {
-  setMeta('Product — TerraSave', 'TerraSAVE Product — TerraPACK, TerraShield, TerraCover 제품과 주문·문의 정보를 확인합니다.');
+  setMeta('Product — TerraSave', 'TerraSave Product — TerraPACK, TerraShield, TerraCover 제품과 주문·문의 정보를 확인합니다.');
 }
 
 function rewriteTechnology() {
@@ -293,7 +293,7 @@ function rewriteResearch() {
 }
 
 function rewriteAbout() {
-  setMeta('About TerraSAVE — TerraSave', 'TerraSAVE는 품목별 부패 메커니즘과 실제 유통 데이터를 바탕으로 맞춤형 신선도 유지 포장 솔루션을 연구·개발합니다.');
+  setMeta('About TerraSave — TerraSave', 'TerraSave는 품목별 부패 메커니즘과 실제 유통 데이터를 바탕으로 맞춤형 신선도 유지 포장 솔루션을 연구·개발합니다.');
 }
 
 function rewriteContact() {
@@ -362,7 +362,7 @@ function showSiteUpdatePopup() {
   if (sessionStorage.getItem('ts-update-popup') === 'closed') return;
   const popup = document.createElement('div');
   popup.className = 'ts-update-popup';
-  popup.innerHTML = '<div class="ts-update-popup-card"><small>TERRASAVE UPDATE</small><h2>홈페이지 수정 작업 중입니다.</h2><p>현재 TerraSAVE 홈페이지의 콘텐츠와 제품·연구자료를 순차적으로 업데이트하고 있습니다. 작업 기간 중 일부 페이지의 내용과 구성이 변경될 수 있습니다. 사이트 이용 및 포장 상담은 정상적으로 가능합니다.</p><button type="button">확인</button></div>';
+  popup.innerHTML = '<div class="ts-update-popup-card"><small>TERRASAVE UPDATE</small><h2>홈페이지 수정 작업 중입니다.</h2><p>현재 TerraSave 홈페이지의 콘텐츠와 제품·연구자료를 순차적으로 업데이트하고 있습니다. 작업 기간 중 일부 페이지의 내용과 구성이 변경될 수 있습니다. 사이트 이용 및 포장 상담은 정상적으로 가능합니다.</p><button type="button">확인</button></div>';
   document.body.appendChild(popup);
   popup.querySelector('button').addEventListener('click', () => {
     sessionStorage.setItem('ts-update-popup', 'closed');
