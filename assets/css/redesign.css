@@ -565,3 +565,7 @@ body.ts-home-page .ts-home-intro-side p{
   .ts-application-row{padding-top:22px!important;padding-bottom:22px!important}
   .ts-step{padding-top:24px!important;padding-bottom:24px!important}
 }
+
+.ts-fruit-status{display:inline-flex;align-items:center;justify-content:center;min-height:28px;padding:0 10px;border-radius:999px;font-size:11px;font-weight:700;white-space:nowrap}
+.ts-fruit-status.is-available{background:#eaf3ea;color:#245b35}
+.ts-fruit-status.is-research{background:#eef0ee;color:#68706b}
