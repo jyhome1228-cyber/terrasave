@@ -17,13 +17,25 @@
       overflow:hidden;
       background:#f4f4f0;
     }
-    .ts-home-hero-image img{
+    .ts-home-hero-image img,
+    .ts-home-hero-image video{
       width:100%;
       height:100%;
       display:block;
       object-fit:cover;
       object-position:center center;
     }
+    .ts-home-video-placeholder{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      border:1px solid rgba(20,32,26,.10);
+      background:#eef1ec;
+    }
+    .ts-video-placeholder-inner{text-align:center;padding:32px}
+    .ts-video-placeholder-inner .ts-kicker{display:block;margin-bottom:12px}
+    .ts-video-placeholder-inner strong{display:block;font-size:22px;letter-spacing:-.03em}
+    .ts-video-placeholder-inner p{margin:10px 0 0;color:#737a75;font-size:14px}
     .ts-home-intro{
       display:grid;
       grid-template-columns:repeat(12,minmax(0,1fr));
@@ -241,20 +253,24 @@
   <main>
     <section class="ts-home-hero">
       <div class="ts-shell">
-        <div class="ts-home-hero-image">
-          <img src="https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20260913-013602-414-1007a215.webp" alt="과일 보호망을 적용한 아보카도" />
+        <div class="ts-home-hero-image ts-home-video-placeholder" aria-label="아보카도 타임랩스 영상 영역">
+          <div class="ts-video-placeholder-inner">
+            <span class="ts-kicker">AVOCADO TIMELAPSE</span>
+            <strong>타임랩스 영상 영역</strong>
+            <p>영상 전달 후 이 영역에 적용됩니다.</p>
+          </div>
         </div>
 
         <div class="ts-home-intro">
           <div class="ts-home-intro-copy">
-            <span class="ts-kicker">Fruit-specific protection</span>
-            <h1 class="ts-home-title">과일마다 다른 조건에 맞춰<br />필요한 보호만 설계합니다.</h1>
+            <span class="ts-kicker">FRUIT-SPECIFIC FRESHNESS</span>
+            <h1 class="ts-home-title">정성으로 키운 작물,<br />이제 과학으로 지키세요.</h1>
           </div>
           <div class="ts-home-intro-side">
-            <p>저장 온도, 후숙 속도, 수분과 충격까지. TerraSave는 과일의 실제 유통 조건을 먼저 보고 포장과 보호 방향을 제안합니다.</p>
+            <p>과일마다 부패하는 이유는 다 다릅니다. TerraSAVE는 품목별 특성과 실제 유통 조건을 분석해 과일 품목별 신선도 유지 제품과 포장 솔루션을 제공합니다.</p>
             <div class="ts-home-actions">
-              <a class="ts-button is-dark" href="fruits.html">과일별 보기</a>
-              <a class="ts-link" href="product.html">포장 기술 보기 ↗</a>
+              <a class="ts-button is-dark" href="fruits.html">과일별 신선도 자료</a>
+              <a class="ts-link" href="product.html">제품 보기 ↗</a>
             </div>
           </div>
         </div>
