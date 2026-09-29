@@ -320,3 +320,58 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
   .ts-update-popup-card{padding:28px 24px;border-radius:16px}
   .ts-update-popup-card h2{font-size:24px}
 }
+
+
+/* Global vertical rhythm — 2026-09-29 */
+:where(.ts-display,.ts-h1,.ts-home-title){
+  line-height:1.18!important;
+  letter-spacing:-.035em!important;
+  word-break:keep-all;
+  text-wrap:balance;
+}
+:where(.ts-h2){
+  line-height:1.28!important;
+  letter-spacing:-.03em!important;
+  word-break:keep-all;
+  text-wrap:balance;
+}
+:where(.ts-h3){
+  line-height:1.4!important;
+  word-break:keep-all;
+}
+:where(.ts-body,.ts-body-lg,.ts-section-copy){
+  line-height:1.72!important;
+  word-break:keep-all;
+}
+.ts-section-head > .ts-kicker,
+.ts-home-intro-copy > .ts-kicker,
+.ts-home-system-card .ts-kicker{
+  margin-bottom:16px!important;
+}
+:where(.ts-h1,.ts-h2,.ts-h3,.ts-display,.ts-home-title) + :where(p,.ts-body,.ts-body-lg,.ts-section-copy){
+  margin-top:20px!important;
+}
+.ts-home-actions{
+  margin-top:24px!important;
+}
+.ts-section-copy + :where(.ts-button,.ts-link),
+.ts-body + :where(.ts-button,.ts-link),
+.ts-body-lg + :where(.ts-button,.ts-link){
+  margin-top:24px!important;
+}
+.ts-section-head{
+  row-gap:18px;
+}
+.ts-page-hero .ts-section-head{
+  row-gap:20px;
+}
+@media(max-width:767px){
+  :where(.ts-display,.ts-h1,.ts-home-title){line-height:1.22!important}
+  :where(.ts-h2){line-height:1.32!important}
+  :where(.ts-body,.ts-body-lg,.ts-section-copy){line-height:1.7!important}
+  .ts-section-head > .ts-kicker,
+  .ts-home-intro-copy > .ts-kicker{margin-bottom:14px!important}
+  :where(.ts-h1,.ts-h2,.ts-h3,.ts-display,.ts-home-title) + :where(p,.ts-body,.ts-body-lg,.ts-section-copy){
+    margin-top:18px!important;
+  }
+}
