@@ -10,6 +10,20 @@
   <link rel="stylesheet" href="assets/css/redesign.css" />
   <style>
     .ts-detail-copy{padding-left:32px!important}
+    .ts-fruit-detail-page .ts-section{padding-top:96px!important;padding-bottom:96px!important}
+    .ts-fruit-detail-page .ts-section-head{display:block!important;max-width:860px;margin:0 auto 52px!important;text-align:center!important}
+    .ts-fruit-detail-page .ts-section-head>.ts-kicker{display:block;margin:0 0 18px!important;text-align:center!important}
+    .ts-fruit-detail-page .ts-section-head>div{max-width:860px;margin:0 auto!important}
+    .ts-fruit-detail-page .ts-section-head .ts-h2{max-width:760px;margin:0 auto!important;text-align:center!important}
+    .ts-fruit-detail-page .ts-section-head .ts-section-copy{max-width:720px;margin:22px auto 0!important;text-align:center!important;line-height:1.82!important}
+    .ts-detail-status{display:inline-flex;align-items:center;min-height:30px;padding:0 11px;border-radius:999px;background:#eef0ee;color:#68706b;font-size:11px;font-weight:700;margin-bottom:16px}
+    .ts-detail-status.is-available{background:#eaf3ea;color:#245b35}
+    .ts-detail-research{max-width:900px;margin:0 auto}
+    .ts-detail-research-block{padding:28px 0;border-top:1px solid rgba(20,32,26,.12)}
+    .ts-detail-research-block h3{margin:0 0 12px;font-size:20px;line-height:1.4}
+    .ts-detail-research-block p{margin:0;color:#59615c;line-height:1.82}
+    .ts-detail-research-block p+p{margin-top:12px}
+    .ts-detail-references{margin-top:40px;padding-top:24px;border-top:1px solid rgba(20,32,26,.14);color:#737a75;font-size:13px;line-height:1.8}
     .ts-detail-lead{max-width:720px!important;text-wrap:pretty}
     .ts-detail-lead .ts-lead-sentence{display:block}
     .ts-detail-lead .ts-lead-sentence + .ts-lead-sentence{margin-top:4px}
@@ -22,7 +36,7 @@
     }
   </style>
 </head>
-<body>
+<body class="ts-fruit-detail-page">
   <header class="site-header" id="siteHeader">
     <div class="ts-shell header-inner">
       <a class="brand" href="index.html" aria-label="TerraSave Home">TerraSave</a>
@@ -47,6 +61,8 @@
       const fruit = data[fruitIndex] || data[0];
       const root = document.getElementById('fruitDetail');
       if (!fruit || !root) return;
+      const availableSlugs = ['avocado','strawberry','shine-muscat','mango'];
+      const isAvailable = availableSlugs.includes(fruit.slug);
 
       const breakHeading = (text='') => text.replace(/([,.!?])\s+/g, '$1<br />');
       const formatLead = (text='') => text
@@ -97,7 +113,8 @@
             <div class="ts-detail-hero">
               ${media}
               <div class="ts-detail-copy">
-                <div class="ts-kicker">과일 포장 가이드 / ${fruit.ko}</div>
+                <div class="ts-kicker">과일별 신선도 자료 / ${fruit.ko}</div>
+                <span class="ts-detail-status ${isAvailable ? 'is-available' : ''}">${isAvailable ? '솔루션 제공' : '연구중'}</span>
                 <h1 class="ts-h1">${fruit.ko}</h1>
                 <p class="ts-detail-lead">${formatLead(fruit.intro || fruit.summary)}</p>
                 <p style="margin:28px 0 0"><a class="ts-button is-dark" href="contact.html">${fruit.ko} 포장 상담하기</a></p>
@@ -122,7 +139,7 @@
         <section class="ts-section">
           <div class="ts-shell">
             <div class="ts-section-head">
-              <span class="ts-kicker">이 과일은 어떤 특징이 있나요?</span>
+              <span class="ts-kicker">01 / FRUIT CHARACTERISTICS</span>
               <div>
                 <h2 class="ts-h2">${breakHeading(fruit.easyHeadline)}</h2>
                 <p class="ts-body ts-section-copy">같은 과일이라도 숙도와 유통 기간에 따라 상태가 달라집니다. 포장재를 고르기 전에 이 과일이 이동 중 어떻게 변하는지부터 이해하는 것이 중요합니다.</p>
@@ -135,7 +152,7 @@
         <section class="ts-section is-soft">
           <div class="ts-shell">
             <div class="ts-section-head">
-              <span class="ts-kicker">포장할 때 무엇을 먼저 볼까요?</span>
+              <span class="ts-kicker">02 / QUALITY RISK</span>
               <div>
                 <h2 class="ts-h2">이 과일에서 먼저 볼 문제,<br />포장 방향은 여기서 정해집니다.</h2>
                 <p class="ts-body ts-section-copy">보관 온도 숫자만 보고 포장 사양을 정하지 않습니다. 현재 숙도, 유통 거리와 기간, 기존 포장 방식까지 함께 보고 어떤 보호가 실제로 필요한지 정합니다.</p>
@@ -153,7 +170,7 @@
         <section class="ts-section">
           <div class="ts-shell">
             <div class="ts-section-head">
-              <span class="ts-kicker">테라세이브는 이렇게 검토합니다</span>
+              <span class="ts-kicker">03 / TERRASAVE APPROACH</span>
               <div>
                 <h2 class="ts-h2">필요한 기능은 설명합니다,<br />핵심 기술은 보호합니다.</h2>
                 <p class="ts-body ts-section-copy">고객이 포장을 검토하는 데 필요한 역할과 방향은 쉽게 설명합니다. 다만 소재의 정확한 조성, 배합비, 제조 공정처럼 그대로 복제할 수 있는 기술 정보는 공개하지 않습니다.</p>
@@ -161,6 +178,23 @@
             </div>
             <div class="ts-approach-grid">${approach}</div>
             <div class="ts-research-note" style="margin-top:32px">위 보관 조건과 과일 특성은 TerraSave가 정리한 문헌 자료를 홈페이지용으로 쉽게 풀어쓴 내용입니다. 실제 포장 적용 결과는 품종, 숙도, 포장 규격, 유통 온도와 기간에 따라 달라질 수 있어 별도의 시험을 통해 확인합니다.</div>
+          </div>
+        </section>
+
+        <section class="ts-section is-soft">
+          <div class="ts-shell">
+            <div class="ts-section-head">
+              <span class="ts-kicker">04 / RESEARCH &amp; REFERENCES</span>
+              <div>
+                <h2 class="ts-h2">${fruit.ko}에 대해<br>더 읽어볼 만한 자료</h2>
+                <p class="ts-body ts-section-copy">품목별 연구자료와 참고문헌을 함께 정리합니다.<br>상세 연구 내용은 검증되는 자료에 따라 계속 업데이트됩니다.</p>
+              </div>
+            </div>
+            <div class="ts-detail-research">
+              <div class="ts-detail-research-block"><h3>저장·유통 중 주요 품질 저하 요인</h3><p>${fruit.riskExplain}</p></div>
+              <div class="ts-detail-research-block"><h3>보관 및 유통 관리 포인트</h3><p>${fruit.storageExplain}</p><p>${fruit.packagingGuide}</p></div>
+              <div class="ts-detail-references"><strong>Research references</strong><br>품목별 학술자료, 공공기관 자료 및 저장·포장 연구 출처를 이 영역에 누적합니다. 딸기·샤인머스켓·아보카도 상세 자료는 다음 단계에서 개별 출처와 연구 내용을 확장 적용합니다.</div>
+            </div>
           </div>
         </section>
 
