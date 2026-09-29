@@ -375,3 +375,78 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
     margin-top:18px!important;
   }
 }
+
+
+/* Centered editorial section headings — Home + About */
+body:is(.ts-home-page,.ts-about-page) .ts-section-head,
+body:is(.ts-home-page,.ts-about-page) .ts-home-head{
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:0!important;
+  max-width:900px;
+  margin-left:auto!important;
+  margin-right:auto!important;
+  margin-bottom:48px;
+  text-align:center;
+}
+body:is(.ts-home-page,.ts-about-page) .ts-section-head > .ts-kicker,
+body:is(.ts-home-page,.ts-about-page) .ts-home-head > .ts-kicker{
+  margin:0 0 16px!important;
+  text-align:center;
+}
+body:is(.ts-home-page,.ts-about-page) .ts-section-head > div,
+body:is(.ts-home-page,.ts-about-page) .ts-home-head-copy{
+  width:100%;
+  max-width:820px;
+}
+body:is(.ts-home-page,.ts-about-page) .ts-section-head :is(.ts-h1,.ts-h2),
+body:is(.ts-home-page,.ts-about-page) .ts-home-head :is(.ts-h1,.ts-h2){
+  margin-left:auto!important;
+  margin-right:auto!important;
+  max-width:780px;
+  text-align:center;
+}
+body:is(.ts-home-page,.ts-about-page) .ts-section-head .ts-section-copy,
+body:is(.ts-home-page,.ts-about-page) .ts-home-head .ts-section-copy{
+  max-width:760px!important;
+  margin:20px auto 0!important;
+  text-align:center;
+}
+body.ts-home-page .ts-home-research{
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:center!important;
+  gap:40px;
+}
+body.ts-home-page .ts-home-research-main{
+  width:100%;
+  max-width:820px;
+  text-align:center;
+}
+body.ts-home-page .ts-home-research-main p{
+  margin-left:auto!important;
+  margin-right:auto!important;
+}
+body.ts-home-page .ts-home-research-side{
+  width:min(760px,100%);
+}
+@media(max-width:767px){
+  body:is(.ts-home-page,.ts-about-page) .ts-section-head,
+  body:is(.ts-home-page,.ts-about-page) .ts-home-head{
+    align-items:flex-start!important;
+    text-align:left;
+    margin-bottom:36px;
+  }
+  body:is(.ts-home-page,.ts-about-page) .ts-section-head > .ts-kicker,
+  body:is(.ts-home-page,.ts-about-page) .ts-home-head > .ts-kicker,
+  body:is(.ts-home-page,.ts-about-page) .ts-section-head :is(.ts-h1,.ts-h2),
+  body:is(.ts-home-page,.ts-about-page) .ts-home-head :is(.ts-h1,.ts-h2),
+  body:is(.ts-home-page,.ts-about-page) .ts-section-head .ts-section-copy,
+  body:is(.ts-home-page,.ts-about-page) .ts-home-head .ts-section-copy{
+    text-align:left;
+    margin-left:0!important;
+    margin-right:0!important;
+  }
+}
