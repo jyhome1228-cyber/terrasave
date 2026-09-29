@@ -180,20 +180,23 @@
       const render = (filter='all') => {
         const items = getFiltered(filter);
         count.textContent = `${items.length}개 과일`;
-        grid.innerHTML = items.map(item => `
+        grid.innerHTML = items.map(item => {
+          const solutionAvailable = ['avocado','strawberry','shine-muscat','mango'].includes(item.slug);
+          return `
           <a class="ts-fruit-card" href="fruit.html?fruit=${item.slug}">
             <div class="ts-fruit-visual"><div class="ts-fruit-shape shape-${item.shape || 'round'}"></div></div>
             <div class="ts-fruit-meta">
               <div class="ts-fruit-meta-top">
                 <div class="ts-fruit-name"><strong>${item.en}</strong><span>${item.ko}</span></div>
-                <span class="ts-fruit-tag">${item.focus}</span><span class="ts-fruit-status is-research">연구중</span>
+                <span class="ts-fruit-tag">${item.focus}</span><span class="ts-fruit-status ${solutionAvailable ? 'is-available' : 'is-research'}">${solutionAvailable ? '솔루션 제공' : '연구중'}</span>
               </div>
               <div class="ts-fruit-data">
                 <span>Storage<strong>${item.storage}</strong></span>
                 <span>Ethylene<strong>${item.ethylene}</strong></span>
               </div>
             </div>
-          </a>`).join('');
+          </a>`;
+        }).join('');
       };
       buttons.forEach(button => button.addEventListener('click', () => {
         buttons.forEach(item => item.classList.remove('is-active'));
