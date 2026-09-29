@@ -31,6 +31,12 @@
  .ts-audience-nav,.ts-value-grid,.ts-global-list{grid-template-columns:1fr}
  .ts-global-list div:nth-child(odd),.ts-global-list div:nth-child(even){padding:16px 0;border-left:0}
 }
+
+.ts-use-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;max-width:1000px;margin:0 auto}
+.ts-use-card{padding:32px;border:1px solid rgba(20,32,26,.12);border-radius:16px;background:#fff;min-height:300px}
+.ts-use-card .ts-kicker{display:block;margin-bottom:42px}.ts-use-card h3{margin:0;font-size:24px;line-height:1.4;letter-spacing:-.035em}.ts-use-card p{margin:16px 0 0;color:#59615c;line-height:1.82}.ts-use-card ul{list-style:none;padding:18px 0 0;margin:20px 0 0;border-top:1px solid rgba(20,32,26,.1);color:#59615c;line-height:1.8;font-size:14px}
+.ts-adoption-process{max-width:940px;margin:0 auto}.ts-final-value{max-width:920px;margin:0 auto;text-align:center}.ts-final-costs{display:flex;flex-wrap:wrap;justify-content:center;gap:9px;margin:32px auto 0}.ts-final-costs span{padding:11px 15px;border:1px solid rgba(20,32,26,.12);border-radius:999px;background:#fff;font-size:13px}.ts-final-line{margin:42px auto 0;max-width:800px;font-size:24px;line-height:1.55;letter-spacing:-.035em;font-weight:650}.ts-final-tagline{margin:20px 0 0;font-size:17px;line-height:1.7;color:#59615c}
+@media(max-width:767px){.ts-use-grid{grid-template-columns:1fr}.ts-use-card{min-height:0}.ts-final-line{font-size:21px}}
 </style>
 </head>
 <body class="ts-why-page">
@@ -82,10 +88,35 @@
 <div class="ts-global-list"><div>공급망 Loss 관리</div><div>폐기율 관리</div><div>반품 및 품질 클레임 감소</div><div>장거리 공급망 구축</div><div>수출입 물류 최적화</div><div>품목별 포장 표준화</div><div>공급업체별 품질 편차 관리</div><div>식품 폐기 감소에 따른 ESG 데이터 확보 가능성</div></div>
 </div></section>
 
-<section class="ts-section"><div class="ts-shell">
-<div class="ts-section-head"><span class="ts-kicker">WHY TERRASAVE</span><div><h2 class="ts-h2">비즈니스가 달라지면,<br>필요한 가치도 달라집니다.</h2><p class="ts-body ts-section-copy">TerraSAVE는 포장재의 기능만 설명하지 않습니다.<br>고객의 유통 구조에서 어디에서 손실이 발생하는지 확인하고<br>그 손실을 줄일 수 있는 적용 방향을 함께 검토합니다.</p></div></div>
-<div style="text-align:center"><a class="ts-button is-dark is-large" href="contact.html">우리 비즈니스에 맞는 솔루션 상담하기</a></div>
+<section class="ts-section" id="use"><div class="ts-shell">
+<div class="ts-section-head"><span class="ts-kicker">HOW TO USE TERRASAVE</span><div><h2 class="ts-h2">이렇게 활용해보세요.</h2><p class="ts-body ts-section-copy">TerraSAVE는 단순한 보관기간 연장을 넘어<br>출하와 재고, 현장 운영과 판매 과정의 선택지를 넓히는 것을 목표로 합니다.</p></div></div>
+<div class="ts-use-grid">
+<article class="ts-use-card"><span class="ts-kicker">01 / SHIPPING</span><h3>출하 시기를 선택할 수 있습니다</h3><p>수확기에 상품이 한꺼번에 시장에 나오면 공급 증가로 가격이 하락할 수 있습니다. 상품성이 유지되는 시간이 충분하다면 출하를 서두르지 않고 재고와 출하 시점을 보다 유연하게 운영할 수 있습니다.</p><ul><li>빨리 팔아야 하는 상품에서, 더 좋은 시점에 팔 수 있는 상품으로.</li></ul></article>
+<article class="ts-use-card"><span class="ts-kicker">02 / OPERATION</span><h3>운영에 필요한 작업을 줄입니다</h3><p>매장과 물류 현장에서는 상품 상태 확인, 선별, 폐기 작업이 반복됩니다. TerraSAVE는 품목별 최적 포장 조건을 설계하여 품질 저하와 불필요한 관리 작업을 줄일 수 있는 운영 환경을 제공합니다.</p><ul><li>폐기 및 선별 작업 감소 가능성</li><li>재고 관리 효율 향상</li><li>상품 상태 관리 부담 감소</li><li>유통 현장의 운영 효율 향상</li></ul></article>
+<article class="ts-use-card"><span class="ts-kicker">03 / VISIBILITY</span><h3>소비자가 상품의 가치를 직접 확인할 수 있습니다</h3><p>좋은 상품은 포장 안에서도 잘 보여야 합니다. TerraSAVE는 제품 특성에 맞는 투명 포장 솔루션을 통해 과일 본연의 색과 외관을 보여주는 것을 중요하게 생각합니다.</p><ul><li>포장 내부 수분과 결로 관리</li><li>상품의 외관 품질 유지</li><li>포장을 열기 전부터, 상품의 신선함이 보이도록.</li></ul></article>
+<article class="ts-use-card"><span class="ts-kicker">04 / PACKAGING ENVIRONMENT</span><h3>불필요한 처리 없이 포장으로 관리합니다</h3><p>일부 신선농산물은 저장·운송 과정에서 훈증이나 처리제, 흡수패드 등의 보조수단이 사용됩니다. TerraSAVE는 별도의 처리방식에 의존하기보다 포장 자체를 통해 품목에 필요한 환경을 관리하는 솔루션을 지향합니다.</p><ul><li>제품별 안전성 및 규제 적합성은 적용 소재와 사용 조건에 따라 별도로 검증합니다.</li><li>상품을 바꾸는 것이 아니라, 상품을 둘러싼 환경을 바꿉니다.</li></ul></article>
+</div>
 </div></section>
+
+<section class="ts-section is-soft" id="process"><div class="ts-shell">
+<div class="ts-section-head"><span class="ts-kicker">TERRASAVE ADOPTION PROCESS</span><div><h2 class="ts-h2">TerraSAVE 도입<br>5단계 프로세스</h2><p class="ts-body ts-section-copy">현재 문제를 진단하는 것부터 실제 유통망 적용과 확장까지<br>품목과 유통 조건을 기준으로 단계적으로 진행합니다.</p></div></div>
+<div class="ts-process ts-adoption-process">
+<article class="ts-step"><span class="ts-step-no">01 / DIAGNOSE</span><div class="ts-step-copy"><h3 class="ts-h3">진단</h3><p>현재 제품의 품질 저하 원인과 유통 환경을 정밀 분석합니다.</p></div></article>
+<article class="ts-step"><span class="ts-step-no">02 / DESIGN</span><div class="ts-step-copy"><h3 class="ts-h3">설계</h3><p>품목 및 유통 조건(운송 거리, 온습도)에 맞는 단일 포장 솔루션을 설계합니다.</p></div></article>
+<article class="ts-step"><span class="ts-step-no">03 / VALIDATE</span><div class="ts-step-copy"><h3 class="ts-h3">검증</h3><p>실증 운송 시험을 통해 신선도 개선 및 경제성(ROI)을 입증합니다.</p></div></article>
+<article class="ts-step"><span class="ts-step-no">04 / APPLY</span><div class="ts-step-copy"><h3 class="ts-h3">적용</h3><p>양산 및 실제 유통망 현장에 적용합니다.</p></div></article>
+<article class="ts-step"><span class="ts-step-no">05 / EXPAND</span><div class="ts-step-copy"><h3 class="ts-h3">확장</h3><p>적용 품목, 수출 국가, 유통 채널을 확대합니다.</p></div></article>
+</div>
+</div></section>
+
+<section class="ts-section"><div class="ts-shell"><div class="ts-final-value">
+<span class="ts-kicker">KEEP FRESH, SAVE LOSS</span>
+<h2 class="ts-h2" style="margin-top:18px">포장비용이 아니라,<br>전체 유통비용의 변화입니다.</h2>
+<div class="ts-final-costs"><span>제품 폐기 비용</span><span>상품성 유지 기간 확대</span><span>반품 및 품질 클레임</span><span>물류비</span><span>재고 손실</span><span>인력 운영 비용</span><span>판매 기회 확대</span></div>
+<p class="ts-final-line">과일이 소비자에게 판매되는 순간까지 발생하는 전체 손실을 줄이는 것.<br>그것이 TerraSAVE가 만드는 가치입니다.</p>
+<p class="ts-final-tagline"><strong>더 오래 판매하고, 더 멀리 보내고, 더 적게 버립니다.</strong><br>농수산물이 소비자에게 도착할 때까지 가치를 보존하고 고객의 수익을 만들어내는 포장재 솔루션입니다.</p>
+<div style="margin-top:34px"><a class="ts-button is-dark is-large" href="contact.html">TerraSAVE 도입 상담하기</a></div>
+</div></div></section>
 </main>
 <footer class="footer"></footer><script src="assets/js/main.js"></script>
 </body></html>
