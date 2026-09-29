@@ -237,20 +237,7 @@ function rewriteFruits() {
 }
 
 function rewriteProduct() {
-  setMeta('과일망 — TerraSave', '과일의 크기와 표면, 눌림 위험, 유통 조건을 보고 맞는 과일 보호망 적용 방향을 검토합니다.');
-  setText('.ts-breadcrumb', '홈 / 과일망');
-  setHTML('.ts-net-hero .ts-display', '과일망은 같아 보여도,<br />과일마다 필요한 보호는 다릅니다.');
-  setText('.ts-net-intro .ts-kicker', '과일을 하나씩 감싸는 보호망');
-  setText('.ts-net-intro-copy .ts-body-lg', '배처럼 단단한 과일과 복숭아처럼 쉽게 눌리는 과일은 같은 망을 써도 결과가 다를 수 있습니다. 과일 크기, 표면, 숙도와 이동 거리를 보고 완충 정도와 적용 방향을 함께 검토합니다.');
-  replaceExact('.ts-button', 'Request a solution', '내 과일망 상담하기');
-  setText('.ts-object-label', '과일 보호망 적용 예시');
-  const sections = document.querySelectorAll('main > .ts-section');
-  if (sections[0]) setHead(sections[0], '어떤 과일망이 맞을까요?', '망 규격보다 먼저,<br />과일과 유통 상황을 봅니다.', '품목과 크기, 눌림 정도, 포장 방법, 적재와 운송 환경을 확인한 뒤 필요한 완충 방향을 정합니다.');
-  if (sections[1]) setHead(sections[1], '먼저 검토하기 좋은 과일', '개별 포장이 많거나,<br />눌림에 민감한 과일부터 시작합니다.', '배, 사과, 복숭아, 망고, 아보카도, 단감처럼 개별 보호의 필요성이 큰 품목부터 실제 적용 조건을 살펴봅니다.');
-  if (sections[2]) setHead(sections[2], '과일망에서 신선도 관리까지', '먼저 눌림을 줄이고,<br />필요하면 신선도 관리 기능까지 더합니다.', '기본은 물리적 보호입니다. 이후 과일 특성에 따라 수분, 후숙 속도, 저장환경을 관리하는 기능성 소재의 필요성을 별도로 시험합니다.');
-  setAllText('.ts-step-copy .ts-h3', ['과일 확인', '유통 조건 확인', '필요한 보호 정리', '적용 방향 제안']);
-  setAllText('.ts-step-copy p', ['품목, 품종, 크기와 표면 상태를 확인합니다.', '보관 온도, 이동 거리, 적재 방식과 판매 시점을 봅니다.', '눌림, 마찰, 후숙, 수분 등 우선 문제를 정합니다.', '현재 포장에 적용 가능한 과일망 방향을 제안합니다.']);
-  document.querySelectorAll('.ts-application-row .ts-kicker').forEach((el, index) => el.textContent = String(index + 1).padStart(2, '0'));
+  setMeta('Product — TerraSave', 'TerraSAVE Product — TerraPACK, TerraShield, TerraCover 제품과 주문·문의 정보를 확인합니다.');
 }
 
 function rewriteTechnology() {
