@@ -348,13 +348,8 @@ function localizeFruitCards() {
 
 function applySiteCopy() {
   localizeBreadcrumb();
-  if (currentPath === 'index.html' || currentPath === '') rewriteHome();
-  if (currentPath === 'fruits.html') rewriteFruits();
-  if (currentPath === 'product.html') rewriteProduct();
   if (currentPath === 'technology.html') rewriteTechnology();
   if (currentPath === 'what-we-do.html') rewriteResearch();
-  if (currentPath === 'about.html') rewriteAbout();
-  if (currentPath === 'contact.html') rewriteContact();
   if (currentPath === 'fruit.html') rewriteFruitDetail();
   localizeFruitCards();
 }
