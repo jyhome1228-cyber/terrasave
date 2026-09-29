@@ -181,6 +181,45 @@
           </div>
         </section>
 
+        ${fruit.slug === 'shine-muscat' ? `
+        <section class="ts-section">
+          <div class="ts-shell">
+            <div class="ts-section-head">
+              <span class="ts-kicker">SHINE MUSCAT</span>
+              <div><h2 class="ts-h2">샤인머스켓은 왜 상할까요?</h2><p class="ts-body ts-section-copy">샤인머스켓은 수분 함량이 높고 과피가 얇아<br>수분 손실과 물리적 손상에 민감한 과일입니다.<br>수확 당시의 품질과 수확 후 관리가 저장수명을 결정하는 중요한 요인입니다.</p></div>
+            </div>
+            <div class="ts-application-list">
+              <div class="ts-application-row"><span class="ts-kicker">01</span><strong>주요 품질 저하 및 부패 원인</strong><p>수분 손실(송이 축·줄기 건조 및 갈변) · 탈알(Berry Drop) · 향기 성분(Linalool) 감소 · 호흡 및 노화 · 미생물 증식 · 잿빛곰팡이성 부패 · 물리적 손상</p></div>
+              <div class="ts-application-row"><span class="ts-kicker">02</span><strong>항균의 필요성</strong><p>장기 보관과 수출 과정에서 잿빛곰팡이병(Botrytis cinerea)은 중요한 위험 요인입니다. 저온 환경에서도 곰팡이 포자는 서서히 증식할 수 있으며 수확·운송 중 발생한 미세 상처나 줄기 단면을 통해 확산될 수 있습니다.</p></div>
+              <div class="ts-application-row"><span class="ts-kicker">03</span><strong>결로 현상 제어 필요성</strong><p>자료에서는 샤인머스켓의 저장 조건을 약 0°C, 상대습도 90~95%로 제시합니다. 밀폐 포장이나 저온 보관 후 유통 과정의 온도 차이는 포장 내부 결로를 만들 수 있으며, 이는 곰팡이 증식과 송이 축 갈변, 탈알을 가속할 수 있습니다.</p></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="ts-section is-soft">
+          <div class="ts-shell">
+            <div class="ts-section-head">
+              <span class="ts-kicker">EXISTING SOLUTIONS</span>
+              <div><h2 class="ts-h2">기존에는 어떻게<br>관리해왔을까요?</h2><p class="ts-body ts-section-copy">줄기 수분과 곰팡이를 관리하기 위한 수분 공급 홀더·유황패드,<br>그리고 호흡을 조절하는 CA/MAP 방식이 활용됩니다.</p></div>
+            </div>
+            <div class="ts-approach-grid">
+              <article class="ts-approach"><span class="ts-kicker">01 / FRESH HOLDER · SO₂</span><div><h3 class="ts-h3">수분 공급 홀더 &amp; 유황패드</h3><p><strong>방식</strong> — 줄기 끝에 개별 수분 용기를 꽂거나 아황산가스(SO₂) 패드를 첨가해 줄기 마름과 곰팡이를 방지합니다.</p><p><strong>한계</strong> — 개별 부착 작업으로 공정과 인건비가 증가하고, 결로 발생 시 가스가 물에 과다 용해되어 과피 탈색이나 잔류 유황 냄새 문제가 발생할 수 있습니다.</p></div></article>
+              <article class="ts-approach"><span class="ts-kicker">02 / CA · MAP</span><div><h3 class="ts-h3">기체조절 포장</h3><p><strong>방식</strong> — 포장 내부의 O₂와 CO₂ 농도를 조절해 호흡과 노화를 지연시키고 부패를 늦춥니다.</p><p><strong>한계</strong> — 고가의 장비와 비용이 필요하고, 내부 습도가 지나치게 높아지면 결로로 인해 줄기 부패 및 탈알이 발생할 수 있습니다.</p></div></article>
+            </div>
+          </div>
+        </section>
+
+        <section class="ts-section">
+          <div class="ts-shell">
+            <div class="ts-section-head">
+              <span class="ts-kicker">TERRASAVE SOLUTION / SHINE MUSCAT</span>
+              <div><h2 class="ts-h2">샤인머스켓에 필요한 기능을<br>하나의 패키지에.</h2><p class="ts-body ts-section-copy">포장재 내 수분 손실 제어 + 결로 방지 + 적절한 O₂/CO₂ 교환 +<br>항균·항곰팡이 기능 + 물리적 보호를 하나의 패키지에 담는 방향입니다.</p></div>
+            </div>
+            <div style="text-align:center"><a class="ts-button is-dark is-large" href="product.html">구매하러가기</a></div>
+          </div>
+        </section>
+        ` : ''}
+
         ${fruit.slug === 'strawberry' ? `
         <section class="ts-section">
           <div class="ts-shell">
@@ -230,7 +269,12 @@
               </div>
             </div>
             <div class="ts-detail-research">
-              ${fruit.slug === 'strawberry' ? `
+              ${fruit.slug === 'shine-muscat' ? `
+                <div class="ts-detail-research-block"><h3>샤인머스켓에 대해 읽어볼 만한 자료</h3><p>저장·유통 중에는 잿빛곰팡이병(Botrytis cinerea), 송이 축의 수분 손실과 갈변, 탈알(Berry Drop), 온도 변화에 따른 결로가 주요 품질 저하 요인으로 정리되어 있습니다.</p></div>
+                <div class="ts-detail-research-block"><h3>저장·유통 관리 포인트</h3><p>자료에서는 수확 직후 차압 예냉, 약 0°C의 저온과 상대습도 90~95% 유지, 기능성 MA 포장과 결로 방지를 주요 관리 방향으로 제시합니다. 장기 수송·저장 시 항균 방제 기술을 병행하되 결로 제어와 함께 검토하는 것이 중요합니다.</p></div>
+                <div class="ts-detail-research-block"><h3>연구 결론 및 시사점</h3><p>PPT에 정리된 NARO 연구 내용은 고품질 장기 유통을 위해 단순 저온 보관만으로는 한계가 있으며, 저온 유지 + 줄기 수분 보존 + 결로 차단을 통한 곰팡이·약해 예방이 함께 이루어져야 한다는 방향을 제시합니다.</p></div>
+                <div class="ts-detail-references"><strong>출처 및 참고자료</strong><br>일본 NARO 연구보고 — 샤인머스켓의 고품질 장기저장 및 수출용 유통기술<br>경북농업기술원 보도자료 — 샤인머스켓 장기저장 유통 중 부패 원인균 관련 자료<br>농촌진흥청 영농기술정보 — 포도 ‘샤인머스켓’ 수확 후 예냉 및 저온 저장 선도유지 가이드라인<br>한국원예학회 원예과학기술지 — 샤인머스켓 저장 품질 및 MA 포장 관련 논문<br>일본 원예학회지 Horticultural Research (Japan)</div>
+              ` : fruit.slug === 'strawberry' ? `
                 <div class="ts-detail-research-block"><h3>딸기(설향)에 대해 읽어볼 만한 자료</h3><p>‘설향’ 품종은 과육이 부드러워 상온(20°C) 보관 시 상품성 유지 기간이 단 3일에 불과한 것으로 정리되어 있습니다. 수확 직후 예비 냉장 후 5°C 저온 보관을 유지하면 상품성 유지 기간이 최대 9일까지 늘어날 수 있다는 자료가 제시되어 있습니다.</p></div>
                 <div class="ts-detail-research-block"><h3>CO₂ 및 항균 가스 처리</h3><p>고농도 CO₂(30%)와 이산화염소 가스를 복합 처리했을 때 과육 물러짐과 곰팡이 부패율이 15~20% 감소하고, 신선도 유지 기간이 기존 대비 3~4일가량 추가 연장되었다는 자료가 제시되어 있습니다.</p></div>
                 <div class="ts-detail-research-block"><h3>포장 및 결로 제어</h3><p>MAP 포장으로 수분 손실을 억제할 때 내부 습도 상승에 따른 결로와 짓무름을 함께 차단하는 것이 신선도 유지의 중요한 요소로 정리되어 있습니다.</p></div>
