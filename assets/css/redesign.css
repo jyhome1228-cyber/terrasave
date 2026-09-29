@@ -284,3 +284,39 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
   .ts-chain{grid-template-columns:1fr}.ts-chain-item,.ts-chain-item+.ts-chain-item,.ts-chain-item:nth-child(3){padding:20px 0;border-left:0}
   .ts-data-grid{grid-template-columns:1fr}.ts-data-cell,.ts-data-cell:nth-child(even),.ts-data-cell:not(:nth-child(3n+1)){padding:18px 0;border-left:0}
 }
+
+
+/* Temporary homepage update notice */
+.ts-update-popup{
+  position:fixed;inset:0;z-index:9999;
+  display:flex;align-items:center;justify-content:center;
+  padding:24px;background:rgba(15,20,17,.42);
+  backdrop-filter:blur(5px);
+}
+.ts-update-popup-card{
+  width:min(520px,100%);padding:34px;
+  border-radius:18px;background:#fff;
+  box-shadow:0 24px 80px rgba(0,0,0,.18);
+}
+.ts-update-popup-card small{
+  display:block;margin-bottom:16px;
+  color:#737b76;font-size:11px;font-weight:700;letter-spacing:.1em;
+}
+.ts-update-popup-card h2{
+  margin:0;font-size:28px;line-height:1.25;
+  letter-spacing:-.04em;
+}
+.ts-update-popup-card p{
+  margin:16px 0 0;color:#5c645f;
+  font-size:15px;line-height:1.75;word-break:keep-all;
+}
+.ts-update-popup-card button{
+  display:block;margin:28px 0 0 auto;
+  border:0;border-radius:999px;padding:12px 20px;
+  background:#172019;color:#fff;
+  font:inherit;font-size:14px;font-weight:650;cursor:pointer;
+}
+@media(max-width:767px){
+  .ts-update-popup-card{padding:28px 24px;border-radius:16px}
+  .ts-update-popup-card h2{font-size:24px}
+}
