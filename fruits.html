@@ -179,14 +179,14 @@
       };
       const render = (filter='all') => {
         const items = getFiltered(filter);
-        count.textContent = `${items.length} items`;
+        count.textContent = `${items.length}개 과일`;
         grid.innerHTML = items.map(item => `
           <a class="ts-fruit-card" href="fruit.html?fruit=${item.slug}">
             <div class="ts-fruit-visual"><div class="ts-fruit-shape shape-${item.shape || 'round'}"></div></div>
             <div class="ts-fruit-meta">
               <div class="ts-fruit-meta-top">
                 <div class="ts-fruit-name"><strong>${item.en}</strong><span>${item.ko}</span></div>
-                <span class="ts-fruit-tag">${item.focus}</span>
+                <span class="ts-fruit-tag">${item.focus}</span><span class="ts-fruit-status">연구 상태</span>
               </div>
               <div class="ts-fruit-data">
                 <span>Storage<strong>${item.storage}</strong></span>
