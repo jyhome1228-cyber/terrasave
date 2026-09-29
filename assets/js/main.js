@@ -28,11 +28,11 @@ document.querySelectorAll('.brand').forEach((brand) => {
 });
 
 const navItems = [
-  ['about.html', 'About TerraSAVE'],
+  ['about.html', 'About'],
   ['product.html', 'Product'],
-  ['fruits.html', '과일별 신선도 자료'],
+  ['fruits.html', 'Freshness Library'],
   ['partnership.html', 'Partnership'],
-  ['why-terrasave.html', 'Why TerraSAVE']
+  ['why-terrasave.html', 'Why TerraSave']
 ];
 
 const currentPath = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
@@ -88,12 +88,12 @@ if (footer) {
           <p class="footer-description">과일별 보관 조건과 유통 중 문제를 바탕으로 필요한 보호 방향을 찾습니다.</p>
         </div>
         <nav class="footer-nav-main" aria-label="Footer navigation">
-          <a href="about.html">About TerraSAVE</a>
+          <a href="about.html">About</a>
           <a href="product.html">Product</a>
-          <a href="fruits.html">과일별 신선도 자료</a>
+          <a href="fruits.html">Freshness Library</a>
           <a href="partnership.html">Partnership</a>
-          <a href="why-terrasave.html">Why TerraSAVE</a>
-          <a href="contact.html">포장 상담하기</a>
+          <a href="why-terrasave.html">Why TerraSave</a>
+          <a href="contact.html">Contact</a>
         </nav>
       </div>
       <div class="footer-secondary">
