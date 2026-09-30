@@ -1126,3 +1126,31 @@ body{
 @media(max-width:767px){
   body{padding-top:66px!important}
 }
+
+
+/* Full-site width QA — structural blocks follow the header's 1200px shell */
+main .ts-shell > :is(
+  .ts-home-protection,.ts-home-system,.ts-home-research,.ts-home-cta,
+  .ts-about-visual,.ts-product-list,.ts-fruit-grid,.fruit-grid,
+  .ts-partner-models,.ts-condition-grid,.ts-data-tags,.ts-license-example,
+  .ts-process,.ts-application-list,.ts-approach-grid,.ts-detail-research,
+  .ts-detail-hero,.ts-data-grid,.ts-cta
+){
+  width:100%!important;
+  max-width:none!important;
+  margin-left:0!important;
+  margin-right:0!important;
+  box-sizing:border-box!important;
+}
+/* Text measure may stay narrower, but its parent section remains on the header grid */
+main .ts-shell > :is(.ts-section-head,.ts-home-head){
+  width:100%!important;
+  max-width:860px!important;
+  margin-left:auto!important;
+  margin-right:auto!important;
+}
+main .ts-shell > :is(.ts-section-head,.ts-home-head) .ts-section-copy{
+  max-width:760px!important;
+  margin-left:auto!important;
+  margin-right:auto!important;
+}
