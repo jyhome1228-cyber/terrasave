@@ -1428,3 +1428,31 @@ body .footer .footer-shell{padding-left:0!important;padding-right:0!important}
     gap:10px!important;
   }
 }
+
+
+/* Launch QA: reusable support-copy hierarchy */
+.ts-support-copy{
+  max-width:760px!important;
+  margin:32px auto 0!important;
+  text-align:center!important;
+  color:#59615c!important;
+  line-height:1.82!important;
+  word-break:keep-all!important;
+}
+.ts-support-emphasis{
+  max-width:760px!important;
+  margin:40px auto 0!important;
+  text-align:center!important;
+  font-size:20px!important;
+  line-height:1.6!important;
+  font-weight:650!important;
+  word-break:keep-all!important;
+}
+@media(max-width:767px){
+  .ts-support-copy,.ts-support-emphasis{
+    max-width:none!important;
+    margin-left:0!important;
+    margin-right:0!important;
+    text-align:left!important;
+  }
+}
