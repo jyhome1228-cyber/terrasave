@@ -797,3 +797,50 @@ body.ts-home-page .ts-home-intro-side p{
   .ts-fruit-detail-page .ts-approach:last-child{border-bottom:0!important}
   .ts-fruit-detail-page .ts-application-row{grid-template-columns:1fr!important;gap:8px!important}
 }
+
+
+/* Fruit narrative rows — readable full-width editorial layout */
+.ts-fruit-detail-page .ts-application-list{
+  max-width:1040px!important;
+}
+.ts-fruit-detail-page .ts-application-row{
+  display:grid!important;
+  grid-template-columns:72px minmax(0,1fr)!important;
+  grid-template-areas:
+    "num title"
+    ". body"!important;
+  column-gap:28px!important;
+  row-gap:10px!important;
+  padding:34px 0!important;
+  align-items:start!important;
+}
+.ts-fruit-detail-page .ts-application-row>.ts-kicker{
+  grid-area:num!important;
+  margin:2px 0 0!important;
+}
+.ts-fruit-detail-page .ts-application-row>strong{
+  grid-area:title!important;
+  display:block!important;
+  font-size:20px!important;
+  line-height:1.45!important;
+  letter-spacing:-.025em!important;
+}
+.ts-fruit-detail-page .ts-application-row>p{
+  grid-area:body!important;
+  width:100%!important;
+  max-width:900px!important;
+  margin:0!important;
+  font-size:16px!important;
+  line-height:1.85!important;
+  color:#5c625e!important;
+  word-break:keep-all!important;
+}
+@media(max-width:767px){
+  .ts-fruit-detail-page .ts-application-row{
+    grid-template-columns:1fr!important;
+    grid-template-areas:"num" "title" "body"!important;
+    row-gap:8px!important;
+    padding:26px 0!important;
+  }
+  .ts-fruit-detail-page .ts-application-row>p{font-size:15px!important}
+}
