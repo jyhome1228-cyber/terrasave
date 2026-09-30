@@ -844,3 +844,66 @@ body.ts-home-page .ts-home-intro-side p{
   }
   .ts-fruit-detail-page .ts-application-row>p{font-size:15px!important}
 }
+
+
+/* Fruit research system — consistent hierarchy for Strawberry / Shine Muscat / Avocado */
+.ts-fruit-detail-page .ts-detail-research{
+  max-width:1040px!important;
+  padding:0!important;
+}
+.ts-fruit-detail-page .ts-detail-research-block{
+  display:grid!important;
+  grid-template-columns:76px minmax(0,1fr)!important;
+  column-gap:28px!important;
+  row-gap:14px!important;
+  padding:38px 0!important;
+  border-top:1px solid var(--line)!important;
+}
+.ts-fruit-detail-page .ts-detail-research-block:first-child{border-top:0!important}
+.ts-fruit-detail-page .ts-detail-research-block h3{
+  grid-column:1 / -1!important;
+  margin:0!important;
+  font-size:21px!important;
+  line-height:1.45!important;
+  letter-spacing:-.025em!important;
+  color:#171a18!important;
+}
+.ts-fruit-detail-page .ts-detail-research-block p{
+  grid-column:2!important;
+  margin:0!important;
+  max-width:900px!important;
+  font-size:16px!important;
+  line-height:1.85!important;
+  color:#5b625e!important;
+  word-break:keep-all!important;
+}
+.ts-fruit-detail-page .ts-detail-research-block p+p{margin-top:2px!important}
+.ts-fruit-detail-page .ts-detail-research-block h3 + p{margin-top:4px!important}
+.ts-fruit-detail-page .ts-detail-research-block h3 strong,
+.ts-fruit-detail-page .ts-detail-research-block p strong{color:#202421!important}
+.ts-fruit-detail-page .ts-detail-references{
+  margin-top:10px!important;
+  padding:32px 0 0!important;
+  border-top:1px solid var(--line)!important;
+  font-size:13px!important;
+  line-height:1.9!important;
+  color:#747a76!important;
+}
+.ts-fruit-detail-page .ts-detail-references>strong:first-child{
+  display:block!important;
+  margin-bottom:10px!important;
+  font-size:14px!important;
+  color:#303632!important;
+}
+.ts-fruit-detail-page .ts-detail-research + *{margin-top:0!important}
+@media(max-width:767px){
+  .ts-fruit-detail-page .ts-detail-research-block{
+    grid-template-columns:1fr!important;
+    row-gap:10px!important;
+    padding:28px 0!important;
+  }
+  .ts-fruit-detail-page .ts-detail-research-block h3,
+  .ts-fruit-detail-page .ts-detail-research-block p{grid-column:1!important}
+  .ts-fruit-detail-page .ts-detail-research-block h3{font-size:19px!important}
+  .ts-fruit-detail-page .ts-detail-research-block p{font-size:15px!important}
+}
