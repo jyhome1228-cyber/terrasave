@@ -907,3 +907,55 @@ body.ts-home-page .ts-home-intro-side p{
   .ts-fruit-detail-page .ts-detail-research-block h3{font-size:19px!important}
   .ts-fruit-detail-page .ts-detail-research-block p{font-size:15px!important}
 }
+
+
+/* Authored fruit profiles: one typography + line-break system for all 3 fruits */
+.ts-fruit-detail-page.has-authored-fruit-profile .ts-section-head .ts-h2{
+  max-width:820px!important;
+  text-wrap:balance!important;
+  word-break:keep-all!important;
+}
+.ts-fruit-detail-page.has-authored-fruit-profile .ts-section-head .ts-section-copy{
+  max-width:820px!important;
+  text-wrap:pretty!important;
+  word-break:keep-all!important;
+  line-height:1.8!important;
+}
+.ts-fruit-detail-page.has-authored-fruit-profile .ts-application-row>strong,
+.ts-fruit-detail-page.has-authored-fruit-profile .ts-application-row>p,
+.ts-fruit-detail-page.has-authored-fruit-profile .ts-approach h3,
+.ts-fruit-detail-page.has-authored-fruit-profile .ts-approach p,
+.ts-fruit-detail-page.has-authored-fruit-profile .ts-detail-research-block h3,
+.ts-fruit-detail-page.has-authored-fruit-profile .ts-detail-research-block p{
+  word-break:keep-all!important;
+  overflow-wrap:break-word!important;
+}
+.ts-fruit-detail-page.has-authored-fruit-profile .ts-application-row>p,
+.ts-fruit-detail-page.has-authored-fruit-profile .ts-detail-research-block p{
+  max-width:none!important;
+}
+.ts-fruit-detail-page.has-authored-fruit-profile .ts-approach h3{
+  min-height:60px!important;
+}
+.ts-fruit-detail-page.has-authored-fruit-profile .ts-approach p{
+  margin-top:12px!important;
+}
+.ts-fruit-detail-page.has-authored-fruit-profile .ts-detail-research-block{
+  display:block!important;
+}
+.ts-fruit-detail-page.has-authored-fruit-profile .ts-detail-research-block h3{
+  margin:0 0 16px!important;
+}
+.ts-fruit-detail-page.has-authored-fruit-profile .ts-detail-research-block p{
+  margin:0!important;
+}
+.ts-fruit-detail-page.has-authored-fruit-profile .ts-detail-research-block p+p{
+  margin-top:14px!important;
+}
+@media(max-width:767px){
+  .ts-fruit-detail-page.has-authored-fruit-profile .ts-section-head .ts-h2 br,
+  .ts-fruit-detail-page.has-authored-fruit-profile .ts-section-head .ts-section-copy br{
+    display:none!important;
+  }
+  .ts-fruit-detail-page.has-authored-fruit-profile .ts-approach h3{min-height:0!important}
+}
