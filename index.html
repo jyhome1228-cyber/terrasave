@@ -43,7 +43,7 @@
       margin-top:28px;
       align-items:end;
     }
-    .ts-home-intro-copy{grid-column:1 / span 7}
+    .ts-home-intro-copy{grid-column:1 / span 9}
     .ts-home-intro-copy .ts-kicker{display:block;margin-bottom:12px}
     .ts-home-title{
       margin:0;
@@ -53,19 +53,15 @@
       letter-spacing:-.045em;
       font-weight:700;
     }
-    .ts-home-intro-side{
-      grid-column:9 / -1;
-      display:grid;
-      gap:14px;
-      align-self:end;
-    }
-    .ts-home-intro-side p{
-      margin:0;
+    .ts-home-lead{
+      margin:20px 0 0;
+      max-width:760px;
       color:#5b625e;
-      line-height:1.62;
-      font-size:16px;
+      line-height:1.78;
+      font-size:17px;
+      word-break:keep-all;
     }
-    .ts-home-actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+    .ts-home-actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:24px}
 
     .ts-home-section{padding:88px 0!important}
     .ts-home-section.is-soft{background:#f7f8f6}
@@ -202,8 +198,7 @@
     .ts-home-cta-action{grid-column:10 / -1;text-align:right}
 
     @media(max-width:1023px){
-      .ts-home-intro-copy{grid-column:1 / span 8}
-      .ts-home-intro-side{grid-column:9 / -1}
+      .ts-home-intro-copy{grid-column:1 / span 10}
       .ts-home-head>.ts-kicker{grid-column:1 / span 3}
       .ts-home-head-copy{grid-column:4 / -1}
       .ts-home-fruit-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
@@ -213,7 +208,7 @@
       .ts-home-hero{padding:16px 0 40px!important}
       .ts-home-hero-image{border-radius:12px;aspect-ratio:4 / 3}
       .ts-home-intro{grid-template-columns:1fr;gap:18px;margin-top:24px}
-      .ts-home-intro-copy,.ts-home-intro-side{grid-column:1}
+      .ts-home-intro-copy{grid-column:1}
       .ts-home-title{font-size:34px;line-height:1.2}
       .ts-home-section{padding:64px 0!important}
       .ts-home-head{grid-template-columns:1fr;gap:14px;margin-bottom:30px}
@@ -261,12 +256,10 @@
           <div class="ts-home-intro-copy">
             <span class="ts-kicker">FRUIT-SPECIFIC FRESHNESS</span>
             <h1 class="ts-home-title">정성으로 키운 작물,<br />이제 과학으로 지키세요.</h1>
-          </div>
-          <div class="ts-home-intro-side">
-            <p>과일마다 부패하는 이유는 다 다릅니다. TerraSave는 품목별 특성과 실제 유통 조건을 분석해 과일 품목별 신선도 유지 제품과 포장 솔루션을 제공합니다.</p>
+            <p class="ts-home-lead">과일마다 부패하는 이유는 다 다릅니다.<br />과일 품목별 신선도 유지 제품을 제공합니다.</p>
             <div class="ts-home-actions">
-              <a class="ts-button is-dark" href="fruits.html">과일별 신선도 자료</a>
-              <a class="ts-link" href="product.html">제품 보기 ↗</a>
+              <a class="ts-button is-dark" href="fruits.html">과일별 보기</a>
+              <a class="ts-link" href="product.html">포장 기술 보기 ↗</a>
             </div>
           </div>
         </div>
