@@ -94,7 +94,78 @@
       }
       .fruit-library-section .ts-fruit-data strong{min-height:0}
     }
-  </style>
+  
+/* Freshness Library — same 1200px grid as header, never full-bleed */
+.ts-fruits-page .ts-page-hero>.ts-shell,
+.ts-fruits-page .fruit-library-section>.ts-shell{
+  width:min(1200px,calc(100% - 64px))!important;
+  max-width:none!important;
+  margin-left:auto!important;
+  margin-right:auto!important;
+}
+.ts-fruits-page .ts-page-hero{padding:72px 0 78px!important}
+.ts-fruits-page .ts-page-hero .ts-section-head{
+  max-width:760px!important;
+  margin:0 auto!important;
+}
+.ts-fruits-page .fruit-library-section{padding:42px 0 88px!important}
+.ts-fruits-page .fruit-toolbar{
+  width:100%!important;
+  margin:0 0 34px!important;
+  padding:0 0 18px!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:space-between!important;
+  gap:24px!important;
+  border-bottom:1px solid rgba(20,32,26,.10);
+}
+.ts-fruits-page .fruit-filters{display:flex;flex-wrap:wrap;gap:8px}
+.ts-fruits-page #fruitCount{margin-left:auto;white-space:nowrap}
+.ts-fruits-page #fruitGrid,
+.ts-fruits-page .fruit-grid{
+  width:100%!important;
+  max-width:none!important;
+  margin:0!important;
+  display:grid!important;
+  grid-template-columns:repeat(4,minmax(0,1fr))!important;
+  gap:18px!important;
+}
+.ts-fruits-page .fruit-card{
+  min-width:0!important;
+  border:1px solid rgba(20,32,26,.10)!important;
+  border-radius:14px!important;
+  overflow:hidden!important;
+  background:#fff!important;
+}
+.ts-fruits-page .fruit-card-media{
+  aspect-ratio:1/1!important;
+  width:100%!important;
+  overflow:hidden!important;
+  background:#fff!important;
+}
+.ts-fruits-page .fruit-card-media img{
+  width:100%!important;
+  height:100%!important;
+  object-fit:contain!important;
+  padding:24px!important;
+  box-sizing:border-box!important;
+}
+.ts-fruits-page .fruit-card-body{padding:18px 18px 20px!important}
+@media(max-width:1023px){
+ .ts-fruits-page .ts-page-hero>.ts-shell,.ts-fruits-page .fruit-library-section>.ts-shell{width:calc(100% - 48px)!important}
+ .ts-fruits-page #fruitGrid,.ts-fruits-page .fruit-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+}
+@media(max-width:767px){
+ .ts-fruits-page .ts-page-hero>.ts-shell,.ts-fruits-page .fruit-library-section>.ts-shell{width:calc(100% - 36px)!important}
+ .ts-fruits-page .ts-page-hero{padding:50px 0 58px!important}
+ .ts-fruits-page .fruit-library-section{padding:30px 0 64px!important}
+ .ts-fruits-page .fruit-toolbar{align-items:flex-start!important;flex-direction:column!important;gap:14px!important}
+ .ts-fruits-page #fruitCount{margin-left:0!important}
+ .ts-fruits-page #fruitGrid,.ts-fruits-page .fruit-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px!important}
+ .ts-fruits-page .fruit-card-media img{padding:14px!important}
+ .ts-fruits-page .fruit-card-body{padding:14px!important}
+}
+</style>
 </head>
 <body class="page-fruits ts-fruits-page">
   <header class="site-header" id="siteHeader">
