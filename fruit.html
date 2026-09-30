@@ -27,6 +27,10 @@
     .ts-detail-lead{max-width:720px!important;text-wrap:pretty}
     .ts-detail-lead .ts-lead-sentence{display:block}
     .ts-detail-lead .ts-lead-sentence + .ts-lead-sentence{margin-top:4px}
+    .has-authored-fruit-profile .ts-generic-fruit-section{display:none!important}
+    .ts-fruit-detail-page .ts-detail-research-block strong{color:#202521}
+    .ts-fruit-detail-page .ts-detail-references{max-width:900px}
+    .ts-fruit-detail-page .ts-detail-references strong{color:#303632}
     @media(max-width:767px){
       .ts-detail-copy{padding-left:0!important}
       .ts-detail-lead{max-width:none!important}
@@ -63,6 +67,8 @@
       if (!fruit || !root) return;
       const availableSlugs = ['avocado','strawberry','shine-muscat','mango'];
       const isAvailable = availableSlugs.includes(fruit.slug);
+      const authoredProfile = ['strawberry','shine-muscat','avocado'].includes(fruit.slug);
+      if (authoredProfile) document.body.classList.add('has-authored-fruit-profile');
 
       const breakHeading = (text='') => text.replace(/([,.!?])\s+/g, '$1<br />');
       const formatLead = (text='') => text
@@ -136,7 +142,7 @@
           </div>
         </section>
 
-        <section class="ts-section">
+        <section class="ts-section ts-generic-fruit-section">
           <div class="ts-shell">
             <div class="ts-section-head">
               <span class="ts-kicker">01 / FRUIT CHARACTERISTICS</span>
@@ -149,7 +155,7 @@
           </div>
         </section>
 
-        <section class="ts-section is-soft">
+        <section class="ts-section is-soft ts-generic-fruit-section">
           <div class="ts-shell">
             <div class="ts-section-head">
               <span class="ts-kicker">02 / QUALITY RISK</span>
@@ -167,7 +173,7 @@
           </div>
         </section>
 
-        <section class="ts-section">
+        <section class="ts-section ts-generic-fruit-section">
           <div class="ts-shell">
             <div class="ts-section-head">
               <span class="ts-kicker">03 / TERRASAVE APPROACH</span>
