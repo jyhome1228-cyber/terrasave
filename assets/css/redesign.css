@@ -1039,3 +1039,69 @@ body{background:#fff!important}
   :root{--ts-site-gutter:36px}
   .ts-fruit-detail-page .ts-detail-hero{grid-template-columns:1fr!important}
 }
+
+
+/* 2026-10-01 — canonical 1200px grid across every public page */
+:root{
+  --ts-site-width:1200px;
+  --ts-site-gutter:64px;
+}
+html,body{overflow-x:hidden}
+.ts-shell,
+.site-header .header-inner,
+.footer-shell,
+main > section > .ts-shell,
+.ts-page-hero > .ts-shell,
+.ts-home-hero > .ts-shell{
+  width:min(var(--ts-site-width),calc(100% - var(--ts-site-gutter)))!important;
+  max-width:none!important;
+  margin-left:auto!important;
+  margin-right:auto!important;
+  box-sizing:border-box!important;
+}
+
+/* Page-specific wrappers must never establish a narrower page axis */
+.ts-about-page .ts-about-visual,
+.ts-product-page .ts-product-list,
+.ts-fruits-page .fruit-library-section .ts-shell,
+.ts-partnership-page .ts-partner-models,
+.ts-partnership-page .ts-condition-grid,
+.ts-partnership-page .ts-data-tags,
+.ts-partnership-page .ts-license-example,
+.ts-partnership-page .ts-process,
+.ts-why-page .ts-process,
+.ts-fruit-detail-page .ts-detail-hero,
+.ts-fruit-detail-page .ts-data-grid,
+.ts-fruit-detail-page .ts-application-list,
+.ts-fruit-detail-page .ts-approach-grid,
+.ts-fruit-detail-page .ts-detail-research,
+.ts-fruit-detail-page .ts-cta{
+  width:100%!important;
+  max-width:none!important;
+  margin-left:0!important;
+  margin-right:0!important;
+  box-sizing:border-box!important;
+}
+
+/* Reading widths are allowed only for typography, not for page alignment */
+.ts-section-head,
+.ts-home-head{
+  max-width:860px!important;
+  margin-left:auto!important;
+  margin-right:auto!important;
+}
+.ts-section-copy{max-width:760px!important}
+
+/* Keep grid-based content visually aligned with header edges */
+.ts-home-protection,
+.ts-home-system,
+.ts-home-research,
+.ts-home-cta,
+.ts-cta{
+  width:100%!important;
+  max-width:none!important;
+  margin-left:0!important;
+  margin-right:0!important;
+}
+@media(max-width:1023px){:root{--ts-site-gutter:48px}}
+@media(max-width:767px){:root{--ts-site-gutter:36px}}
