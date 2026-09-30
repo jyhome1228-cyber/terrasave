@@ -712,3 +712,88 @@ body.ts-home-page .ts-home-intro-side p{
   }
   .ts-fruit-detail-page .ts-detail-research-block{padding:26px 0!important}
 }
+
+
+/* Fruit profile final layout — align to the same 1200px axis as header/navigation */
+.ts-fruit-detail-page{
+  --fruit-shell:1200px;
+  --fruit-inner:1040px;
+}
+.ts-fruit-detail-page .ts-page-hero>.ts-shell,
+.ts-fruit-detail-page .ts-section>.ts-shell{
+  width:min(var(--fruit-shell),calc(100% - 64px))!important;
+  max-width:none!important;
+  margin-inline:auto!important;
+}
+.ts-fruit-detail-page .ts-detail-hero,
+.ts-fruit-detail-page .ts-data-grid{
+  width:100%!important;
+  max-width:var(--fruit-inner)!important;
+  margin-inline:auto!important;
+}
+.ts-fruit-detail-page .ts-section-head,
+.ts-fruit-detail-page .ts-application-list,
+.ts-fruit-detail-page .ts-approach-grid,
+.ts-fruit-detail-page .ts-detail-research,
+.ts-fruit-detail-page .ts-cta{
+  width:100%!important;
+  max-width:var(--fruit-inner)!important;
+  margin-left:auto!important;
+  margin-right:auto!important;
+}
+.ts-fruit-detail-page .ts-detail-research-block,
+.ts-fruit-detail-page .ts-detail-references{
+  width:100%!important;
+  max-width:none!important;
+  margin-left:0!important;
+  margin-right:0!important;
+}
+.ts-fruit-detail-page .ts-approach-grid{
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  gap:0!important;
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+}
+.ts-fruit-detail-page .ts-approach{
+  min-width:0!important;
+  padding:34px 36px!important;
+  border:0!important;
+  border-right:1px solid var(--line)!important;
+  border-radius:0!important;
+  background:transparent!important;
+}
+.ts-fruit-detail-page .ts-approach:nth-child(2n){border-right:0!important}
+.ts-fruit-detail-page .ts-approach .ts-kicker{margin-bottom:28px!important}
+.ts-fruit-detail-page .ts-approach h3{font-size:21px!important;line-height:1.42!important}
+.ts-fruit-detail-page .ts-approach p{font-size:15px!important;line-height:1.8!important}
+.ts-fruit-detail-page .ts-application-list{border-top:1px solid var(--line)}
+.ts-fruit-detail-page .ts-application-row{
+  grid-template-columns:120px minmax(210px,260px) minmax(0,1fr)!important;
+  gap:28px!important;
+  padding:28px 0!important;
+}
+.ts-fruit-detail-page .ts-detail-research{
+  padding-top:0!important;
+}
+.ts-fruit-detail-page .ts-detail-research-block{
+  padding:34px 0!important;
+  border-top:1px solid var(--line)!important;
+}
+.ts-fruit-detail-page .ts-detail-references{
+  padding-top:30px!important;
+  border-top:1px solid var(--line)!important;
+}
+.ts-fruit-detail-page .ts-section-head{
+  margin-bottom:52px!important;
+}
+.ts-fruit-detail-page .ts-section-head .ts-section-copy{
+  max-width:760px!important;
+}
+@media(max-width:767px){
+  .ts-fruit-detail-page .ts-page-hero>.ts-shell,
+  .ts-fruit-detail-page .ts-section>.ts-shell{width:calc(100% - 36px)!important}
+  .ts-fruit-detail-page .ts-approach-grid{grid-template-columns:1fr!important}
+  .ts-fruit-detail-page .ts-approach{padding:26px 0!important;border-right:0!important;border-bottom:1px solid var(--line)!important}
+  .ts-fruit-detail-page .ts-approach:last-child{border-bottom:0!important}
+  .ts-fruit-detail-page .ts-application-row{grid-template-columns:1fr!important;gap:8px!important}
+}
