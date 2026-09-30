@@ -959,3 +959,39 @@ body.ts-home-page .ts-home-intro-side p{
   }
   .ts-fruit-detail-page.has-authored-fruit-profile .ts-approach h3{min-height:0!important}
 }
+
+
+/* 2026-10-01 visual QA: neutral gray surfaces + guardrails against layout leaks */
+:root{
+  --page:#ffffff;
+  --soft:#f5f6f6;
+  --soft-2:#f1f3f3;
+}
+body{background:#fff!important}
+.ts-section.is-soft,.ts-home-section.is-soft{background:#f5f6f6!important}
+.ts-fruit-detail-page .ts-section.is-soft{background:#f5f6f6!important}
+.ts-fruit-detail-page .ts-detail-research,
+.ts-fruit-detail-page .ts-detail-research-block,
+.ts-fruit-detail-page .ts-detail-references{
+  box-sizing:border-box!important;
+}
+.ts-fruit-detail-page .ts-detail-research-block,
+.ts-fruit-detail-page .ts-detail-references{
+  position:relative!important;
+  left:auto!important;right:auto!important;
+  transform:none!important;
+}
+.ts-fruit-detail-page .ts-detail-research-block>*,
+.ts-fruit-detail-page .ts-detail-references>*{
+  max-width:100%!important;
+}
+.ts-fruit-detail-page .ts-detail-research-block h3,
+.ts-fruit-detail-page .ts-detail-research-block p,
+.ts-fruit-detail-page .ts-detail-references{
+  overflow-wrap:break-word!important;
+  word-break:keep-all!important;
+}
+.ts-fruit-detail-page .ts-detail-research-block h3{font-size:20px!important;line-height:1.45!important}
+.ts-fruit-detail-page .ts-detail-research-block p{font-size:15px!important;line-height:1.82!important}
+.ts-fruit-detail-page .ts-detail-references{font-size:12.5px!important;line-height:1.85!important}
+.ts-fruit-detail-page .ts-cta{min-height:260px!important;align-items:center!important}
