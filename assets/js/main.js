@@ -28,7 +28,7 @@ document.querySelectorAll('.brand').forEach((brand) => {
 });
 
 const navItems = [
-  ['about.html', 'About'],
+  ['about.html', 'About TerraSave'],
   ['product.html', 'Product'],
   ['fruits.html', 'Freshness Library'],
   ['partnership.html', 'Partnership'],
