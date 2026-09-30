@@ -1154,3 +1154,57 @@ main .ts-shell > :is(.ts-section-head,.ts-home-head) .ts-section-copy{
   margin-left:auto!important;
   margin-right:auto!important;
 }
+
+
+/* Closing-section QA — avoid oversized empty CTA areas before footer */
+.ts-compact-final-cta{
+  padding-top:72px!important;
+  padding-bottom:72px!important;
+  border-top:1px solid rgba(20,32,26,.10);
+  background:#f5f6f6!important;
+}
+.ts-compact-final-cta .ts-section-head{
+  max-width:none!important;
+  margin:0 0 34px!important;
+  text-align:left!important;
+}
+.ts-compact-final-cta .ts-section-head>.ts-kicker,
+.ts-compact-final-cta .ts-section-head :is(.ts-h1,.ts-h2),
+.ts-compact-final-cta .ts-section-head .ts-section-copy{
+  text-align:left!important;
+  margin-left:0!important;
+  margin-right:0!important;
+}
+.ts-compact-final-cta .ts-section-head :is(.ts-h1,.ts-h2){max-width:760px!important}
+.ts-final-cta-row{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:40px;
+  padding-top:28px;
+  border-top:1px solid rgba(20,32,26,.10);
+}
+.ts-final-cta-row .ts-product-note{
+  max-width:760px!important;
+  margin:0!important;
+  text-align:left!important;
+  line-height:1.8!important;
+}
+.ts-final-cta-row .ts-button{flex:0 0 auto}
+
+/* Generic CTA sections: content-sized, never giant blank panels */
+.ts-cta{
+  min-height:0!important;
+  padding-top:52px!important;
+  padding-bottom:52px!important;
+  align-items:center!important;
+}
+main>section:last-child:not(.ts-page-hero){
+  min-height:0!important;
+}
+@media(max-width:767px){
+  .ts-compact-final-cta{padding-top:52px!important;padding-bottom:52px!important}
+  .ts-final-cta-row{display:block}
+  .ts-final-cta-row .ts-button{margin-top:24px}
+  .ts-cta{padding-top:38px!important;padding-bottom:38px!important}
+}
