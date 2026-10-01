@@ -18,7 +18,7 @@ await new Promise(resolve=>server.listen(4173,'127.0.0.1',resolve));
 const ctx={window:{}};vm.runInNewContext(fs.readFileSync('assets/js/fruits.js','utf8'),ctx);
 const fruits=ctx.window.TERRASAVE_FRUITS;
 const routes=[...fs.readdirSync(root).filter(f=>f.endsWith('.html')&&f!=='fruit.html'),...fruits.map(f=>'fruit.html?fruit='+f.slug)];
-const widths=(process.env.QA_WIDTHS||'1920,1440,1280,1024,768,430,390,360').split(',').map(Number);
+const widths=(process.env.QA_WIDTHS||'1920,1440,1280,1120,1119,1024,900,899,768,767,430,390,360').split(',').map(Number);
 const authored=fs.existsSync('tools/content-manifest.json')?JSON.parse(fs.readFileSync('tools/content-manifest.json','utf8')):{};
 const statics=fs.existsSync('tools/static-content-manifest.json')?JSON.parse(fs.readFileSync('tools/static-content-manifest.json','utf8')):{};
 const norm=s=>s.replace(/\s+/g,'').replaceAll('샤인머스캣','샤인머스켓').replaceAll('TERRASAVE','TerraSave');
@@ -90,10 +90,15 @@ for(const width of widths){
    if(width<1120){
     await page.locator('#menuToggle').click();
     if(await page.locator('#menuToggle').getAttribute('aria-expanded')!=='true'||!await page.locator('#siteNav .nav-contact').isVisible())interactions.push('Mobile menu failed to open');
+    const menuLock=await page.evaluate(()=>({body:document.body.classList.contains('menu-locked'),html:document.documentElement.classList.contains('menu-locked'),focusInHeader:document.querySelector('.site-header')?.contains(document.activeElement)}));
+    if(!menuLock.body||!menuLock.html)interactions.push('Mobile menu failed to lock background scroll');
+    if(!menuLock.focusInHeader)interactions.push('Mobile menu focus escaped header');
     const menuOverflow=await page.locator('#siteNav').evaluate(e=>e.getBoundingClientRect().right>innerWidth+1);
     if(menuOverflow)interactions.push('Mobile menu overflow');
     await page.keyboard.press('Escape');
     if(await page.locator('#menuToggle').getAttribute('aria-expanded')!=='false')interactions.push('Mobile menu failed to close');
+    const menuUnlock=await page.evaluate(()=>!document.body.classList.contains('menu-locked')&&!document.documentElement.classList.contains('menu-locked'));
+    if(!menuUnlock)interactions.push('Mobile menu failed to release background scroll');
    }
    if(route==='fruits.html'){
     for(const filter of ['climacteric','non','high','all']){
