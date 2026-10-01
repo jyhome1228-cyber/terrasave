@@ -83,3 +83,18 @@ body.menu-locked,body.modal-locked{overflow:hidden}
 .footer-shell{padding-block:40px 24px}.footer-primary{gap:28px}.footer-nav-main{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;width:100%}.footer-secondary,.footer-legal{flex-direction:column;gap:16px}.footer-contact-line{flex-direction:column;gap:8px}.footer-description,.footer-tagline{max-width:100%}.ts-update-popup-card{padding:26px}}
 @media(max-width:359px){.ts-data-grid{grid-template-columns:1fr}.ts-order-actions{align-items:stretch;flex-direction:column}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}}
+
+
+/* 2026-10-01 final responsive guardrails */
+html.modal-locked,html.menu-locked{overflow:hidden;overscroll-behavior:none}
+body.modal-locked,body.menu-locked{overscroll-behavior:none}
+@media(max-width:899px){
+  .desktop-break{display:none}
+  .ts-data-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .ts-detail-copy{max-width:760px}
+  .ts-section-head,.ts-home-head,.ts-product-hero-head{max-width:760px}
+}
+@media(max-width:479px){
+  .ts-section-head,.ts-home-head,.ts-product-hero-head{max-width:none}
+  .ts-reference-list>li{overflow-wrap:anywhere;word-break:break-word}
+}
