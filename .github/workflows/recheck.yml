@@ -1,0 +1,106 @@
+name: Post-deployment regression recheck
+on:
+  push:
+    branches: [qa/interaction-recheck-20261001]
+  workflow_dispatch:
+  workflow_run:
+    workflows: [Deploy TerraSave to GitHub Pages]
+    types: [completed]
+    branches: [main]
+permissions:
+  contents: write
+concurrency:
+  group: recheck-${{ github.event_name }}-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  source-recheck:
+    if: github.event_name != 'workflow_run'
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install browser tools
+        run: |
+          npm install --no-save playwright@1.55.1
+          npx playwright install --with-deps chromium webkit
+      - name: Record current public-site regressions before changes
+        env:
+          QA_BASE_URL: https://jyhome1228-cyber.github.io/terrasave/
+          QA_RECHECK_OUTPUT: recheck-baseline
+        run: node tools/recheck-audit.mjs
+      - name: Apply narrowly scoped, content-preserving fixes
+        run: |
+          python tools/apply-recheck.py
+          node --check assets/js/site.js
+      - name: All 30 routes at 14 viewport and breakpoint widths
+        env:
+          QA_STRICT: '1'
+          QA_WIDTHS: '1920,1440,1280,1120,1119,1024,900,899,768,767,430,390,360,320'
+        run: node tools/layout-audit.mjs
+      - name: WebKit desktop and mobile layout
+        env:
+          QA_STRICT: '1'
+        run: node tools/webkit-audit.mjs
+      - name: Font, wrapping, overlay, focus and contact regressions
+        env:
+          QA_STRICT: '1'
+          QA_RECHECK_OUTPUT: recheck-fixed
+        run: node tools/recheck-audit.mjs
+      - name: Commit verified public files without overwriting newer work
+        if: success() && github.ref == 'refs/heads/qa/interaction-recheck-20261001'
+        run: |
+          set -euo pipefail
+          git config user.name 'TerraSave Layout QA'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- ./*.html assets/css/site.css assets/js/site.js
+          git fetch origin qa/interaction-recheck-20261001
+          test "$(git rev-parse origin/qa/interaction-recheck-20261001)" = "$GITHUB_SHA"
+          if ! git diff --cached --quiet; then
+            git commit -m 'fix: publish verified overlay, card-unit and heading corrections [skip ci]'
+            git push origin HEAD:qa/interaction-recheck-20261001
+          fi
+      - name: Capture source snapshot
+        if: always()
+        run: tar --exclude=.git --exclude=node_modules --exclude=qa-results --exclude=qa-results-webkit --exclude=recheck-baseline --exclude=recheck-fixed -czf "$RUNNER_TEMP/recheck-source.tgz" .
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: terrasave-recheck-source-and-evidence
+          path: |
+            qa-results/
+            qa-results-webkit/
+            recheck-baseline/
+            recheck-fixed/
+            ${{ runner.temp }}/recheck-source.tgz
+          retention-days: 7
+  published-recheck:
+    if: github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.workflow_run.head_sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: |
+          npm install --no-save playwright@1.55.1
+          npx playwright install --with-deps chromium webkit
+      - name: Verify the just-deployed version on the public URL
+        env:
+          QA_STRICT: '1'
+          QA_BASE_URL: https://jyhome1228-cyber.github.io/terrasave/
+          QA_RECHECK_OUTPUT: recheck-published
+        run: node tools/recheck-audit.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: terrasave-published-recheck
+          path: recheck-published/
+          retention-days: 7
