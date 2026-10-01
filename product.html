@@ -1,148 +1,126 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="ko">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="TerraSave Product — TerraPACK, TerraShield, TerraCover 제품과 주문·문의 정보를 확인합니다." />
-  <meta name="theme-color" content="#ffffff" />
-  <title>Product — TerraSave</title>
-  <link rel="stylesheet" href="assets/css/styles.css" />
-  <link rel="stylesheet" href="assets/css/redesign.css" />
-  <style>
-    .ts-product-page .ts-page-hero{padding:88px 0 96px}
-    .ts-product-page .ts-product-hero-head{max-width:900px;margin:0 auto;text-align:center}
-    .ts-product-page .ts-product-hero-head .ts-kicker{display:block;margin-bottom:18px}
-    .ts-product-page .ts-product-hero-head .ts-h1{margin:0 auto;max-width:820px}
-    .ts-product-page .ts-product-hero-head p{max-width:760px;margin:24px auto 0;line-height:1.82}
-    .ts-product-page .ts-product-list{display:grid;gap:28px}
-    .ts-product-page .ts-product-card{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);border:1px solid rgba(20,32,26,.12);border-radius:18px;overflow:hidden;background:#fff}
-    .ts-product-page .ts-product-visual{min-height:440px;background:#f3f5f1;display:flex;align-items:center;justify-content:center;padding:40px}
-    .ts-product-page .ts-product-visual-inner{text-align:center;color:#777f79}
-    .ts-product-page .ts-product-visual-inner strong{display:block;margin-top:12px;color:#242a26;font-size:18px}
-    .ts-product-page .ts-product-copy{padding:52px;display:flex;flex-direction:column;justify-content:center}
-    .ts-product-page .ts-product-copy .ts-kicker{display:block;margin-bottom:16px}
-    .ts-product-page .ts-product-copy h2{margin:0;font-size:36px;line-height:1.25;letter-spacing:-.04em}
-    .ts-product-page .ts-product-desc{margin:22px 0 0;color:#59615c;line-height:1.82}
-    .ts-product-page .ts-product-spec{display:grid;gap:0;margin-top:30px;border-top:1px solid rgba(20,32,26,.12)}
-    .ts-product-page .ts-product-spec-row{display:grid;grid-template-columns:118px 1fr;gap:18px;padding:16px 0;border-bottom:1px solid rgba(20,32,26,.1)}
-    .ts-product-page .ts-product-spec-row span{color:#7a817d;font-size:12px;letter-spacing:.04em}
-    .ts-product-page .ts-product-spec-row strong{font-size:14px;line-height:1.6}
-    .ts-product-page .ts-order-box{margin-top:34px;padding-top:28px;border-top:1px solid rgba(20,32,26,.14)}
-    .ts-product-page .ts-order-box>strong{display:block;margin-bottom:14px;font-size:14px}
-    .ts-product-page .ts-order-options{display:flex;flex-wrap:wrap;gap:8px}
-    .ts-product-page .ts-order-option{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:0 15px;border:1px solid rgba(20,32,26,.14);border-radius:999px;font-size:13px}
-    .ts-product-page .ts-order-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
-    .ts-product-page .ts-product-note{max-width:840px;margin:0 auto;text-align:center;color:#5d655f;line-height:1.82}
-    .ts-product-page .ts-section-head{display:block!important;max-width:860px!important;margin:0 auto 52px!important;text-align:center!important}
-    .ts-product-page .ts-section-head>.ts-kicker{display:block;margin:0 0 18px!important;text-align:center}
-    .ts-product-page .ts-section-head>div{max-width:860px;margin:0 auto}
-    .ts-product-page .ts-section-head .ts-h2{max-width:760px;margin:0 auto;text-align:center}
-    .ts-product-page .ts-section-head .ts-section-copy{max-width:720px;margin:22px auto 0!important;text-align:center;line-height:1.82!important}
-    @media(max-width:767px){
-      .ts-product-page .ts-page-hero{padding:64px 0 72px}
-      .ts-product-page .ts-product-card{grid-template-columns:1fr}
-      .ts-product-page .ts-product-visual{min-height:280px;padding:28px}
-      .ts-product-page .ts-product-copy{padding:30px 24px}
-      .ts-product-page .ts-product-copy h2{font-size:30px}
-      .ts-product-page .ts-product-spec-row{grid-template-columns:92px 1fr}
-    }
-  </style>
-</head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="TerraSave Product — TerraPACK, TerraShield, TerraCover 제품과 주문·문의 정보를 확인합니다." name="description"/>
+<meta content="#ffffff" name="theme-color"/>
+<title>Product — TerraSave</title>
+
+
+
+<link href="assets/css/site.css?v=20261001-1" rel="stylesheet"/><link href="assets/img/terrasave-favicon.svg" rel="icon" type="image/svg+xml"/></head>
 <body class="ts-product-page">
-  <header class="site-header" id="siteHeader">
-    <div class="ts-shell header-inner">
-      <a class="brand" href="index.html" aria-label="TerraSave Home">TerraSave</a>
-      <nav class="nav" id="siteNav" aria-label="Primary navigation"></nav>
-      <a class="ts-button header-cta" href="contact.html">포장 상담하기</a>
-      <button class="menu-toggle" id="menuToggle" type="button" aria-label="메뉴 열기" aria-expanded="false"></button>
-    </div>
-  </header>
+<a class="skip-link" href="#main-content">본문 바로가기</a><header class="site-header" id="siteHeader"><div class="ts-shell header-inner"><a aria-label="TerraSave Home" class="brand" href="index.html"><img alt="TerraSave" class="brand-logo" height="28" src="assets/img/terrasave-logo.svg" width="136"/></a><nav aria-label="주 메뉴" class="nav" id="siteNav"><a href="about.html">About TerraSave</a><a aria-current="page" href="product.html">Product</a><a href="fruits.html">Freshness Library</a><a href="partnership.html">Partnership</a><a href="why-terrasave.html">Why TerraSave</a><a class="nav-contact" href="contact.html">Contact</a></nav><a class="ts-button header-cta" href="contact.html">포장 상담하기</a><button aria-controls="siteNav" aria-expanded="false" aria-label="메뉴 열기" class="menu-toggle" id="menuToggle" type="button"><span aria-hidden="true" class="menu-icon"><span></span><span></span><span></span></span></button></div></header>
+<main id="main-content">
+<section class="ts-page-hero">
+<div class="ts-shell">
+<div class="ts-product-hero-head">
+<span class="ts-kicker">TerraSave PRODUCT</span>
+<h1 class="ts-h1">과일마다 다른 조건에 맞춰<br class="desktop-break"/> 필요한 포장을 선택합니다.</h1>
+<p class="ts-body-lg">농산물과 꽃은 공산품이 아닌 ‘생물’입니다. 같은 농장에서 같은 날 수확하더라도 개체마다 숙도, 생육 상태, 초기 미생물이 모두 다르기 때문에 자연물에 대해 100% 완벽한 보존을 약속하는 것은 과학적으로 정직하지 않습니다. 하지만 확실한 효과를 체감할 수 있습니다.</p>
+</div>
+</div>
+</section>
+<section class="ts-section is-soft">
+<div class="ts-shell">
+<div class="ts-section-head">
+<span class="ts-kicker">PRODUCT LINE-UP</span>
+<h2 class="ts-h2">세 가지 포장 형태로<br class="desktop-break"/> 현장에 맞게 적용합니다.</h2><p class="ts-body ts-section-copy">품목과 포장 형태, 필요한 규격과 주문 수량에 따라 제품을 선택하고 필요한 경우 품목별 적용 방향을 함께 검토합니다.</p>
+</div>
+<div class="ts-product-list">
+<article class="ts-product-card">
+<div class="ts-product-visual"><div class="ts-product-visual-inner"><span class="ts-kicker">PET 포장용기</span><strong>TerraPACK</strong></div></div>
+<div class="ts-product-copy">
+<span class="ts-kicker">01 / PET PACKAGING</span>
+<h2>TerraPACK</h2>
+<p class="ts-product-desc">PET 포장용기입니다. 사이즈별로 주문할 수 있습니다.</p>
+<div class="ts-product-spec">
+<div class="ts-product-spec-row"><span>TYPE</span><strong>PET 포장용기</strong></div>
+<div class="ts-product-spec-row"><span>가능품목</span><strong>아보카도 · 샤인머스켓 · 딸기 · 망고</strong></div>
+<div class="ts-product-spec-row"><span>SIZE</span><strong>사이즈별 주문 가능</strong></div>
+</div>
+<div class="ts-order-box"><strong>주문 수량</strong><div class="ts-order-options"><span class="ts-order-option">100개</span><span class="ts-order-option">1,000개</span><span class="ts-order-option">10,000개 문의</span></div><div class="ts-order-actions"><a class="ts-button is-dark" href="contact.html">제품 문의하기</a><a class="ts-link" href="fruits.html">적용 과일 보기 ↗</a></div></div>
+</div>
+</article>
+<article class="ts-product-card">
+<div class="ts-product-visual"><div class="ts-product-visual-inner"><span class="ts-kicker">매쉬망</span><strong>TerraShield</strong></div></div>
+<div class="ts-product-copy">
+<span class="ts-kicker">02 / MESH NET</span>
+<h2>TerraShield</h2>
+<p class="ts-product-desc">매쉬망 제품입니다. 사이즈별로 주문할 수 있습니다.</p>
+<div class="ts-product-spec">
+<div class="ts-product-spec-row"><span>TYPE</span><strong>매쉬망</strong></div>
+<div class="ts-product-spec-row"><span>가능품목</span><strong>샤인머스켓 · 망고</strong></div>
+<div class="ts-product-spec-row"><span>SIZE</span><strong>사이즈별 주문 가능</strong></div>
+</div>
+<div class="ts-order-box"><strong>주문 수량</strong><div class="ts-order-options"><span class="ts-order-option">100개</span><span class="ts-order-option">1,000개</span><span class="ts-order-option">10,000개 문의</span></div><div class="ts-order-actions"><a class="ts-button is-dark" href="contact.html">제품 문의하기</a><a class="ts-link" href="fruits.html">적용 과일 보기 ↗</a></div></div>
+</div>
+</article>
+<article class="ts-product-card">
+<div class="ts-product-visual"><div class="ts-product-visual-inner"><span class="ts-kicker">대형 비닐</span><strong>TerraCover</strong></div></div>
+<div class="ts-product-copy">
+<span class="ts-kicker">03 / LARGE COVER</span>
+<h2>TerraCover</h2>
+<p class="ts-product-desc">대형 비닐 제품입니다. 사이즈별로 주문할 수 있으며, 컨테이너를 포장하거나 꽃 위에 씌우는 용도입니다.</p>
+<div class="ts-product-spec">
+<div class="ts-product-spec-row"><span>TYPE</span><strong>대형 비닐</strong></div>
+<div class="ts-product-spec-row"><span>USE</span><strong>컨테이너 포장 · 꽃/절화류 커버</strong></div>
+<div class="ts-product-spec-row"><span>SIZE</span><strong>사이즈별 주문 가능</strong></div>
+</div>
+<div class="ts-order-box"><strong>주문 수량</strong><div class="ts-order-options"><span class="ts-order-option">100개</span><span class="ts-order-option">1,000개</span><span class="ts-order-option">10,000개 문의</span></div><div class="ts-order-actions"><a class="ts-button is-dark" href="contact.html">제품 문의하기</a><a class="ts-link" href="partnership.html">맞춤 제작 상담 ↗</a></div></div>
+</div>
+</article>
+</div>
+</div>
+</section>
+<section class="ts-section ts-compact-final-cta">
+<div class="ts-shell">
+<div class="ts-compact-cta-grid">
+<div class="ts-compact-cta-copy">
+<span class="ts-kicker">CUSTOM APPLICATION</span>
+<h2 class="ts-h2">규격을 고르기 전에,<br class="desktop-break"/> 품목과 유통환경을 먼저 확인합니다.</h2>
+<p class="ts-body">원하는 사이즈가 없거나 기존 제품으로 해결하기 어려운 경우, 품목과 포장 형태, 유통기간과 유통환경을 기준으로 맞춤 적용을 검토합니다.</p>
+</div>
+<div class="ts-compact-cta-side">
+<p class="ts-product-note">제품별 실제 적용 가능 여부와 주문 조건은 품목·규격·수량에 따라 달라질 수 있습니다. 상담 시 취급 품목과 현재 포장 방식, 필요한 수량을 함께 알려주세요.</p>
+<a class="ts-button is-dark is-large" href="contact.html">포장 솔루션 상담하기</a>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer class="footer">
+<div class="footer-shell">
+<div class="footer-primary">
+<div class="footer-brand-block">
+<img alt="TerraSave" class="footer-logo" height="30" src="assets/img/terrasave-logo.svg" width="150"/>
+<p class="footer-tagline">과일을 더 안전하게, 더 좋은 상태로 보내기 위한 포장 연구.</p>
+<p class="footer-description">과일별 보관 조건과 유통 중 문제를 바탕으로 필요한 보호 방향을 찾습니다.</p>
+</div>
+<nav aria-label="Footer navigation" class="footer-nav-main">
+<a href="about.html">About TerraSave</a>
+<a href="product.html">Product</a>
+<a href="fruits.html">Freshness Library</a>
+<a href="partnership.html">Partnership</a>
+<a href="why-terrasave.html">Why TerraSave</a>
+<a href="contact.html">Contact</a>
+</nav>
+</div>
+<div class="footer-secondary">
+<div class="footer-contact-line">
+<a href="mailto:info@terracle.im">info@terracle.im</a>
+<span>032-710-2891~2</span>
+<span>368-81-02387</span>
+</div>
+<a class="footer-parent-link" href="https://kr.terracle.im/" rel="noopener noreferrer" target="_blank">Terracle에서 만든 과일 보호 솔루션 ↗</a>
+</div>
+<div class="footer-legal">
+<span>TerraSave</span>
+<span>Copyright © 2026 Terracle. All Rights Reserved.</span>
+</div>
+</div></footer>
 
-  <main>
-    <section class="ts-page-hero">
-      <div class="ts-shell">
-        <div class="ts-product-hero-head">
-          <span class="ts-kicker">TERRASAVE PRODUCT</span>
-          <h1 class="ts-h1">과일마다 다른 조건에 맞춰<br>필요한 포장을 선택합니다.</h1>
-          <p class="ts-body-lg">농산물과 꽃은 공산품이 아닌 ‘생물’입니다.<br>같은 농장에서 같은 날 수확하더라도 개체마다 숙도, 생육 상태, 초기 미생물이 모두 다르기 때문에<br>자연물에 대해 100% 완벽한 보존을 약속하는 것은 과학적으로 정직하지 않습니다.<br>하지만 확실한 효과를 체감할 수 있습니다.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="ts-section is-soft">
-      <div class="ts-shell">
-        <div class="ts-section-head">
-          <span class="ts-kicker">PRODUCT LINE-UP</span>
-          <div><h2 class="ts-h2">세 가지 포장 형태로<br>현장에 맞게 적용합니다.</h2><p class="ts-body ts-section-copy">품목과 포장 형태, 필요한 규격과 주문 수량에 따라 제품을 선택하고<br>필요한 경우 품목별 적용 방향을 함께 검토합니다.</p></div>
-        </div>
-
-        <div class="ts-product-list">
-          <article class="ts-product-card">
-            <div class="ts-product-visual"><div class="ts-product-visual-inner"><span class="ts-kicker">IMAGE AREA</span><strong>TerraPACK 제품 이미지</strong></div></div>
-            <div class="ts-product-copy">
-              <span class="ts-kicker">01 / PET PACKAGING</span>
-              <h2>TerraPACK</h2>
-              <p class="ts-product-desc">PET 포장용기입니다.<br>사이즈별로 주문할 수 있습니다.</p>
-              <div class="ts-product-spec">
-                <div class="ts-product-spec-row"><span>TYPE</span><strong>PET 포장용기</strong></div>
-                <div class="ts-product-spec-row"><span>가능품목</span><strong>아보카도 · 샤인머스켓 · 딸기 · 망고</strong></div>
-                <div class="ts-product-spec-row"><span>SIZE</span><strong>사이즈별 주문 가능</strong></div>
-              </div>
-              <div class="ts-order-box"><strong>주문 수량</strong><div class="ts-order-options"><span class="ts-order-option">100개</span><span class="ts-order-option">1,000개</span><span class="ts-order-option">10,000개 문의</span></div><div class="ts-order-actions"><a class="ts-button is-dark" href="contact.html">제품 문의하기</a><a class="ts-link" href="fruits.html">적용 과일 보기 ↗</a></div></div>
-            </div>
-          </article>
-
-          <article class="ts-product-card">
-            <div class="ts-product-visual"><div class="ts-product-visual-inner"><span class="ts-kicker">IMAGE AREA</span><strong>TerraShield 제품 이미지</strong></div></div>
-            <div class="ts-product-copy">
-              <span class="ts-kicker">02 / MESH NET</span>
-              <h2>TerraShield</h2>
-              <p class="ts-product-desc">매쉬망 제품입니다.<br>사이즈별로 주문할 수 있습니다.</p>
-              <div class="ts-product-spec">
-                <div class="ts-product-spec-row"><span>TYPE</span><strong>매쉬망</strong></div>
-                <div class="ts-product-spec-row"><span>가능품목</span><strong>샤인머스켓 · 망고</strong></div>
-                <div class="ts-product-spec-row"><span>SIZE</span><strong>사이즈별 주문 가능</strong></div>
-              </div>
-              <div class="ts-order-box"><strong>주문 수량</strong><div class="ts-order-options"><span class="ts-order-option">100개</span><span class="ts-order-option">1,000개</span><span class="ts-order-option">10,000개 문의</span></div><div class="ts-order-actions"><a class="ts-button is-dark" href="contact.html">제품 문의하기</a><a class="ts-link" href="fruits.html">적용 과일 보기 ↗</a></div></div>
-            </div>
-          </article>
-
-          <article class="ts-product-card">
-            <div class="ts-product-visual"><div class="ts-product-visual-inner"><span class="ts-kicker">IMAGE AREA</span><strong>TerraCover 제품 이미지</strong></div></div>
-            <div class="ts-product-copy">
-              <span class="ts-kicker">03 / LARGE COVER</span>
-              <h2>TerraCover</h2>
-              <p class="ts-product-desc">대형 비닐 제품입니다.<br>사이즈별로 주문할 수 있으며, 컨테이너를 포장하거나 꽃 위에 씌우는 용도입니다.</p>
-              <div class="ts-product-spec">
-                <div class="ts-product-spec-row"><span>TYPE</span><strong>대형 비닐</strong></div>
-                <div class="ts-product-spec-row"><span>USE</span><strong>컨테이너 포장 · 꽃/절화류 커버</strong></div>
-                <div class="ts-product-spec-row"><span>SIZE</span><strong>사이즈별 주문 가능</strong></div>
-              </div>
-              <div class="ts-order-box"><strong>주문 수량</strong><div class="ts-order-options"><span class="ts-order-option">100개</span><span class="ts-order-option">1,000개</span><span class="ts-order-option">10,000개 문의</span></div><div class="ts-order-actions"><a class="ts-button is-dark" href="contact.html">제품 문의하기</a><a class="ts-link" href="partnership.html">맞춤 제작 상담 ↗</a></div></div>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="ts-section ts-compact-final-cta">
-      <div class="ts-shell">
-        <div class="ts-compact-cta-grid">
-          <div class="ts-compact-cta-copy">
-            <span class="ts-kicker">CUSTOM APPLICATION</span>
-            <h2 class="ts-h2">규격을 고르기 전에,<br>품목과 유통환경을 먼저 확인합니다.</h2>
-            <p class="ts-body">원하는 사이즈가 없거나 기존 제품으로 해결하기 어려운 경우,<br>품목과 포장 형태, 유통기간과 유통환경을 기준으로 맞춤 적용을 검토합니다.</p>
-          </div>
-          <div class="ts-compact-cta-side">
-            <p class="ts-product-note">제품별 실제 적용 가능 여부와 주문 조건은 품목·규격·수량에 따라 달라질 수 있습니다.<br>상담 시 취급 품목과 현재 포장 방식, 필요한 수량을 함께 알려주세요.</p>
-            <a class="ts-button is-dark is-large" href="contact.html">포장 솔루션 상담하기</a>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer"></footer>
-  <script src="assets/js/main.js"></script>
-</body>
+<script src="assets/js/site.js?v=20261001-1"></script></body>
 </html>

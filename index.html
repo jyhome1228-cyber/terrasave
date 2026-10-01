@@ -1,460 +1,177 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="ko">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="TerraSave는 과일별 저장·후숙·유통 조건을 바탕으로 필요한 보호 방향을 연구하고 제안하는 과일 포장 솔루션입니다." />
-  <meta name="theme-color" content="#ffffff" />
-  <title>TerraSave — 과일별 신선도 유지 포장 솔루션</title>
-  <link rel="stylesheet" href="assets/css/styles.css" />
-  <link rel="stylesheet" href="assets/css/redesign.css" />
-  <style>
-    .ts-home-hero{padding:24px 0 44px!important}
-    .ts-home-hero-image{
-      width:100%;
-      aspect-ratio:2 / 1;
-      border-radius:16px;
-      overflow:hidden;
-      background:#f4f4f0;
-    }
-    .ts-home-hero-image img,
-    .ts-home-hero-image video{
-      width:100%;
-      height:100%;
-      display:block;
-      object-fit:cover;
-      object-position:center center;
-    }
-    .ts-home-research-visual{
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      border:1px solid rgba(20,32,26,.10);
-      background:#eef1ec;
-    }
-    .ts-video-research-inner{text-align:center;padding:32px}
-    .ts-video-research-inner .ts-kicker{display:block;margin-bottom:12px}
-    .ts-video-research-inner strong{display:block;font-size:22px;letter-spacing:-.03em}
-    .ts-video-research-inner p{margin:10px 0 0;color:#737a75;font-size:14px}
-    .ts-home-intro{
-      display:grid;
-      grid-template-columns:repeat(12,minmax(0,1fr));
-      column-gap:24px;
-      margin-top:28px;
-      align-items:end;
-    }
-    .ts-home-intro-copy{grid-column:1 / span 9}
-    .ts-home-intro-copy .ts-kicker{display:block;margin-bottom:12px}
-    .ts-home-title{
-      margin:0;
-      max-width:720px;
-      font-size:clamp(40px,3.6vw,48px);
-      line-height:1.1;
-      letter-spacing:-.045em;
-      font-weight:700;
-    }
-    .ts-home-lead{
-      margin:20px 0 0;
-      max-width:760px;
-      color:#5b625e;
-      line-height:1.78;
-      font-size:17px;
-      word-break:keep-all;
-    }
-    .ts-home-actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:24px}
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="TerraSave는 과일별 저장·후숙·유통 조건을 바탕으로 필요한 보호 방향을 연구하고 제안하는 과일 포장 솔루션입니다." name="description"/>
+<meta content="#ffffff" name="theme-color"/>
+<title>TerraSave — 과일별 신선도 유지 포장 솔루션</title>
 
-    .ts-home-section{padding:88px 0!important}
-    .ts-home-section.is-soft{background:#f7f8f6}
-    .ts-home-head{
-      display:grid;
-      grid-template-columns:repeat(12,minmax(0,1fr));
-      column-gap:24px;
-      align-items:start;
-      margin-bottom:40px;
-    }
-    .ts-home-head>.ts-kicker{grid-column:1 / span 3}
-    .ts-home-head-copy{grid-column:4 / span 7}
-    .ts-home-head-copy .ts-h2{margin:0}
-    .ts-home-head-copy .ts-section-copy{margin-top:18px;max-width:680px}
 
-    .ts-home-fruit-top{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:24px;
-      margin-bottom:28px;
-    }
-    .ts-home-fruit-note{
-      margin:0;
-      max-width:660px;
-      color:#626964;
-      line-height:1.7;
-    }
-    .ts-home-fruit-grid{
-      display:grid;
-      grid-template-columns:repeat(3,minmax(0,1fr));
-      gap:16px;
-    }
-    .ts-home-fruit-grid .ts-fruit-card{min-width:0}
 
-    .ts-home-protection{
-      display:grid;
-      grid-template-columns:repeat(3,minmax(0,1fr));
-      border-top:1px solid rgba(20,32,26,.14);
-      border-bottom:1px solid rgba(20,32,26,.14);
-    }
-    .ts-home-protection article{
-      min-height:240px;
-      padding:28px 28px 32px;
-      border-right:1px solid rgba(20,32,26,.12);
-    }
-    .ts-home-protection article:last-child{border-right:0}
-    .ts-home-protection-no{
-      display:block;
-      margin-bottom:62px;
-      color:#7b827e;
-      font-size:12px;
-      letter-spacing:.04em;
-    }
-    .ts-home-protection h3{margin:0 0 12px;font-size:22px;letter-spacing:-.035em}
-    .ts-home-protection p{margin:0;color:#5b625e;line-height:1.7;font-size:15px}
-
-    .ts-home-system{
-      display:grid;
-      grid-template-columns:repeat(2,minmax(0,1fr));
-      gap:16px;
-    }
-    .ts-home-system-card{
-      min-height:330px;
-      border:1px solid rgba(20,32,26,.12);
-      border-radius:16px;
-      padding:32px;
-      background:#fff;
-      display:flex;
-      flex-direction:column;
-      justify-content:space-between;
-    }
-    .ts-home-system-card.is-dark{
-      background:#172019;
-      color:#fff;
-      border-color:#172019;
-    }
-    .ts-home-system-card .ts-kicker{display:block;margin-bottom:22px}
-    .ts-home-system-card.is-dark .ts-kicker{color:rgba(255,255,255,.62)}
-    .ts-home-system-card h3{
-      margin:0;
-      max-width:520px;
-      font-size:22px;
-      line-height:1.35;
-      letter-spacing:-.03em;
-      font-weight:650;
-    }
-    .ts-home-system-card p{
-      margin:18px 0 0;
-      max-width:560px;
-      color:#626964;
-      line-height:1.72;
-    }
-    .ts-home-system-card.is-dark p{color:rgba(255,255,255,.7)}
-    .ts-home-system-card.is-dark .ts-link{color:#fff;border-color:rgba(255,255,255,.55)}
-
-    .ts-home-research{
-      display:grid;
-      grid-template-columns:repeat(12,minmax(0,1fr));
-      column-gap:24px;
-      align-items:start;
-    }
-    .ts-home-research-main{grid-column:1 / span 7}
-    .ts-home-research-main .ts-h2{margin:0}
-    .ts-home-research-main p{
-      margin:20px 0 0;
-      max-width:720px;
-      color:#59605c;
-      line-height:1.74;
-    }
-    .ts-home-research-side{
-      grid-column:9 / -1;
-      border-top:1px solid rgba(20,32,26,.15);
-    }
-    .ts-home-research-row{
-      display:grid;
-      grid-template-columns:92px 1fr;
-      gap:20px;
-      padding:18px 0;
-      border-bottom:1px solid rgba(20,32,26,.12);
-    }
-    .ts-home-research-row span{font-size:12px;color:#7a817d}
-    .ts-home-research-row strong{font-size:15px;line-height:1.55}
-
-    .ts-home-cta{
-      display:grid;
-      grid-template-columns:repeat(12,minmax(0,1fr));
-      column-gap:24px;
-      align-items:end;
-      padding:8px 0;
-    }
-    .ts-home-cta-copy{grid-column:1 / span 8}
-    .ts-home-cta-copy .ts-h2{margin:12px 0 0}
-    .ts-home-cta-action{grid-column:10 / -1;text-align:right}
-
-    @media(max-width:1023px){
-      .ts-home-intro-copy{grid-column:1 / span 10}
-      .ts-home-head>.ts-kicker{grid-column:1 / span 3}
-      .ts-home-head-copy{grid-column:4 / -1}
-      .ts-home-fruit-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-    }
-
-    @media(max-width:767px){
-      .ts-home-hero{padding:16px 0 40px!important}
-      .ts-home-hero-image{border-radius:12px;aspect-ratio:4 / 3}
-      .ts-home-intro{grid-template-columns:1fr;gap:18px;margin-top:24px}
-      .ts-home-intro-copy{grid-column:1}
-      .ts-home-title{font-size:34px;line-height:1.2}
-      .ts-home-section{padding:64px 0!important}
-      .ts-home-head{grid-template-columns:1fr;gap:14px;margin-bottom:30px}
-      .ts-home-head>.ts-kicker,.ts-home-head-copy{grid-column:1}
-      .ts-home-fruit-top{align-items:flex-start;flex-direction:column}
-      .ts-home-fruit-grid{grid-template-columns:1fr}
-      .ts-home-protection{grid-template-columns:1fr}
-      .ts-home-protection article{min-height:0;border-right:0;border-bottom:1px solid rgba(20,32,26,.12);padding:24px 0}
-      .ts-home-protection article:last-child{border-bottom:0}
-      .ts-home-protection-no{margin-bottom:28px}
-      .ts-home-system{grid-template-columns:1fr}
-      .ts-home-system-card{min-height:280px;padding:26px}
-      .ts-home-research{grid-template-columns:1fr;gap:36px}
-      .ts-home-research-main,.ts-home-research-side{grid-column:1}
-      .ts-home-cta{grid-template-columns:1fr;gap:28px}
-      .ts-home-cta-copy,.ts-home-cta-action{grid-column:1}
-      .ts-home-cta-action{text-align:left}
-    }
-  
-/* Home hero copy: deliberate centered composition */
-.ts-home-page .ts-home-intro{
-  display:block!important;
-  margin-top:34px!important;
-}
-.ts-home-page .ts-home-intro-copy{
-  width:100%!important;
-  max-width:820px!important;
-  margin:0 auto!important;
-  text-align:center!important;
-}
-.ts-home-page .ts-home-intro-copy .ts-kicker{
-  display:block!important;
-  margin:0 0 16px!important;
-  text-align:center!important;
-}
-.ts-home-page .ts-home-title{
-  max-width:820px!important;
-  margin:0 auto!important;
-  text-align:center!important;
-  text-wrap:balance!important;
-  word-break:keep-all!important;
-}
-.ts-home-page .ts-home-lead{
-  max-width:680px!important;
-  margin:22px auto 0!important;
-  text-align:center!important;
-  line-height:1.8!important;
-  word-break:keep-all!important;
-}
-.ts-home-page .ts-home-actions{
-  justify-content:center!important;
-  margin-top:26px!important;
-}
-@media(max-width:767px){
- .ts-home-page .ts-home-intro-copy,
- .ts-home-page .ts-home-intro-copy .ts-kicker,
- .ts-home-page .ts-home-title,
- .ts-home-page .ts-home-lead{text-align:left!important;margin-left:0!important;margin-right:0!important}
- .ts-home-page .ts-home-actions{justify-content:flex-start!important}
- .ts-home-page .ts-home-title br,.ts-home-page .ts-home-lead br{display:none!important}
-}
-</style>
-</head>
+<link href="assets/css/site.css?v=20261001-1" rel="stylesheet"/><link href="assets/img/terrasave-favicon.svg" rel="icon" type="image/svg+xml"/></head>
 <body class="ts-home-page">
-  <header class="site-header" id="siteHeader">
-    <div class="ts-shell header-inner">
-      <a class="brand" href="index.html" aria-label="TerraSave Home">TerraSave</a>
-      <nav class="nav" id="siteNav" aria-label="Primary navigation">
-        
-      </nav>
-      <a class="ts-button header-cta" href="contact.html">포장 상담하기</a>
-      <button class="menu-toggle" id="menuToggle" type="button" aria-label="메뉴 열기" aria-expanded="false"></button>
-    </div>
-  </header>
+<a class="skip-link" href="#main-content">본문 바로가기</a><header class="site-header" id="siteHeader"><div class="ts-shell header-inner"><a aria-label="TerraSave Home" class="brand" href="index.html"><img alt="TerraSave" class="brand-logo" height="28" src="assets/img/terrasave-logo.svg" width="136"/></a><nav aria-label="주 메뉴" class="nav" id="siteNav"><a href="about.html">About TerraSave</a><a href="product.html">Product</a><a href="fruits.html">Freshness Library</a><a href="partnership.html">Partnership</a><a href="why-terrasave.html">Why TerraSave</a><a class="nav-contact" href="contact.html">Contact</a></nav><a class="ts-button header-cta" href="contact.html">포장 상담하기</a><button aria-controls="siteNav" aria-expanded="false" aria-label="메뉴 열기" class="menu-toggle" id="menuToggle" type="button"><span aria-hidden="true" class="menu-icon"><span></span><span></span><span></span></span></button></div></header>
+<main id="main-content">
+<section class="ts-home-hero">
+<div class="ts-shell">
+<div aria-label="아보카도 타임랩스 영상 영역" class="ts-home-hero-image ts-home-research-visual">
+<div class="ts-video-research-inner">
+<span class="ts-kicker">AVOCADO TIMELAPSE</span>
+<strong>Avocado Freshness Study</strong>
+<p>후숙 과정에서 나타나는 색상, 경도와 외관 변화를 관찰합니다.</p>
+</div>
+</div>
+<div class="ts-home-intro">
+<div class="ts-home-intro-copy">
+<span class="ts-kicker">FRUIT-SPECIFIC FRESHNESS</span>
+<h1 class="ts-home-title">정성으로 키운 작물,<br class="desktop-break"/> 이제 과학으로 지키세요.</h1>
+<p class="ts-home-lead">과일마다 부패하는 이유는 다 다릅니다. 과일 품목별 신선도 유지 제품을 제공합니다.</p>
+<div class="ts-home-actions">
+<a class="ts-button is-dark" href="fruits.html">과일별 보기</a>
+<a class="ts-link" href="product.html">포장 기술 보기 ↗</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="ts-home-section is-soft">
+<div class="ts-shell">
+<div class="ts-home-head">
+<span class="ts-kicker">과일별 신선도 자료</span>
 
-  <main>
-    <section class="ts-home-hero">
-      <div class="ts-shell">
-        <div class="ts-home-hero-image ts-home-research-visual" aria-label="아보카도 타임랩스 영상 영역">
-          <div class="ts-video-research-inner">
-            <span class="ts-kicker">AVOCADO TIMELAPSE</span>
-            <strong>Avocado Freshness Study</strong>
-            <p>후숙 과정에서 나타나는 색상, 경도와 외관 변화를 관찰합니다.</p>
-          </div>
-        </div>
+<h2 class="ts-h2">과일을 먼저 이해합니다.</h2>
+<p class="ts-body ts-section-copy">같은 포장이라도 품목마다 필요한 보호는 다릅니다. 보관·후숙·에틸렌 특성과 주요 리스크를 과일 단위로 정리해 각 품목에 필요한 적용 방향을 검토합니다.</p>
 
-        <div class="ts-home-intro">
-          <div class="ts-home-intro-copy">
-            <span class="ts-kicker">FRUIT-SPECIFIC FRESHNESS</span>
-            <h1 class="ts-home-title">정성으로 키운 작물,<br />이제 과학으로 지키세요.</h1>
-            <p class="ts-home-lead">과일마다 부패하는 이유는 다 다릅니다.<br />과일 품목별 신선도 유지 제품을 제공합니다.</p>
-            <div class="ts-home-actions">
-              <a class="ts-button is-dark" href="fruits.html">과일별 보기</a>
-              <a class="ts-link" href="product.html">포장 기술 보기 ↗</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+</div>
+<div class="ts-home-fruit-top">
+<p class="ts-home-fruit-note">주요 품목의 보관 조건과 신선도 관리 포인트를 확인하고, 전체 데이터는 Freshness Library에서 비교할 수 있습니다.</p>
+<a class="ts-link" href="fruits.html">전체 과일 보기 ↗</a>
+</div>
+<div aria-live="polite" class="ts-home-fruit-grid" id="homeFruitGrid"></div>
+</div>
+</section>
+<section class="ts-home-section">
+<div class="ts-shell">
+<div class="ts-home-head">
+<span class="ts-kicker">Protection direction</span>
 
-    <section class="ts-home-section is-soft">
-      <div class="ts-shell">
-        <div class="ts-home-head">
-          <span class="ts-kicker">과일별 신선도 자료</span>
-          <div class="ts-home-head-copy">
-            <h2 class="ts-h2">과일을 먼저 이해합니다.</h2>
-            <p class="ts-body ts-section-copy">같은 포장이라도 품목마다 필요한 보호는 다릅니다.<br>보관·후숙·에틸렌 특성과 주요 리스크를 과일 단위로 정리해<br>각 품목에 필요한 적용 방향을 검토합니다.</p>
-          </div>
-        </div>
+<h2 class="ts-h2">문제에 맞춰 보호 방식을 나눕니다.</h2>
+<p class="ts-body ts-section-copy">과일 이름만으로 솔루션을 정하지 않습니다. 실제 유통 중 무엇이 품질을 떨어뜨리는지 먼저 확인하고, 그 문제에 맞는 보호 방식을 검토합니다.</p>
 
-        <div class="ts-home-fruit-top">
-          <p class="ts-home-fruit-note">주요 품목의 보관 조건과 신선도 관리 포인트를 확인하고, 전체 데이터는 Freshness Library에서 비교할 수 있습니다.</p>
-          <a class="ts-link" href="fruits.html">전체 과일 보기 ↗</a>
-        </div>
-        <div class="ts-home-fruit-grid" id="homeFruitGrid" aria-live="polite"></div>
-      </div>
-    </section>
+</div>
+<div class="ts-home-protection">
+<article>
+<span class="ts-home-protection-no">01 / PHYSICAL</span>
+<h3>충격과 접촉 보호</h3>
+<p>적재와 수송 과정의 압박, 마찰, 표면 손상을 줄이기 위한 개별 보호 방향을 검토합니다.</p>
+</article>
+<article>
+<span class="ts-home-protection-no">02 / ENVIRONMENT</span>
+<h3>저장 환경 관리</h3>
+<p>온도, 습도, 결로와 후숙 조건을 함께 살펴 과일이 놓이는 환경을 먼저 정의합니다.</p>
+</article>
+<article>
+<span class="ts-home-protection-no">03 / FUNCTIONAL</span>
+<h3>기능성 포장 연구</h3>
+<p>필요한 품목에는 에틸렌과 수분 등 특정 문제를 고려한 기능성 소재 적용 가능성을 검토합니다.</p>
+</article>
+</div>
+</div>
+</section>
+<section class="ts-home-section is-soft">
+<div class="ts-shell">
+<div class="ts-home-head">
+<span class="ts-kicker">TerraSave System</span>
 
-    <section class="ts-home-section">
-      <div class="ts-shell">
-        <div class="ts-home-head">
-          <span class="ts-kicker">Protection direction</span>
-          <div class="ts-home-head-copy">
-            <h2 class="ts-h2">문제에 맞춰 보호 방식을 나눕니다.</h2>
-            <p class="ts-body ts-section-copy">과일 이름만으로 솔루션을 정하지 않습니다.<br>실제 유통 중 무엇이 품질을 떨어뜨리는지 먼저 확인하고,<br>그 문제에 맞는 보호 방식을 검토합니다.</p>
-          </div>
-        </div>
+<h2 class="ts-h2">보호망에서 기능성 포장까지.</h2>
+<p class="ts-body ts-section-copy">기본은 과일을 직접 보호하는 물리적 포장입니다. 품목의 특성과 실제 검증 범위를 확인한 뒤, 필요한 경우 기능성 소재 연구로 확장합니다.</p>
 
-        <div class="ts-home-protection">
-          <article>
-            <span class="ts-home-protection-no">01 / PHYSICAL</span>
-            <h3>충격과 접촉 보호</h3>
-            <p>적재와 수송 과정의 압박, 마찰, 표면 손상을 줄이기 위한 개별 보호 방향을 검토합니다.</p>
-          </article>
-          <article>
-            <span class="ts-home-protection-no">02 / ENVIRONMENT</span>
-            <h3>저장 환경 관리</h3>
-            <p>온도, 습도, 결로와 후숙 조건을 함께 살펴 과일이 놓이는 환경을 먼저 정의합니다.</p>
-          </article>
-          <article>
-            <span class="ts-home-protection-no">03 / FUNCTIONAL</span>
-            <h3>기능성 포장 연구</h3>
-            <p>필요한 품목에는 에틸렌과 수분 등 특정 문제를 고려한 기능성 소재 적용 가능성을 검토합니다.</p>
-          </article>
-        </div>
-      </div>
-    </section>
+</div>
+<div class="ts-home-system">
+<article class="ts-home-system-card">
+<div>
+<span class="ts-kicker">01 / Fruit Foam Net</span>
+<h3>과일의 형상과 접촉 조건을 고려하는 개별 보호 레이어.</h3>
+<p>크기, 표면, 적재 조건을 보고 필요한 완충 방향을 정리합니다.</p>
+</div>
+<div><a class="ts-link" href="product.html">Product 보기 ↗</a></div>
+</article>
+<article class="ts-home-system-card is-dark">
+<div>
+<span class="ts-kicker">02 / TERRA Capture-E</span>
+<h3>과일의 숙성에 영향을 주는 에틸렌 환경을 고려합니다.</h3>
+<p>에틸렌 흡착 소재를 PET와 PE 포장에 적용하는 연구를 진행하며, 실제 성능은 확보된 시험 범위 안에서만 안내합니다.</p>
+</div>
+<div><a class="ts-link" href="product.html">제품 솔루션 보기 ↗</a></div>
+</article>
+</div>
+</div>
+</section>
+<section class="ts-home-section">
+<div class="ts-shell">
+<div class="ts-home-research">
+<div class="ts-home-research-main">
+<span class="ts-kicker">Research before claims</span>
+<h2 class="ts-h2">근거를 먼저 확인하고,<br class="desktop-break"/> 확인된 범위만 말합니다.<br class="desktop-break"/> </h2>
+<p>과일은 품종과 숙도, 온도와 포장 조건에 따라 결과가 달라집니다. TerraSave는 문헌과 테스트 조건을 함께 기록하고, 제품 성능과 일반적인 연구 결과를 구분해 설명합니다.</p>
+<p><a class="ts-link" href="partnership.html">Partnership 보기 ↗</a></p>
+</div>
+<div class="ts-home-research-side">
+<div class="ts-home-research-row"><span>01</span><strong>과일별 저장·후숙 조건 정리</strong></div>
+<div class="ts-home-research-row"><span>02</span><strong>포장 구조와 시험 조건 함께 기록</strong></div>
+<div class="ts-home-research-row"><span>03</span><strong>실제 검증 범위와 적용 가능성 구분</strong></div>
+</div>
+</div>
+</div>
+</section>
+<section class="ts-home-section is-soft">
+<div class="ts-shell">
+<div class="ts-home-cta">
+<div class="ts-home-cta-copy">
+<span class="ts-kicker">Request a solution</span>
+<h2 class="ts-h2">현재 사용하는 과일과 포장 방식부터<br class="desktop-break"/> 함께 확인해보세요.<br class="desktop-break"/> </h2>
+</div>
+<div class="ts-home-cta-action">
+<a class="ts-button is-dark is-large" href="contact.html">포장 상담하기</a>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer class="footer">
+<div class="footer-shell">
+<div class="footer-primary">
+<div class="footer-brand-block">
+<img alt="TerraSave" class="footer-logo" height="30" src="assets/img/terrasave-logo.svg" width="150"/>
+<p class="footer-tagline">과일을 더 안전하게, 더 좋은 상태로 보내기 위한 포장 연구.</p>
+<p class="footer-description">과일별 보관 조건과 유통 중 문제를 바탕으로 필요한 보호 방향을 찾습니다.</p>
+</div>
+<nav aria-label="Footer navigation" class="footer-nav-main">
+<a href="about.html">About TerraSave</a>
+<a href="product.html">Product</a>
+<a href="fruits.html">Freshness Library</a>
+<a href="partnership.html">Partnership</a>
+<a href="why-terrasave.html">Why TerraSave</a>
+<a href="contact.html">Contact</a>
+</nav>
+</div>
+<div class="footer-secondary">
+<div class="footer-contact-line">
+<a href="mailto:info@terracle.im">info@terracle.im</a>
+<span>032-710-2891~2</span>
+<span>368-81-02387</span>
+</div>
+<a class="footer-parent-link" href="https://kr.terracle.im/" rel="noopener noreferrer" target="_blank">Terracle에서 만든 과일 보호 솔루션 ↗</a>
+</div>
+<div class="footer-legal">
+<span>TerraSave</span>
+<span>Copyright © 2026 Terracle. All Rights Reserved.</span>
+</div>
+</div></footer>
 
-    <section class="ts-home-section is-soft">
-      <div class="ts-shell">
-        <div class="ts-home-head">
-          <span class="ts-kicker">TerraSave System</span>
-          <div class="ts-home-head-copy">
-            <h2 class="ts-h2">보호망에서 기능성 포장까지.</h2>
-            <p class="ts-body ts-section-copy">기본은 과일을 직접 보호하는 물리적 포장입니다.<br>품목의 특성과 실제 검증 범위를 확인한 뒤,<br>필요한 경우 기능성 소재 연구로 확장합니다.</p>
-          </div>
-        </div>
 
-        <div class="ts-home-system">
-          <article class="ts-home-system-card">
-            <div>
-              <span class="ts-kicker">01 / Fruit Foam Net</span>
-              <h3>과일의 형상과 접촉 조건을 고려하는 개별 보호 레이어.</h3>
-              <p>크기, 표면, 적재 조건을 보고 필요한 완충 방향을 정리합니다.</p>
-            </div>
-            <div><a class="ts-link" href="product.html">Product 보기 ↗</a></div>
-          </article>
 
-          <article class="ts-home-system-card is-dark">
-            <div>
-              <span class="ts-kicker">02 / TERRA Capture-E</span>
-              <h3>과일의 숙성에 영향을 주는 에틸렌 환경을 고려합니다.</h3>
-              <p>에틸렌 흡착 소재를 PET와 PE 포장에 적용하는 연구를 진행하며, 실제 성능은 확보된 시험 범위 안에서만 안내합니다.</p>
-            </div>
-            <div><a class="ts-link" href="product.html">제품 솔루션 보기 ↗</a></div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="ts-home-section">
-      <div class="ts-shell">
-        <div class="ts-home-research">
-          <div class="ts-home-research-main">
-            <span class="ts-kicker">Research before claims</span>
-            <h2 class="ts-h2">근거를 먼저 확인하고,<br />확인된 범위만 말합니다.</h2>
-            <p>과일은 품종과 숙도, 온도와 포장 조건에 따라 결과가 달라집니다. TerraSave는 문헌과 테스트 조건을 함께 기록하고, 제품 성능과 일반적인 연구 결과를 구분해 설명합니다.</p>
-            <p><a class="ts-link" href="partnership.html">Partnership 보기 ↗</a></p>
-          </div>
-
-          <div class="ts-home-research-side">
-            <div class="ts-home-research-row"><span>01</span><strong>과일별 저장·후숙 조건 정리</strong></div>
-            <div class="ts-home-research-row"><span>02</span><strong>포장 구조와 시험 조건 함께 기록</strong></div>
-            <div class="ts-home-research-row"><span>03</span><strong>실제 검증 범위와 적용 가능성 구분</strong></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="ts-home-section is-soft">
-      <div class="ts-shell">
-        <div class="ts-home-cta">
-          <div class="ts-home-cta-copy">
-            <span class="ts-kicker">Request a solution</span>
-            <h2 class="ts-h2">현재 사용하는 과일과 포장 방식부터<br />함께 확인해보세요.</h2>
-          </div>
-          <div class="ts-home-cta-action">
-            <a class="ts-button is-dark is-large" href="contact.html">포장 상담하기</a>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer"></footer>
-  <script src="assets/js/fruits.js"></script>
-  <script src="assets/js/main.js"></script>
-  <script>
-    (function(){
-      const grid = document.getElementById('homeFruitGrid');
-      if (!grid || !window.TERRASAVE_FRUITS) return;
-
-      const preferred = ['avocado','kiwi','mango','strawberry','shine-muscat','pear'];
-      const bySlug = new Map(window.TERRASAVE_FRUITS.map(item => [item.slug,item]));
-      let items = preferred.map(slug => bySlug.get(slug)).filter(Boolean);
-
-      if (items.length < 6) {
-        const used = new Set(items.map(item => item.slug));
-        items = items.concat(window.TERRASAVE_FRUITS.filter(item => !used.has(item.slug)).slice(0,6-items.length));
-      }
-
-      grid.innerHTML = items.slice(0,6).map(item => `
-        <a class="ts-fruit-card" href="fruit.html?fruit=${item.slug}">
-          <div class="ts-fruit-visual"><div class="ts-fruit-shape shape-${item.shape || 'round'}"></div></div>
-          <div class="ts-fruit-meta">
-            <div class="ts-fruit-meta-top">
-              <div class="ts-fruit-name"><strong>${item.en}</strong><span>${item.ko}</span></div>
-              <span class="ts-fruit-tag">${item.focus}</span>
-            </div>
-            <div class="ts-fruit-data">
-              <span>Storage<strong>${item.storage}</strong></span>
-              <span>Ethylene<strong>${item.ethylene}</strong></span>
-            </div>
-          </div>
-        </a>`).join('');
-    })();
-  </script>
-</body>
+<script src="assets/js/fruits.js?v=20261001-1"></script><script src="assets/js/fruit-images.js?v=20261001-1"></script><script src="assets/js/site.js?v=20261001-1"></script></body>
 </html>

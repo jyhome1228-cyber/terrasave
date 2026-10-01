@@ -1,0 +1,75 @@
+name: Layout QA
+on:
+  push:
+    branches: [qa/layout-system-20261001]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: layout-qa-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  browser-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install browser test tools
+        run: |
+          npm install --no-save playwright@1.55.1 cheerio@1.1.2 acorn@8.15.0
+          npx playwright install --with-deps chromium webkit
+          python -m pip install beautifulsoup4==4.13.5 playwright==1.55.0
+      - name: Preserve content and migrate page structure
+        run: |
+          export CHROMIUM_PATH=$(node -e "console.log(require('playwright').chromium.executablePath())")
+          python tools/rebuild-layout.py
+          node tools/finish-layout.mjs
+      - name: Chromium - 30 pages across 8 viewport widths
+        env:
+          QA_STRICT: '1'
+        run: node tools/layout-audit.mjs
+      - name: WebKit - desktop and mobile regression checks
+        env:
+          QA_STRICT: '1'
+        run: node tools/webkit-audit.mjs
+      - name: Commit verified generated pages on QA branch
+        if: success() && github.event_name == 'push' && github.ref == 'refs/heads/qa/layout-system-20261001'
+        run: |
+          set -euo pipefail
+          git config user.name "TerraSave Layout QA"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          # Shell expansion is restricted to root HTML; never stage dependency HTML.
+          git add -- ./*.html assets/css/site.css assets/js/fruit-content.js tools/content-manifest.json tools/static-content-manifest.json tools/layout-audit.mjs
+          if git diff --cached --name-only | grep -Eq '^(node_modules|qa-results|qa-results-webkit)/'; then
+            echo 'Unexpected generated dependency/test artifact staged' >&2
+            exit 1
+          fi
+          if ! git diff --cached --quiet; then
+            git fetch origin qa/layout-system-20261001
+            if [ "$(git rev-parse origin/qa/layout-system-20261001)" != "$GITHUB_SHA" ]; then
+              echo 'QA branch changed during audit. Refusing to overwrite newer work; rerun against the new tip.' >&2
+              exit 1
+            fi
+            git commit -m "refactor: publish browser-verified unified page components [skip ci]"
+            git push origin HEAD:qa/layout-system-20261001
+          fi
+      - name: Create source snapshot
+        if: always()
+        run: |
+          tar --exclude=.git --exclude=node_modules --exclude=qa-results --exclude=qa-results-webkit --exclude=source-snapshot.tgz -czf "$RUNNER_TEMP/source-snapshot.tgz" .
+          cp "$RUNNER_TEMP/source-snapshot.tgz" source-snapshot.tgz
+      - name: Upload screenshots and audit evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: terrasave-layout-qa
+          path: |
+            qa-results/
+            qa-results-webkit/
+            source-snapshot.tgz
+          retention-days: 7
