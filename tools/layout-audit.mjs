@@ -26,6 +26,22 @@ const base=process.env.QA_BASE_URL||'http://127.0.0.1:4173/';
 const browser=await chromium.launch({headless:true});
 const results=[], assetIndex={},assetJobs=[];
 const assetDir=path.join(output,'asset-cache');fs.mkdirSync(assetDir,{recursive:true});
+// A full-page audit must request offscreen lazy images explicitly. A rapid
+// scroll can skip WebKit's intersection scheduling; this affects only the test.
+// Broken and still-pending images remain fatal assertions after the bounded wait.
+const settleImages=page=>page.evaluate(async()=>{
+ const images=[...document.images],started=performance.now();
+ const pendingBefore=images.filter(image=>!image.complete).map(image=>image.src);
+ images.forEach(image=>{if(image.loading==='lazy')image.loading='eager';});
+ const height=document.documentElement.scrollHeight;
+ for(let y=0;y<height;y+=800){window.scrollTo({top:y,behavior:'instant'});await new Promise(resolve=>setTimeout(resolve,20));}
+ window.scrollTo({top:0,behavior:'instant'});
+ await Promise.race([
+  Promise.all(images.map(image=>image.decode().catch(()=>{}))),
+  new Promise(resolve=>setTimeout(resolve,15000))
+ ]);
+ return{pendingBefore,pendingAfter:images.filter(image=>!image.complete).map(image=>image.src),elapsedMs:Math.round(performance.now()-started)};
+});
 try{
 for(const width of widths){
  const context=await browser.newContext({viewport:{width,height:960},deviceScaleFactor:1,reducedMotion:'reduce'});
@@ -43,7 +59,7 @@ for(const width of widths){
   try{
    const response=await page.goto(base+route,{waitUntil:'domcontentloaded',timeout:30000});
    await page.evaluate(()=>Promise.race([document.fonts.ready,new Promise(r=>setTimeout(r,8000))]));
-   await page.evaluate(async()=>{const height=document.documentElement.scrollHeight;for(let y=0;y<height;y+=800){window.scrollTo({top:y,behavior:'instant'});await new Promise(r=>setTimeout(r,20));}window.scrollTo({top:0,behavior:'instant'});await Promise.race([Promise.all([...document.images].map(i=>i.complete?Promise.resolve():new Promise(r=>{i.onload=i.onerror=r}))),new Promise(r=>setTimeout(r,10000))]);});
+   const imageReadiness=await settleImages(page);
    await page.waitForTimeout(100);
    const metrics=await page.evaluate(()=>{
     const visible=e=>{const b=e.getBoundingClientRect(),s=getComputedStyle(e);return b.width>0&&b.height>0&&s.display!=='none'&&s.visibility!=='hidden'};
@@ -104,13 +120,14 @@ for(const width of widths){
    }
    const name=route.replace('fruit.html?fruit=','fruit-').replace('.html','');
    if([1440,390].includes(width)){
+    await settleImages(page);
     await page.screenshot({path:path.join(output,name+'-'+width+'.png'),fullPage:true,timeout:20000});
     if(['index','product','fruits','fruit-strawberry','fruit-shine-muscat','fruit-avocado','partnership','why-terrasave','contact'].includes(name)){
      const blocks=page.locator('main > section');
      for(let i=0;i<await blocks.count();i++){const block=blocks.nth(i);if(await block.isVisible())await block.screenshot({path:path.join(output,name+'-'+width+'-section-'+i+'.png'),timeout:15000});}
     }
    }
-   results.push({route,width,status:response.status(),errors,...metrics,contentChecks:expected.length,contentMissing,linkErrors,interactions});
+   results.push({route,width,status:response.status(),errors,imageReadiness,...metrics,contentChecks:expected.length,contentMissing,linkErrors,interactions});
    console.log(JSON.stringify({route,width,errors:errors.length,axis:metrics.axisErrors.length,overflow:metrics.overflow.length,orphans:metrics.orphans.length,heads:metrics.badHeads.length,images:metrics.brokenImages.length,structure:metrics.structureErrors,contentMissing:contentMissing.length,links:linkErrors,interactions}));
   }catch(error){results.push({route,width,fatal:String(error),errors});console.log('AUDIT_ERROR',route,width,String(error));}
   await page.close();
