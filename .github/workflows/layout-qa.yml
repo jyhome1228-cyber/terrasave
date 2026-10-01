@@ -1,0 +1,38 @@
+name: Layout QA
+on:
+  push:
+    branches: [qa/layout-system-20261001]
+  pull_request:
+    branches: [main]
+permissions:
+  contents: read
+concurrency:
+  group: layout-qa-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  browser-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install browser test tools
+        run: |
+          npm install --no-save playwright@1.55.1 cheerio@1.1.2 acorn@8.15.0
+          npx playwright install --with-deps chromium
+      - name: Browser layout audit
+        run: node tools/layout-audit.mjs
+      - name: Create source snapshot
+        if: always()
+        run: tar --exclude=.git --exclude=node_modules --exclude=qa-results --exclude=source-snapshot.tgz -czf source-snapshot.tgz .
+      - name: Upload screenshots and audit evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: terrasave-layout-qa
+          path: |
+            qa-results/
+            source-snapshot.tgz
+          retention-days: 7
