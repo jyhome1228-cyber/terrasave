@@ -39,6 +39,48 @@
       .ts-detail-lead .ts-lead-sentence + .ts-lead-sentence::before{content:' '}
     }
       .has-authored-fruit-profile .ts-shared-research-section{display:none!important}
+
+/* Fruit profile QA: image + identity are one coherent hero, data follows directly */
+.ts-fruit-detail-page .ts-page-hero{padding:64px 0 68px!important}
+.ts-fruit-detail-page .ts-detail-hero{
+  display:grid!important;
+  grid-template-columns:minmax(0,1.08fr) minmax(360px,.92fr)!important;
+  gap:64px!important;
+  align-items:center!important;
+}
+.ts-fruit-detail-page .ts-detail-image-pair{
+  display:grid!important;
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  gap:12px!important;
+  width:100%!important;
+}
+.ts-fruit-detail-page .ts-detail-fruit-photo{
+  aspect-ratio:1/1!important;
+  margin:0!important;
+  min-height:0!important;
+}
+.ts-fruit-detail-page .ts-detail-fruit-photo img{
+  width:100%!important;height:100%!important;object-fit:contain!important;padding:24px!important;box-sizing:border-box!important
+}
+.ts-fruit-detail-page .ts-detail-copy{
+  align-self:center!important;
+  padding:0!important;
+  max-width:500px!important;
+}
+.ts-fruit-detail-page .ts-detail-copy .ts-h1{margin-top:18px!important}
+.ts-fruit-detail-page .ts-detail-lead{margin-top:20px!important;line-height:1.82!important}
+.ts-fruit-detail-page .ts-section.is-compact{
+  padding-top:42px!important;
+  padding-bottom:64px!important;
+}
+.ts-fruit-detail-page .ts-data-grid{margin-top:0!important}
+@media(max-width:767px){
+ .ts-fruit-detail-page .ts-page-hero{padding:38px 0 48px!important}
+ .ts-fruit-detail-page .ts-detail-hero{grid-template-columns:1fr!important;gap:30px!important}
+ .ts-fruit-detail-page .ts-detail-copy{max-width:none!important}
+ .ts-fruit-detail-page .ts-detail-fruit-photo img{padding:14px!important}
+ .ts-fruit-detail-page .ts-section.is-compact{padding-top:30px!important;padding-bottom:50px!important}
+}
 </style>
 </head>
 <body class="ts-fruit-detail-page">
