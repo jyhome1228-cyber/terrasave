@@ -1,276 +1,99 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="ko">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="TerraSave 과일별 신선도 자료 — 과일별 부패 원인, 저장 조건, 유통 리스크와 신선도 유지 방향을 확인합니다." />
-  <meta name="theme-color" content="#ffffff" />
-  <title>과일별 신선도 자료 — TerraSave</title>
-  <link rel="stylesheet" href="assets/css/styles.css" />
-  <link rel="stylesheet" href="assets/css/redesign.css" />
-  <style>
-    .fruit-library-section{
-      padding-top:48px!important;
-      border-top:0!important;
-    }
-    .fruit-library-section .ts-fruit-toolbar{
-      margin-bottom:32px;
-    }
-    .fruit-library-section .ts-fruit-grid{
-      align-items:stretch;
-    }
-    .fruit-library-section .ts-fruit-card{
-      display:flex!important;
-      flex-direction:column;
-      gap:16px!important;
-      height:100%;
-      min-width:0;
-    }
-    .fruit-library-section .ts-fruit-visual{
-      width:100%;
-      aspect-ratio:1 / 1!important;
-      flex:none;
-    }
-    .fruit-library-section .ts-fruit-meta{
-      flex:1;
-      display:flex!important;
-      flex-direction:column;
-      gap:0!important;
-      min-height:164px;
-      padding-top:14px!important;
-      border-top:1px solid var(--line)!important;
-    }
-    .fruit-library-section .ts-fruit-meta-top{
-      display:grid!important;
-      grid-template-columns:minmax(0,1fr) minmax(112px,auto);
-      align-items:start;
-      gap:16px;
-      min-height:58px;
-    }
-    .fruit-library-section .ts-fruit-name{
-      min-width:0;
-      align-content:start;
-    }
-    .fruit-library-section .ts-fruit-tag{
-      max-width:160px;
-      min-height:36px;
-      text-align:right!important;
-      line-height:1.45;
-    }
-    .fruit-library-section .ts-fruit-data{
-      margin-top:auto;
-      padding-top:16px;
-      display:grid!important;
-      grid-template-columns:1fr 1fr!important;
-      gap:16px!important;
-      align-items:start;
-    }
-    .fruit-library-section .ts-fruit-data span{
-      min-width:0;
-    }
-    .fruit-library-section .ts-fruit-data strong{
-      line-height:1.45;
-      min-height:38px;
-    }
-    @media(max-width:767px){
-      .fruit-library-section{padding-top:32px!important}
-      .fruit-library-section .ts-fruit-meta{min-height:0}
-      .fruit-library-section .ts-fruit-meta-top{
-        grid-template-columns:1fr;
-        gap:6px;
-        min-height:82px;
-      }
-      .fruit-library-section .ts-fruit-tag{
-        max-width:none;
-        min-height:0;
-        text-align:left!important;
-      }
-      .fruit-library-section .ts-fruit-data{
-        grid-template-columns:1fr!important;
-        gap:10px!important;
-        padding-top:12px;
-      }
-      .fruit-library-section .ts-fruit-data strong{min-height:0}
-    }
-  
-/* Freshness Library — same 1200px grid as header, never full-bleed */
-.ts-fruits-page .ts-page-hero>.ts-shell,
-.ts-fruits-page .fruit-library-section>.ts-shell{
-  width:min(1200px,calc(100% - 64px))!important;
-  max-width:none!important;
-  margin-left:auto!important;
-  margin-right:auto!important;
-}
-.ts-fruits-page .ts-page-hero{padding:72px 0 78px!important}
-.ts-fruits-page .ts-page-hero .ts-section-head{
-  max-width:760px!important;
-  margin:0 auto!important;
-}
-.ts-fruits-page .fruit-library-section{padding:42px 0 88px!important}
-.ts-fruits-page .fruit-toolbar{
-  width:100%!important;
-  margin:0 0 34px!important;
-  padding:0 0 18px!important;
-  display:flex!important;
-  align-items:center!important;
-  justify-content:space-between!important;
-  gap:24px!important;
-  border-bottom:1px solid rgba(20,32,26,.10);
-}
-.ts-fruits-page .fruit-filters{display:flex;flex-wrap:wrap;gap:8px}
-.ts-fruits-page #fruitCount{margin-left:auto;white-space:nowrap}
-.ts-fruits-page #fruitGrid,
-.ts-fruits-page .fruit-grid{
-  width:100%!important;
-  max-width:none!important;
-  margin:0!important;
-  display:grid!important;
-  grid-template-columns:repeat(4,minmax(0,1fr))!important;
-  gap:18px!important;
-}
-.ts-fruits-page .fruit-card{
-  min-width:0!important;
-  border:1px solid rgba(20,32,26,.10)!important;
-  border-radius:14px!important;
-  overflow:hidden!important;
-  background:#fff!important;
-}
-.ts-fruits-page .fruit-card-media{
-  aspect-ratio:1/1!important;
-  width:100%!important;
-  overflow:hidden!important;
-  background:#fff!important;
-}
-.ts-fruits-page .fruit-card-media img{
-  width:100%!important;
-  height:100%!important;
-  object-fit:contain!important;
-  padding:24px!important;
-  box-sizing:border-box!important;
-}
-.ts-fruits-page .fruit-card-body{padding:18px 18px 20px!important}
-@media(max-width:1023px){
- .ts-fruits-page .ts-page-hero>.ts-shell,.ts-fruits-page .fruit-library-section>.ts-shell{width:calc(100% - 48px)!important}
- .ts-fruits-page #fruitGrid,.ts-fruits-page .fruit-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important}
-}
-@media(max-width:767px){
- .ts-fruits-page .ts-page-hero>.ts-shell,.ts-fruits-page .fruit-library-section>.ts-shell{width:calc(100% - 36px)!important}
- .ts-fruits-page .ts-page-hero{padding:50px 0 58px!important}
- .ts-fruits-page .fruit-library-section{padding:30px 0 64px!important}
- .ts-fruits-page .fruit-toolbar{align-items:flex-start!important;flex-direction:column!important;gap:14px!important}
- .ts-fruits-page #fruitCount{margin-left:0!important}
- .ts-fruits-page #fruitGrid,.ts-fruits-page .fruit-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px!important}
- .ts-fruits-page .fruit-card-media img{padding:14px!important}
- .ts-fruits-page .fruit-card-body{padding:14px!important}
-}
-</style>
-</head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="TerraSave 과일별 신선도 자료 — 과일별 부패 원인, 저장 조건, 유통 리스크와 신선도 유지 방향을 확인합니다." name="description"/>
+<meta content="#ffffff" name="theme-color"/>
+<title>과일별 신선도 자료 — TerraSave</title>
+
+
+
+<link href="assets/css/site.css?v=20261001-1" rel="stylesheet"/><link href="assets/img/terrasave-favicon.svg" rel="icon" type="image/svg+xml"/></head>
 <body class="page-fruits ts-fruits-page">
-  <header class="site-header" id="siteHeader">
-    <div class="ts-shell header-inner">
-      <a class="brand" href="index.html" aria-label="TerraSave Home">TerraSave</a>
-      <nav class="nav" id="siteNav" aria-label="Primary navigation"></nav>
-      <a class="ts-button header-cta" href="contact.html">포장 솔루션 상담하기</a>
-      <button class="menu-toggle" id="menuToggle" type="button" aria-label="메뉴 열기" aria-expanded="false"></button>
-    </div>
-  </header>
+<a class="skip-link" href="#main-content">본문 바로가기</a><header class="site-header" id="siteHeader"><div class="ts-shell header-inner"><a aria-label="TerraSave Home" class="brand" href="index.html"><img alt="TerraSave" class="brand-logo" height="28" src="assets/img/terrasave-logo.svg" width="136"/></a><nav aria-label="주 메뉴" class="nav" id="siteNav"><a href="about.html">About TerraSave</a><a href="product.html">Product</a><a aria-current="page" href="fruits.html">Freshness Library</a><a href="partnership.html">Partnership</a><a href="why-terrasave.html">Why TerraSave</a><a class="nav-contact" href="contact.html">Contact</a></nav><a class="ts-button header-cta" href="contact.html">포장 상담하기</a><button aria-controls="siteNav" aria-expanded="false" aria-label="메뉴 열기" class="menu-toggle" id="menuToggle" type="button"><span aria-hidden="true" class="menu-icon"><span></span><span></span><span></span></span></button></div></header>
+<main id="main-content">
+<section class="ts-page-hero">
+<div class="ts-shell">
+<div class="ts-breadcrumb"><a href="index.html">홈</a> / 과일별 신선도 자료</div>
+<div class="ts-section-head">
+<span class="ts-kicker">FRUIT FRESHNESS LIBRARY</span>
 
-  <main>
-    <section class="ts-page-hero">
-      <div class="ts-shell">
-        <div class="ts-breadcrumb"><a href="index.html">홈</a> / 과일별 신선도 자료</div>
-        <div class="ts-section-head" style="margin-bottom:0">
-          <span class="ts-kicker">FRUIT FRESHNESS LIBRARY</span>
-          <div>
-            <h1 class="ts-h1">보관은 경험이 아니라,<br />데이터에서 시작됩니다.</h1>
-            <p class="ts-body-lg ts-section-copy">과일별 연구 데이터를 통해 부패의 원인과<br>신선도를 좌우하는 조건을 확인하세요.</p>
-          </div>
-        </div>
-      </div>
-    </section>
+<h1 class="ts-h1">보관은 경험이 아니라,<br class="desktop-break"/> 데이터에서 시작됩니다.</h1>
+<p class="ts-body-lg ts-section-copy">과일별 연구 데이터를 통해 부패의 원인과 신선도를 좌우하는 조건을 확인하세요.</p>
 
-    <section class="ts-section fruit-library-section">
-      <div class="ts-shell">
-        <div class="ts-fruit-toolbar">
-          <div class="ts-pills" aria-label="Fruit database filters">
-            <button class="ts-pill is-active" type="button" data-filter="all">전체 과일</button>
-            <button class="ts-pill" type="button" data-filter="climacteric">후숙 과일</button>
-            <button class="ts-pill" type="button" data-filter="non">비후숙 과일</button>
-            <button class="ts-pill" type="button" data-filter="high">에틸렌 민감 과일</button>
-          </div>
-          <span class="ts-fruit-count" id="fruitCount">18개 과일</span>
-        </div>
-        <div class="ts-fruit-grid" id="fruitGrid" aria-live="polite"></div>
-      </div>
-    </section>
+</div>
+</div>
+</section>
+<section class="ts-section fruit-library-section">
+<div class="ts-shell">
+<div class="ts-fruit-toolbar">
+<div aria-label="Fruit database filters" class="ts-pills">
+<button class="ts-pill is-active" data-filter="all" type="button">전체 과일</button>
+<button class="ts-pill" data-filter="climacteric" type="button">후숙 과일</button>
+<button class="ts-pill" data-filter="non" type="button">비후숙 과일</button>
+<button class="ts-pill" data-filter="high" type="button">에틸렌 민감 과일</button>
+</div>
+<span class="ts-fruit-count" id="fruitCount">18개 과일</span>
+</div>
+<div aria-live="polite" class="ts-fruit-grid" id="fruitGrid"></div>
+</div>
+</section>
+<section class="ts-section is-soft">
+<div class="ts-shell">
+<div class="ts-section-head">
+<span class="ts-kicker">HOW TO READ</span>
+<h2 class="ts-h2">과일마다 신선도를 좌우하는<br class="desktop-break"/> 조건이 다릅니다.<br class="desktop-break"/> </h2><p class="ts-body ts-section-copy">저장온도나 에틸렌 하나만으로 판단하지 않습니다. 품종과 숙도, 저장기간, 물류환경과 현재 포장 방식까지 함께 확인합니다.</p>
+</div>
+<div class="ts-approach-grid" data-columns="3">
+<article class="ts-approach"><span class="ts-kicker">01 / Storage</span><div><h3 class="ts-h3">온도·습도</h3><p>품질 유지의 기본 조건과 저온장해·수분손실 위험을 함께 봅니다.</p></div></article>
+<article class="ts-approach"><span class="ts-kicker">02 / Ripening</span><div><h3 class="ts-h3">후숙·에틸렌</h3><p>생성 수준과 외부 에틸렌 민감도를 분리해 해석합니다.</p></div></article>
+<article class="ts-approach"><span class="ts-kicker">03 / Distribution</span><div><h3 class="ts-h3">유통 리스크</h3><p>충격, 연화, 결로, 곰팡이 등 실제 손상 요인을 적용 방향과 연결합니다.</p></div></article>
+</div>
+</div>
+</section>
+<section class="ts-section">
+<div class="ts-shell">
+<div class="ts-cta">
+<div class="ts-cta-copy"><span class="ts-kicker">APPLICATION STUDY</span><h2 class="ts-h2">찾는 품목이 있거나<br class="desktop-break"/> 현재 포장 개선이 필요하신가요?<br class="desktop-break"/> </h2><p class="ts-body ts-section-copy">현재 사용하는 포장 방식과 유통 조건을 알려주시면 과일 데이터와 보호 목적을 기준으로 검토 방향을 정리합니다.</p></div>
+<div class="ts-cta-action"><a class="ts-button is-dark is-large" href="contact.html">포장 솔루션 상담하기</a></div>
+</div>
+</div>
+</section>
+</main>
+<footer class="footer">
+<div class="footer-shell">
+<div class="footer-primary">
+<div class="footer-brand-block">
+<img alt="TerraSave" class="footer-logo" height="30" src="assets/img/terrasave-logo.svg" width="150"/>
+<p class="footer-tagline">과일을 더 안전하게, 더 좋은 상태로 보내기 위한 포장 연구.</p>
+<p class="footer-description">과일별 보관 조건과 유통 중 문제를 바탕으로 필요한 보호 방향을 찾습니다.</p>
+</div>
+<nav aria-label="Footer navigation" class="footer-nav-main">
+<a href="about.html">About TerraSave</a>
+<a href="product.html">Product</a>
+<a href="fruits.html">Freshness Library</a>
+<a href="partnership.html">Partnership</a>
+<a href="why-terrasave.html">Why TerraSave</a>
+<a href="contact.html">Contact</a>
+</nav>
+</div>
+<div class="footer-secondary">
+<div class="footer-contact-line">
+<a href="mailto:info@terracle.im">info@terracle.im</a>
+<span>032-710-2891~2</span>
+<span>368-81-02387</span>
+</div>
+<a class="footer-parent-link" href="https://kr.terracle.im/" rel="noopener noreferrer" target="_blank">Terracle에서 만든 과일 보호 솔루션 ↗</a>
+</div>
+<div class="footer-legal">
+<span>TerraSave</span>
+<span>Copyright © 2026 Terracle. All Rights Reserved.</span>
+</div>
+</div></footer>
 
-    <section class="ts-section is-soft">
-      <div class="ts-shell">
-        <div class="ts-section-head">
-          <span class="ts-kicker">HOW TO READ</span>
-          <div><h2 class="ts-h2">과일마다 신선도를 좌우하는<br />조건이 다릅니다.</h2><p class="ts-body ts-section-copy">저장온도나 에틸렌 하나만으로 판단하지 않습니다.<br>품종과 숙도, 저장기간, 물류환경과 현재 포장 방식까지 함께 확인합니다.</p></div>
-        </div>
-        <div class="ts-approach-grid">
-          <article class="ts-approach"><span class="ts-kicker">01 / Storage</span><div><h3 class="ts-h3">온도·습도</h3><p>품질 유지의 기본 조건과 저온장해·수분손실 위험을 함께 봅니다.</p></div></article>
-          <article class="ts-approach"><span class="ts-kicker">02 / Ripening</span><div><h3 class="ts-h3">후숙·에틸렌</h3><p>생성 수준과 외부 에틸렌 민감도를 분리해 해석합니다.</p></div></article>
-          <article class="ts-approach"><span class="ts-kicker">03 / Distribution</span><div><h3 class="ts-h3">유통 리스크</h3><p>충격, 연화, 결로, 곰팡이 등 실제 손상 요인을 적용 방향과 연결합니다.</p></div></article>
-        </div>
-      </div>
-    </section>
 
-    <section class="ts-section">
-      <div class="ts-shell">
-        <div class="ts-cta">
-          <div class="ts-cta-copy"><span class="ts-kicker">APPLICATION STUDY</span><h2 class="ts-h2">찾는 품목이 있거나<br />현재 포장 개선이 필요하신가요?</h2><p class="ts-body ts-section-copy">현재 사용하는 포장 방식과 유통 조건을 알려주시면 과일 데이터와 보호 목적을 기준으로 검토 방향을 정리합니다.</p></div>
-          <div class="ts-cta-action"><a class="ts-button is-dark is-large" href="contact.html">포장 솔루션 상담하기</a></div>
-        </div>
-      </div>
-    </section>
-  </main>
 
-  <footer class="footer"></footer>
-  <script src="assets/js/fruits.js"></script>
-  <script src="assets/js/main.js"></script>
-  <script>
-    (function(){
-      const data = window.TERRASAVE_FRUITS || [];
-      const grid = document.getElementById('fruitGrid');
-      const count = document.getElementById('fruitCount');
-      const buttons = Array.from(document.querySelectorAll('[data-filter]'));
-      const getFiltered = (filter) => {
-        if (filter === 'climacteric') return data.filter(item => item.ripening.includes('클라이맥테릭') && !item.ripening.includes('비클라이맥테릭'));
-        if (filter === 'non') return data.filter(item => item.ripening.includes('비클라이맥테릭'));
-        if (filter === 'high') return data.filter(item => ['High','Very High','Extremely High'].includes(item.ethylene));
-        return data;
-      };
-      const render = (filter='all') => {
-        const items = getFiltered(filter);
-        count.textContent = `${items.length}개 과일`;
-        grid.innerHTML = items.map(item => {
-          const solutionAvailable = ['avocado','strawberry','shine-muscat','mango'].includes(item.slug);
-          return `
-          <a class="ts-fruit-card" href="fruit.html?fruit=${item.slug}">
-            <div class="ts-fruit-visual"><div class="ts-fruit-shape shape-${item.shape || 'round'}"></div></div>
-            <div class="ts-fruit-meta">
-              <div class="ts-fruit-meta-top">
-                <div class="ts-fruit-name"><strong>${item.en}</strong><span>${item.ko}</span></div>
-                <span class="ts-fruit-tag">${item.focus}</span><span class="ts-fruit-status ${solutionAvailable ? 'is-available' : 'is-research'}">${solutionAvailable ? '솔루션 제공' : '연구중'}</span>
-              </div>
-              <div class="ts-fruit-data">
-                <span>Storage<strong>${item.storage}</strong></span>
-                <span>Ethylene<strong>${item.ethylene}</strong></span>
-              </div>
-            </div>
-          </a>`;
-        }).join('');
-      };
-      buttons.forEach(button => button.addEventListener('click', () => {
-        buttons.forEach(item => item.classList.remove('is-active'));
-        button.classList.add('is-active');
-        render(button.dataset.filter);
-      }));
-      render();
-    })();
-  </script>
-</body>
+<script src="assets/js/fruits.js?v=20261001-1"></script><script src="assets/js/fruit-images.js?v=20261001-1"></script><script src="assets/js/site.js?v=20261001-1"></script></body>
 </html>

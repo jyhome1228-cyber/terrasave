@@ -28,7 +28,7 @@ const results=[], assetIndex={},assetJobs=[];
 const assetDir=path.join(output,'asset-cache');fs.mkdirSync(assetDir,{recursive:true});
 try{
 for(const width of widths){
- const context=await browser.newContext({viewport:{width,height:960},deviceScaleFactor:1});
+ const context=await browser.newContext({viewport:{width,height:960},deviceScaleFactor:1,reducedMotion:'reduce'});
  await context.addInitScript(()=>{try{sessionStorage.setItem('ts-update-popup','closed');}catch{}});
  for(const route of routes){
   const page=await context.newPage(),errors=[];
@@ -43,7 +43,7 @@ for(const width of widths){
   try{
    const response=await page.goto(base+route,{waitUntil:'domcontentloaded',timeout:30000});
    await page.evaluate(()=>Promise.race([document.fonts.ready,new Promise(r=>setTimeout(r,8000))]));
-   await page.evaluate(async()=>{const height=document.documentElement.scrollHeight;for(let y=0;y<height;y+=800){window.scrollTo(0,y);await new Promise(r=>setTimeout(r,20));}window.scrollTo(0,0);await Promise.race([Promise.all([...document.images].map(i=>i.complete?Promise.resolve():new Promise(r=>{i.onload=i.onerror=r}))),new Promise(r=>setTimeout(r,10000))]);});
+   await page.evaluate(async()=>{const height=document.documentElement.scrollHeight;for(let y=0;y<height;y+=800){window.scrollTo({top:y,behavior:'instant'});await new Promise(r=>setTimeout(r,20));}window.scrollTo({top:0,behavior:'instant'});await Promise.race([Promise.all([...document.images].map(i=>i.complete?Promise.resolve():new Promise(r=>{i.onload=i.onerror=r}))),new Promise(r=>setTimeout(r,10000))]);});
    await page.waitForTimeout(100);
    const metrics=await page.evaluate(()=>{
     const visible=e=>{const b=e.getBoundingClientRect(),s=getComputedStyle(e);return b.width>0&&b.height>0&&s.display!=='none'&&s.visibility!=='hidden'};
@@ -120,7 +120,7 @@ for(const width of widths){
 }finally{await Promise.allSettled(assetJobs);await browser.close();server.close();}
 fs.writeFileSync(path.join(output,'asset-index.json'),JSON.stringify(assetIndex,null,2));
 fs.writeFileSync(path.join(output,'layout-audit.json'),JSON.stringify(results,null,2));
-const fields=['axisErrors','overflow','orphans','badHeads','heroErrors','duplicateIds','brokenImages','structureErrors','contentMissing','linkErrors','interactions','errors'];
+const fields=['axisErrors','overflow','orphans','badHeads','heroErrors','duplicateIds','brokenImages','loadingImages','structureErrors','contentMissing','linkErrors','interactions','errors'];
 const totals={pages:routes.length,widths,cases:results.length,fatal:results.filter(x=>x.fatal).length,contentChecks:results.reduce((s,x)=>s+(x.contentChecks||0),0),failures:Object.fromEntries(fields.map(field=>[field,results.filter(x=>x[field]?.length).length]))};
 fs.writeFileSync(path.join(output,'summary.json'),JSON.stringify(totals,null,2));
 console.log('TOTALS',JSON.stringify(totals));
