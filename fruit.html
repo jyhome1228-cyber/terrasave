@@ -81,6 +81,41 @@
  .ts-fruit-detail-page .ts-detail-fruit-photo img{padding:14px!important}
  .ts-fruit-detail-page .ts-section.is-compact{padding-top:30px!important;padding-bottom:50px!important}
 }
+
+/* Critical fruit hero grid fix: children must occupy the intended two columns */
+@media(min-width:1024px){
+  .ts-fruit-detail-page .ts-detail-hero{
+    grid-template-columns:minmax(0,1.15fr) minmax(380px,.85fr)!important;
+    gap:56px!important;
+    align-items:center!important;
+  }
+  .ts-fruit-detail-page .ts-detail-image-pair{
+    grid-column:1!important;
+    grid-row:1!important;
+    align-self:center!important;
+  }
+  .ts-fruit-detail-page .ts-detail-copy{
+    grid-column:2!important;
+    grid-row:1!important;
+    align-self:center!important;
+    justify-self:stretch!important;
+    width:100%!important;
+    max-width:none!important;
+  }
+}
+@media(max-width:1023px){
+  .ts-fruit-detail-page .ts-detail-hero{
+    grid-template-columns:1fr!important;
+    gap:34px!important;
+  }
+  .ts-fruit-detail-page .ts-detail-image-pair,
+  .ts-fruit-detail-page .ts-detail-copy{
+    grid-column:1!important;
+    grid-row:auto!important;
+    width:100%!important;
+    max-width:none!important;
+  }
+}
 </style>
 </head>
 <body class="ts-fruit-detail-page">
