@@ -6,6 +6,6 @@ const script=source.replace("import { chromium } from 'playwright';","import { w
 if(script===source)throw new Error('Browser audit entry point changed.');
 fs.writeFileSync(path,script);
 try{
- const result=spawnSync(process.execPath,[path],{stdio:'inherit',env:{...process.env,QA_WIDTHS:'1440,390'}});
+ const result=spawnSync(process.execPath,[path],{stdio:'inherit',env:{...process.env,QA_WIDTHS:'1440,899,390'}});
  process.exitCode=result.status??1;
 }finally{fs.rmSync(path,{force:true});}
