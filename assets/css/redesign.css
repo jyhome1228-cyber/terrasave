@@ -1476,3 +1476,53 @@ body main section{overflow:clip}
 .ts-video-research-inner .ts-kicker{display:block;margin-bottom:12px}
 .ts-video-research-inner strong{display:block;font-size:22px;letter-spacing:-.03em}
 .ts-video-research-inner p{margin:10px 0 0;color:#737a75;font-size:14px}
+
+
+/* Alignment QA pass: make every section choose a clear axis */
+body main .ts-page-hero .ts-breadcrumb{
+  width:100%!important;
+  margin-bottom:34px!important;
+}
+body main .ts-page-hero .ts-section-head,
+body main .ts-section>.ts-shell>.ts-section-head{
+  margin-left:auto!important;
+  margin-right:auto!important;
+}
+
+/* Full-width structural modules sit directly under a centered heading */
+.ts-partnership-page :is(.ts-partner-models,.ts-condition-grid,.ts-rnd-process,.ts-license-scope,.ts-license-example,.ts-partner-process),
+.ts-why-page :is(.ts-audience-nav,.ts-value-grid,.ts-global-list,.ts-use-grid,.ts-adoption-process),
+.ts-product-page .ts-product-list,
+.ts-fruit-detail-page :is(.ts-application-list,.ts-approach-grid,.ts-detail-research){
+  margin-top:0!important;
+}
+
+/* Summaries accompanying centered heads use the same centered reading axis */
+.ts-why-page .ts-audience-summary,
+.ts-partnership-page .ts-validation-note,
+.ts-support-copy,
+.ts-support-emphasis{
+  margin-left:auto!important;
+  margin-right:auto!important;
+  text-align:center!important;
+}
+
+/* CTA actions tied to centered editorial content stay centered */
+.ts-fruit-detail-page .ts-detail-research + div[style*="text-align:center"],
+.ts-partnership-page div[style*="text-align:center"]{
+  text-align:center!important;
+}
+
+/* Avoid ambiguous half-centered content on desktop */
+@media(min-width:768px){
+  .ts-home-page .ts-home-head,
+  .ts-about-page .ts-section-head,
+  .ts-product-page .ts-section-head,
+  .ts-fruits-page .ts-section-head,
+  .ts-fruit-detail-page .ts-section-head,
+  .ts-partnership-page .ts-section-head,
+  .ts-why-page .ts-section-head,
+  .ts-contact-page .ts-section-head{
+    text-align:center!important;
+  }
+}
