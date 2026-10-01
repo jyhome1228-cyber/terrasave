@@ -1,38 +1,96 @@
 name: Deploy TerraSave to GitHub Pages
-
 on:
   push:
-    branches:
-      - main
+    branches: [main]
   workflow_dispatch:
-
 permissions:
   contents: read
   pages: write
   id-token: write
-
 concurrency:
   group: pages
   cancel-in-progress: true
-
 jobs:
   deploy:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
       - name: Checkout
         uses: actions/checkout@v6
-
       - name: Setup Pages
         uses: actions/configure-pages@v5
-
+      - name: Stage public files only
+        run: |
+          mkdir -p _site
+          cp ./*.html _site/
+          cp -R assets prd _site/
+          for file in CNAME robots.txt sitemap.xml; do
+            if [ -f "$file" ]; then cp "$file" _site/; fi
+          done
+          touch _site/.nojekyll
+          printf '{"commit":"%s","layout":"unified-20261001"}\n' "$GITHUB_SHA" > _site/build-info.json
       - name: Upload static site
         uses: actions/upload-pages-artifact@v4
         with:
-          path: .
-
+          path: _site
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+      - name: Verify public source matches the deployed commit
+        env:
+          SITE_URL: ${{ steps.deployment.outputs.page_url }}
+        run: |
+          python - <<'PY'
+          import os, time, urllib.request, hashlib, pathlib, sys, json
+          base=os.environ['SITE_URL'].rstrip('/')+'/'
+          paths=['build-info.json','index.html','fruits.html','fruit.html','product.html','partnership.html','why-terrasave.html','assets/css/site.css','assets/js/site.js','assets/js/fruit-detail.js','assets/js/fruit-content.js']
+          for attempt in range(18):
+              mismatches=[]
+              for path in paths:
+                  try:
+                      req=urllib.request.Request(base+path+'?qa='+os.environ['GITHUB_SHA'],headers={'Cache-Control':'no-cache','User-Agent':'TerraSave-Deployment-QA'})
+                      with urllib.request.urlopen(req,timeout=20) as response: remote=response.read()
+                      expected=pathlib.Path('_site',path).read_bytes()
+                      if hashlib.sha256(remote).digest()!=hashlib.sha256(expected).digest(): mismatches.append(path)
+                  except Exception as exc: mismatches.append(path+': '+str(exc))
+              if not mismatches:
+                  pathlib.Path('deployment-verification.json').write_text(json.dumps({'commit':os.environ['GITHUB_SHA'],'base':base,'verified_files':paths,'source_match':True},indent=2))
+                  print('Verified published HTML, stylesheet and renderer match the deployed commit.')
+                  break
+              print('Waiting for publication:',mismatches,flush=True)
+              time.sleep(15)
+          else:
+              sys.exit('Public source did not converge to the deployed commit.')
+          PY
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install live browser verification tools
+        run: |
+          npm install --no-save playwright@1.55.1
+          npx playwright install --with-deps chromium webkit
+      - name: Chromium live-site layout and interaction checks
+        env:
+          QA_BASE_URL: ${{ steps.deployment.outputs.page_url }}
+          QA_STRICT: '1'
+        run: node tools/layout-audit.mjs
+      - name: WebKit live-site desktop and mobile checks
+        env:
+          QA_BASE_URL: ${{ steps.deployment.outputs.page_url }}
+          QA_STRICT: '1'
+        run: node tools/webkit-audit.mjs
+      - name: Upload live-site verification evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: terrasave-live-qa
+          path: |
+            deployment-verification.json
+            qa-results/*.json
+            qa-results/*.png
+            qa-results-webkit/*.json
+            qa-results-webkit/*.png
+          retention-days: 7
