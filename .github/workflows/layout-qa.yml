@@ -27,6 +27,7 @@ jobs:
         run: |
           export CHROMIUM_PATH=$(node -e "console.log(require('playwright').chromium.executablePath())")
           python tools/rebuild-layout.py
+          node tools/finish-layout.mjs
       - name: Browser layout and content audit
         env:
           QA_STRICT: '1'
@@ -36,7 +37,7 @@ jobs:
         run: |
           git config user.name "TerraSave Layout QA"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add '*.html' assets/js/fruit-content.js tools/content-manifest.json tools/static-content-manifest.json
+          git add '*.html' assets/css/site.css assets/js/fruit-content.js tools/content-manifest.json tools/static-content-manifest.json tools/layout-audit.mjs
           if ! git diff --cached --quiet; then
             git commit -m "refactor: generate unified public pages after browser QA [skip ci]"
             git push origin HEAD:qa/layout-system-20261001
