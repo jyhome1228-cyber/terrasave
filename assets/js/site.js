@@ -81,9 +81,10 @@
     if (header?.classList.contains('menu-open') && !header.contains(event.target)) closeMenu();
   });
 
-  window.matchMedia('(min-width:1120px)').addEventListener('change', event => {
-    if (event.matches) closeMenu();
-  });
+  const desktopMedia = window.matchMedia('(min-width:1120px)');
+  const handleDesktopChange = event => { if (event.matches) closeMenu(); };
+  if (desktopMedia.addEventListener) desktopMedia.addEventListener('change', handleDesktopChange);
+  else desktopMedia.addListener?.(handleDesktopChange);
 
   const setHeaderState = () => header?.classList.toggle('is-scrolled', window.scrollY > 18);
   setHeaderState();
@@ -147,6 +148,13 @@
   let revealObserver;
   function initReveal() {
     if (reducedMotion) return;
+    const targets = document.querySelectorAll(
+      'main > section:not(:first-child), .ts-product-card, .ts-partner-model, .ts-value-card, .ts-use-card, .ts-step, .ts-fruit-card, .ts-factor-card, .ts-home-product-card, .ts-business-item'
+    );
+    if (!('IntersectionObserver' in window)) {
+      [...targets].forEach(element => element.classList.add('is-visible'));
+      return;
+    }
     if (!revealObserver) {
       revealObserver = new IntersectionObserver(entries => {
         entries.forEach(entry => {
@@ -156,9 +164,6 @@
         });
       }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
     }
-    const targets = document.querySelectorAll(
-      'main > section:not(:first-child), .ts-product-card, .ts-partner-model, .ts-value-card, .ts-use-card, .ts-step, .ts-fruit-card, .ts-factor-card, .ts-home-product-card, .ts-business-item'
-    );
     [...targets].forEach((element, index) => {
       if (element.classList.contains('ts-reveal') || element.classList.contains('is-visible')) return;
       element.classList.add('ts-reveal');
