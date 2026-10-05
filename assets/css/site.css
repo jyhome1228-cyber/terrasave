@@ -167,3 +167,20 @@ body.ts-page-leaving main,body.ts-page-leaving .footer{opacity:0;transform:trans
   body.ts-page-leaving main,body.ts-page-leaving .footer{opacity:1!important;transform:none!important}
   .ts-reveal{opacity:1!important;transform:none!important}
 }
+
+
+/* 2026-10-05 responsive QA guardrails */
+.ts-factor-card,.ts-home-product-card,.ts-business-item,.ts-validation-copy,.ts-validation-side,.ts-manufacturing-band>*{min-width:0}
+@media(max-width:767px){
+  .ts-home-product-media{aspect-ratio:16/10}
+  .ts-validation-panel{border-radius:14px}
+  .ts-home-actions,.ts-action-group,.ts-order-actions{max-width:100%}
+}
+@media(max-width:479px){
+  .ts-product-spec-row{grid-template-columns:64px minmax(0,1fr)}
+  .ts-validation-list div{align-items:flex-start}
+}
+@media(max-width:359px){
+  .ts-data-grid{grid-template-columns:1fr}
+  .ts-fruit-grid,.ts-home-fruit-grid{grid-template-columns:1fr}
+}
