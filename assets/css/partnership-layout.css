@@ -143,3 +143,321 @@
 @media(prefers-reduced-motion:reduce){
   .ts-partnership-page .ts-partner-model{transition:none}
 }
+
+/* Partnership editorial refactor / 2026-10-11: content-first layouts and sequential stage rows. */
+/* Long-form collaboration information reads better as full-width sections
+   than as three equal-height advertising cards. */
+.ts-partnership-page .ts-partner-models{
+  display:block;
+  border-top:1px solid var(--line);
+}
+.ts-partnership-page .ts-partner-model,
+.ts-partnership-page .ts-partner-model:last-child{
+  display:grid;
+  grid-template-columns:minmax(160px,.29fr) minmax(0,1fr);
+  grid-column:auto;
+  align-items:start;
+  column-gap:clamp(30px,4vw,76px);
+  row-gap:0;
+  padding:42px 0 46px;
+  margin:0;
+  background:transparent;
+  border:0;
+  border-bottom:1px solid var(--line);
+  border-radius:0;
+  box-shadow:none;
+}
+.ts-partnership-page .ts-partner-model:hover{
+  border-color:var(--line);
+  transform:none;
+  box-shadow:none;
+}
+.ts-partnership-page .ts-partner-model>.ts-kicker{
+  grid-column:1;
+  grid-row:1 / span 7;
+  margin:7px 0 0;
+  font-size:12px;
+  line-height:1.5;
+}
+.ts-partnership-page .ts-partner-model>:not(.ts-kicker){
+  grid-column:2;
+  width:100%;
+  max-width:930px;
+  min-width:0;
+}
+.ts-partnership-page .ts-partner-model h3{
+  font-size:clamp(25px,2.3vw,32px);
+  line-height:1.35;
+  letter-spacing:-.035em;
+  margin:0 0 20px;
+}
+.ts-partnership-page .ts-partner-model p{
+  font-size:16px;
+  line-height:1.85;
+}
+.ts-partnership-page .ts-partner-model p+p{margin-top:14px}
+.ts-partnership-page .ts-partner-model ul{
+  margin:24px 0 0;
+  padding:22px 0 0;
+  border-top:1px solid var(--line);
+  list-style:none;
+  font-size:15px;
+  line-height:1.85;
+}
+.ts-partnership-page .ts-partner-model li+li{margin-top:8px}
+.ts-partnership-page .ts-partner-model .ts-link{
+  width:max-content;
+  max-width:100%;
+  margin:28px 0 0;
+}
+
+/* Nine genuinely separate environmental factors: ruled labels, not a tiled table. */
+.ts-partnership-page .ts-condition-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:0 28px;
+  border:0;
+  border-top:1px solid var(--line);
+  border-radius:0;
+  overflow:visible;
+  background:transparent;
+}
+.ts-partnership-page .ts-condition-grid>div{
+  display:flex;
+  align-items:center;
+  min-height:72px;
+  padding:19px 0;
+  border:0;
+  border-bottom:1px solid var(--line);
+  background:transparent;
+}
+.ts-partnership-page .ts-condition-grid strong{
+  font-size:17px;
+  line-height:1.65;
+  font-weight:550;
+}
+
+/* On-site validation is a list of measurements, rather than decorative pills. */
+.ts-partnership-page .ts-data-tags{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:0 24px;
+  border-top:1px solid var(--line);
+}
+.ts-partnership-page .ts-data-tags span{
+  display:block;
+  min-width:0;
+  padding:19px 0;
+  border:0;
+  border-bottom:1px solid var(--line);
+  border-radius:0;
+  background:transparent;
+  font-size:16px;
+  line-height:1.65;
+  color:var(--ink);
+  font-weight:550;
+}
+.ts-partnership-page .ts-validation-note{
+  max-width:100%;
+  margin-top:26px;
+}
+
+/* R&D topics: two open editorial columns with divider rules, not boxed cells. */
+.ts-partnership-page .ts-rnd-process{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:0 clamp(30px,4vw,72px);
+  border:0;
+  border-top:1px solid var(--line);
+  border-radius:0;
+  background:transparent;
+  overflow:visible;
+}
+.ts-partnership-page .ts-rnd-process .ts-step,
+.ts-partnership-page .ts-rnd-process .ts-step:nth-child(even),
+.ts-partnership-page .ts-rnd-process .ts-step:last-child{
+  grid-column:auto;
+  display:grid;
+  grid-template-columns:46px minmax(0,1fr);
+  gap:18px;
+  padding:28px 0;
+  border:0;
+  border-bottom:1px solid var(--line);
+  border-radius:0;
+  background:transparent;
+}
+.ts-partnership-page .ts-rnd-process .ts-step:last-child{
+  border-bottom:1px solid var(--line);
+}
+.ts-partnership-page .ts-rnd-process .ts-step-copy h3{
+  font-size:19px;
+  line-height:1.45;
+  margin:0 0 9px;
+}
+.ts-partnership-page .ts-rnd-process .ts-step-copy p{font-size:15px;line-height:1.8}
+
+/* Distinct licensing concepts stay in place while shedding unnecessary panels. */
+.ts-partnership-page .ts-license-scope{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:0 28px;
+  margin:0 0 28px;
+  border-top:1px solid var(--line);
+}
+.ts-partnership-page .ts-license-scope>div{
+  padding:23px 0;
+  border:0;
+  border-bottom:1px solid var(--line);
+  border-radius:0;
+  background:transparent;
+}
+.ts-partnership-page .ts-license-example{
+  border-top:0;
+}
+.ts-partnership-page .ts-manufacturing-band{
+  padding:36px 0;
+  border-left:0;
+  border-right:0;
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  border-radius:0;
+  background:transparent;
+}
+
+/* Four chronological steps — four independent rows, not four merged cards. */
+.ts-partnership-page .ts-partner-process{
+  display:grid;
+  grid-template-columns:minmax(0,1fr);
+  gap:0;
+  width:100%;
+  max-width:none;
+  overflow:visible;
+  border:0;
+  border-top:1px solid var(--line);
+  border-radius:0;
+  background:transparent;
+}
+.ts-partnership-page .ts-partner-process .ts-step,
+.ts-partnership-page .ts-partner-process .ts-step:nth-child(even),
+.ts-partnership-page .ts-partner-process .ts-step:last-child{
+  display:grid;
+  grid-column:1/-1;
+  grid-template-columns:minmax(144px,.26fr) minmax(0,1fr);
+  gap:clamp(22px,3vw,50px);
+  align-items:start;
+  min-height:162px;
+  padding:32px 0 35px;
+  border:0;
+  border-bottom:1px solid var(--line);
+  border-radius:0;
+  background:transparent;
+  box-shadow:none;
+}
+.ts-partnership-page .ts-partner-process .ts-step-no{
+  display:flex;
+  align-items:baseline;
+  gap:9px;
+  padding:0;
+  margin:0;
+  white-space:nowrap;
+  font-size:12px;
+}
+.ts-partnership-page .ts-partner-process .ts-step-count{
+  font-size:clamp(46px,5.2vw,72px);
+  line-height:1;
+  letter-spacing:-.055em;
+  font-weight:550;
+  color:var(--ink);
+}
+.ts-partnership-page .ts-partner-process .ts-step-label{
+  font-size:12px;
+  letter-spacing:.075em;
+  line-height:1.6;
+  color:var(--muted);
+  font-weight:600;
+}
+.ts-partnership-page .ts-partner-process .ts-step-copy{
+  width:100%;
+  max-width:820px;
+  padding-top:4px;
+}
+.ts-partnership-page .ts-partner-process .ts-step-copy h3{
+  margin:0 0 13px;
+  font-size:clamp(23px,2.1vw,30px);
+  line-height:1.42;
+  letter-spacing:-.03em;
+}
+.ts-partnership-page .ts-partner-process .ts-step-copy p{
+  margin:0;
+  font-size:16px;
+  line-height:1.8;
+}
+.ts-partnership-page .ts-partner-process .ts-step:hover{
+  transform:none;
+  box-shadow:none;
+}
+
+/* Motion only starts after the page script confirms observer support.
+   Without JS, all four rows remain visible. */
+.ts-partnership-page .ts-partner-process.is-sequence-ready .ts-step{
+  transition:opacity .68s cubic-bezier(.2,.7,.2,1),transform .68s cubic-bezier(.2,.7,.2,1);
+  transition-delay:0ms;
+}
+.ts-partnership-page .ts-partner-process.is-sequence-ready .ts-step:not(.is-step-visible){
+  opacity:0;
+  transform:translate3d(0,42px,0);
+}
+.ts-partnership-page .ts-partner-process.is-sequence-ready .ts-step.is-step-visible{
+  opacity:1;
+  transform:none;
+}
+.ts-partnership-page .ts-partner-process.is-sequence-ready .ts-step.ts-reveal{
+  transition-delay:0ms;
+}
+
+@media(max-width:899px){
+  .ts-partnership-page .ts-partner-model,
+  .ts-partnership-page .ts-partner-model:last-child{
+    grid-template-columns:1fr;
+    gap:0;
+    padding:34px 0 38px;
+  }
+  .ts-partnership-page .ts-partner-model>.ts-kicker{
+    grid-row:auto;grid-column:1;margin:0 0 12px;
+  }
+  .ts-partnership-page .ts-partner-model>:not(.ts-kicker){grid-column:1}
+  .ts-partnership-page .ts-rnd-process{grid-template-columns:1fr}
+  .ts-partnership-page .ts-rnd-process .ts-step,
+  .ts-partnership-page .ts-rnd-process .ts-step:nth-child(even),
+  .ts-partnership-page .ts-rnd-process .ts-step:last-child{grid-column:1}
+  .ts-partnership-page .ts-data-tags{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media(max-width:767px){
+  .ts-partnership-page .ts-condition-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:0 18px}
+  .ts-partnership-page .ts-condition-grid>div{min-height:60px;padding:14px 0}
+  .ts-partnership-page .ts-condition-grid strong{font-size:15px}
+  .ts-partnership-page .ts-data-tags{grid-template-columns:repeat(2,minmax(0,1fr));gap:0 18px}
+  .ts-partnership-page .ts-data-tags span{padding:14px 0;font-size:15px}
+  .ts-partnership-page .ts-license-scope{grid-template-columns:1fr}
+  .ts-partnership-page .ts-manufacturing-band{padding:28px 0}
+  .ts-partnership-page .ts-partner-process .ts-step,
+  .ts-partnership-page .ts-partner-process .ts-step:nth-child(even),
+  .ts-partnership-page .ts-partner-process .ts-step:last-child{
+    grid-template-columns:1fr;
+    gap:14px;
+    min-height:0;
+    padding:28px 0 32px;
+  }
+  .ts-partnership-page .ts-partner-process .ts-step-count{font-size:48px}
+  .ts-partnership-page .ts-partner-process .ts-step-copy{padding-top:0}
+  .ts-partnership-page .ts-partner-process .ts-step-copy h3{font-size:22px;margin-bottom:10px}
+  .ts-partnership-page .ts-partner-process .ts-step-copy p{font-size:15px}
+}
+@media(prefers-reduced-motion:reduce){
+  .ts-partnership-page .ts-partner-process.is-sequence-ready .ts-step,
+  .ts-partnership-page .ts-partner-process.is-sequence-ready .ts-step:not(.is-step-visible){
+    opacity:1;
+    transform:none;
+    transition:none;
+  }
+}
