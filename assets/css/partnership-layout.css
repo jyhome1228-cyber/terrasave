@@ -461,3 +461,46 @@
     transition:none;
   }
 }
+
+/* Partner copy-break and final CTA alignment refinement / 2026-10-11 */
+/* Keep the two agreed sentence breaks intentional on desktop, fluid on mobile. */
+.ts-partnership-page .ts-manufacturing-description{
+  max-width:100%;
+  font-size:16px;
+  line-height:1.85;
+  text-wrap:pretty;
+}
+.ts-partnership-page #validation .ts-section-head > .ts-validation-description{
+  max-width:1040px;
+  font-size:17px;
+  line-height:1.85;
+  text-wrap:pretty;
+}
+/* Conclude on the same left edge as the process heading and steps. */
+.ts-partnership-page .ts-partner-process + .ts-support-emphasis{
+  width:100%;
+  max-width:none;
+  margin:42px 0 0;
+  text-align:left;
+  font-size:clamp(18px,1.7vw,22px);
+  line-height:1.65;
+}
+.ts-partnership-page .ts-partner-process ~ .ts-action-group{
+  display:flex;
+  justify-content:flex-start;
+  align-items:center;
+  width:100%;
+  margin-top:22px;
+  text-align:left;
+}
+@media(max-width:899px){
+  .ts-partnership-page .ts-copy-break{display:none}
+  .ts-partnership-page #validation .ts-section-head > .ts-validation-description{
+    max-width:100%;
+  }
+}
+@media(max-width:767px){
+  .ts-partnership-page .ts-manufacturing-description,
+  .ts-partnership-page #validation .ts-section-head > .ts-validation-description{font-size:15px}
+  .ts-partnership-page .ts-partner-process + .ts-support-emphasis{margin-top:32px;font-size:18px}
+}
