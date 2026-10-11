@@ -71,6 +71,7 @@
 .ts-why-page .ts-why-benefit{
  min-width:0;padding:20px 0 22px;border-bottom:1px solid var(--line)
 }
+.ts-why-page .ts-why-benefit:last-child:nth-child(odd){grid-column:1/-1}
 .ts-why-page .ts-why-benefit h5{
  margin:0 0 9px;font-size:17px;line-height:1.52;font-weight:650;
  letter-spacing:-.02em;color:var(--ink)
@@ -164,6 +165,7 @@
  margin:0;color:var(--text);font-size:17px;line-height:1.8
 }
 .ts-why-page .ts-why-ending p+p{margin-top:10px}
+.ts-why-page .ts-why-ending .ts-why-cost-summary{margin-bottom:15px;font-size:15px;font-weight:600;color:var(--ink)}
 .ts-why-page .ts-why-ending strong{color:var(--ink);font-weight:650}
 .ts-why-page .ts-why-contact .ts-action-group{
  display:flex;justify-content:flex-start;margin-top:26px
