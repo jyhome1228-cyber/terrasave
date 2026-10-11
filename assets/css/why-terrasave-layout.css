@@ -1,5 +1,5 @@
 /* Why TerraSAVE — preserve original PPT information, consistent with site.css. */
-.ts-why-page .ts-why-content{width:100%;max-width:1180px;margin:0}
+.ts-why-page .ts-why-content{width:100%;max-width:none;margin:0}
 .ts-why-page .ts-page-hero.ts-why-intro{padding:70px 0 76px}
 .ts-why-page .ts-why-intro .ts-kicker{margin:0 0 16px}
 .ts-why-page .ts-why-intro .ts-h1{
@@ -9,6 +9,8 @@
 .ts-why-page .ts-why-intro-text{max-width:780px;margin-top:23px}
 .ts-why-page .ts-why-intro-text p{margin:0;color:var(--text);font-size:17px;line-height:1.8}
 .ts-why-page .ts-why-intro-text p+p{margin-top:9px}
+.ts-why-page .ts-why-section-heading p + p{margin-top:8px}
+.ts-why-page .ts-why-panel-paragraphs p + p{margin-top:10px}
 .ts-why-page .ts-section{padding:65px 0 74px}
 .ts-why-page .ts-why-section-heading{margin:0 0 30px;text-align:left}
 .ts-why-page .ts-why-section-heading .ts-kicker{margin:0 0 15px}
@@ -169,15 +171,18 @@
 .ts-why-page .ts-why-use-toggle::after{width:1.5px;height:10px}
 .ts-why-page .ts-why-use-item[open] .ts-why-use-toggle::after{display:none}
 .ts-why-page .ts-why-use-detail{
- max-width:900px;
+ width:100%;
+ max-width:800px;
  padding:0 4px 30px;
 }
 .ts-why-page .ts-why-use-body p{
+ max-width:780px;
  margin:0 0 12px;
  color:var(--text);
  font-size:16px;
  line-height:1.8;
  word-break:keep-all;
+ text-wrap:pretty;
 }
 .ts-why-page .ts-why-use-body p:last-child{margin-bottom:0}
 .ts-why-page .ts-why-use-points{
