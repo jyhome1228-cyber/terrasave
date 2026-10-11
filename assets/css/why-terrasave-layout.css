@@ -110,47 +110,143 @@
 .ts-why-page .ts-why-safety-note .ts-why-verify{
  margin-top:6px;font-size:13px;color:var(--muted)
 }
-/* Four practical use cases; editorial two-column reading blocks. */
+/* Practical usage: short clickable headings, full source copy on demand. */
 .ts-why-page .ts-why-use-grid{
- display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
- column-gap:46px;border-top:1px solid var(--line)
+ display:block;
+ width:100%;
+ border-top:1px solid var(--line);
 }
 .ts-why-page .ts-why-use-item{
- min-width:0;padding:30px 0 36px;border-bottom:1px solid var(--line)
+ display:block;
+ margin:0;
+ padding:0;
+ border:0;
+ border-bottom:1px solid var(--line);
+ background:transparent;
 }
-.ts-why-page .ts-why-use-item h3{
- max-width:500px;margin:0 0 18px;font-size:21px;font-weight:650;
- line-height:1.52;letter-spacing:-.025em;color:var(--ink)
+.ts-why-page .ts-why-use-summary{
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ gap:28px;
+ min-height:72px;
+ padding:21px 2px;
+ color:var(--ink);
+ cursor:pointer;
+ list-style:none;
+ font-size:19px;
+ line-height:1.5;
+ letter-spacing:-.025em;
+ font-weight:600;
+}
+.ts-why-page .ts-why-use-summary::-webkit-details-marker{display:none}
+.ts-why-page .ts-why-use-summary::marker{content:""}
+.ts-why-page .ts-why-use-summary:hover{color:#414a50}
+.ts-why-page .ts-why-use-summary:focus-visible{
+ outline:2px solid var(--ink);
+ outline-offset:-2px;
+ border-radius:6px;
+}
+.ts-why-page .ts-why-use-toggle{
+ width:24px;
+ height:24px;
+ flex:0 0 24px;
+ position:relative;
+ border:1px solid var(--line-strong);
+ border-radius:50%;
+ background:#fff;
+}
+.ts-why-page .ts-why-use-toggle::before,
+.ts-why-page .ts-why-use-toggle::after{
+ content:"";
+ position:absolute;
+ top:50%;
+ left:50%;
+ background:var(--ink);
+ transform:translate(-50%,-50%);
+}
+.ts-why-page .ts-why-use-toggle::before{width:10px;height:1.5px}
+.ts-why-page .ts-why-use-toggle::after{width:1.5px;height:10px}
+.ts-why-page .ts-why-use-item[open] .ts-why-use-toggle::after{display:none}
+.ts-why-page .ts-why-use-detail{
+ max-width:900px;
+ padding:0 4px 30px;
 }
 .ts-why-page .ts-why-use-body p{
- margin:0 0 12px;color:var(--text);font-size:16px;line-height:1.8
+ margin:0 0 12px;
+ color:var(--text);
+ font-size:16px;
+ line-height:1.8;
+ word-break:keep-all;
 }
 .ts-why-page .ts-why-use-body p:last-child{margin-bottom:0}
 .ts-why-page .ts-why-use-points{
- list-style:none;padding:14px 0 0;margin:20px 0 0;border-top:1px solid var(--line)
+ list-style:none;
+ padding:14px 0 0;
+ margin:20px 0 0;
+ border-top:1px solid var(--line);
 }
 .ts-why-page .ts-why-use-points li{
- font-size:15px;color:var(--ink);line-height:1.7;padding:3px 0
+ padding:4px 0;
+ font-size:15px;
+ line-height:1.7;
+ color:var(--ink);
 }
-/* Compact sequential process with stable axes. */
+/* Five equal horizontal stages: the process is one unit, not five tall cards. */
+.ts-why-page .ts-why-process-scroll{width:100%;max-width:100%}
+.ts-why-page .ts-why-scroll-hint{display:none}
 .ts-why-page .ts-why-process-list{
- margin:0;padding:0;list-style:none;border-top:1px solid var(--line);counter-reset:step
+ display:grid;
+ grid-template-columns:repeat(5,minmax(0,1fr));
+ width:100%;
+ margin:0;
+ padding:0;
+ list-style:none;
+ border-top:1px solid var(--line);
+ border-bottom:1px solid var(--line);
+ counter-reset:step;
 }
 .ts-why-page .ts-why-process-list li{
- display:grid;grid-template-columns:40px 136px minmax(0,1fr);
- gap:20px;align-items:start;padding:21px 0;
- border-bottom:1px solid var(--line);counter-increment:step
+ display:flex;
+ flex-direction:column;
+ align-items:flex-start;
+ gap:10px;
+ min-width:0;
+ margin:0;
+ padding:25px 22px 28px;
+ border:0;
+ border-right:1px solid var(--line);
+ counter-increment:step;
 }
-.ts-why-page .ts-why-process-list li:before{
+.ts-why-page .ts-why-process-list li:first-child{padding-left:0}
+.ts-why-page .ts-why-process-list li:last-child{
+ border-right:0;
+ padding-right:0;
+}
+.ts-why-page .ts-why-process-list li::before{
  content:counter(step,decimal-leading-zero);
- font-size:13px;font-weight:600;line-height:1.8;color:var(--muted)
+ display:block;
+ margin:0 0 4px;
+ font-size:13px;
+ line-height:1.5;
+ color:var(--muted);
+ font-weight:600;
 }
 .ts-why-page .ts-why-process-list strong{
- font-size:17px;font-weight:650;line-height:1.7;color:var(--ink)
+ display:block;
+ font-size:19px;
+ line-height:1.5;
+ font-weight:650;
+ color:var(--ink);
 }
 .ts-why-page .ts-why-process-list p{
- margin:0;max-width:830px;font-size:16px;color:var(--text);line-height:1.8
+ margin:0;
+ font-size:15px;
+ line-height:1.75;
+ color:var(--text);
+ word-break:keep-all;
 }
+
 /* Entire-life-cycle costs are a plain set of labeled rows, not pills. */
 .ts-why-page .ts-why-cost-list{
  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
@@ -171,8 +267,28 @@
  display:flex;justify-content:flex-start;margin-top:26px
 }
 @media(max-width:1099px){
- .ts-why-page .ts-why-use-grid{column-gap:30px}
  .ts-why-page .ts-why-benefits{gap:0 25px}
+}
+@media(max-width:1099px){
+ .ts-why-page .ts-why-process-scroll{
+   overflow-x:auto;
+   -webkit-overflow-scrolling:touch;
+   overscroll-behavior-inline:contain;
+   padding-bottom:12px;
+   scroll-snap-type:x proximity;
+ }
+ .ts-why-page .ts-why-process-list{
+   width:max(100%,1050px);
+   grid-template-columns:repeat(5,minmax(0,1fr));
+ }
+ .ts-why-page .ts-why-process-list li{scroll-snap-align:start}
+ .ts-why-page .ts-why-scroll-hint{
+   display:block;
+   margin:0 0 16px;
+   color:var(--muted);
+   font-size:13px;
+   line-height:1.7;
+ }
 }
 @media(max-width:767px){
  .ts-why-page .ts-page-hero.ts-why-intro{padding:45px 0 52px}
@@ -193,14 +309,12 @@
  .ts-why-page .ts-why-benefit{padding:17px 0}
  .ts-why-page .ts-why-benefit h5{font-size:16px}
  .ts-why-page .ts-why-benefit>p{font-size:15px}
- .ts-why-page .ts-why-use-grid{grid-template-columns:1fr}
- .ts-why-page .ts-why-use-item{padding:24px 0 29px}
- .ts-why-page .ts-why-use-item h3{font-size:19px}
+ .ts-why-page .ts-why-use-summary{font-size:17px;min-height:64px;padding:18px 0;gap:16px}
  .ts-why-page .ts-why-use-body p{font-size:15px}
- .ts-why-page .ts-why-process-list li{grid-template-columns:34px minmax(0,1fr);gap:3px 12px;padding:17px 0 20px}
- .ts-why-page .ts-why-process-list li:before{grid-row:1 / span 2}
- .ts-why-page .ts-why-process-list strong{grid-column:2}
- .ts-why-page .ts-why-process-list p{grid-column:2;font-size:15px}
+ .ts-why-page .ts-why-use-detail{padding:0 0 24px}
+ .ts-why-page .ts-why-process-list li{padding:22px 20px 25px}
+ .ts-why-page .ts-why-process-list strong{font-size:18px}
+ .ts-why-page .ts-why-process-list p{font-size:14px}
  .ts-why-page .ts-why-cost-list{grid-template-columns:repeat(2,minmax(0,1fr));gap:0 18px}
  .ts-why-page .ts-why-cost-list li{font-size:14px}
  .ts-why-page .ts-why-ending p{font-size:16px}
