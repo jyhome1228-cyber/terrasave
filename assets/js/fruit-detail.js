@@ -44,8 +44,20 @@
     sections.push(section('quality-risk','02 / QUALITY RISK','이 과일에서 먼저 볼 문제,<br>포장 방향은 여기서 정해집니다.',['보관 온도 숫자만 보고 포장 사양을 정하지 않습니다. 현재 숙도, 유통 거리와 기간, 기존 포장 방식까지 함께 보고 어떤 보호가 실제로 필요한지 정합니다.'],rows([{title:esc(normal(fruit.focusKo)),paragraphs:[esc(normal(fruit.riskExplain))]},{title:storage(fruit.storage),paragraphs:[esc(normal(fruit.storageExplain))]},{title:esc(fruit.priorityPlain),paragraphs:[esc(normal(fruit.priorityExplain))]},{title:'시험 적용 방향',paragraphs:[esc(normal(fruit.packagingGuide))]}]),true));
     sections.push(section('terrasave-solution','03 / TerraSave APPROACH','필요한 기능은 설명합니다,<br>핵심 기술은 보호합니다.',['고객이 포장을 검토하는 데 필요한 역할과 방향은 쉽게 설명합니다. 다만 소재의 정확한 조성, 배합비, 제조 공정처럼 그대로 복제할 수 있는 기술 정보는 공개하지 않습니다.'],cards((fruit.approach||[]).map((value,i)=>({kicker:number(i),title:esc(normal(value)),paragraphs:['현재 포장 방식, 유통 거리와 기간을 함께 보고 실제로 필요한 기능인지 확인합니다.']})))));
   }
+  // Source-fidelity layout for the detailed Seolhyang notes. Other fruit profiles keep the standard renderer.
+  const sourceResearch = research => {
+    const detail=research.sourceDetail;
+    const entries=detail.items.map(item=>{
+      const label=item.title?`<strong>${esc(normal(item.title))}:</strong> `:'';
+      const description=item.body?esc(normal(item.body)):'';
+      const nested=item.children?.length?`<ul class="ts-source-sublist">${item.children.map(child=>`<li>${esc(normal(child))}</li>`).join('')}</ul>`:'';
+      return `<li>${label}${description}${nested}</li>`;
+    }).join('');
+    const refs=research.references?.length?`<div class="ts-source-references"><h3>${esc(research.referenceTitle||'출처')}</h3><ul>${research.references.map(ref=>`<li>${normal(ref)}</li>`).join('')}</ul></div>`:'';
+    return `<div class="ts-detail-research ts-source-detail"><article class="ts-source-copy"><h3>${esc(normal(detail.title))}</h3><p>${esc(normal(detail.intro))}</p><ul class="ts-source-list">${entries}</ul></article>${refs}</div>`;
+  };
   const research=authored?.research||{blocks:[{title:'저장·유통 중 주요 품질 저하 요인',paragraphs:[esc(normal(fruit.riskExplain))]},{title:'보관 및 유통 관리 포인트',paragraphs:[esc(normal(fruit.storageExplain)),esc(normal(fruit.packagingGuide))]}],referenceTitle:'자료 이용 안내',references:[]};
-  const researchBody=`<div class="ts-detail-research">${research.blocks.map((block,i)=>`<article class="ts-detail-research-block"><h3><span class="ts-research-number">${number(i)}</span><span>${esc(block.title)}</span></h3>${prose(block.paragraphs)}</article>`).join('')}<div class="ts-detail-references"><h3>${esc(research.referenceTitle)}</h3>${research.references.length?`<ul class="ts-reference-list">${research.references.map(ref=>`<li>${normal(ref)}</li>`).join('')}</ul>`:''}<p class="ts-research-note">보관 조건과 과일 특성은 공개 문헌과 연구자료를 바탕으로 정리했습니다. 실제 적용 결과는 품종, 숙도, 포장 규격, 유통 온도와 기간에 따라 달라질 수 있으며 적용 전 검증이 필요합니다.</p></div></div>`;
+  const researchBody=research.sourceDetail?sourceResearch(research):`<div class="ts-detail-research">${research.blocks.map((block,i)=>`<article class="ts-detail-research-block"><h3><span class="ts-research-number">${number(i)}</span><span>${esc(block.title)}</span></h3>${prose(block.paragraphs)}</article>`).join('')}<div class="ts-detail-references"><h3>${esc(research.referenceTitle)}</h3>${research.references.length?`<ul class="ts-reference-list">${research.references.map(ref=>`<li>${normal(ref)}</li>`).join('')}</ul>`:''}<p class="ts-research-note">보관 조건과 과일 특성은 공개 문헌과 연구자료를 바탕으로 정리했습니다. 실제 적용 결과는 품종, 숙도, 포장 규격, 유통 온도와 기간에 따라 달라질 수 있으며 적용 전 검증이 필요합니다.</p></div></div>`;
   sections.push(section('research','04 / RESEARCH & REFERENCES',esc(name)+'에 대해<br>더 읽어볼 만한 자료',[],researchBody,true));
   sections.push(`<section class="ts-section"><div class="ts-shell"><div class="ts-cta"><div class="ts-cta-copy"><span class="ts-kicker">다른 과일 보기</span><h2 class="ts-h2">다른 과일도,<br class="desktop-break"> 같은 기준으로 비교해보세요.</h2><nav class="ts-cta-links" aria-label="이전 및 다음 과일"><a class="ts-link" href="fruit.html?fruit=${esc(previous.slug)}">← ${esc(normal(previous.ko))}</a><a class="ts-link" href="fruit.html?fruit=${esc(next.slug)}">${esc(normal(next.ko))} →</a></nav></div><div class="ts-cta-action"><a class="ts-button is-dark is-large" href="contact.html">포장 솔루션 문의하기</a></div></div></div></section>`);
   root.innerHTML=sections.join('\n');
