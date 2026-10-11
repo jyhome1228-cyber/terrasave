@@ -203,3 +203,8 @@ body.ts-page-leaving main,body.ts-page-leaving .footer{opacity:0;transform:trans
   }
   .site-header.menu-open .nav .nav-contact::after{display:none}
 }
+
+/* 2026-10-11 new TerraSAVE product imagery: preserve full packaging silhouettes. */
+.ts-product-page .ts-product-image-default{object-fit:contain;background:#fff}
+.ts-home-page .ts-home-product-media{background:#fff}
+.ts-home-page .ts-home-product-media img{object-fit:contain;background:#fff}
