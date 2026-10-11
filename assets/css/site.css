@@ -346,9 +346,9 @@ body.ts-page-leaving main,body.ts-page-leaving .footer{opacity:0;transform:trans
   grid-template-columns:repeat(5,minmax(0,1fr));
   gap:14px;
   width:100%;
-  max-width:1320px;
-  margin-inline:auto;
-  justify-content:center;
+  max-width:none;
+  margin:0;
+  justify-content:stretch;
   align-items:stretch;
 }
 .ts-home-page .ts-home-test-day{
@@ -423,14 +423,6 @@ body.ts-page-leaving main,body.ts-page-leaving .footer{opacity:0;transform:trans
   color:var(--muted);
   font-size:12px;
   font-weight:400;
-}
-.ts-home-page .ts-home-test-note{
-  max-width:980px;
-  margin:20px 0 0;
-  color:var(--muted);
-  font-size:13px;
-  line-height:1.75;
-  word-break:keep-all;
 }
 .ts-home-page .ts-home-compact-explore .ts-home-compact-heading{
   margin-bottom:26px;
@@ -565,7 +557,6 @@ body.ts-page-leaving main,body.ts-page-leaving .footer{opacity:0;transform:trans
  .ts-home-page .ts-home-test-photo{padding:8px 6px 10px}
  .ts-home-page .ts-home-test-photo figcaption{margin-top:7px;font-size:11px}
  .ts-home-page .ts-home-test-photo figcaption span{font-size:11px}
- .ts-home-page .ts-home-test-note{margin-top:17px;font-size:12px}
  .ts-home-page .ts-home-compact-explore-grid{grid-template-columns:1fr;gap:12px}
  .ts-home-page .ts-home-compact-explore-link{min-height:104px;padding:22px 20px}
  .ts-home-page .ts-home-compact-explore-link strong{font-size:18px}
