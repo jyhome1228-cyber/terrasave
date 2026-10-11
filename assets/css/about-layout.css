@@ -62,9 +62,9 @@
   text-align: left;
 }
 .ts-about-page .ts-about-principle:last-child {
-  grid-column: 1 / -1;
-  width: calc(50% - 26px);
-  justify-self: center;
+  grid-column: 1 / 2;
+  width: 100%;
+  justify-self: start;
 }
 .ts-about-page .ts-about-principle-label {
   display: block;
