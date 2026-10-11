@@ -1,0 +1,384 @@
+/* TerraSAVE / Why TerraSAVE
+   Content-first design system. Copy, ordering, and business claims remain unchanged.
+   This file is scoped to the Why page only. */
+.ts-why-page .ts-page-hero {
+  padding-block:72px 78px;
+}
+.ts-why-page .ts-page-hero .ts-section-head,
+.ts-why-page .ts-section .ts-section-head {
+  width:100%;
+  max-width:none;
+  margin:0 0 40px;
+  text-align:left;
+}
+.ts-why-page .ts-page-hero .ts-section-head { margin-bottom:0; }
+.ts-why-page .ts-section-head > .ts-kicker { margin:0 0 14px; }
+.ts-why-page .ts-section-head > :is(h1,h2) {
+  max-width:1080px;
+  margin:0;
+  text-align:left;
+  line-height:1.35;
+  letter-spacing:-.035em;
+  text-wrap:balance;
+}
+.ts-why-page .ts-page-hero .ts-h1 { font-size:clamp(36px,3.35vw,48px); }
+.ts-why-page .ts-section .ts-h2 { font-size:clamp(27px,2.5vw,36px); }
+.ts-why-page .ts-section-head > :is(p,.ts-section-copy) {
+  max-width:860px;
+  margin:20px 0 0;
+  text-align:left;
+  font-size:17px;
+  line-height:1.85;
+  color:var(--text);
+}
+.ts-why-page .ts-section { padding-block:82px; }
+.ts-why-page .ts-section[id] { scroll-margin-top:calc(var(--header-height) + 16px); }
+.ts-why-page .ts-audience-summary {
+  width:100%;
+  max-width:860px;
+  margin:0 0 38px;
+  color:var(--text);
+  font-size:16px;
+  line-height:1.85;
+  text-align:left;
+}
+
+/* Customer segment navigation — four plain typographic links, no boxed tabs. */
+.ts-why-page .ts-audience-nav {
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:0 22px;
+  border-top:1px solid var(--line);
+  counter-reset:audience;
+}
+.ts-why-page .ts-audience-nav a {
+  min-width:0;
+  display:flex;
+  align-items:center;
+  justify-content:flex-start;
+  gap:13px;
+  min-height:76px;
+  padding:18px 3px;
+  border:0;
+  border-bottom:1px solid var(--line);
+  border-radius:0;
+  background:transparent;
+  color:var(--ink);
+  font-size:16px;
+  font-weight:550;
+  line-height:1.5;
+  text-align:left;
+}
+.ts-why-page .ts-audience-nav a::before {
+  counter-increment:audience;
+  content:counter(audience,decimal-leading-zero);
+  flex:none;
+  font-size:12px;
+  font-weight:600;
+  color:var(--muted);
+}
+.ts-why-page .ts-audience-nav a:hover {
+  border-bottom-color:var(--ink);
+  transform:none;
+  color:var(--ink);
+}
+.ts-why-page .ts-audience-nav a:focus-visible {
+  outline:2px solid var(--ink);
+  outline-offset:3px;
+}
+
+/* Business benefits: full-width editorial rows.
+   Each value gets a proper text column instead of cramped half-width cards. */
+.ts-why-page .ts-value-grid,
+.ts-why-page .ts-use-grid {
+  display:block;
+  width:100%;
+  border:0;
+  border-top:1px solid var(--line);
+  background:transparent;
+}
+.ts-why-page .ts-value-card,
+.ts-why-page .ts-value-card:nth-child(odd),
+.ts-why-page .ts-value-card:last-child:nth-child(odd),
+.ts-why-page .ts-use-card,
+.ts-why-page .ts-use-card:nth-child(odd) {
+  display:grid;
+  grid-column:auto;
+  grid-template-columns:64px minmax(250px,.72fr) minmax(0,1.28fr);
+  column-gap:clamp(20px,3vw,54px);
+  row-gap:0;
+  align-items:start;
+  min-width:0;
+  margin:0;
+  padding:32px 0 34px;
+  border:0;
+  border-bottom:1px solid var(--line);
+  border-radius:0;
+  background:transparent;
+  box-shadow:none;
+}
+.ts-why-page :is(.ts-value-card,.ts-use-card) > .ts-kicker {
+  grid-column:1;
+  grid-row:1 / span 3;
+  margin:7px 0 0;
+  font-size:12px;
+  line-height:1.6;
+  letter-spacing:.06em;
+}
+.ts-why-page :is(.ts-value-card,.ts-use-card) > h3 {
+  grid-column:2;
+  grid-row:1 / span 3;
+  align-self:start;
+  min-width:0;
+  margin:0;
+  color:var(--ink);
+  font-size:clamp(21px,1.95vw,26px);
+  font-weight:650;
+  line-height:1.45;
+  letter-spacing:-.028em;
+  text-wrap:pretty;
+}
+.ts-why-page :is(.ts-value-card,.ts-use-card) > p {
+  grid-column:3;
+  grid-row:1;
+  max-width:840px;
+  margin:0;
+  color:var(--text);
+  font-size:16px;
+  font-weight:400;
+  line-height:1.85;
+  text-wrap:pretty;
+}
+.ts-why-page :is(.ts-value-card,.ts-use-card) > ul {
+  grid-column:3;
+  grid-row:2;
+  min-width:0;
+  margin:15px 0 0;
+  padding:0;
+  border:0;
+  list-style:none;
+  font-size:14px;
+  line-height:1.85;
+  color:var(--ink);
+}
+.ts-why-page :is(.ts-value-card,.ts-use-card) > ul li { margin:0; }
+.ts-why-page :is(.ts-value-card,.ts-use-card) > ul li + li { margin-top:3px; }
+.ts-why-page :is(.ts-value-card,.ts-use-card):hover {
+  transform:none;
+  box-shadow:none;
+}
+
+/* Global supply chain: concise two-column fact list. */
+.ts-why-page .ts-global-label {
+  margin:0 0 16px;
+  font-size:13px;
+  color:var(--muted);
+  line-height:1.5;
+}
+.ts-why-page .ts-global-list {
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:0 clamp(26px,4vw,72px);
+  border:0;
+  border-top:1px solid var(--line);
+}
+.ts-why-page .ts-global-list > div,
+.ts-why-page .ts-global-list > div:nth-child(odd) {
+  padding:20px 0 22px;
+  border:0;
+  border-bottom:1px solid var(--line);
+  font-size:17px;
+  line-height:1.65;
+  font-weight:500;
+}
+
+/* Supporting considerations connect to the preceding value section. */
+.ts-why-page .ts-support-copy {
+  max-width:960px;
+  margin:28px 0 0;
+  text-align:left;
+  color:var(--text);
+  line-height:1.85;
+}
+
+/* Adoption is a chronology rather than a cramped five-column card strip. */
+.ts-why-page .ts-process-rail { display:none; }
+.ts-why-page .ts-adoption-process {
+  display:block;
+  border:0;
+  border-top:1px solid var(--line);
+  border-radius:0;
+  overflow:visible;
+  background:transparent;
+}
+.ts-why-page .ts-adoption-process .ts-step,
+.ts-why-page .ts-adoption-process .ts-step:nth-child(even),
+.ts-why-page .ts-adoption-process .ts-step:last-child {
+  display:grid;
+  grid-column:auto;
+  grid-template-columns:170px minmax(200px,.66fr) minmax(0,1.34fr);
+  align-items:start;
+  gap:clamp(18px,2.6vw,40px);
+  min-height:0;
+  padding:26px 0;
+  border:0;
+  border-bottom:1px solid var(--line);
+  background:transparent;
+}
+.ts-why-page .ts-adoption-process .ts-step-no {
+  padding-top:4px;
+  font-size:13px;
+  line-height:1.5;
+  white-space:normal;
+}
+.ts-why-page .ts-adoption-process .ts-step-copy {
+  grid-column:2 / span 2;
+  display:grid;
+  grid-template-columns:minmax(200px,.66fr) minmax(0,1.34fr);
+  gap:clamp(18px,2.6vw,40px);
+  min-width:0;
+}
+.ts-why-page .ts-adoption-process .ts-step-copy h3 {
+  margin:0;
+  font-size:21px;
+  line-height:1.5;
+  letter-spacing:-.02em;
+}
+.ts-why-page .ts-adoption-process .ts-step-copy p {
+  margin:0;
+  font-size:16px;
+  line-height:1.8;
+}
+
+/* Conclusion is a compact statement, not a collection of decorative pills. */
+.ts-why-page .ts-final-value { text-align:left; }
+.ts-why-page .ts-final-value > .ts-kicker { margin-bottom:18px; }
+.ts-why-page .ts-final-value > h2 {
+  max-width:1050px;
+  margin:0;
+  text-align:left;
+  font-size:clamp(29px,2.65vw,38px);
+  line-height:1.35;
+  text-wrap:balance;
+}
+.ts-why-page .ts-final-costs {
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:0 28px;
+  margin-top:34px;
+  border-top:1px solid var(--line);
+}
+.ts-why-page .ts-final-costs span {
+  display:block;
+  padding:17px 0;
+  border:0;
+  border-bottom:1px solid var(--line);
+  border-radius:0;
+  background:transparent;
+  font-size:15px;
+  line-height:1.65;
+}
+.ts-why-page .ts-final-line {
+  max-width:1020px;
+  margin:36px 0 0;
+  text-align:left;
+  font-size:clamp(21px,2.1vw,27px);
+  line-height:1.6;
+}
+.ts-why-page .ts-final-tagline {
+  max-width:980px;
+  margin:18px 0 0;
+  text-align:left;
+  font-size:17px;
+  line-height:1.85;
+}
+.ts-why-page .ts-final-value > .ts-action-group {
+  justify-content:flex-start;
+  margin-top:30px;
+}
+
+@media(max-width:1099px) {
+  .ts-why-page .ts-value-card,
+  .ts-why-page .ts-value-card:nth-child(odd),
+  .ts-why-page .ts-value-card:last-child:nth-child(odd),
+  .ts-why-page .ts-use-card,
+  .ts-why-page .ts-use-card:nth-child(odd) {
+    grid-template-columns:44px minmax(190px,.7fr) minmax(0,1.3fr);
+    column-gap:24px;
+  }
+  .ts-why-page .ts-adoption-process .ts-step,
+  .ts-why-page .ts-adoption-process .ts-step:nth-child(even),
+  .ts-why-page .ts-adoption-process .ts-step:last-child {
+    grid-template-columns:125px minmax(0,1fr);
+    gap:26px;
+  }
+  .ts-why-page .ts-adoption-process .ts-step-copy {
+    grid-column:2;
+    grid-template-columns:minmax(170px,.7fr) minmax(0,1.3fr);
+    gap:24px;
+  }
+}
+@media(max-width:899px) {
+  .ts-why-page .ts-page-hero { padding-block:52px 56px; }
+  .ts-why-page .ts-section { padding-block:62px; }
+  .ts-why-page .ts-audience-nav { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .ts-why-page .ts-value-card,
+  .ts-why-page .ts-value-card:nth-child(odd),
+  .ts-why-page .ts-value-card:last-child:nth-child(odd),
+  .ts-why-page .ts-use-card,
+  .ts-why-page .ts-use-card:nth-child(odd) {
+    grid-template-columns:44px minmax(0,1fr);
+    gap:0 20px;
+    padding:27px 0 29px;
+  }
+  .ts-why-page :is(.ts-value-card,.ts-use-card) > .ts-kicker {
+    grid-column:1;
+    grid-row:1 / span 3;
+    margin-top:4px;
+  }
+  .ts-why-page :is(.ts-value-card,.ts-use-card) > h3 {
+    grid-column:2;
+    grid-row:1;
+    margin:0 0 12px;
+    font-size:22px;
+  }
+  .ts-why-page :is(.ts-value-card,.ts-use-card) > p {
+    grid-column:2;
+    grid-row:2;
+    font-size:16px;
+  }
+  .ts-why-page :is(.ts-value-card,.ts-use-card) > ul {
+    grid-column:2;
+    grid-row:3;
+    margin-top:11px;
+  }
+  .ts-why-page .ts-adoption-process .ts-step-copy {
+    grid-template-columns:1fr;
+    gap:6px;
+  }
+}
+@media(max-width:599px) {
+  .ts-why-page .ts-page-hero { padding-block:42px 48px; }
+  .ts-why-page .ts-page-hero .ts-h1 { font-size:32px; }
+  .ts-why-page .ts-section { padding-block:50px; }
+  .ts-why-page .ts-section .ts-h2 { font-size:27px; }
+  .ts-why-page .ts-section-head > :is(p,.ts-section-copy) { font-size:16px; }
+  .ts-why-page .ts-audience-nav { gap:0 16px; }
+  .ts-why-page .ts-audience-nav a { font-size:14px; gap:9px; min-height:68px; }
+  .ts-why-page .ts-global-list { grid-template-columns:1fr; }
+  .ts-why-page .ts-global-list > div { padding:17px 0; font-size:16px; }
+  .ts-why-page .ts-adoption-process .ts-step,
+  .ts-why-page .ts-adoption-process .ts-step:nth-child(even),
+  .ts-why-page .ts-adoption-process .ts-step:last-child {
+    grid-template-columns:1fr;
+    gap:13px;
+    padding:22px 0 25px;
+  }
+  .ts-why-page .ts-adoption-process .ts-step-copy { grid-column:1; }
+  .ts-why-page .ts-final-costs { grid-template-columns:repeat(2,minmax(0,1fr)); gap:0 18px; }
+  .ts-why-page .ts-final-costs span { font-size:14px; }
+  .ts-why-page .ts-final-tagline { font-size:16px; }
+}
+@media(prefers-reduced-motion:reduce) {
+  .ts-why-page :is(.ts-value-card,.ts-use-card,.ts-step) { transition:none!important; }
+}
