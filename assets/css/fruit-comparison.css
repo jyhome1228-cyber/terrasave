@@ -1,0 +1,12 @@
+/* TerraSAVE strawberry comparison table: source copy preserved from the supplied deck. */
+.ts-fruit-comparison{margin:36px 0 8px}
+.ts-fruit-comparison h3{margin:0 0 16px;font-size:clamp(19px,2vw,23px);font-weight:650;line-height:1.5;color:var(--ink)}
+.ts-fruit-comparison-scroll{overflow-x:auto;max-width:100%;border:1px solid var(--line);border-radius:12px;-webkit-overflow-scrolling:touch}
+.ts-fruit-comparison-table{width:100%;min-width:680px;border-collapse:collapse;text-align:left;font-size:15px;line-height:1.7;color:var(--text)}
+.ts-fruit-comparison-table th,.ts-fruit-comparison-table td{padding:18px 20px;vertical-align:top;border-bottom:1px solid var(--line)}
+.ts-fruit-comparison-table thead th{background:#f3f5f8;font-size:14px;font-weight:650;color:var(--ink)}
+.ts-fruit-comparison-table tbody th{width:19%;font-weight:650;color:var(--ink);background:#fafafa}
+.ts-fruit-comparison-table td:nth-child(2){width:40%}
+.ts-fruit-comparison-table td:nth-child(3){width:41%;font-weight:600;color:var(--ink)}
+.ts-fruit-comparison-table tr:last-child th,.ts-fruit-comparison-table tr:last-child td{border-bottom:0}
+@media(max-width:767px){.ts-fruit-comparison{margin-top:28px}.ts-fruit-comparison-scroll{border-radius:10px}.ts-fruit-comparison-table th,.ts-fruit-comparison-table td{padding:14px 16px}.ts-fruit-comparison-table{font-size:14px}}
