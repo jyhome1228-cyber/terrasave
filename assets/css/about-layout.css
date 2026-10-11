@@ -92,7 +92,7 @@
 }
 .ts-about-page .ts-about-secondary-visual{
   width:100%;
-  aspect-ratio:4 / 5;
+  aspect-ratio:5 / 4;
   min-width:0;
   margin:0;
   border-radius:14px;
@@ -167,7 +167,7 @@
     gap:36px;
   }
   .ts-about-page .ts-about-secondary-visual{
-    aspect-ratio:3 / 4;
+    aspect-ratio:4 / 3;
   }
   .ts-about-page .ts-about-rnd-grid{
     gap:44px;
