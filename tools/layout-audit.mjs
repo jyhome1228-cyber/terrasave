@@ -70,7 +70,8 @@ for(const width of widths){
     if(new Set(blocks.map(e=>JSON.stringify(e))).size>1)structureErrors.push('Inconsistent research heading hierarchy');
     if([...document.querySelectorAll('main > *')].some(e=>visible(e)&&e.tagName!=='SECTION'))structureErrors.push('Main contains content outside a section');
     if(document.styleSheets.length!==2&&document.styleSheets.length!==1)structureErrors.push('Unexpected competing stylesheet count');
-    if([...document.querySelectorAll('link[rel=stylesheet]')].some(e=>!/site\.css/.test(e.href)))structureErrors.push('Legacy stylesheet loaded');
+    const approvedSheets=/\/assets\/css\/(?:site|about-layout|contact-layout|fruit-comparison|partnership-layout|why-terrasave-layout)\.css$/;
+    if([...document.querySelectorAll('link[rel=stylesheet]')].some(e=>!approvedSheets.test(new URL(e.href).pathname)))structureErrors.push('Unexpected stylesheet loaded');
     return{title:document.title,header:h,shellCount:shells.length,axisErrors,overflow,orphans,badHeads,hero:heroData,heroErrors,duplicateIds,brokenImages,loadingImages,localLinks,structureErrors,scrollWidth:document.documentElement.scrollWidth,bodyText:document.querySelector('main')?.innerText||'',height:document.documentElement.scrollHeight};
    });
    const slug=new URL(route,'http://localhost').searchParams.get('fruit');
@@ -105,6 +106,30 @@ for(const width of widths){
      await page.locator('[data-filter="'+filter+'"]').click();
      const filterResult=await page.evaluate(()=>({count:document.querySelectorAll('#fruitGrid .ts-fruit-card').length,label:document.getElementById('fruitCount').textContent}));
      if(filterResult.count!==parseInt(filterResult.label,10)||filterResult.count===0)interactions.push('Invalid filter count: '+filter);
+    }
+   }
+   if(route==='why-terrasave.html'){
+    const target='distribution';
+    if(width>=900){
+     await page.locator('[data-why-tab="'+target+'"]').click();
+     const state=await page.evaluate(id=>({
+       selected:document.querySelector('[data-why-tab="'+id+'"]').getAttribute('aria-selected')==='true',
+       visible:!document.querySelector('[data-why-panel="'+id+'"]').hidden,
+       firstHidden:document.querySelector('[data-why-panel="export"]').hidden,
+       hash:location.hash
+     }),target);
+     if(!state.selected||!state.visible||!state.firstHidden||state.hash!=='#'+target)interactions.push('Desktop business tabs failed');
+     await page.locator('[data-why-tab="export"]').click();
+    }else{
+     await page.locator('[data-why-accordion="'+target+'"] > summary').click();
+     await page.waitForTimeout(90);
+     const state=await page.evaluate(id=>({
+       opened:document.querySelector('[data-why-accordion="'+id+'"]').open,
+       firstClosed:!document.querySelector('[data-why-accordion="export"]').open,
+       hash:location.hash
+     }),target);
+     if(!state.opened||!state.firstClosed||state.hash!=='#'+target)interactions.push('Mobile business disclosure failed');
+     await page.locator('[data-why-accordion="export"] > summary').click();
     }
    }
    const name=route.replace('fruit.html?fruit=','fruit-').replace('.html','');
