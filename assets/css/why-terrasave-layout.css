@@ -252,24 +252,85 @@
  word-break:keep-all;
 }
 
-/* Entire-life-cycle costs are a plain set of labeled rows, not pills. */
+/* Final business value: one primary statement, seven distinct labeled items. */
+.ts-why-page .ts-why-contact .ts-why-conclusion-head{
+  max-width:900px;
+  margin:0 0 30px;
+  text-align:left;
+}
+.ts-why-page .ts-why-contact .ts-why-conclusion-head .ts-kicker{
+  margin:0 0 15px;
+}
+.ts-why-page .ts-why-contact .ts-why-conclusion-head .ts-h2{
+  max-width:930px;
+  margin:0;
+  font-size:clamp(27px,2.45vw,34px);
+  font-weight:700;
+  line-height:1.4;
+  letter-spacing:-.035em;
+  color:var(--ink);
+}
+.ts-why-page .ts-why-conclusion-copy{
+  max-width:810px;
+  margin-top:18px;
+}
+.ts-why-page .ts-why-conclusion-copy p{
+  margin:0;
+  font-size:16px;
+  font-weight:400;
+  line-height:1.8;
+  color:var(--text);
+  word-break:keep-all;
+}
+.ts-why-page .ts-why-conclusion-copy p+p{
+  margin-top:8px;
+}
 .ts-why-page .ts-why-cost-list{
- display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
- list-style:none;gap:0 24px;padding:0;margin:0;border-top:1px solid var(--line)
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:12px;
+  margin:0;
+  padding:0;
+  list-style:none;
+  border:0;
 }
 .ts-why-page .ts-why-cost-list li{
- padding:15px 0;border-bottom:1px solid var(--line);
- color:var(--text);font-size:15px;line-height:1.7
+  display:flex;
+  align-items:center;
+  justify-content:flex-start;
+  min-width:0;
+  min-height:76px;
+  padding:16px 19px;
+  border:1px solid var(--line);
+  border-radius:9px;
+  background:var(--surface);
+  color:var(--ink);
+  font-size:15px;
+  font-weight:500;
+  line-height:1.55;
+  word-break:keep-all;
 }
-.ts-why-page .ts-why-ending{max-width:820px;margin:32px 0 0}
+.ts-why-page .ts-why-cost-list li:last-child{
+  grid-column:span 2;
+}
+.ts-why-page .ts-why-ending{
+  max-width:820px;
+  margin:26px 0 0;
+}
 .ts-why-page .ts-why-ending p{
- margin:0;color:var(--text);font-size:17px;line-height:1.8
+  margin:0;
+  color:var(--text);
+  font-size:16px;
+  font-weight:400;
+  line-height:1.8;
 }
-.ts-why-page .ts-why-ending p+p{margin-top:10px}
-.ts-why-page .ts-why-ending .ts-why-cost-summary{margin-bottom:15px;font-size:15px;font-weight:600;color:var(--ink)}
-.ts-why-page .ts-why-ending strong{color:var(--ink);font-weight:650}
+.ts-why-page .ts-why-ending p+p{
+  margin-top:8px;
+}
 .ts-why-page .ts-why-contact .ts-action-group{
- display:flex;justify-content:flex-start;margin-top:26px
+  display:flex;
+  justify-content:flex-start;
+  margin-top:26px;
 }
 @media(max-width:1099px){
  .ts-why-page .ts-why-benefits{gap:0 25px}
@@ -320,9 +381,11 @@
  .ts-why-page .ts-why-process-list li{padding:22px 20px 25px}
  .ts-why-page .ts-why-process-list strong{font-size:18px}
  .ts-why-page .ts-why-process-list p{font-size:14px}
- .ts-why-page .ts-why-cost-list{grid-template-columns:repeat(2,minmax(0,1fr));gap:0 18px}
- .ts-why-page .ts-why-cost-list li{font-size:14px}
- .ts-why-page .ts-why-ending p{font-size:16px}
+ .ts-why-page .ts-why-conclusion-copy p{font-size:15px}
+ .ts-why-page .ts-why-cost-list{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+ .ts-why-page .ts-why-cost-list li{padding:13px 14px;min-height:66px;font-size:14px}
+ .ts-why-page .ts-why-cost-list li:last-child{grid-column:span 2}
+ .ts-why-page .ts-why-ending p{font-size:15px}
 }
 @media(prefers-reduced-motion:reduce){
  .ts-why-page .ts-why-tab{transition:none}
