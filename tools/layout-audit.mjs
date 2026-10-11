@@ -18,7 +18,7 @@ await new Promise(resolve=>server.listen(4173,'127.0.0.1',resolve));
 const ctx={window:{}};vm.runInNewContext(fs.readFileSync('assets/js/fruits.js','utf8'),ctx);
 const fruits=ctx.window.TERRASAVE_FRUITS;
 const routes=[...fs.readdirSync(root).filter(f=>f.endsWith('.html')&&f!=='fruit.html'),...fruits.map(f=>'fruit.html?fruit='+f.slug)];
-const widths=(process.env.QA_WIDTHS||'1920,1440,1280,1120,1119,1024,900,899,768,767,430,390,360').split(',').map(Number);
+const widths=(process.env.QA_WIDTHS||'1920,1440,1280,1120,1119,1024,900,899,768,767,430,390,360,320').split(',').map(Number);
 const authored=fs.existsSync('tools/content-manifest.json')?JSON.parse(fs.readFileSync('tools/content-manifest.json','utf8')):{};
 const statics=fs.existsSync('tools/static-content-manifest.json')?JSON.parse(fs.readFileSync('tools/static-content-manifest.json','utf8')):{};
 const norm=s=>s.replace(/\s+/g,'').replaceAll('샤인머스캣','샤인머스켓').replaceAll('TERRASAVE','TerraSave');
@@ -88,7 +88,31 @@ for(const width of widths){
    const fixed=await page.locator('.site-header').evaluate(e=>({top:e.getBoundingClientRect().top,position:getComputedStyle(e).position}));
    if(Math.abs(fixed.top)>1||fixed.position!=='fixed')interactions.push('Header moves on scroll');
    await page.evaluate(()=>window.scrollTo({top:0,behavior:'instant'}));
-   if(width<1120){
+   const sharedNav=await page.evaluate(()=>{
+     const header=document.querySelector('.site-header');
+     const footer=document.querySelector('.footer');
+     const nav=document.getElementById('siteNav');
+     const footerNav=document.querySelector('.footer-nav-main');
+     const switcher=document.querySelector('.ts-language-switch');
+     const links=nav?[...nav.querySelectorAll('a:not(.nav-contact)')]:[];
+     const footerLinks=footerNav?[...footerNav.querySelectorAll('a')]:[];
+     const inView=e=>{const r=e?.getBoundingClientRect();return !!r&&r.width>0&&r.left>=-1&&r.right<=innerWidth+1};
+     return {
+       headerPresent:!!header,footerPresent:!!footer,
+       fiveNavigationLinks:links.length===5&&footerLinks.length===5,
+       productTitle:links.some(a=>a.getAttribute('href')==='product.html'&&a.textContent.trim()==='Product'),
+       productFooter:footerLinks.some(a=>a.getAttribute('href')==='product.html'&&a.textContent.trim()==='Product'),
+       languageVisible:inView(switcher),
+       footerWithinScreen:inView(footerNav)&&footerLinks.every(inView),
+       navVisible:inView(nav)
+     };
+   });
+   if(!sharedNav.headerPresent||!sharedNav.footerPresent)interactions.push('Missing shared header or footer');
+   if(!sharedNav.fiveNavigationLinks||!sharedNav.productTitle||!sharedNav.productFooter)interactions.push('Navigation and footer labels differ');
+   if(!sharedNav.languageVisible)interactions.push('Language switch missing or outside viewport');
+   if(!sharedNav.footerWithinScreen)interactions.push('Footer nav outside viewport');
+   if(width>=1280&&!sharedNav.navVisible)interactions.push('Desktop navigation missing or overflowing');
+   if(width<1280){
     await page.locator('#menuToggle').click();
     if(await page.locator('#menuToggle').getAttribute('aria-expanded')!=='true'||!await page.locator('#siteNav .nav-contact').isVisible())interactions.push('Mobile menu failed to open');
     const menuLock=await page.evaluate(()=>({body:document.body.classList.contains('menu-locked'),html:document.documentElement.classList.contains('menu-locked'),focusInHeader:document.querySelector('.site-header')?.contains(document.activeElement)}));
@@ -96,6 +120,14 @@ for(const width of widths){
     if(!menuLock.focusInHeader)interactions.push('Mobile menu focus escaped header');
     const menuOverflow=await page.locator('#siteNav').evaluate(e=>e.getBoundingClientRect().right>innerWidth+1);
     if(menuOverflow)interactions.push('Mobile menu overflow');
+    const headerControls=await page.evaluate(()=>{
+      const language=document.querySelector('.ts-language-switch')?.getBoundingClientRect();
+      const menu=document.querySelector('#menuToggle')?.getBoundingClientRect();
+      const nav=document.querySelector('#siteNav')?.getBoundingClientRect();
+      return{aligned:!!language&&!!menu&&Math.abs((language.top+language.height/2)-(menu.top+menu.height/2))<5,
+        noNavOverlap:!!language&&!!nav&&language.bottom<=nav.top+4};
+    });
+    if(!headerControls.aligned||!headerControls.noNavOverlap)interactions.push('Mobile language selector overlaps open menu');
     await page.keyboard.press('Escape');
     if(await page.locator('#menuToggle').getAttribute('aria-expanded')!=='false')interactions.push('Mobile menu failed to close');
     const menuUnlock=await page.evaluate(()=>!document.body.classList.contains('menu-locked')&&!document.documentElement.classList.contains('menu-locked'));

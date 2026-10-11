@@ -10,7 +10,9 @@
   // Preserve the current page (and selected fruit) while switching site language.
   const chinese = /\/zh\//.test(window.location.pathname);
   const page = window.location.pathname.split('/').pop() || 'index.html';
-  const counterpart = new URL((chinese ? '../' : 'zh/') + page, window.location.href);
+  const translatedPages = new Set(['index.html','about.html','product.html','fruits.html','fruit.html','partnership.html','why-terrasave.html','contact.html','technology.html']);
+  const counterpartPage = chinese || translatedPages.has(page) ? page : 'index.html';
+  const counterpart = new URL((chinese ? '../' : 'zh/') + counterpartPage, window.location.href);
   counterpart.search = window.location.search;
   counterpart.hash = window.location.hash;
   const headerInner = header?.querySelector('.header-inner');
@@ -25,6 +27,10 @@
     headerInner.appendChild(languageSwitch);
   }
 
+
+  const menuOpenLabel = chinese ? '打开菜单' : '메뉴 열기';
+  const menuCloseLabel = chinese ? '关闭菜单' : '메뉴 닫기';
+  if (toggle) toggle.setAttribute('aria-label', menuOpenLabel);
 
   const isolated = new Map();
   const isolate = (owner, elements) => {
@@ -49,7 +55,7 @@
     document.body.classList.remove('menu-locked');
     document.documentElement.classList.remove('menu-locked');
     toggle?.setAttribute('aria-expanded', 'false');
-    toggle?.setAttribute('aria-label', '메뉴 열기');
+    toggle?.setAttribute('aria-label', menuOpenLabel);
     release('menu');
   };
 
@@ -64,7 +70,7 @@
     document.body.classList.add('menu-locked');
     document.documentElement.classList.add('menu-locked');
     toggle.setAttribute('aria-expanded', 'true');
-    toggle.setAttribute('aria-label', '메뉴 닫기');
+    toggle.setAttribute('aria-label', menuCloseLabel);
     isolate('menu', document.querySelectorAll('main, footer, .skip-link'));
     nav.querySelector('a')?.focus({ preventScroll: true });
   });
@@ -100,7 +106,7 @@
     if (header?.classList.contains('menu-open') && !header.contains(event.target)) closeMenu();
   });
 
-  const desktopMedia = window.matchMedia('(min-width:1120px)');
+  const desktopMedia = window.matchMedia('(min-width:1280px)');
   const handleDesktopChange = event => { if (event.matches) closeMenu(); };
   if (desktopMedia.addEventListener) desktopMedia.addEventListener('change', handleDesktopChange);
   else desktopMedia.addListener?.(handleDesktopChange);
