@@ -1,81 +1,63 @@
-const contactForm = document.getElementById('contactForm');
-const inquiryType = document.getElementById('inquiryType');
-const inquiryTypeError = document.getElementById('inquiryTypeError');
-const inquiryOptions = document.querySelectorAll('.inquiry-option');
-const formStatus = document.getElementById('formStatus');
+/* TerraSAVE inquiry composer — opens the visitor's email app; no server submission. */
+(() => {
+  'use strict';
+  const form = document.getElementById('contactForm');
+  const typeInput = document.getElementById('inquiryType');
+  const error = document.getElementById('inquiryTypeError');
+  const status = document.getElementById('formStatus');
+  const options = Array.from(document.querySelectorAll('.inquiry-option'));
+  if (!form || !typeInput) return;
 
-function setInquiryType(value) {
-  if (!inquiryType) return;
+  const setType = value => {
+    typeInput.value = value || '';
+    options.forEach(button => {
+      const selected = button.dataset.value === typeInput.value;
+      button.classList.toggle('is-active', selected);
+      button.setAttribute('aria-pressed', String(selected));
+    });
+    if (error) error.textContent = '';
+  };
 
-  inquiryType.value = value || '';
+  options.forEach(button => button.addEventListener('click', () => setType(button.dataset.value)));
 
-  inquiryOptions.forEach((button) => {
-    const active = button.dataset.value === value;
-    button.classList.toggle('is-active', active);
-    button.setAttribute('aria-pressed', String(active));
-  });
-
-  if (inquiryTypeError) inquiryTypeError.textContent = '';
-}
-
-inquiryOptions.forEach((button) => {
-  button.addEventListener('click', () => {
-    setInquiryType(button.dataset.value || '');
-  });
-});
-
-// Clicking an option card above preselects the matching type before moving to the form.
-document.querySelectorAll('[data-inquiry-type]').forEach((card) => {
-  card.addEventListener('click', () => {
-    setInquiryType(card.dataset.inquiryType || '');
-  });
-});
-
-if (contactForm) {
-  contactForm.addEventListener('submit', (event) => {
+  form.addEventListener('submit', event => {
     event.preventDefault();
-
-    if (!inquiryType || !inquiryType.value) {
-      if (inquiryTypeError) inquiryTypeError.textContent = '문의 유형을 선택해 주세요.';
-      if (formStatus) formStatus.textContent = '';
-      const firstOption = inquiryOptions[0];
-      if (firstOption) firstOption.focus();
+    if (!typeInput.value) {
+      if (error) error.textContent = '문의 유형을 선택해 주세요.';
+      options[0]?.focus();
       return;
     }
+    if (!form.reportValidity()) return;
 
-    if (!contactForm.checkValidity()) {
-      contactForm.reportValidity();
-      return;
-    }
+    const formData = new FormData(form);
+    const text = name => String(formData.get(name) || '').trim();
+    const name = text('name');
+    const company = text('company');
+    const email = text('email');
+    const phone = text('phone');
+    const produce = text('produce');
+    const quantity = text('quantity');
+    const message = text('message');
 
-    const data = new FormData(contactForm);
-    const type = data.get('inquiryType') || '일반 문의';
-    const name = data.get('name') || '';
-    const company = data.get('company') || '-';
-    const email = data.get('email') || '';
-    const phone = data.get('phone') || '-';
-    const message = data.get('message') || '';
-
-    const subject = `[TerraSave] ${type} - ${name}${company !== '-' ? ` / ${company}` : ''}`;
+    const subject = '[TerraSAVE] ' + typeInput.value + ' / ' + (company || name);
     const body = [
-      'TerraSave 웹사이트 문의',
+      'TerraSAVE 홈페이지 문의',
       '',
-      `문의 유형: ${type}`,
-      `이름: ${name}`,
-      `회사명: ${company}`,
-      `이메일: ${email}`,
-      `연락처: ${phone}`,
+      '문의 유형: ' + typeInput.value,
+      '담당자명: ' + name,
+      '회사명: ' + (company || '-'),
+      '이메일: ' + email,
+      '연락처: ' + (phone || '-'),
+      '취급 품목 및 품종: ' + (produce || '-'),
+      '포장 형태·예상 수량: ' + (quantity || '-'),
       '',
       '문의 내용',
       message
     ].join('\n');
 
-    if (formStatus) formStatus.textContent = '메일 작성 화면을 여는 중입니다.';
-
-    window.location.href = `mailto:info@terracle.im?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-
-    window.setTimeout(() => {
-      if (formStatus) formStatus.textContent = '메일 앱에서 내용을 확인한 뒤 전송해 주세요.';
-    }, 800);
+    const url = 'mailto:info@terracle.im?subject=' + encodeURIComponent(subject) +
+      '&body=' + encodeURIComponent(body);
+    if (status) status.textContent = '메일 앱에서 내용을 확인하고 ‘보내기’를 눌러주세요. 메일 앱이 열리지 않으면 info@terracle.im로 직접 보내주세요.';
+    window.location.href = url;
   });
-}
+})();
