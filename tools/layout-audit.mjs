@@ -154,6 +154,17 @@ for(const width of widths){
     }
     await page.locator('[data-why-tab="export"]').click();
    }
+   if(route==='fruit.html?fruit=avocado'){
+    const cards=page.locator('.ts-fruit-avocado-test .ts-avocado-capture');
+    const zoomButtons=page.locator('.ts-fruit-avocado-test .ts-avocado-capture-zoom');
+    if(await cards.count()!==12||await zoomButtons.count()!==12)interactions.push('Avocado test expected 12 dated photo cards');
+    if(await zoomButtons.count()===12){
+     await zoomButtons.first().click();
+     if(!await page.locator('#tsHomeLightbox').evaluate(e=>e.open))interactions.push('Avocado photo lightbox failed to open');
+     await page.keyboard.press('Escape');
+     if(await page.locator('#tsHomeLightbox').evaluate(e=>e.open))interactions.push('Avocado photo lightbox failed to close');
+    }
+   }
    const name=route.replace('fruit.html?fruit=','fruit-').replace('.html','');
    if([1440,390].includes(width)){
     await page.screenshot({path:path.join(output,name+'-'+width+'.png'),fullPage:true,timeout:20000});

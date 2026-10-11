@@ -84,6 +84,100 @@
     </div>`);
   }
 
+
+  // Avocado: twelve chronological photographs, with both containers visible in each frame.
+  // Capture timestamps follow the source sheet exactly; no treatment is assigned to either side.
+  if(fruit.slug==='avocado'){
+    const captures=[
+    {
+        "url": "https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261011-230455-1-624eca5f.webp",
+        "date": "8월 31일",
+        "clock": "오전 11시 20분"
+    },
+    {
+        "url": "https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261011-230456-2-f58d903b.webp",
+        "date": "9월 2일",
+        "clock": "오후 1시 20분"
+    },
+    {
+        "url": "https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261011-230456-3-b1d8f2f8.webp",
+        "date": "9월 4일",
+        "clock": "오후 3시 20분"
+    },
+    {
+        "url": "https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261011-230457-4-b98bee71.webp",
+        "date": "9월 6일",
+        "clock": "오후 5시 20분"
+    },
+    {
+        "url": "https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261011-230458-5-9d7714b2.webp",
+        "date": "9월 8일",
+        "clock": "오후 7시 20분"
+    },
+    {
+        "url": "https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261011-230459-6-e33f97be.webp",
+        "date": "9월 10일",
+        "clock": "오후 9시 20분"
+    },
+    {
+        "url": "https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261011-230500-7-5d95e34f.webp",
+        "date": "9월 12일",
+        "clock": "오후 11시 20분"
+    },
+    {
+        "url": "https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261011-230501-8-3646d5ee.webp",
+        "date": "9월 15일",
+        "clock": "오전 1시 20분"
+    },
+    {
+        "url": "https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261011-230501-9-3eaed8ef.webp",
+        "date": "9월 17일",
+        "clock": "오전 3시 20분"
+    },
+    {
+        "url": "https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261011-230502-10-8e275c74.webp",
+        "date": "9월 19일",
+        "clock": "오전 5시 20분"
+    },
+    {
+        "url": "https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261011-230503-11-7b32b21e.webp",
+        "date": "9월 21일",
+        "clock": "오전 7시 20분"
+    },
+    {
+        "url": "https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261011-230503-12-fb0f3aba.webp",
+        "date": "9월 21일",
+        "clock": "오전 11시 20분"
+    }
+];
+    const photos=captures.map(({url,date,clock},i)=>{
+      const label=`${date} ${clock}`;
+      return `<article class="ts-avocado-capture">
+        <div class="ts-avocado-capture-time"><strong>${esc(date)}</strong><span>${esc(clock)}</span></div>
+        <button class="ts-home-test-enlarge ts-avocado-capture-zoom" type="button" aria-haspopup="dialog" title="사진 확대 보기" aria-label="${esc(label)} 아보카도 보관 관찰 사진 확대해서 보기">
+          <img src="${esc(url)}" alt="${esc(label)} 아보카도 좌우 용기 보관 상태 비교 촬영" loading="lazy" decoding="async"/>
+        </button>
+      </article>`;
+    }).join('');
+    sections.push(`<section class="ts-section is-soft ts-fruit-avocado-test" id="avocado-test" aria-labelledby="avocadoTestTitle">
+      <div class="ts-shell">
+        <div class="ts-avocado-test-head">
+          <span class="ts-kicker">실제 보관 테스트 사례</span>
+          <h2 class="ts-h2" id="avocadoTestTitle">아보카도 보관 경과 비교</h2>
+          <p>두 포장 용기의 아보카도 상태를 촬영 시점에 따라 비교한 기록입니다.</p>
+        </div>
+        <div class="ts-avocado-test-grid">${photos}</div>
+      </div>
+      <dialog class="ts-home-lightbox" id="tsHomeLightbox" aria-label="아보카도 경과 이미지 확대 보기">
+        <div class="ts-home-lightbox-inner">
+          <button type="button" class="ts-home-lightbox-close" aria-label="확대 이미지 닫기">×</button>
+          <img class="ts-home-lightbox-image" alt="" />
+          <p class="ts-home-lightbox-caption" aria-live="polite"></p>
+        </div>
+      </dialog>
+    </section>`);
+  }
+
   // Source-fidelity layout for the detailed Seolhyang notes. Other fruit profiles keep the standard renderer.
   const sourceResearch = research => {
     const detail=research.sourceDetail;

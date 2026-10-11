@@ -185,3 +185,120 @@
     font-size:20px;
   }
 }
+
+
+/* Avocado time-series photo record. Every photo contains both containers. */
+.ts-fruit-avocado-test .ts-avocado-test-head{
+  width:100%;
+  max-width:none;
+  margin:0 0 32px;
+  text-align:left;
+}
+.ts-fruit-avocado-test .ts-avocado-test-head .ts-kicker{
+  margin:0 0 13px;
+}
+.ts-fruit-avocado-test .ts-avocado-test-head .ts-h2{
+  margin:0;
+  font-size:clamp(27px,2.5vw,32px);
+  line-height:1.4;
+  font-weight:700;
+  letter-spacing:-.035em;
+  text-align:left;
+}
+.ts-fruit-avocado-test .ts-avocado-test-head p{
+  margin:14px 0 0;
+  max-width:920px;
+  color:var(--text);
+  font-size:16px;
+  line-height:1.8;
+}
+.ts-fruit-avocado-test .ts-avocado-test-grid{
+  display:grid;
+  grid-template-columns:repeat(6,minmax(0,1fr));
+  gap:14px;
+  width:100%;
+  margin:0;
+  align-items:stretch;
+}
+.ts-fruit-avocado-test .ts-avocado-capture{
+  min-width:0;
+  display:flex;
+  flex-direction:column;
+  overflow:hidden;
+  border:1px solid var(--line);
+  border-radius:10px;
+  background:#fff;
+}
+.ts-fruit-avocado-test .ts-avocado-capture-time{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  gap:2px;
+  min-height:68px;
+  padding:11px 8px;
+  border-bottom:1px solid var(--line);
+  background:#eef2ee;
+  text-align:center;
+}
+.ts-fruit-avocado-test .ts-avocado-capture-time strong{
+  color:var(--ink);
+  font-size:15px;
+  line-height:1.4;
+  font-weight:650;
+}
+.ts-fruit-avocado-test .ts-avocado-capture-time span{
+  color:var(--text);
+  font-size:12px;
+  line-height:1.5;
+}
+.ts-fruit-avocado-test .ts-avocado-capture-zoom{
+  width:100%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex:1 0 auto;
+  min-width:0;
+  margin:0;
+  padding:10px 8px;
+  border:0;
+  background:#fff;
+  cursor:zoom-in;
+}
+.ts-fruit-avocado-test .ts-avocado-capture-zoom img{
+  display:block;
+  width:100%;
+  height:auto;
+  aspect-ratio:4 / 3;
+  object-fit:contain;
+  object-position:center;
+}
+.ts-fruit-avocado-test .ts-avocado-capture-zoom:hover{
+  background:#f8faf9;
+}
+.ts-fruit-avocado-test .ts-avocado-capture-zoom:focus-visible{
+  outline:2px solid var(--ink);
+  outline-offset:-3px;
+}
+@media(max-width:1199px){
+  .ts-fruit-avocado-test .ts-avocado-test-grid{
+    grid-template-columns:repeat(4,minmax(0,1fr));
+    gap:12px;
+  }
+}
+@media(max-width:767px){
+  .ts-fruit-avocado-test .ts-avocado-test-head{margin-bottom:24px}
+  .ts-fruit-avocado-test .ts-avocado-test-head .ts-h2{font-size:27px}
+  .ts-fruit-avocado-test .ts-avocado-test-head p{font-size:15px}
+  .ts-fruit-avocado-test .ts-avocado-test-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:10px;
+  }
+  .ts-fruit-avocado-test .ts-avocado-capture-time{
+    min-height:60px;
+    padding:9px 6px;
+  }
+  .ts-fruit-avocado-test .ts-avocado-capture-time strong{font-size:14px}
+  .ts-fruit-avocado-test .ts-avocado-capture-time span{font-size:11px}
+  .ts-fruit-avocado-test .ts-avocado-capture-zoom{padding:8px 5px}
+}
