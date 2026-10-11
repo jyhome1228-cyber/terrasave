@@ -213,27 +213,37 @@ body.ts-page-leaving main,body.ts-page-leaving .footer{opacity:0;transform:trans
 /* TerraSAVE compact homepage, 2026-10-12.
    Page-scoped: shared header, footer, content shell and other routes are unchanged. */
 .ts-home-page .ts-home-compact-hero{
-  padding:62px 0 72px;
+  padding:24px 0 72px;
   background:#fff;
 }
 .ts-home-page .ts-home-compact-hero-grid{
-  display:grid;
-  grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);
-  align-items:center;
-  column-gap:clamp(38px,5vw,76px);
+  display:block;
+  width:100%;
+}
+.ts-home-page .ts-home-compact-hero-visual{
+  width:100%;
+  aspect-ratio:2.22 / 1;
+  min-height:420px;
+  max-height:720px;
+  margin:0;
+  border:1px solid var(--line);
+  border-radius:14px;
+  background:#f1f2f3;
 }
 .ts-home-page .ts-home-compact-hero-copy{
   width:100%;
+  max-width:980px;
   min-width:0;
+  margin:38px 0 0;
   text-align:left;
 }
 .ts-home-page .ts-home-compact-hero-copy .ts-kicker{
-  margin:0 0 20px;
+  margin:0 0 16px;
   color:var(--muted);
 }
 .ts-home-page .ts-home-compact-hero-copy .ts-h1{
   margin:0;
-  max-width:650px;
+  max-width:980px;
   font-size:clamp(34px,3.05vw,42px);
   line-height:1.39;
   font-weight:700;
@@ -241,8 +251,8 @@ body.ts-page-leaving main,body.ts-page-leaving .footer{opacity:0;transform:trans
   word-break:keep-all;
 }
 .ts-home-page .ts-home-compact-hero-copy>p{
-  max-width:560px;
-  margin:23px 0 26px;
+  max-width:740px;
+  margin:20px 0 25px;
   font-size:17px;
   line-height:1.82;
   font-weight:400;
@@ -253,22 +263,6 @@ body.ts-page-leaving main,body.ts-page-leaving .footer{opacity:0;transform:trans
   min-height:49px;
   font-size:15px;
   padding:12px 20px;
-}
-.ts-home-page .ts-home-compact-hero-visual{
-  width:100%;
-  aspect-ratio:1.5;
-  min-width:0;
-  margin:0;
-  overflow:hidden;
-  border-radius:14px;
-  background:var(--surface);
-}
-.ts-home-page .ts-home-compact-hero-visual img{
-  display:block;
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  object-position:center;
 }
 .ts-home-page .ts-home-section.ts-home-compact-products,
 .ts-home-page .ts-home-section.ts-home-compact-test,
@@ -472,18 +466,17 @@ body.ts-page-leaving main,body.ts-page-leaving .footer{opacity:0;transform:trans
   line-height:1;
 }
 @media(max-width:1099px){
- .ts-home-page .ts-home-compact-hero-grid{column-gap:32px}
  .ts-home-page .ts-home-compact-products .ts-home-product-grid{gap:13px}
  .ts-home-page .ts-home-compact-test .ts-home-test-gallery{gap:9px}
  .ts-home-page .ts-home-test-photo{padding:10px 7px}
  .ts-home-page .ts-home-test-photo figcaption{font-size:12px}
 }
 @media(max-width:899px){
- .ts-home-page .ts-home-compact-hero-grid{
-   grid-template-columns:1fr;
-   row-gap:32px;
+ .ts-home-page .ts-home-compact-hero-visual{
+   aspect-ratio:2.1 / 1;
+   min-height:330px;
  }
- .ts-home-page .ts-home-compact-hero-visual{aspect-ratio:2.2}
+ .ts-home-page .ts-home-compact-hero-copy{margin-top:31px}
  .ts-home-page .ts-home-compact-hero-copy .ts-h1{max-width:760px}
  .ts-home-page .ts-home-compact-products .ts-home-product-grid{
    grid-template-columns:repeat(3,minmax(0,1fr));
@@ -497,15 +490,17 @@ body.ts-page-leaving main,body.ts-page-leaving .footer{opacity:0;transform:trans
  }
 }
 @media(max-width:767px){
- .ts-home-page .ts-home-compact-hero{padding:42px 0 49px}
- .ts-home-page .ts-home-compact-hero-grid{row-gap:28px}
+ .ts-home-page .ts-home-compact-hero{padding:16px 0 49px}
+ .ts-home-page .ts-home-compact-hero-copy{margin-top:27px}
  .ts-home-page .ts-home-compact-hero-copy .ts-h1{font-size:31px}
  .ts-home-page .ts-home-compact-hero-copy>p{
    margin:17px 0 22px;
    font-size:16px;
  }
  .ts-home-page .ts-home-compact-hero-visual{
-   aspect-ratio:1.65;
+   aspect-ratio:1.6 / 1;
+   min-height:235px;
+   max-height:none;
    border-radius:11px;
  }
  .ts-home-page .ts-home-section.ts-home-compact-products,
