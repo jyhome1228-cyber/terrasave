@@ -645,3 +645,17 @@ body.ts-home-lightbox-open{overflow:hidden}
   .ts-home-lightbox-image{max-height:calc(100dvh - 142px)}
   .ts-home-lightbox-caption{font-size:12px}
 }
+
+/* Korean / Simplified Chinese site switch, kept visible at all screen widths. */
+.header-inner{position:relative}
+.header-cta{margin-right:89px}
+.ts-language-switch{
+ position:absolute;right:0;top:50%;transform:translateY(-50%);
+ display:inline-flex;align-items:center;justify-content:center;
+ height:40px;min-width:73px;padding:0 13px;
+ border:1px solid var(--line-strong);border-radius:8px;
+ background:#fff;font-size:13px;line-height:1.3;font-weight:650;
+ white-space:nowrap;z-index:2;transition:background .2s,border-color .2s;
+}
+.ts-language-switch:hover{background:var(--surface);border-color:var(--ink)}
+@media(max-width:1119px){.ts-language-switch{right:54px;min-width:65px;height:38px;font-size:12px}.header-cta{margin-right:0}}
