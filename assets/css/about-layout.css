@@ -83,3 +83,49 @@
     border-radius:12px;
   }
 }
+
+/* About OUR VALUE: match shared section-heading scale instead of home-hero typography. */
+.ts-about-page .ts-home-manifesto{
+  max-width:1000px;
+  margin-inline:auto;
+  padding:0;
+}
+.ts-about-page .ts-home-manifesto .ts-kicker{
+  margin-bottom:16px;
+}
+.ts-about-page .ts-home-manifesto strong{
+  display:block;
+  font-size:clamp(27px,2.6vw,34px);
+  line-height:1.36;
+  letter-spacing:-.035em;
+  font-weight:700;
+  text-wrap:balance;
+}
+.ts-about-page .ts-home-manifesto p{
+  max-width:760px;
+  margin:22px auto 0;
+  font-size:17px;
+  line-height:1.8;
+  font-weight:400;
+}
+.ts-about-page .ts-home-manifesto .ts-action-group{
+  margin-top:28px;
+  justify-content:center;
+}
+@media(max-width:767px){
+  .ts-about-page .ts-home-manifesto{
+    max-width:none;
+    text-align:left;
+  }
+  .ts-about-page .ts-home-manifesto strong{
+    font-size:27px;
+    line-height:1.4;
+  }
+  .ts-about-page .ts-home-manifesto p{
+    margin-left:0;
+    font-size:16px;
+  }
+  .ts-about-page .ts-home-manifesto .ts-action-group{
+    justify-content:flex-start;
+  }
+}
