@@ -9,97 +9,67 @@
 <title>Contact — TerraSave</title>
 
 
-<link href="assets/css/site.css?v=20261011-nav1" rel="stylesheet"/><link href="assets/css/contact-layout.css?v=20261011-1" rel="stylesheet"/><link href="assets/img/terrasave-favicon.svg" rel="icon" type="image/svg+xml"/></head>
+<link href="assets/css/site.css?v=20261011-nav1" rel="stylesheet"/><link href="assets/css/contact-layout.css?v=20261011-2" rel="stylesheet"/><link href="assets/img/terrasave-favicon.svg" rel="icon" type="image/svg+xml"/></head>
 <body class="ts-contact-page">
 <a class="skip-link" href="#main-content">본문 바로가기</a><header class="site-header" id="siteHeader"><div class="ts-shell header-inner"><a aria-label="TerraSave Home" class="brand" href="index.html"><img alt="TerraSave" class="brand-logo" height="28" src="assets/img/terrasave-logo.svg" width="136"/></a><nav aria-label="주 메뉴" class="nav" id="siteNav"><a href="about.html">About TerraSAVE</a><a href="product.html">product</a><a href="fruits.html">과일별 신선도 자료</a><a href="partnership.html">파트너십</a><a href="why-terrasave.html">Why Terrasave</a><a aria-current="page" class="nav-contact" href="contact.html">포장 상담하기</a></nav><a class="ts-button header-cta" href="#inquiry">포장 상담하기</a><button aria-controls="siteNav" aria-expanded="false" aria-label="메뉴 열기" class="menu-toggle" id="menuToggle" type="button"><span aria-hidden="true" class="menu-icon"><span></span><span></span><span></span></span></button></div></header>
 <main id="main-content">
-<section class="ts-contact-hero" aria-labelledby="contactTitle">
-  <div class="ts-shell ts-contact-hero-inner">
-    <div class="ts-contact-hero-copy">
-      <span class="ts-kicker">CONTACT / TERRASAVE</span>
-      <h1 id="contactTitle">포장이 필요한 품목과<br class="desktop-break"/> 조건을 알려주세요.</h1>
-      <p>보관·운송 환경과 현재 포장 방식, 필요한 수량을 확인해 제품 공급부터 샘플 테스트, 맞춤 개발과 파트너십까지 적용 방향을 검토합니다.</p>
-    </div>
-    <div class="ts-contact-direct">
-      <span>DIRECT INQUIRY</span>
-      <a href="mailto:info@terracle.im">info@terracle.im</a>
-      <p>메일로 직접 자료를 전달하시려면 위 주소를 이용해 주세요.</p>
-    </div>
-  </div>
-</section>
-
-<section class="ts-section ts-contact-inquiry" id="inquiry" aria-labelledby="contactInquiryTitle">
-  <div class="ts-shell ts-contact-layout">
-    <aside class="ts-contact-aside">
-      <span class="ts-kicker">INQUIRY GUIDE</span>
-      <h2 id="contactInquiryTitle">어떤 내용을<br class="desktop-break"/> 검토해 드릴까요?</h2>
-      <p>취급 품목, 현재 포장 형태, 보관·유통 조건을 알려주시면 문의 목적에 맞춰 확인하겠습니다.</p>
-      <ol class="ts-contact-topics">
-        <li><span>01</span><strong>제품 구매 및 공급</strong></li>
-        <li><span>02</span><strong>샘플·테스트</strong></li>
-        <li><span>03</span><strong>맞춤형 제품개발</strong></li>
-        <li><span>04</span><strong>공동 R&amp;D·라이선싱</strong></li>
-      </ol>
-      <div class="ts-contact-aside-links">
-        <a href="product.html">제품 정보 확인 ↗</a>
-        <a href="partnership.html">파트너십 안내 ↗</a>
+  <section class="ts-contact-section" aria-labelledby="contactTitle">
+    <div class="ts-shell">
+      <div class="ts-contact-content">
+        <div class="ts-contact-heading">
+          <span class="ts-kicker">CONTACT</span>
+          <h1 class="ts-h1" id="contactTitle">문의하기</h1>
+          <p class="ts-body">제품 구매 및 샘플 테스트, 맞춤형 포장 개발과 파트너십에 대한 문의를 남겨주세요.<br class="desktop-break"/> 검토에 필요한 내용을 확인한 후 안내드리겠습니다.</p>
+        </div>
+        <form class="ts-contact-form" id="contactForm" novalidate>
+          <div class="ts-contact-fields">
+            <div class="ts-contact-field is-full">
+              <label for="inquiryType">문의 유형 <span aria-hidden="true">*</span></label>
+              <select id="inquiryType" name="inquiryType" required>
+                <option value="" selected disabled>문의 유형을 선택해 주세요</option>
+                <option value="제품 구매 및 공급">제품 구매 및 공급</option>
+                <option value="샘플·테스트">샘플·테스트</option>
+                <option value="맞춤형 제품개발">맞춤형 제품개발</option>
+                <option value="공동 R&amp;D·라이선싱">공동 R&amp;D·라이선싱</option>
+                <option value="기타 문의">기타 문의</option>
+              </select>
+            </div>
+            <div class="ts-contact-field">
+              <label for="contactName">담당자명 <span aria-hidden="true">*</span></label>
+              <input id="contactName" name="name" type="text" required maxlength="100" autocomplete="name" placeholder="성함을 입력해 주세요"/>
+            </div>
+            <div class="ts-contact-field">
+              <label for="contactCompany">회사명</label>
+              <input id="contactCompany" name="company" type="text" maxlength="120" autocomplete="organization" placeholder="회사 또는 기관명"/>
+            </div>
+            <div class="ts-contact-field">
+              <label for="contactEmail">이메일 <span aria-hidden="true">*</span></label>
+              <input id="contactEmail" name="email" type="email" required maxlength="200" autocomplete="email" placeholder="example@company.com"/>
+            </div>
+            <div class="ts-contact-field">
+              <label for="contactPhone">연락처</label>
+              <input id="contactPhone" name="phone" type="tel" maxlength="50" autocomplete="tel" placeholder="010-0000-0000"/>
+            </div>
+            <div class="ts-contact-field is-full">
+              <label for="contactMessage">문의 내용 <span aria-hidden="true">*</span></label>
+              <textarea id="contactMessage" name="message" required maxlength="6000" rows="6" placeholder="취급 품목, 포장 형태, 필요한 수량, 보관·운송 조건 등 문의 내용을 작성해 주세요."></textarea>
+            </div>
+          </div>
+          <div class="ts-contact-actions">
+            <p class="ts-contact-help">입력한 내용은 이메일 프로그램에서 최종 발송합니다.</p>
+            <button class="ts-button is-dark ts-contact-submit" type="button" id="contactCompose">문의 메일 작성하기</button>
+          </div>
+          <p class="ts-contact-status" id="formStatus" role="status" aria-live="polite"></p>
+          <noscript><p class="ts-contact-help">메일 앱을 직접 열어 <a href="mailto:info@terracle.im">info@terracle.im</a>로 문의해 주세요.</p></noscript>
+        </form>
+        <div class="ts-contact-direct">
+          <span class="ts-kicker">DIRECT CONTACT</span>
+          <a href="mailto:info@terracle.im">info@terracle.im</a>
+          <p>첨부할 자료가 있는 경우 이메일로 직접 전달해 주세요.</p>
+        </div>
       </div>
-    </aside>
-    <div class="ts-contact-form-panel">
-      <span class="ts-kicker">SEND AN INQUIRY</span>
-      <h2>문의 내용을 작성해 주세요.</h2>
-      <form class="ts-contact-form" id="contactForm" action="mailto:info@terracle.im" method="post" enctype="text/plain">
-        <fieldset>
-          <legend class="ts-form-label">문의 유형 <span class="ts-form-required">(필수)</span></legend>
-          <input type="hidden" id="inquiryType" name="inquiryType" value=""/>
-          <div class="ts-contact-options">
-            <button class="inquiry-option" type="button" data-value="제품 구매 및 공급" aria-pressed="false">제품 구매 및 공급</button>
-            <button class="inquiry-option" type="button" data-value="샘플·테스트" aria-pressed="false">샘플·테스트</button>
-            <button class="inquiry-option" type="button" data-value="맞춤형 제품개발" aria-pressed="false">맞춤형 제품개발</button>
-            <button class="inquiry-option" type="button" data-value="공동 R&amp;D·라이선싱" aria-pressed="false">공동 R&amp;D·라이선싱</button>
-          </div>
-          <span class="field-error" id="inquiryTypeError" role="alert"></span>
-        </fieldset>
-        <div class="ts-form-grid">
-          <div class="ts-form-field">
-            <label for="contactName">담당자명 <span class="ts-form-required">(필수)</span></label>
-            <input id="contactName" name="name" type="text" autocomplete="name" required maxlength="100" placeholder="성함을 입력해 주세요"/>
-          </div>
-          <div class="ts-form-field">
-            <label for="contactCompany">회사명</label>
-            <input id="contactCompany" name="company" type="text" autocomplete="organization" maxlength="120" placeholder="회사 또는 기관명"/>
-          </div>
-          <div class="ts-form-field">
-            <label for="contactEmail">이메일 <span class="ts-form-required">(필수)</span></label>
-            <input id="contactEmail" name="email" type="email" autocomplete="email" required maxlength="200" placeholder="example@company.com"/>
-          </div>
-          <div class="ts-form-field">
-            <label for="contactPhone">연락처</label>
-            <input id="contactPhone" name="phone" type="tel" autocomplete="tel" maxlength="50" placeholder="010-0000-0000"/>
-          </div>
-          <div class="ts-form-field">
-            <label for="contactProduce">취급 품목 및 품종</label>
-            <input id="contactProduce" name="produce" type="text" maxlength="180" placeholder="예: 딸기(설향), 샤인머스캣"/>
-          </div>
-          <div class="ts-form-field">
-            <label for="contactQuantity">포장 형태·예상 수량</label>
-            <input id="contactQuantity" name="quantity" type="text" maxlength="180" placeholder="예: PET 용기 / 1,000개"/>
-          </div>
-          <div class="ts-form-field is-wide">
-            <label for="contactMessage">문의 내용 <span class="ts-form-required">(필수)</span></label>
-            <textarea id="contactMessage" name="message" required maxlength="6000" rows="6" placeholder="현재 포장 방식, 보관·운송 온도와 기간, 가장 큰 품질 문제, 목표 유통기간 등을 알려주세요."></textarea>
-          </div>
-        </div>
-        <div class="ts-contact-send">
-          <p class="ts-contact-send-note">서버로 자동 접수되는 양식은 아닙니다. 작성 내용을 메일 앱으로 옮긴 후, 메일 앱에서 발송을 완료해 주세요.</p>
-          <button class="ts-button is-dark is-large ts-contact-submit" type="submit">메일 작성 화면 열기 ↗</button>
-        </div>
-        <p class="ts-contact-form-status" id="formStatus" role="status" aria-live="polite"></p>
-        <noscript><p class="ts-contact-send-note">폼 이용에는 JavaScript가 필요합니다. <a href="mailto:info@terracle.im">info@terracle.im</a>로 직접 보내주세요.</p></noscript>
-      </form>
     </div>
-  </div>
-</section>
+  </section>
 </main>
 <footer class="footer">
 <div class="footer-shell">
@@ -117,5 +87,5 @@
 <div class="footer-legal"><span>TerraSave</span><span>Copyright © 2026 Terracle. All Rights Reserved.</span></div>
 </div></footer>
 
-<script src="assets/js/site.js?v=20261005-2"></script><script src="assets/js/contact.js?v=20261011-1" defer></script></body>
+<script src="assets/js/site.js?v=20261005-2"></script><script src="assets/js/contact.js?v=20261011-2" defer></script></body>
 </html>
