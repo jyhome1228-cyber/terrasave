@@ -142,6 +142,7 @@
   line-height:1.85;
   word-break:keep-all;
 }
+.ts-why-page .ts-why-audience-lead + .ts-why-audience-lead{margin-top:8px}
 .ts-why-page .ts-why-benefits{
   display:grid;
   grid-template-columns:repeat(2,minmax(0,1fr));
