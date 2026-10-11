@@ -115,9 +115,32 @@
 
   const fruits = window.TERRASAVE_FRUITS || [];
   const available = new Set(['avocado', 'strawberry', 'shine-muscat', 'mango']);
-  const displayName = fruit => fruit.ko.replaceAll('샤인머스캣', '샤인머스켓');
+
+  const namesZh={
+    avocado:'牛油果', blueberry:'蓝莓', cherry:'樱桃', mango:'芒果',
+    banana:'香蕉', strawberry:'草莓', 'shine-muscat':'阳光玫瑰葡萄',
+    'table-grape':'鲜食葡萄', apple:'苹果', 'asian-pear':'韩国梨',
+    kiwi:'猕猴桃', peach:'桃子', nectarine:'油桃', persimmon:'甜柿',
+    mandarin:'柑橘', pomegranate:'石榴', pineapple:'菠萝', plum:'李子'
+  };
+  const focusZh={
+    avocado:'后熟速度 · 乙烯', blueberry:'水分保持 · 霉菌',
+    cherry:'冷链管理 · 保湿', mango:'后熟速度 · 冷害',
+    banana:'后熟速度 · 乙烯', strawberry:'凝露 · 霉菌',
+    'shine-muscat':'果梗保湿 · 落粒 · 霉菌',
+    'table-grape':'保湿 · 落粒 · 霉菌', apple:'乙烯 · 硬度保持',
+    'asian-pear':'长期储存 · 水分 · 碰撞', kiwi:'乙烯 · 快速软化',
+    peach:'快速软化 · 冷害', nectarine:'快速软化 · 冷害',
+    persimmon:'乙烯 · 快速软化', mandarin:'果皮水分 · 腐败',
+    pomegranate:'果皮保湿 · 冷害', pineapple:'温度 · 水分',
+    plum:'后熟速度 · 软化'
+  };
+  const ethyleneZh={'매우 민감':'非常敏感','품종에 따라 보통':'因品种而异，通常中等','영향이 낮음':'影响较小','민감함':'敏感','보통':'中等','극도로 민감':'极其敏感'};
+  const storageZh = raw => String(raw).replaceAll('미숙과','未熟果').replaceAll('완숙과','成熟果').replaceAll('녹숙과','青熟果').replaceAll('부분후숙','部分后熟').replaceAll('약 ','约 ').replaceAll(' 단기',' 短期').replaceAll(' 장기',' 长期');
+
+  const displayName = fruit => chinese ? (namesZh[fruit.slug] || fruit.en) : fruit.ko.replaceAll('샤인머스캣', '샤인머스켓');
   const units = value => escape(value).replace(/(-?\d+(?:\.\d+)?(?:[–~±-]\d+(?:\.\d+)?)?\s*(?:°C|℃|%))/g, '<span class="ts-unit">$1</span>');
-  const storage = value => String(value)
+  const storage = value => (chinese ? storageZh(value) : String(value))
     .replaceAll('미숙과', '덜 익은 상태')
     .replaceAll('완숙과', '먹기 좋은 상태')
     .replaceAll('녹숙과', '초록색 상태')
@@ -128,9 +151,9 @@
   const card = (fruit, index = 0) => {
     const name = displayName(fruit);
     const pair = window.TERRASAVE_FRUIT_IMAGES?.[fruit.slug] || [];
-    return `<a class="ts-fruit-card" href="fruit.html?fruit=${encodeURIComponent(fruit.slug)}" aria-label="${escape(name)} 신선도 자료 보기">
-      <div class="ts-fruit-visual"><img class="ts-fruit-whole" src="${escape(pair[0] || fruit.imageWhole || '')}" alt="${escape(name)} 전체 모습" width="1000" height="1000" loading="${index < 4 ? 'eager' : 'lazy'}" decoding="async"><img class="ts-fruit-cut" src="${escape(pair[1] || fruit.imageCut || '')}" alt="" aria-hidden="true" width="1000" height="1000" loading="lazy" decoding="async"></div>
-      <div class="ts-fruit-meta"><div class="ts-fruit-meta-top"><div class="ts-fruit-name"><strong>${escape(name)}</strong><span>${escape(fruit.en)}</span></div><span class="ts-fruit-status${available.has(fruit.slug) ? ' is-available' : ''}">${available.has(fruit.slug) ? '솔루션 제공' : '연구중'}</span></div><div class="ts-fruit-tag">${escape(fruit.focusKo || fruit.focus)}</div><div class="ts-fruit-data"><span>보관 온도<strong>${storage(fruit.storage)}</strong></span><span>에틸렌 영향<strong>${escape(fruit.ethylenePlain || fruit.ethylene)}</strong></span></div></div>
+    return `<a class="ts-fruit-card" href="fruit.html?fruit=${encodeURIComponent(fruit.slug)}" aria-label="${escape(name)} 保鲜资料">
+      <div class="ts-fruit-visual"><img class="ts-fruit-whole" src="${escape(pair[0] || fruit.imageWhole || '')}" alt="${escape(name)} 完整外观" width="1000" height="1000" loading="${index < 4 ? 'eager' : 'lazy'}" decoding="async"><img class="ts-fruit-cut" src="${escape(pair[1] || fruit.imageCut || '')}" alt="" aria-hidden="true" width="1000" height="1000" loading="lazy" decoding="async"></div>
+      <div class="ts-fruit-meta"><div class="ts-fruit-meta-top"><div class="ts-fruit-name"><strong>${escape(name)}</strong><span>${escape(fruit.en)}</span></div><span class="ts-fruit-status${available.has(fruit.slug) ? ' is-available' : ''}">${available.has(fruit.slug) ? (chinese ? '可提供方案' : '솔루션 제공') : (chinese ? '研究中' : '연구중')}</span></div><div class="ts-fruit-tag">${escape(chinese ? focusZh[fruit.slug] || fruit.focus : (fruit.focusKo || fruit.focus))}</div><div class="ts-fruit-data"><span>${chinese ? '储存温度' : '보관 온도'}<strong>${storage(fruit.storage)}</strong></span><span>${chinese ? '乙烯敏感度' : '에틸렌 영향'}<strong>${escape(chinese ? (ethyleneZh[fruit.ethylenePlain] || fruit.ethylene) : (fruit.ethylenePlain || fruit.ethylene))}</strong></span></div></div>
     </a>`;
   };
 
@@ -146,7 +169,7 @@
       );
       grid.innerHTML = list.map(card).join('');
       const count = document.getElementById('fruitCount');
-      if (count) count.textContent = `${list.length}개 과일`;
+      if (count) count.textContent = chinese ? `${list.length}种水果` : `${list.length}개 과일`;
       filters.forEach(button => {
         const active = button.dataset.filter === filter;
         button.classList.toggle('is-active', active);
