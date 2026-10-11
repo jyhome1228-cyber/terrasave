@@ -151,8 +151,8 @@
   const card = (fruit, index = 0) => {
     const name = displayName(fruit);
     const pair = window.TERRASAVE_FRUIT_IMAGES?.[fruit.slug] || [];
-    return `<a class="ts-fruit-card" href="fruit.html?fruit=${encodeURIComponent(fruit.slug)}" aria-label="${escape(name)} 保鲜资料">
-      <div class="ts-fruit-visual"><img class="ts-fruit-whole" src="${escape(pair[0] || fruit.imageWhole || '')}" alt="${escape(name)} 完整外观" width="1000" height="1000" loading="${index < 4 ? 'eager' : 'lazy'}" decoding="async"><img class="ts-fruit-cut" src="${escape(pair[1] || fruit.imageCut || '')}" alt="" aria-hidden="true" width="1000" height="1000" loading="lazy" decoding="async"></div>
+    return `<a class="ts-fruit-card" href="fruit.html?fruit=${encodeURIComponent(fruit.slug)}" aria-label="${escape(name)} ${chinese ? '保鲜资料' : '신선도 자료 보기'}">
+      <div class="ts-fruit-visual"><img class="ts-fruit-whole" src="${escape(pair[0] || fruit.imageWhole || '')}" alt="${escape(name)} ${chinese ? '完整外观' : '전체 모습'}" width="1000" height="1000" loading="${index < 4 ? 'eager' : 'lazy'}" decoding="async"><img class="ts-fruit-cut" src="${escape(pair[1] || fruit.imageCut || '')}" alt="" aria-hidden="true" width="1000" height="1000" loading="lazy" decoding="async"></div>
       <div class="ts-fruit-meta"><div class="ts-fruit-meta-top"><div class="ts-fruit-name"><strong>${escape(name)}</strong><span>${escape(fruit.en)}</span></div><span class="ts-fruit-status${available.has(fruit.slug) ? ' is-available' : ''}">${available.has(fruit.slug) ? (chinese ? '可提供方案' : '솔루션 제공') : (chinese ? '研究中' : '연구중')}</span></div><div class="ts-fruit-tag">${escape(chinese ? focusZh[fruit.slug] || fruit.focus : (fruit.focusKo || fruit.focus))}</div><div class="ts-fruit-data"><span>${chinese ? '储存温度' : '보관 온도'}<strong>${storage(fruit.storage)}</strong></span><span>${chinese ? '乙烯敏感度' : '에틸렌 영향'}<strong>${escape(chinese ? (ethyleneZh[fruit.ethylenePlain] || fruit.ethylene) : (fruit.ethylenePlain || fruit.ethylene))}</strong></span></div></div>
     </a>`;
   };
