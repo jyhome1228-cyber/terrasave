@@ -22,6 +22,12 @@
   const rows=items=>`<div class="ts-application-list">${items.map((item,i)=>`<article class="ts-application-row"><span class="ts-kicker">${number(i)}</span><h3>${normal(item.title)}</h3><div class="ts-row-body">${prose(item.paragraphs)}</div></article>`).join('')}</div>`;
   const cards=items=>`<div class="ts-approach-grid" data-columns="${items.length}">${items.map((item,i)=>`<article class="ts-approach"><span class="ts-kicker">${esc(normal(item.kicker||number(i)))}</span><div><h3 class="ts-h3">${normal(item.title)}</h3>${prose(item.paragraphs)}</div></article>`).join('')}</div>`;
   const action=(href,label)=>`<div class="ts-action-group is-centered"><a class="ts-button is-dark is-large" href="${href}">${label}</a></div>`;
+  const comparison = value => {
+    if (!value?.rows?.length) return "";
+    const headings = value.headers.map(item=>`<th scope="col">${esc(normal(item))}</th>`).join("");
+    const rows = value.rows.map(row=>`<tr><th scope="row">${esc(normal(row[0]))}</th><td>${esc(normal(row[1]))}</td><td>${esc(normal(row[2]))}</td></tr>`).join("");
+    return `<div class="ts-fruit-comparison"><h3>${esc(normal(value.title))}</h3><div class="ts-fruit-comparison-scroll" role="region" aria-label="${esc(normal(value.title))}" tabindex="0"><table class="ts-fruit-comparison-table"><thead><tr>${headings}</tr></thead><tbody>${rows}</tbody></table></div></div>`;
+  };
   const pair=window.TERRASAVE_FRUIT_IMAGES?.[fruit.slug]||[fruit.imageWhole,fruit.imageCut];
   const intro=normal(fruit.intro||fruit.summary).split(/(?<=\.)\s+/).filter(Boolean).map(esc);
   const previous=fruits[(index-1+fruits.length)%fruits.length],next=fruits[(index+1)%fruits.length];
@@ -32,7 +38,7 @@
   if(authored){
     sections.push(section('characteristics',authored.problem.kicker,authored.problem.title,authored.problem.paragraphs,rows(authored.problem.rows)));
     sections.push(section('existing-solutions','EXISTING SOLUTIONS',authored.existing.title,authored.existing.paragraphs,cards(authored.existing.cards),true));
-    sections.push(section('terrasave-solution',authored.solution.kicker,authored.solution.title,authored.solution.paragraphs,(authored.solution.cards.length?cards(authored.solution.cards):'')+action('product.html','구매하러가기')));
+    sections.push(section('terrasave-solution',authored.solution.kicker,authored.solution.title,authored.solution.paragraphs,(authored.solution.cards.length?cards(authored.solution.cards):'')+comparison(authored.solution.comparison)+action('product.html','구매하러가기')));
   }else{
     sections.push(section('characteristics','01 / FRUIT CHARACTERISTICS',esc(normal(fruit.easyHeadline)),['같은 과일이라도 숙도와 유통 기간에 따라 상태가 달라집니다. 포장재를 고르기 전에 이 과일이 이동 중 어떻게 변하는지부터 이해하는 것이 중요합니다.'],rows((fruit.traits||[]).map(([heading,body])=>({title:esc(heading),paragraphs:[esc(normal(body))]})))));
     sections.push(section('quality-risk','02 / QUALITY RISK','이 과일에서 먼저 볼 문제,<br>포장 방향은 여기서 정해집니다.',['보관 온도 숫자만 보고 포장 사양을 정하지 않습니다. 현재 숙도, 유통 거리와 기간, 기존 포장 방식까지 함께 보고 어떤 보호가 실제로 필요한지 정합니다.'],rows([{title:esc(normal(fruit.focusKo)),paragraphs:[esc(normal(fruit.riskExplain))]},{title:storage(fruit.storage),paragraphs:[esc(normal(fruit.storageExplain))]},{title:esc(fruit.priorityPlain),paragraphs:[esc(normal(fruit.priorityExplain))]},{title:'시험 적용 방향',paragraphs:[esc(normal(fruit.packagingGuide))]}]),true));
