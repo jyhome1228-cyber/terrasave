@@ -7,6 +7,25 @@
   const nav = document.getElementById('siteNav');
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  // Preserve the current page (and selected fruit) while switching site language.
+  const chinese = /\/zh\//.test(window.location.pathname);
+  const page = window.location.pathname.split('/').pop() || 'index.html';
+  const counterpart = new URL((chinese ? '../' : 'zh/') + page, window.location.href);
+  counterpart.search = window.location.search;
+  counterpart.hash = window.location.hash;
+  const headerInner = header?.querySelector('.header-inner');
+  if (headerInner && !headerInner.querySelector('.ts-language-switch')) {
+    const languageSwitch = document.createElement('a');
+    languageSwitch.className = 'ts-language-switch';
+    languageSwitch.href = counterpart.href;
+    languageSwitch.hreflang = chinese ? 'ko' : 'zh-CN';
+    languageSwitch.lang = chinese ? 'ko' : 'zh-CN';
+    languageSwitch.textContent = chinese ? '한국어' : '中文';
+    languageSwitch.setAttribute('aria-label', chinese ? '切换到韩文网站' : '중국어 사이트로 전환');
+    headerInner.appendChild(languageSwitch);
+  }
+
+
   const isolated = new Map();
   const isolate = (owner, elements) => {
     for (const element of elements) {
