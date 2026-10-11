@@ -144,26 +144,36 @@
   .ts-partnership-page .ts-partner-model{transition:none}
 }
 
-/* Partnership collaboration models: single-column, left-aligned editorial content. */
+/* Three comparable collaboration models: balanced columns, minimal dividers, no decorative numbering. */
 .ts-partnership-page .ts-partner-models{
-  display:block;
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:0;
   width:100%;
+  align-items:stretch;
   border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
 }
 .ts-partnership-page .ts-partner-model,
 .ts-partnership-page .ts-partner-model:last-child{
   display:flex;
   flex-direction:column;
-  align-items:flex-start;
-  width:100%;
+  align-items:stretch;
+  grid-column:auto;
   min-width:0;
-  padding:38px 0 42px;
+  width:auto;
   margin:0;
+  padding:30px clamp(19px,2.1vw,34px) 34px;
   background:transparent;
   border:0;
-  border-bottom:1px solid var(--line);
+  border-right:1px solid var(--line);
   border-radius:0;
   box-shadow:none;
+}
+.ts-partnership-page .ts-partner-model:first-child{padding-left:0}
+.ts-partnership-page .ts-partner-model:last-child{
+  border-right:0;
+  padding-right:0;
 }
 .ts-partnership-page .ts-partner-model:hover{
   border-color:var(--line);
@@ -174,37 +184,57 @@
 .ts-partnership-page .ts-partner-model>p,
 .ts-partnership-page .ts-partner-model>ul{
   width:100%;
-  max-width:1000px;
+  max-width:none;
   min-width:0;
   text-align:left;
 }
 .ts-partnership-page .ts-partner-model h3{
+  min-height:0;
   margin:0 0 17px;
-  font-size:clamp(23px,2vw,27px);
+  font-size:clamp(21px,1.85vw,25px);
   font-weight:650;
-  line-height:1.4;
+  line-height:1.45;
   letter-spacing:-.03em;
 }
 .ts-partnership-page .ts-partner-model p{
   margin:0;
-  font-size:16px;
-  line-height:1.85;
+  font-size:15px;
+  line-height:1.8;
+  color:var(--text);
 }
 .ts-partnership-page .ts-partner-model p+p{margin-top:13px}
 .ts-partnership-page .ts-partner-model ul{
-  margin:24px 0 0;
-  padding:20px 0 0;
+  margin:22px 0 0;
+  padding:18px 0 0;
   border-top:1px solid var(--line);
   list-style:none;
-  font-size:15px;
-  line-height:1.85;
+  font-size:14px;
+  line-height:1.8;
 }
 .ts-partnership-page .ts-partner-model li+li{margin-top:7px}
 .ts-partnership-page .ts-partner-model .ts-link{
   width:max-content;
   max-width:100%;
-  margin-top:25px;
+  flex-shrink:0;
   align-self:flex-start;
+  margin:0;
+  margin-top:auto;
+  padding-top:26px;
+}
+@media(max-width:1050px){
+  .ts-partnership-page .ts-partner-models{
+    grid-template-columns:1fr;
+    border-bottom:0;
+  }
+  .ts-partnership-page .ts-partner-model,
+  .ts-partnership-page .ts-partner-model:last-child{
+    grid-column:1;
+    padding:28px 0 33px;
+    border-right:0;
+    border-bottom:1px solid var(--line);
+  }
+  .ts-partnership-page .ts-partner-model h3{margin-bottom:14px}
+  .ts-partnership-page .ts-partner-model .ts-link{margin-top:0;padding-top:24px}
 }
 
 /* Nine genuinely separate environmental factors: ruled labels, not a tiled table. */
@@ -412,10 +442,6 @@
 }
 
 @media(max-width:899px){
-  .ts-partnership-page .ts-partner-model,
-  .ts-partnership-page .ts-partner-model:last-child{
-    padding:30px 0 35px;
-  }
   .ts-partnership-page .ts-rnd-process{grid-template-columns:1fr}
   .ts-partnership-page .ts-rnd-process .ts-step,
   .ts-partnership-page .ts-rnd-process .ts-step:nth-child(even),
