@@ -44,6 +44,46 @@
     sections.push(section('quality-risk','02 / QUALITY RISK','이 과일에서 먼저 볼 문제,<br>포장 방향은 여기서 정해집니다.',['보관 온도 숫자만 보고 포장 사양을 정하지 않습니다. 현재 숙도, 유통 거리와 기간, 기존 포장 방식까지 함께 보고 어떤 보호가 실제로 필요한지 정합니다.'],rows([{title:esc(normal(fruit.focusKo)),paragraphs:[esc(normal(fruit.riskExplain))]},{title:storage(fruit.storage),paragraphs:[esc(normal(fruit.storageExplain))]},{title:esc(fruit.priorityPlain),paragraphs:[esc(normal(fruit.priorityExplain))]},{title:'시험 적용 방향',paragraphs:[esc(normal(fruit.packagingGuide))]}]),true));
     sections.push(section('terrasave-solution','03 / TerraSave APPROACH','필요한 기능은 설명합니다,<br>핵심 기술은 보호합니다.',['고객이 포장을 검토하는 데 필요한 역할과 방향은 쉽게 설명합니다. 다만 소재의 정확한 조성, 배합비, 제조 공정처럼 그대로 복제할 수 있는 기술 정보는 공개하지 않습니다.'],cards((fruit.approach||[]).map((value,i)=>({kicker:number(i),title:esc(normal(value)),paragraphs:['현재 포장 방식, 유통 거리와 기간을 함께 보고 실제로 필요한 기능인지 확인합니다.']})))));
   }
+
+  // Match the homepage's five-day test cards, image order and zoom behavior.
+  // Only the Shine Muscat detail page renders this additional section.
+  if(fruit.slug==='shine-muscat'){
+    const testDays=[0,7,14,20,30];
+    const mof=["https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261011-191314-1-582616d0.webp","https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261011-191315-2-39743dc1.webp","https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261011-191315-3-0b17ae89.webp","https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261011-191315-4-51815101.webp","https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261011-191314-5-88b985e6.webp"];
+    const pet=["https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261011-191316-1-9bda0b4b.webp","https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261011-191317-2-1e843020.webp","https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261011-191317-3-790d2ad1.webp","https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261011-191318-4-b2a20a0b.webp","https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261011-191316-5-9324caa8.webp"];
+    const testFigure=(day,src,isMof)=>`<figure class="ts-home-test-photo">
+      <button class="ts-home-test-enlarge" type="button" aria-haspopup="dialog" aria-label="Day ${day} ${isMof?'TerraSAVE 적용 용기':'일반 PET 용기'} 사진 확대해서 보기" title="사진 확대 보기">
+        <img src="${src}" alt="샤인머스캣 ${isMof?'TerraSAVE 적용 용기':'일반 PET 용기'} Day ${day} 보관 비교 이미지" loading="lazy" decoding="async" />
+      </button>
+      <figcaption>${isMof?'TerraSAVE 적용 용기 <span>MOF</span>':'일반 PET 용기'}</figcaption>
+    </figure>`;
+    const daysHtml=testDays.map((day,i)=>`<article class="ts-home-test-day" aria-label="Day ${day} 보관 비교">
+      <h3>Day ${day}</h3>
+      ${testFigure(day,mof[i],true)}
+      ${testFigure(day,pet[i],false)}
+    </article>`).join('');
+    sections.push(`<div class="ts-home-page ts-fruit-shine-test">
+      <section class="ts-home-section is-soft ts-home-compact-test" id="test" aria-labelledby="fruitShineTestTitle">
+        <div class="ts-shell">
+          <div class="ts-home-compact-heading">
+            <span class="ts-kicker">보관 테스트 비교 사례</span>
+            <h2 class="ts-h2" id="fruitShineTestTitle">샤인머스캣 보관 테스트</h2>
+            <p>TerraSAVE 적용 용기(MOF)와 일반 PET 용기의 시간 경과별 외관 변화를 비교했습니다.</p>
+          </div>
+          <div class="ts-home-test-gallery">${daysHtml}</div>
+          <p class="ts-home-test-note">실험 촬영자료를 바탕으로 시각적으로 재구성한 비교 이미지입니다. 원본 사진과 차이가 있을 수 있으며, 초기 상태와 보관 조건, 시험 환경에 따라 결과가 달라질 수 있습니다. 이미지로 정량적인 성능을 단정할 수는 없습니다.</p>
+        </div>
+        <dialog class="ts-home-lightbox" id="tsHomeLightbox" aria-label="샤인머스캣 이미지 확대 보기">
+          <div class="ts-home-lightbox-inner">
+            <button type="button" class="ts-home-lightbox-close" aria-label="확대 이미지 닫기">×</button>
+            <img class="ts-home-lightbox-image" alt="" />
+            <p class="ts-home-lightbox-caption" aria-live="polite"></p>
+          </div>
+        </dialog>
+      </section>
+    </div>`);
+  }
+
   // Source-fidelity layout for the detailed Seolhyang notes. Other fruit profiles keep the standard renderer.
   const sourceResearch = research => {
     const detail=research.sourceDetail;
