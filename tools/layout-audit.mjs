@@ -72,11 +72,11 @@ for(const width of widths){
     if(document.styleSheets.length!==2&&document.styleSheets.length!==1)structureErrors.push('Unexpected competing stylesheet count');
     const approvedSheets=/\/assets\/css\/(?:site|about-layout|contact-layout|fruit-comparison|partnership-layout|why-terrasave-layout)\.css$/;
     if([...document.querySelectorAll('link[rel=stylesheet]')].some(e=>!approvedSheets.test(new URL(e.href).pathname)))structureErrors.push('Unexpected stylesheet loaded');
-    return{title:document.title,header:h,shellCount:shells.length,axisErrors,overflow,orphans,badHeads,hero:heroData,heroErrors,duplicateIds,brokenImages,loadingImages,localLinks,structureErrors,scrollWidth:document.documentElement.scrollWidth,bodyText:document.querySelector('main')?.innerText||'',height:document.documentElement.scrollHeight};
+    return{title:document.title,header:h,shellCount:shells.length,axisErrors,overflow,orphans,badHeads,hero:heroData,heroErrors,duplicateIds,brokenImages,loadingImages,localLinks,structureErrors,scrollWidth:document.documentElement.scrollWidth,bodyText:document.querySelector('main')?.innerText||'',allBodyText:document.querySelector('main')?.textContent||'',height:document.documentElement.scrollHeight};
    });
    const slug=new URL(route,'http://localhost').searchParams.get('fruit');
    const expected=authored[slug]||statics[route]||[];
-   const contentMissing=expected.filter(value=>!norm(metrics.bodyText).includes(norm(value)));
+   const contentMissing=expected.filter(value=>!norm(route==='why-terrasave.html'?metrics.allBodyText:metrics.bodyText).includes(norm(value)));
    const linkErrors=[];
    for(const href of [...new Set(metrics.localLinks)]){
     const url=new URL(href,base+route);const current=new URL(base+route);
@@ -109,28 +109,18 @@ for(const width of widths){
     }
    }
    if(route==='why-terrasave.html'){
-    const target='distribution';
-    if(width>=900){
-     await page.locator('[data-why-tab="'+target+'"]').click();
-     const state=await page.evaluate(id=>({
-       selected:document.querySelector('[data-why-tab="'+id+'"]').getAttribute('aria-selected')==='true',
-       visible:!document.querySelector('[data-why-panel="'+id+'"]').hidden,
-       firstHidden:document.querySelector('[data-why-panel="export"]').hidden,
-       hash:location.hash
-     }),target);
-     if(!state.selected||!state.visible||!state.firstHidden||state.hash!=='#'+target)interactions.push('Desktop business tabs failed');
-     await page.locator('[data-why-tab="export"]').click();
-    }else{
-     await page.locator('[data-why-accordion="'+target+'"] > summary').click();
-     await page.waitForTimeout(90);
-     const state=await page.evaluate(id=>({
-       opened:document.querySelector('[data-why-accordion="'+id+'"]').open,
-       firstClosed:!document.querySelector('[data-why-accordion="export"]').open,
-       hash:location.hash
-     }),target);
-     if(!state.opened||!state.firstClosed||state.hash!=='#'+target)interactions.push('Mobile business disclosure failed');
-     await page.locator('[data-why-accordion="export"] > summary').click();
+    const ids=['export','distribution','retail','global'];
+    for(const id of ids){
+     await page.locator('[data-why-tab="'+id+'"]').click();
+     const state=await page.evaluate(value=>({
+      selected:document.querySelector('[data-why-tab="'+value+'"]').getAttribute('aria-selected')==='true',
+      visible:!document.querySelector('[data-why-panel="'+value+'"]').hidden,
+      hiddenOthers:[...document.querySelectorAll('[data-why-panel]')].filter(x=>x.dataset.whyPanel!==value).every(x=>x.hidden),
+      hash:window.location.hash
+     }),id);
+     if(!state.selected||!state.visible||!state.hiddenOthers||state.hash!=='#'+id)interactions.push('Why TerraSAVE tab failed: '+id);
     }
+    await page.locator('[data-why-tab="export"]').click();
    }
    const name=route.replace('fruit.html?fruit=','fruit-').replace('.html','');
    if([1440,390].includes(width)){
