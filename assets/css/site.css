@@ -184,3 +184,22 @@ body.ts-page-leaving main,body.ts-page-leaving .footer{opacity:0;transform:trans
   .ts-data-grid{grid-template-columns:1fr}
   .ts-fruit-grid,.ts-home-fruit-grid{grid-template-columns:1fr}
 }
+
+/* 2026-10-11: five requested navigation categories; inquiry is a separate mobile action. */
+@media(max-width:1119px){
+  .site-header.menu-open .nav .nav-contact{
+    display:block;
+    width:100%;
+    margin-top:16px;
+    padding:13px 18px;
+    border:1px solid var(--ink);
+    border-radius:8px;
+    background:var(--ink);
+    color:#fff;
+    font-size:15px;
+    font-weight:600;
+    line-height:1.5;
+    text-align:center;
+  }
+  .site-header.menu-open .nav .nav-contact::after{display:none}
+}
