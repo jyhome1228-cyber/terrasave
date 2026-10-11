@@ -1,0 +1,145 @@
+/* TerraSAVE Partnership — page-scoped layout.
+   Retains all approved business copy and the three requested partnership models.
+   Uses the same 1440px shell as the rest of the site. */
+
+.ts-partnership-page .ts-page-hero{padding-block:64px 70px}
+.ts-partnership-page .ts-page-hero .ts-section-head,
+.ts-partnership-page .ts-section .ts-section-head{
+  width:100%;max-width:none;margin:0 0 40px;text-align:left;
+}
+.ts-partnership-page .ts-page-hero .ts-section-head{margin-bottom:0}
+.ts-partnership-page .ts-section-head>:is(h1,h2),
+.ts-partnership-page .ts-page-hero .ts-section-head>:is(h1,h2){
+  margin-inline:0;text-align:left;
+}
+.ts-partnership-page .ts-section-head>:is(p,.ts-section-copy),
+.ts-partnership-page .ts-page-hero .ts-section-head>:is(p,.ts-section-copy){
+  max-width:840px;margin:18px 0 0;text-align:left;line-height:1.8;
+}
+.ts-partnership-page .ts-section{padding-block:76px}
+.ts-partnership-page .ts-section-head>.ts-kicker{margin-bottom:12px}
+.ts-partnership-page .ts-section-head .ts-h2{font-size:clamp(27px,2.45vw,34px);line-height:1.35}
+.ts-partnership-page .ts-support-copy,
+.ts-partnership-page .ts-validation-note{
+  width:100%;max-width:940px;margin:28px 0 0;text-align:left;
+  font-size:16px;line-height:1.85;
+}
+.ts-partnership-page .ts-support-emphasis{
+  max-width:none;margin:44px auto 0;text-align:center;
+  font-size:clamp(18px,1.7vw,22px);line-height:1.6;
+}
+
+/* Partnership models — three equal, legible cards on desktop. */
+.ts-partnership-page .ts-partner-models{gap:20px;align-items:stretch}
+.ts-partnership-page .ts-partner-model{
+  padding:32px;border-radius:14px;gap:0;box-shadow:none;
+}
+.ts-partnership-page .ts-partner-model>.ts-kicker{margin-bottom:18px}
+.ts-partnership-page .ts-partner-model h3{font-size:clamp(22px,1.9vw,27px);margin-bottom:16px}
+.ts-partnership-page .ts-partner-model p{font-size:16px;line-height:1.85}
+.ts-partnership-page .ts-partner-model ul{
+  margin:22px 0 24px;padding:19px 0 0;border-top:1px solid var(--line);
+  font-size:15px;line-height:1.75;
+}
+.ts-partnership-page .ts-partner-model li{position:relative;padding-left:16px}
+.ts-partnership-page .ts-partner-model li:before{
+  content:"";position:absolute;left:1px;top:.78em;
+  width:5px;height:5px;border-radius:50%;background:var(--muted);
+}
+.ts-partnership-page .ts-partner-model .ts-link{margin-top:auto}
+
+/* Custom development criteria and on-site validation. */
+.ts-partnership-page .ts-condition-grid{
+  overflow:hidden;border:1px solid var(--line);border-radius:14px;
+  background:#fff;
+}
+.ts-partnership-page .ts-condition-grid>div{padding:22px 24px;font-size:16px}
+.ts-partnership-page .ts-condition-grid strong{font-weight:600}
+.ts-partnership-page .ts-data-tags{justify-content:flex-start;gap:10px}
+.ts-partnership-page .ts-data-tags span{background:#fff}
+.ts-partnership-page .ts-manufacturing-band{gap:40px}
+.ts-partnership-page .ts-manufacturing-band h3{max-width:700px;font-size:clamp(22px,2vw,28px)}
+.ts-partnership-page .ts-manufacturing-band p{max-width:720px}
+
+/* R&D seven stages — consistent number and text axes, 2-column on desktop. */
+.ts-partnership-page .ts-rnd-process{
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+  border:1px solid var(--line);border-radius:14px;overflow:hidden;
+  background:#fff;
+}
+.ts-partnership-page .ts-rnd-process .ts-step{
+  min-width:0;display:grid;grid-template-columns:38px minmax(0,1fr);
+  align-items:start;gap:18px;padding:26px 28px;
+  border:0;border-bottom:1px solid var(--line);border-right:1px solid var(--line);
+}
+.ts-partnership-page .ts-rnd-process .ts-step:nth-child(even){border-right:0}
+.ts-partnership-page .ts-rnd-process .ts-step:last-child{
+  grid-column:1/-1;border-right:0;border-bottom:0;
+}
+.ts-partnership-page .ts-rnd-process .ts-step-no{padding-top:4px}
+.ts-partnership-page .ts-rnd-process .ts-step-copy h3{
+  margin:0 0 10px;font-size:18px;line-height:1.5;
+}
+.ts-partnership-page .ts-rnd-process .ts-step-copy p{font-size:15px;line-height:1.8}
+
+/* Licensing — scope, market examples, agreement model. */
+.ts-partnership-page .ts-license-scope{gap:18px;margin-bottom:30px}
+.ts-partnership-page .ts-license-scope>div{min-height:88px}
+.ts-partnership-page .ts-license-example>div{
+  grid-template-columns:118px minmax(0,1fr);align-items:start;
+  padding-block:24px;
+}
+.ts-partnership-page .ts-license-example strong{font-size:17px;line-height:1.7}
+
+/* Four-step progression: same boundaries, alignment and spacing. */
+.ts-partnership-page .ts-partner-process{
+  border-radius:14px;align-items:stretch;
+}
+.ts-partnership-page .ts-partner-process .ts-step{gap:20px;padding:28px 24px}
+.ts-partnership-page .ts-partner-process .ts-step-copy h3{
+  font-size:19px;line-height:1.55;margin:0 0 10px;
+}
+.ts-partnership-page .ts-partner-process .ts-step-copy p{font-size:15px;line-height:1.8}
+
+@media(max-width:1119px){
+  .ts-partnership-page .ts-section{padding-block:66px}
+  .ts-partnership-page .ts-partner-models{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .ts-partnership-page .ts-partner-model:last-child{grid-column:1/-1}
+  .ts-partnership-page .ts-manufacturing-band{gap:28px}
+}
+@media(max-width:899px){
+  .ts-partnership-page .ts-partner-models{grid-template-columns:1fr}
+  .ts-partnership-page .ts-partner-model:last-child{grid-column:auto}
+  .ts-partnership-page .ts-manufacturing-band{grid-template-columns:1fr}
+  .ts-partnership-page .ts-rnd-process{grid-template-columns:1fr}
+  .ts-partnership-page .ts-rnd-process .ts-step,
+  .ts-partnership-page .ts-rnd-process .ts-step:nth-child(even){
+    grid-column:auto;border-right:0;border-bottom:1px solid var(--line);
+  }
+  .ts-partnership-page .ts-rnd-process .ts-step:last-child{border-bottom:0}
+}
+@media(max-width:767px){
+  .ts-partnership-page .ts-page-hero{padding-block:42px 48px}
+  .ts-partnership-page .ts-section{padding-block:52px}
+  .ts-partnership-page .ts-section .ts-section-head{margin-bottom:28px}
+  .ts-partnership-page .ts-section-head .ts-h2{font-size:27px}
+  .ts-partnership-page .ts-partner-model{padding:24px}
+  .ts-partnership-page .ts-partner-model h3{font-size:22px}
+  .ts-partnership-page .ts-partner-model p,
+  .ts-partnership-page .ts-support-copy,
+  .ts-partnership-page .ts-validation-note{font-size:15px}
+  .ts-partnership-page .ts-condition-grid{grid-template-columns:1fr}
+  .ts-partnership-page .ts-condition-grid>div{padding:16px 20px}
+  .ts-partnership-page .ts-rnd-process .ts-step{grid-template-columns:28px minmax(0,1fr);gap:14px;padding:22px 20px}
+  .ts-partnership-page .ts-rnd-process .ts-step-copy h3{font-size:17px}
+  .ts-partnership-page .ts-license-scope{grid-template-columns:1fr}
+  .ts-partnership-page .ts-license-example>div{grid-template-columns:1fr;gap:8px;padding-block:20px}
+  .ts-partnership-page .ts-partner-process{grid-template-columns:1fr}
+  .ts-partnership-page .ts-partner-process .ts-step{
+    border-right:0;border-bottom:1px solid var(--line);padding:23px 20px;
+  }
+  .ts-partnership-page .ts-partner-process .ts-step:last-child{border-bottom:0}
+}
+@media(prefers-reduced-motion:reduce){
+  .ts-partnership-page .ts-partner-model{transition:none}
+}
