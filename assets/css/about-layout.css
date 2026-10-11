@@ -1,0 +1,85 @@
+/* About TerraSAVE — hero image replacement and secondary brand image placement.
+   Scoped to this page; follows the existing 1440px site grid and type scale. */
+.ts-about-page .ts-page-hero .ts-about-visual{
+  width:100%;
+  aspect-ratio:2887 / 1140;
+  margin-top:36px;
+  overflow:hidden;
+  border-radius:16px;
+  background:var(--surface);
+}
+.ts-about-page .ts-page-hero .ts-about-visual img{
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+}
+.ts-about-page .ts-about-intro-layout{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(0,1.08fr);
+  align-items:center;
+  gap:clamp(36px,5vw,88px);
+}
+.ts-about-page .ts-about-intro-layout .ts-about-definition{
+  max-width:none;
+  width:100%;
+  min-width:0;
+  margin:0;
+  text-align:left;
+}
+.ts-about-page .ts-about-intro-layout .ts-about-definition strong{
+  font-size:clamp(28px,2.5vw,36px);
+  font-weight:650;
+  line-height:1.4;
+  letter-spacing:-.035em;
+}
+.ts-about-page .ts-about-intro-layout .ts-about-definition p{
+  max-width:660px;
+  margin:22px 0 0;
+  font-size:17px;
+  line-height:1.85;
+  color:var(--text);
+}
+.ts-about-page .ts-about-secondary-visual{
+  width:100%;
+  min-width:0;
+  aspect-ratio:8 / 5;
+  margin:0;
+  border-radius:14px;
+  overflow:hidden;
+  background:var(--surface);
+}
+.ts-about-page .ts-about-secondary-visual img{
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+}
+@media(max-width:899px){
+  .ts-about-page .ts-about-intro-layout{
+    grid-template-columns:1fr;
+    gap:28px;
+  }
+  .ts-about-page .ts-about-secondary-visual{
+    aspect-ratio:16 / 10;
+  }
+}
+@media(max-width:767px){
+  .ts-about-page .ts-page-hero .ts-about-visual{
+    margin-top:28px;
+    aspect-ratio:3 / 2;
+    border-radius:12px;
+  }
+  .ts-about-page .ts-about-intro-layout .ts-about-definition strong{
+    font-size:28px;
+  }
+  .ts-about-page .ts-about-intro-layout .ts-about-definition p{
+    font-size:16px;
+    margin-top:18px;
+  }
+  .ts-about-page .ts-about-secondary-visual{
+    border-radius:12px;
+  }
+}
