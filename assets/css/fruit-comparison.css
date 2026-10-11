@@ -38,3 +38,150 @@
  .ts-source-detail .ts-source-sublist{padding-left:20px}
  .ts-source-detail .ts-source-references{margin-top:24px;padding-top:26px}
 }
+
+/* Strawberry research appendix layout: align with full-width section and product comparison. */
+.fruit-strawberry #research.ts-section{
+  padding-block:72px 88px;
+}
+.fruit-strawberry #research .ts-shell{
+  width:min(var(--site-width),calc(100% - var(--gutter)*2));
+  margin-inline:auto;
+}
+.fruit-strawberry #research .ts-section-head{
+  width:100%;
+  max-width:none;
+  margin:0 0 36px;
+  text-align:left;
+}
+.fruit-strawberry #research .ts-section-head>.ts-kicker{
+  display:block;
+  margin:0 0 12px;
+  text-align:left;
+}
+.fruit-strawberry #research .ts-section-head>.ts-h2{
+  width:100%;
+  max-width:none;
+  margin:0;
+  font-size:clamp(30px,2.6vw,36px);
+  line-height:1.34;
+  letter-spacing:-.035em;
+  text-align:left;
+  text-wrap:balance;
+}
+.fruit-strawberry #research .ts-source-detail{
+  width:100%;
+  max-width:none;
+  margin:0;
+}
+.fruit-strawberry #research .ts-source-copy{
+  width:100%;
+  padding:38px 42px 42px;
+  border:1px solid var(--line);
+  border-radius:18px;
+  background:#fff;
+}
+.fruit-strawberry #research .ts-source-copy>h3{
+  margin:0 0 22px;
+  font-size:clamp(22px,2vw,28px);
+  line-height:1.4;
+  letter-spacing:-.025em;
+  font-weight:700;
+}
+.fruit-strawberry #research .ts-source-copy>p{
+  margin:0 0 22px;
+  font-size:17px;
+  line-height:1.85;
+}
+.fruit-strawberry #research .ts-source-list,
+.fruit-strawberry #research .ts-source-sublist,
+.fruit-strawberry #research .ts-source-references ul{
+  margin:0;
+  padding-left:24px;
+}
+.fruit-strawberry #research .ts-source-list>li,
+.fruit-strawberry #research .ts-source-sublist>li,
+.fruit-strawberry #research .ts-source-references li{
+  font-size:16px;
+  line-height:1.9;
+  color:var(--text);
+  overflow-wrap:break-word;
+}
+.fruit-strawberry #research .ts-source-list>li{
+  margin-bottom:17px;
+}
+.fruit-strawberry #research .ts-source-list>li:last-child{
+  margin-bottom:0;
+}
+.fruit-strawberry #research .ts-source-list>li>strong,
+.fruit-strawberry #research .ts-source-references li>strong{
+  color:var(--ink);
+  font-weight:700;
+}
+.fruit-strawberry #research .ts-source-sublist{
+  padding-left:24px;
+  margin:10px 0 4px;
+}
+.fruit-strawberry #research .ts-source-sublist>li{
+  margin-bottom:6px;
+}
+.fruit-strawberry #research .ts-source-references{
+  width:100%;
+  margin-top:24px;
+  padding:34px 42px 36px;
+  border:1px solid var(--line);
+  border-radius:18px;
+  background:#fff;
+}
+.fruit-strawberry #research .ts-source-references h3{
+  margin:0 0 18px;
+  font-size:22px;
+  line-height:1.4;
+  font-weight:700;
+}
+.fruit-strawberry #research .ts-source-references li{
+  margin-bottom:10px;
+}
+.fruit-strawberry #research .ts-source-references li:last-child{
+  margin-bottom:0;
+}
+@media(max-width:767px){
+  .fruit-strawberry #research.ts-section{
+    padding-block:48px 64px;
+  }
+  .fruit-strawberry #research .ts-section-head{
+    margin-bottom:24px;
+  }
+  .fruit-strawberry #research .ts-section-head>.ts-h2{
+    font-size:27px;
+    line-height:1.35;
+  }
+  .fruit-strawberry #research .ts-source-copy{
+    padding:24px 20px 28px;
+    border-radius:14px;
+  }
+  .fruit-strawberry #research .ts-source-copy>h3{
+    margin-bottom:16px;
+    font-size:21px;
+  }
+  .fruit-strawberry #research .ts-source-copy>p,
+  .fruit-strawberry #research .ts-source-list>li,
+  .fruit-strawberry #research .ts-source-sublist>li,
+  .fruit-strawberry #research .ts-source-references li{
+    font-size:15px;
+    line-height:1.8;
+  }
+  .fruit-strawberry #research .ts-source-list,
+  .fruit-strawberry #research .ts-source-references ul{
+    padding-left:20px;
+  }
+  .fruit-strawberry #research .ts-source-sublist{
+    padding-left:20px;
+  }
+  .fruit-strawberry #research .ts-source-references{
+    padding:24px 20px 28px;
+    border-radius:14px;
+  }
+  .fruit-strawberry #research .ts-source-references h3{
+    font-size:20px;
+  }
+}
