@@ -142,7 +142,7 @@
     plum:'后熟速度 · 软化'
   };
   const ethyleneZh={'매우 민감':'非常敏感','품종에 따라 보통':'因品种而异，通常中等','영향이 낮음':'影响较小','민감함':'敏感','보통':'中等','극도로 민감':'极其敏感'};
-  const storageZh = raw => String(raw).replaceAll('미숙과','未熟果').replaceAll('완숙과','成熟果').replaceAll('녹숙과','青熟果').replaceAll('부분후숙','部分后熟').replaceAll('약 ','约 ').replaceAll(' 단기',' 短期').replaceAll(' 장기',' 长期');
+  const storageZh = raw => String(raw).replaceAll('미숙과','未熟果').replaceAll('완숙과','成熟果').replaceAll('완숙','成熟').replaceAll('녹숙과','青熟果').replaceAll('부분후숙','部分后熟').replaceAll('약 ','约 ').replaceAll(' 단기',' 短期').replaceAll(' 장기',' 长期');
 
   const displayName = fruit => chinese ? (namesZh[fruit.slug] || fruit.en) : fruit.ko.replaceAll('샤인머스캣', '샤인머스켓');
   const units = value => escape(value).replace(/(-?\d+(?:\.\d+)?(?:[–~±-]\d+(?:\.\d+)?)?\s*(?:°C|℃|%))/g, '<span class="ts-unit">$1</span>');
