@@ -172,7 +172,7 @@
         (filter === 'climacteric' && f.ripening.includes('클라이맥테릭') && !f.ripening.startsWith('비')) ||
         (filter === 'non' && f.ripening.startsWith('비')) ||
         (filter === 'high' && /high/i.test(f.ethylene))
-      );
+      ).sort((a, b) => Number(available.has(b.slug)) - Number(available.has(a.slug))); // 솔루션 제공 → 연구중
       grid.innerHTML = list.map(card).join('');
       const count = document.getElementById('fruitCount');
       if (count) count.textContent = chinese ? `${list.length}种水果` : `${list.length}개 과일`;
