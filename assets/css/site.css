@@ -672,3 +672,79 @@ body.ts-home-lightbox-open{overflow:hidden}
  .footer-contact-line>*{max-width:100%;overflow-wrap:anywhere}
  .footer-parent-link{max-width:100%;overflow-wrap:anywhere}
 }
+
+
+/* Shared packaging consultation modal */
+html.ts-modal-locked,body.ts-modal-locked{overflow:hidden}
+.ts-consult-modal{
+  position:fixed;inset:0;z-index:3000;
+  display:flex;align-items:center;justify-content:center;
+  padding:24px;opacity:0;visibility:hidden;pointer-events:none;
+  transition:opacity .2s ease,visibility .2s ease;
+}
+.ts-consult-modal.is-open{opacity:1;visibility:visible;pointer-events:auto}
+.ts-consult-backdrop{position:absolute;inset:0;background:rgba(17,24,19,.48);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px)}
+.ts-consult-dialog{
+  position:relative;z-index:1;width:min(560px,100%);
+  max-height:calc(100dvh - 48px);overflow:auto;
+  padding:38px;border:1px solid var(--line);border-radius:16px;
+  background:#fff;box-shadow:0 24px 80px rgba(18,29,22,.18);
+}
+.ts-consult-close{
+  position:absolute;right:18px;top:18px;
+  display:inline-flex;align-items:center;justify-content:center;
+  width:38px;height:38px;padding:0;border:1px solid var(--line);
+  border-radius:50%;background:#fff;color:var(--ink);
+  font:400 25px/1 Arial,sans-serif;cursor:pointer;
+}
+.ts-consult-dialog>.ts-kicker{display:block;margin:0 48px 13px 0}
+.ts-consult-dialog h2{
+  margin:0;font-size:clamp(28px,3vw,34px);line-height:1.32;
+  letter-spacing:-.035em;font-weight:700;color:var(--ink);
+}
+.ts-consult-description{
+  margin:16px 0 25px;font-size:16px;line-height:1.78;
+  color:var(--text);word-break:keep-all;
+}
+.ts-consult-email{
+  display:flex;align-items:center;justify-content:space-between;gap:18px;
+  padding:17px 18px;border:1px solid var(--line);border-radius:10px;background:var(--surface);
+}
+.ts-consult-email span{font-size:13px;font-weight:650;color:var(--muted)}
+.ts-consult-email a{font-size:16px;font-weight:650;color:var(--ink);text-decoration:underline;text-underline-offset:3px}
+.ts-consult-guide{margin:22px 0 0}
+.ts-consult-guide strong{font-size:14px;font-weight:700}
+.ts-consult-guide ul{
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 18px;
+  margin:12px 0 0;padding:0;list-style:none;
+}
+.ts-consult-guide li{
+  position:relative;padding-left:15px;font-size:14px;line-height:1.65;color:var(--text);
+}
+.ts-consult-guide li::before{
+  content:'';position:absolute;left:0;top:.7em;width:5px;height:5px;
+  border-radius:50%;background:var(--ink);
+}
+.ts-consult-note{
+  margin:19px 0 0;padding-top:18px;border-top:1px solid var(--line);
+  font-size:13px;line-height:1.7;color:var(--muted);
+}
+.ts-consult-actions{display:flex;gap:9px;margin-top:25px}
+.ts-consult-actions .ts-button{flex:1;justify-content:center;text-align:center}
+.ts-consult-actions .ts-consult-form-link{background:#fff;color:var(--ink);border:1px solid var(--line-strong)}
+.ts-consult-close:focus-visible,.ts-consult-email a:focus-visible,.ts-consult-actions a:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+@media(max-width:600px){
+  .ts-consult-modal{align-items:flex-end;padding:10px}
+  .ts-consult-dialog{
+    width:100%;max-height:calc(100dvh - 20px);
+    padding:31px 22px 24px;border-radius:15px;
+  }
+  .ts-consult-close{right:14px;top:14px;width:36px;height:36px}
+  .ts-consult-dialog h2{font-size:27px}
+  .ts-consult-description{margin:14px 0 20px;font-size:15px}
+  .ts-consult-email{align-items:flex-start;flex-direction:column;gap:5px;padding:14px 15px}
+  .ts-consult-guide ul{grid-template-columns:1fr;gap:5px}
+  .ts-consult-actions{flex-direction:column}
+  .ts-consult-actions .ts-button{width:100%}
+}
+@media(prefers-reduced-motion:reduce){.ts-consult-modal{transition:none}}
