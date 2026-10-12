@@ -1,4 +1,4 @@
-/* TerraSAVE homepage avocado sequence: no white flash, smooth crossfades. */
+/* TerraSAVE homepage avocado sequence: 10 steps at a relaxed pace, without white flashes. */
 (() => {
   'use strict';
 
@@ -8,24 +8,22 @@
   if (frames.length !== 2) return;
 
   const sources = [
-  "https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261011-235144-1-057e21c9.webp",
-  "https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261011-235144-2-63d3c724.webp",
-  "https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261011-235145-3-992d8388.webp",
-  "https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261011-235145-4-f3469e8c.webp",
-  "https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261011-235146-5-dada5ef4.webp",
-  "https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261011-235146-6-eaaf6a14.webp",
-  "https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261011-235147-7-bfe2e0c4.webp",
-  "https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261011-235147-8-5b88bb64.webp",
-  "https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261011-235148-9-c076ba57.webp",
-  "https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261011-235148-10-c236e10f.webp",
-  "https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261011-235149-11-e32e8d2c.webp",
-  "https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261011-235149-12-49892539.webp"
+  "https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261012-002708-1-083ec8f4.webp",
+  "https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261012-002709-2-cca19111.webp",
+  "https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261012-002709-3-d4c30e60.webp",
+  "https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261012-002709-4-be037d2b.webp",
+  "https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261012-002710-5-e7dd403e.webp",
+  "https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261012-002710-6-4e692733.webp",
+  "https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261012-002710-7-73a94c2c.webp",
+  "https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261012-002711-8-be55b2cd.webp",
+  "https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261012-002711-9-f2515279.webp",
+  "https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261012-002711-10-ed415c70.webp"
 ];
-  const FRAME_MS = 420;
-  const FIRST_MS = 700;
-  const LAST_MS = 1600;
-  const FADE_MS = 120;
-  const LOOP_FADE_MS = 950;
+  const FRAME_MS = 520;
+  const FIRST_MS = 900;
+  const LAST_MS = 2000;
+  const FADE_MS = 140;
+  const LOOP_FADE_MS = 1100;
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
   let index = 0;
@@ -105,7 +103,7 @@
         incoming.style.transition = '';
       }, fadeDuration + 24);
 
-      // The 420ms normal cadence is retained; loop dissolve gets additional time.
+      // The 520ms normal cadence is retained; loop dissolve gets additional time.
       schedule(returningToStart ? fadeDuration + FIRST_MS : intervalFor(index), token);
     };
 
