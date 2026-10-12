@@ -126,7 +126,6 @@
     guide: ['产品品类', '当前包装方式 / 希望规格', '预计数量', '储存与运输条件'],
     note: '如需发送照片、规格书或其他附件，建议直接通过电子邮件咨询。',
     mailButton: '发送邮件',
-    formButton: '填写详细咨询表',
     close: '关闭咨询窗口',
     subject: '[TerraSAVE] 包装方案咨询',
     body: '您好，TerraSAVE。%0D%0A%0D%0A产品品类：%0D%0A当前包装方式 / 希望规格：%0D%0A预计数量：%0D%0A储存与运输条件：%0D%0A其他咨询内容：'
@@ -139,7 +138,6 @@
     guide: ['취급 품목', '현재 포장 방식 / 희망 규격', '예상 수량', '보관·운송 조건'],
     note: '사진, 규격서 등 첨부자료가 있는 경우 이메일로 직접 문의해 주시는 것이 가장 편리합니다.',
     mailButton: '메일 보내기',
-    formButton: '상세 상담폼 작성하기',
     close: '상담창 닫기',
     subject: '[TerraSAVE] 포장 상담 문의',
     body: '안녕하세요, TerraSAVE 포장 상담 문의드립니다.%0D%0A%0D%0A취급 품목：%0D%0A현재 포장 방식 / 희망 규격：%0D%0A예상 수량：%0D%0A보관·운송 조건：%0D%0A기타 문의 내용：'
@@ -182,19 +180,12 @@
         <p class="ts-consult-note">${consultationCopy.note}</p>
         <div class="ts-consult-actions">
           <a class="ts-button is-dark is-large" href="mailto:info@terracle.im?subject=${encodeURIComponent(consultationCopy.subject)}&body=${consultationCopy.body}">${consultationCopy.mailButton}</a>
-          <a class="ts-button is-large ts-consult-form-link" data-contact-form-link href="${new URL('contact.html', window.location.href).href}">${consultationCopy.formButton}</a>
         </div>
       </section>`;
     document.body.appendChild(consultationModal);
 
     consultationModal.addEventListener('click', event => {
       if (event.target.closest('[data-consult-close]')) closeConsultation();
-      const formLink = event.target.closest('[data-contact-form-link]');
-      if (formLink && page === 'contact.html') {
-        event.preventDefault();
-        closeConsultation();
-        document.getElementById('contactForm')?.scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth', block: 'start' });
-      }
     });
 
     return consultationModal;
@@ -216,7 +207,7 @@
     const link = event.target.closest('a[href]');
     if (!link || link.hasAttribute('data-contact-form-link') || link.closest('.ts-consult-modal')) return;
     const href = link.getAttribute('href') || '';
-    let isConsultation = href === '#inquiry' || link.matches('.header-cta, .nav-contact, [data-consult-trigger]') ||
+    let isConsultation = href === '#inquiry' || href === '#consult' || link.matches('.header-cta, .nav-contact, [data-consult-trigger]') ||
       (!link.closest('.footer-contact-line, .ts-contact-direct') && /^mailto:info@terracle\.im/i.test(href));
     if (!isConsultation && !href.startsWith('mailto:') && !href.startsWith('tel:') && !href.startsWith('javascript:')) {
       try {
@@ -251,6 +242,10 @@
       first.focus();
     }
   });
+
+  if (window.location.hash === '#consult') {
+    window.requestAnimationFrame(() => openConsultation(null));
+  }
 
   const escape = value => String(value ?? '').replace(/[&<>"']/g, c => ({
     '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
