@@ -115,6 +115,142 @@
   setHeaderState();
   window.addEventListener('scroll', setHeaderState, { passive: true });
 
+
+  // Packaging consultation modal: keep quick email guidance available from every CTA.
+  const consultationCopy = chinese ? {
+    kicker: 'PACKAGING CONSULTATION',
+    title: '咨询包装方案',
+    description: '请告诉我们产品品类、当前包装方式、所需规格和预计数量。我们确认后会通过邮件回复。',
+    emailLabel: '咨询邮箱',
+    guideTitle: '邮件中建议包含',
+    guide: ['产品品类', '当前包装方式 / 希望规格', '预计数量', '储存与运输条件'],
+    note: '如需发送照片、规格书或其他附件，建议直接通过电子邮件咨询。',
+    mailButton: '通过邮件咨询',
+    formButton: '填写详细咨询表',
+    close: '关闭咨询窗口',
+    subject: '[TerraSAVE] 包装方案咨询',
+    body: '您好，TerraSAVE。%0D%0A%0D%0A产品品类：%0D%0A当前包装方式 / 希望规格：%0D%0A预计数量：%0D%0A储存与运输条件：%0D%0A其他咨询内容：'
+  } : {
+    kicker: 'PACKAGING CONSULTATION',
+    title: '포장 상담하기',
+    description: '취급 품목과 현재 포장 방식, 필요한 규격과 예상 수량을 알려주시면 확인 후 메일로 안내드립니다.',
+    emailLabel: '문의 메일',
+    guideTitle: '메일에 함께 적어주세요',
+    guide: ['취급 품목', '현재 포장 방식 / 희망 규격', '예상 수량', '보관·운송 조건'],
+    note: '사진, 규격서 등 첨부자료가 있는 경우 이메일로 직접 문의해 주시는 것이 가장 편리합니다.',
+    mailButton: '이메일로 문의하기',
+    formButton: '상세 상담폼 작성하기',
+    close: '상담창 닫기',
+    subject: '[TerraSAVE] 포장 상담 문의',
+    body: '안녕하세요, TerraSAVE 포장 상담 문의드립니다.%0D%0A%0D%0A취급 품목：%0D%0A현재 포장 방식 / 희망 규격：%0D%0A예상 수량：%0D%0A보관·운송 조건：%0D%0A기타 문의 내용：'
+  };
+
+  let consultationModal;
+  let consultationLastFocus;
+
+  const closeConsultation = () => {
+    if (!consultationModal?.classList.contains('is-open')) return;
+    consultationModal.classList.remove('is-open');
+    consultationModal.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('ts-modal-locked');
+    document.documentElement.classList.remove('ts-modal-locked');
+    release('consultation');
+    consultationLastFocus?.focus?.({ preventScroll: true });
+  };
+
+  const ensureConsultationModal = () => {
+    if (consultationModal) return consultationModal;
+    consultationModal = document.createElement('div');
+    consultationModal.className = 'ts-consult-modal';
+    consultationModal.id = 'consultationModal';
+    consultationModal.setAttribute('aria-hidden', 'true');
+    consultationModal.innerHTML = `
+      <div class="ts-consult-backdrop" data-consult-close></div>
+      <section class="ts-consult-dialog" role="dialog" aria-modal="true" aria-labelledby="consultationTitle">
+        <button class="ts-consult-close" type="button" data-consult-close aria-label="${consultationCopy.close}">×</button>
+        <span class="ts-kicker">${consultationCopy.kicker}</span>
+        <h2 id="consultationTitle">${consultationCopy.title}</h2>
+        <p class="ts-consult-description">${consultationCopy.description}</p>
+        <div class="ts-consult-email">
+          <span>${consultationCopy.emailLabel}</span>
+          <a href="mailto:info@terracle.im">info@terracle.im</a>
+        </div>
+        <div class="ts-consult-guide">
+          <strong>${consultationCopy.guideTitle}</strong>
+          <ul>${consultationCopy.guide.map(item => `<li>${item}</li>`).join('')}</ul>
+        </div>
+        <p class="ts-consult-note">${consultationCopy.note}</p>
+        <div class="ts-consult-actions">
+          <a class="ts-button is-dark is-large" href="mailto:info@terracle.im?subject=${encodeURIComponent(consultationCopy.subject)}&body=${consultationCopy.body}">${consultationCopy.mailButton}</a>
+          <a class="ts-button is-large ts-consult-form-link" data-contact-form-link href="${new URL('contact.html', window.location.href).href}">${consultationCopy.formButton}</a>
+        </div>
+      </section>`;
+    document.body.appendChild(consultationModal);
+
+    consultationModal.addEventListener('click', event => {
+      if (event.target.closest('[data-consult-close]')) closeConsultation();
+      const formLink = event.target.closest('[data-contact-form-link]');
+      if (formLink && page === 'contact.html') {
+        event.preventDefault();
+        closeConsultation();
+        document.getElementById('contactForm')?.scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth', block: 'start' });
+      }
+    });
+
+    return consultationModal;
+  };
+
+  const openConsultation = trigger => {
+    closeMenu();
+    const modal = ensureConsultationModal();
+    consultationLastFocus = trigger || document.activeElement;
+    modal.classList.add('is-open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('ts-modal-locked');
+    document.documentElement.classList.add('ts-modal-locked');
+    isolate('consultation', document.querySelectorAll('header, main, footer, .skip-link'));
+    requestAnimationFrame(() => modal.querySelector('.ts-consult-close')?.focus({ preventScroll: true }));
+  };
+
+  document.addEventListener('click', event => {
+    const link = event.target.closest('a[href]');
+    if (!link || link.hasAttribute('data-contact-form-link')) return;
+    const href = link.getAttribute('href') || '';
+    let isConsultation = href === '#inquiry';
+    if (!isConsultation && !href.startsWith('mailto:') && !href.startsWith('tel:') && !href.startsWith('javascript:')) {
+      try {
+        const url = new URL(link.href, window.location.href);
+        isConsultation = url.origin === window.location.origin && /\/contact\.html$/.test(url.pathname);
+      } catch (_) {}
+    }
+    if (!isConsultation) return;
+    event.preventDefault();
+    event.stopPropagation();
+    openConsultation(link);
+  }, true);
+
+  document.addEventListener('keydown', event => {
+    if (!consultationModal?.classList.contains('is-open')) return;
+    if (event.key === 'Escape') {
+      event.preventDefault();
+      closeConsultation();
+      return;
+    }
+    if (event.key !== 'Tab') return;
+    const focusable = [...consultationModal.querySelectorAll('a[href],button:not([disabled])')]
+      .filter(element => element.getClientRects().length);
+    if (!focusable.length) return;
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
+    }
+  });
+
   const escape = value => String(value ?? '').replace(/[&<>"']/g, c => ({
     '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
   }[c]));
