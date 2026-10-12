@@ -20,7 +20,7 @@
   object-position: center;
   opacity: 0;
   z-index: 0;
-  transition: opacity 120ms ease-in-out;
+  transition: opacity 140ms ease-in-out;
   backface-visibility: hidden;
 }
 .ts-home-page .ts-avocado-hero-frame.is-active {
