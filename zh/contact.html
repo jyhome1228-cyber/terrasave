@@ -1,97 +1,13 @@
-<!DOCTYPE html>
-
+<!doctype html>
 <html lang="zh-CN">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1" name="viewport"/>
-<meta content="联系 TerraSAVE，咨询产品、样品测试及合作业务。" name="description"/>
-<meta content="#ffffff" name="theme-color"/>
-<title>Contact — TerraSave</title>
-
-
-<link href="../assets/css/site.css?v=20261012-consult2" rel="stylesheet"/><link href="../assets/css/contact-layout.css?v=20261011-2" rel="stylesheet"/><link href="../assets/img/terrasave-favicon.svg" rel="icon" type="image/svg+xml"/><link rel="alternate" hreflang="ko" href="../contact.html"/><link rel="alternate" hreflang="zh-CN" href="contact.html"/></head>
-<body class="ts-contact-page">
-<a class="skip-link" href="#main-content">跳转至正文</a><header class="site-header" id="siteHeader"><div class="ts-shell header-inner"><a aria-label="TerraSave Home" class="brand" href="index.html"><img alt="TerraSave" class="brand-logo" height="28" src="../assets/img/terrasave-logo.svg" width="136"/></a><nav aria-label="查看相关内容" class="nav" id="siteNav"><a href="about.html">关于 TerraSAVE</a><a href="product.html">产品</a><a href="fruits.html">水果保鲜资料</a><a href="partnership.html">合作伙伴</a><a href="why-terrasave.html">为何选择 TerraSAVE</a><a aria-current="page" class="nav-contact" href="contact.html">咨询包装方案</a></nav><a class="ts-button header-cta" href="#inquiry">咨询包装方案</a><button aria-controls="siteNav" aria-expanded="false" aria-label="查看相关内容" class="menu-toggle" id="menuToggle" type="button"><span aria-hidden="true" class="menu-icon"><span></span><span></span><span></span></span></button></div></header>
-<main id="main-content">
-  <section class="ts-contact-section" aria-labelledby="contactTitle">
-    <div class="ts-shell">
-      <div class="ts-contact-content">
-        <div class="ts-contact-heading">
-          <span class="ts-kicker">CONTACT</span>
-          <h1 class="ts-h1" id="contactTitle">联系我们</h1>
-          <p class="ts-body">如需咨询产品采购、样品测试、定制包装开发或合作伙伴关系，请提交需求。<br class="desktop-break"/> 我们确认相关信息后将与您联系。</p>
-        </div>
-        <form class="ts-contact-form" id="contactForm" novalidate>
-          <div class="ts-contact-fields">
-            <div class="ts-contact-field is-full">
-              <label for="inquiryType">咨询类型 <span aria-hidden="true">*</span></label>
-              <select id="inquiryType" name="inquiryType" required>
-                <option value="" selected disabled>请选择咨询类型</option>
-                <option value="제품 구매 및 공급">产品采购与供应</option>
-                <option value="샘플·테스트">样品及测试</option>
-                <option value="맞춤형 제품개발">定制产品开发</option>
-                <option value="공동 R&amp;D·라이선싱">联合研发及技术授权</option>
-                <option value="기타 문의">其他咨询</option>
-              </select>
-            </div>
-            <div class="ts-contact-field">
-              <label for="contactName">联系人姓名 <span aria-hidden="true">*</span></label>
-              <input id="contactName" name="name" type="text" required maxlength="100" autocomplete="name" placeholder="请输入姓名"/>
-            </div>
-            <div class="ts-contact-field">
-              <label for="contactCompany">公司名称</label>
-              <input id="contactCompany" name="company" type="text" maxlength="120" autocomplete="organization" placeholder="公司或机构名称"/>
-            </div>
-            <div class="ts-contact-field">
-              <label for="contactEmail">电子邮箱 <span aria-hidden="true">*</span></label>
-              <input id="contactEmail" name="email" type="email" required maxlength="200" autocomplete="email" placeholder="example@company.com"/>
-            </div>
-            <div class="ts-contact-field">
-              <label for="contactPhone">联系电话</label>
-              <input id="contactPhone" name="phone" type="tel" maxlength="50" autocomplete="tel" placeholder="010-0000-0000"/>
-            </div>
-            <div class="ts-contact-field is-full">
-              <label for="contactMessage">咨询内容 <span aria-hidden="true">*</span></label>
-              <textarea id="contactMessage" name="message" required maxlength="6000" rows="6" placeholder="请填写产品品类、包装形式、预计数量、储运条件等需求。"></textarea>
-            </div>
-          </div>
-          <div class="ts-contact-consent">
-            <p><strong>个人信息收集与使用说明</strong></p>
-            <p>收集目的：受理并回复包装咨询、管理咨询记录。必填项目：咨询类型、联系人、电子邮箱、咨询内容。选填项目：公司名称、联系电话。保存期限：自提交之日起365天。</p>
-            <label for="privacyConsent"><input type="checkbox" id="privacyConsent" name="privacyConsent" value="yes" required/> <span>我已阅读并同意个人信息收集与使用条款。（必选）</span></label>
-          </div>
-          <div class="ts-contact-website" aria-hidden="true"><label for="contactWebsite">Website</label><input id="contactWebsite" name="website" type="text" autocomplete="off" tabindex="-1"/></div>
-          <div class="ts-contact-actions">
-            <p class="ts-contact-help">提交后，我们的工作人员将查看并回复您的咨询。如需发送附件，请通过电子邮件发送。</p>
-            <button class="ts-button is-dark ts-contact-submit" type="submit" id="contactSubmit">提交咨询</button>
-          </div>
-          <p class="ts-contact-status" id="formStatus" role="status" aria-live="polite"></p>
-          <noscript><p class="ts-contact-help">也可直接通过邮件应用向 <a href="mailto:info@terracle.im">info@terracle.im</a>发送咨询。</p></noscript>
-        </form>
-        <div class="ts-contact-direct">
-          <span class="ts-kicker">DIRECT CONTACT</span>
-          <a href="mailto:info@terracle.im">info@terracle.im</a>
-          <p>如有附件，请通过邮件直接发送。</p>
-        </div>
-      </div>
-    </div>
-  </section>
-</main>
-<footer class="footer">
-<div class="footer-shell">
-<div class="footer-primary">
-<div class="footer-brand-block">
-<img alt="TerraSave" class="footer-logo" height="30" src="../assets/img/terrasave-logo.svg" width="150"/>
-<p class="footer-tagline">Keep Fresh, SAVE Loss.</p>
-<p class="footer-description">根据水果特性及物流条件，研发更有效的保鲜包装方案。</p>
-</div>
-<nav aria-label="Footer navigation" class="footer-nav-main">
-<a href="about.html">关于 TerraSAVE</a><a href="product.html">产品</a><a href="fruits.html">水果保鲜资料</a><a href="partnership.html">合作伙伴</a><a href="why-terrasave.html">为何选择 TerraSAVE</a>
-</nav>
-</div>
-<div class="footer-secondary"><div class="footer-contact-line"><a href="mailto:info@terracle.im">info@terracle.im</a><span>032-710-2891~2</span><span>368-81-02387</span></div><a class="footer-parent-link" href="https://kr.terracle.im/" rel="noopener noreferrer" target="_blank">Terracle 研发的保鲜包装解决方案 ↗</a></div>
-<div class="footer-legal"><span>TerraSave</span><span>Copyright © 2026 Terracle. All Rights Reserved.</span></div>
-</div></footer>
-
-<script src="../assets/js/site.js?v=20261012-consult2"></script><script src="contact-zh.js?v=20261012-admin2" defer></script></body>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,follow">
+<title>包装咨询 — TerraSAVE</title>
+<meta http-equiv="refresh" content="0;url=index.html#consult">
+<link rel="canonical" href="https://terrasave.co.kr/zh/index.html">
+<script>window.location.replace('index.html#consult');</script>
+</head>
+<body><p>咨询页面已合并。 <a href="index.html#consult">前往包装咨询</a></p></body>
 </html>
