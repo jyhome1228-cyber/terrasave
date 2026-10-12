@@ -1,97 +1,13 @@
-<!DOCTYPE html>
-
+<!doctype html>
 <html lang="ko">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1" name="viewport"/>
-<meta content="TerraSave 문의 — 과일 보호망 적용, 샘플 테스트, B2B 및 공동 검토." name="description"/>
-<meta content="#ffffff" name="theme-color"/>
-<title>Contact — TerraSave</title>
-
-
-<link href="assets/css/site.css?v=20261012-consult2" rel="stylesheet"/><link href="assets/css/contact-layout.css?v=20261012-admin1" rel="stylesheet"/><link href="assets/img/terrasave-favicon.svg" rel="icon" type="image/svg+xml"/></head>
-<body class="ts-contact-page">
-<a class="skip-link" href="#main-content">본문 바로가기</a><header class="site-header" id="siteHeader"><div class="ts-shell header-inner"><a aria-label="TerraSave Home" class="brand" href="index.html"><img alt="TerraSave" class="brand-logo" height="28" src="assets/img/terrasave-logo.svg" width="136"/></a><nav aria-label="주 메뉴" class="nav" id="siteNav"><a href="about.html">About TerraSAVE</a><a href="product.html">Product</a><a href="fruits.html">Freshness Library</a><a href="partnership.html">Partnership</a><a href="why-terrasave.html">Why TerraSAVE</a><a aria-current="page" class="nav-contact" href="contact.html">포장 상담하기</a></nav><a class="ts-button header-cta" href="#inquiry">포장 상담하기</a><button aria-controls="siteNav" aria-expanded="false" aria-label="메뉴 열기" class="menu-toggle" id="menuToggle" type="button"><span aria-hidden="true" class="menu-icon"><span></span><span></span><span></span></span></button></div></header>
-<main id="main-content">
-  <section class="ts-contact-section" aria-labelledby="contactTitle">
-    <div class="ts-shell">
-      <div class="ts-contact-content">
-        <div class="ts-contact-heading">
-          <span class="ts-kicker">CONTACT</span>
-          <h1 class="ts-h1" id="contactTitle">문의하기</h1>
-          <p class="ts-body">제품 구매 및 샘플 테스트, 맞춤형 포장 개발과 파트너십에 대한 문의를 남겨주세요.<br class="desktop-break"/> 검토에 필요한 내용을 확인한 후 안내드리겠습니다.</p>
-        </div>
-        <form class="ts-contact-form" id="contactForm" novalidate>
-          <div class="ts-contact-fields">
-            <div class="ts-contact-field is-full">
-              <label for="inquiryType">문의 유형 <span aria-hidden="true">*</span></label>
-              <select id="inquiryType" name="inquiryType" required>
-                <option value="" selected disabled>문의 유형을 선택해 주세요</option>
-                <option value="제품 구매 및 공급">제품 구매 및 공급</option>
-                <option value="샘플·테스트">샘플·테스트</option>
-                <option value="맞춤형 제품개발">맞춤형 제품개발</option>
-                <option value="공동 R&amp;D·라이선싱">공동 R&amp;D·라이선싱</option>
-                <option value="기타 문의">기타 문의</option>
-              </select>
-            </div>
-            <div class="ts-contact-field">
-              <label for="contactName">담당자명 <span aria-hidden="true">*</span></label>
-              <input id="contactName" name="name" type="text" required maxlength="100" autocomplete="name" placeholder="성함을 입력해 주세요"/>
-            </div>
-            <div class="ts-contact-field">
-              <label for="contactCompany">회사명</label>
-              <input id="contactCompany" name="company" type="text" maxlength="120" autocomplete="organization" placeholder="회사 또는 기관명"/>
-            </div>
-            <div class="ts-contact-field">
-              <label for="contactEmail">이메일 <span aria-hidden="true">*</span></label>
-              <input id="contactEmail" name="email" type="email" required maxlength="200" autocomplete="email" placeholder="example@company.com"/>
-            </div>
-            <div class="ts-contact-field">
-              <label for="contactPhone">연락처</label>
-              <input id="contactPhone" name="phone" type="tel" maxlength="50" autocomplete="tel" placeholder="010-0000-0000"/>
-            </div>
-            <div class="ts-contact-field is-full">
-              <label for="contactMessage">문의 내용 <span aria-hidden="true">*</span></label>
-              <textarea id="contactMessage" name="message" required maxlength="6000" rows="6" placeholder="취급 품목, 포장 형태, 필요한 수량, 보관·운송 조건 등 문의 내용을 작성해 주세요."></textarea>
-            </div>
-          </div>
-          <div class="ts-contact-consent">
-            <p><strong>개인정보 수집·이용 안내</strong></p>
-            <p>수집 목적: 포장 상담 접수·답변 및 이력 관리. 필수 항목: 문의 유형, 담당자명, 이메일, 문의 내용. 선택 항목: 회사명, 연락처. 보유기간: 접수일로부터 365일.</p>
-            <label for="privacyConsent"><input type="checkbox" id="privacyConsent" name="privacyConsent" value="yes" required/> <span>개인정보 수집 및 이용에 동의합니다. (필수)</span></label>
-          </div>
-          <div class="ts-contact-website" aria-hidden="true"><label for="contactWebsite">Website</label><input id="contactWebsite" name="website" type="text" autocomplete="off" tabindex="-1"/></div>
-          <div class="ts-contact-actions">
-            <p class="ts-contact-help">접수 후 관리자가 내용을 확인하여 안내드립니다. 첨부파일은 이메일로 보내주세요.</p>
-            <button class="ts-button is-dark ts-contact-submit" type="submit" id="contactSubmit">상담 접수하기</button>
-          </div>
-          <p class="ts-contact-status" id="formStatus" role="status" aria-live="polite"></p>
-          <noscript><p class="ts-contact-help">메일 앱을 직접 열어 <a href="mailto:info@terracle.im">info@terracle.im</a>로 문의해 주세요.</p></noscript>
-        </form>
-        <div class="ts-contact-direct">
-          <span class="ts-kicker">DIRECT CONTACT</span>
-          <a href="mailto:info@terracle.im">info@terracle.im</a>
-          <p>첨부할 자료가 있는 경우 이메일로 직접 전달해 주세요.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-</main>
-<footer class="footer">
-<div class="footer-shell">
-<div class="footer-primary">
-<div class="footer-brand-block">
-<img alt="TerraSave" class="footer-logo" height="30" src="assets/img/terrasave-logo.svg" width="150"/>
-<p class="footer-tagline">Keep Fresh, SAVE Loss.</p>
-<p class="footer-description">과일별 특성과 유통 조건을 바탕으로 신선도 유지에 필요한 포장 솔루션을 연구합니다.</p>
-</div>
-<nav aria-label="Footer navigation" class="footer-nav-main">
-<a href="about.html">About TerraSAVE</a><a href="product.html">Product</a><a href="fruits.html">Freshness Library</a><a href="partnership.html">Partnership</a><a href="why-terrasave.html">Why TerraSAVE</a>
-</nav>
-</div>
-<div class="footer-secondary"><div class="footer-contact-line"><a href="mailto:info@terracle.im">info@terracle.im</a><span>032-710-2891~2</span><span>368-81-02387</span></div><a class="footer-parent-link" href="https://kr.terracle.im/" rel="noopener noreferrer" target="_blank">Terracle에서 만든 신선도 유지 포장 솔루션 ↗</a></div>
-<div class="footer-legal"><span>TerraSave</span><span>Copyright © 2026 Terracle. All Rights Reserved.</span></div>
-</div></footer>
-
-<script src="assets/js/site.js?v=20261012-consult2"></script><script src="assets/js/contact.js?v=20261012-admin1" defer></script></body>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,follow">
+<title>포장 상담 — TerraSAVE</title>
+<meta http-equiv="refresh" content="0;url=index.html#consult">
+<link rel="canonical" href="https://terrasave.co.kr/index.html">
+<script>window.location.replace('index.html#consult');</script>
+</head>
+<body><p>문의 페이지가 통합되었습니다. <a href="index.html#consult">포장 상담하기</a></p></body>
 </html>
