@@ -34,15 +34,25 @@
    sections.push(sec('existing-solutions','EXISTING SOLUTIONS',authored.existing.title,authored.existing.paragraphs.join(' '),authoredCards(authored.existing.cards),true));
    sections.push(sec('terrasave-solution',authored.solution.kicker,authored.solution.title,authored.solution.paragraphs.join(' '),(authored.solution.cards.length?authoredCards(authored.solution.cards):'')+authoredComparison(authored.solution.comparison)+`<div class="ts-action-group is-centered"><a class="ts-button is-dark is-large" href="product.html">了解产品</a></div>`));
  }else{
- sections.push(sec('characteristics','水果特点与品质风险',`${name}在储运中需要注意什么？`,'根据水果特点、成熟度及配送环境进行综合评估。',`<div class="ts-application-list">${rows.map(r=>`<article class="ts-application-row"><span class="ts-kicker">${r[0]}</span><h3>${r[1]}</h3><div class="ts-row-body"><p>${r[2]}</p></div></article>`).join('')}</div>`));
- sections.push(sec('existing-solutions','储存与包装管理','没有适用于所有水果的单一方案。','应同时考虑储存温湿度、产品状态及运输周期。',`<div class="ts-approach-grid" data-columns="3">
-  <article class="ts-approach"><span class="ts-kicker">01</span><div><h3>温湿度管理</h3><p>${source[2]}</p></div></article>
-  <article class="ts-approach"><span class="ts-kicker">02</span><div><h3>物理保护</h3><p>根据水果大小、形状和包装方式评估摩擦、震动与挤压风险。</p></div></article>
-  <article class="ts-approach"><span class="ts-kicker">03</span><div><h3>验证后应用</h3><p>结合实际流通环境试验包装效果，不根据单次图片推断定量性能。</p></div></article></div>`,true));
- sections.push(sec('terrasave-solution','TerraSAVE 解决方案',`针对${name}的包装应用方向`,'先确定需要保护什么，再选择合适的包装产品与功能。',`<div class="ts-approach-grid" data-columns="2">
-  <article class="ts-approach"><span class="ts-kicker">TerraSAVE / 01</span><div><h3>按品类评估</h3><p>${source[3]}</p></div></article>
-  <article class="ts-approach"><span class="ts-kicker">TerraSAVE / 02</span><div><h3>结合实际需求验证</h3><p>根据现有包装、规格、储运距离与目标保存期，与客户共同确定试验和适用范围。</p></div></article></div><div class="ts-action-group is-centered"><a class="ts-button is-dark is-large" href="product.html">了解产品</a></div>`));
-
+   const genericRows=items=>`<div class="ts-application-list">${items.map((it,i)=>`<article class="ts-application-row"><span class="ts-kicker">${String(i+1).padStart(2,'0')}</span><h3>${it.title}</h3><div class="ts-row-body"><p>${it.body}</p></div></article>`).join('')}</div>`;
+   sections.push(sec('characteristics','01 / FRUIT CHARACTERISTICS',`${name}在储运中有什么特点？`,'同一种水果的品种、成熟度、运输周期不同，其品质变化也可能不同。',genericRows([
+     {title:'果品特点',body:source[0]},
+     {title:'主要品质下降因素',body:source[1]},
+     {title:'储存及流通注意事项',body:source[2]}
+   ])));
+   sections.push(sec('quality-risk','02 / QUALITY RISK','先了解风险，再决定包装方向。','不仅依据储存温度，还应综合成熟度、运输距离与原有包装方式。',genericRows([
+     {title:'重点管理问题',body:source[1]},
+     {title:'建议储存温度',body:storage(fruit.storage)},
+     {title:'管理优先级',body:`${esc(fruit.priority)} / 依据实际条件评估`},
+     {title:'可能的试验方向',body:source[3]}
+   ]),true));
+   const approaches=(fruit.approach||[]).length;
+   const approachCards=Array.from({length:Math.max(approaches,2)},(_,i)=>({
+      kicker:String(i+1).padStart(2,'0'),
+      title:['运输损伤与缓冲保护','温湿度及微环境管理','储存期与应用验证','按需选择包装'][i%4],
+      body:[source[3],source[2],'结合现有包装、目标流通期限与运输环境开展验证。','产品应用以具体测试及商业要求为依据。'][i%4]
+   }));
+   sections.push(sec('terrasave-solution','03 / TerraSAVE APPROACH',`${name}的保护与包装方向`,'向客户说明适用的功能与应用范围，同时保护核心材料组成和制造参数。',`<div class="ts-approach-grid" data-columns="${approachCards.length}">${approachCards.map(v=>`<article class="ts-approach"><span class="ts-kicker">${v.kicker}</span><div><h3 class="ts-h3">${v.title}</h3><p>${v.body}</p></div></article>`).join('')}</div>`));
  }
  if(slug==='shine-muscat'){
   const days=[0,7,14,20,30];
