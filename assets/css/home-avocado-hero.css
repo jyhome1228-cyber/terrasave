@@ -1,0 +1,53 @@
+/* TerraSAVE homepage: 12-frame avocado hero. Scoped to the home page. */
+.ts-home-page .ts-home-compact-hero-visual.ts-avocado-hero {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  min-height: 0;
+  max-height: none;
+  isolation: isolate;
+  background: #fff;
+}
+.ts-home-page .ts-avocado-hero-frame {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  opacity: 0;
+  z-index: 0;
+  transition: opacity 120ms linear;
+}
+.ts-home-page .ts-avocado-hero-frame.is-active {
+  opacity: 1;
+  z-index: 1;
+}
+.ts-home-page .ts-avocado-hero-reset {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: #fff;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 320ms ease-in-out;
+}
+.ts-home-page .ts-avocado-hero-reset.is-visible {
+  opacity: 1;
+}
+@media (max-width: 767px) {
+  .ts-home-page .ts-home-compact-hero-visual.ts-avocado-hero {
+    aspect-ratio: 3 / 2;
+    min-height: 0;
+    max-height: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ts-home-page .ts-avocado-hero-frame,
+  .ts-home-page .ts-avocado-hero-reset {
+    transition: none !important;
+  }
+}
