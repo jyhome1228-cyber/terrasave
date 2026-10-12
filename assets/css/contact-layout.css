@@ -187,3 +187,48 @@
   .ts-contact-page .ts-contact-field select,
   .ts-contact-page .ts-contact-field textarea{transition:none}
 }
+
+/* Privacy consent and server intake status. */
+.ts-contact-page .ts-contact-consent{
+ margin-top:28px;
+ padding:22px 24px;
+ border:1px solid var(--line);
+ border-radius:10px;
+ background:var(--surface);
+}
+.ts-contact-page .ts-contact-consent>p{
+ font-size:13px;
+ line-height:1.8;
+ color:var(--text);
+}
+.ts-contact-page .ts-contact-consent>p strong{color:var(--ink);font-size:14px;font-weight:650}
+.ts-contact-page .ts-contact-consent>p+p{margin-top:8px}
+.ts-contact-page .ts-contact-consent label{
+ display:flex;
+ align-items:center;
+ gap:10px;
+ margin-top:15px;
+ font-weight:600;
+ font-size:14px;
+ cursor:pointer;
+}
+.ts-contact-page .ts-contact-consent input{
+ width:18px;
+ height:18px;
+ flex:0 0 18px;
+ accent-color:#151719;
+}
+.ts-contact-page .ts-contact-website{
+ position:absolute;
+ left:-9999px;
+ height:1px;
+ width:1px;
+ overflow:hidden;
+}
+.ts-contact-page .ts-contact-submit:disabled{opacity:.65;cursor:wait}
+.ts-contact-page .ts-contact-status[data-state=success]{color:#295e43}
+.ts-contact-page .ts-contact-status[data-state=error]{color:#a33d36}
+@media(max-width:767px){
+ .ts-contact-page .ts-contact-consent{padding:19px 17px}
+ .ts-contact-page .ts-contact-consent>p{font-size:12px}
+}

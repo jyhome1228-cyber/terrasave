@@ -1,46 +1,46 @@
-/* TerraSAVE Contact: client-side email composer, not a server form submission. */
+/* TerraSAVE secure inquiry form. Success is shown only after durable API write. */
 (() => {
-  'use strict';
-
-  const form = document.getElementById('contactForm');
-  const compose = document.getElementById('contactCompose');
-  const status = document.getElementById('formStatus');
-  if (!form || !compose) return;
-
-  // Never submit visitor data to a URL or to the current static page.
-  form.addEventListener('submit', event => event.preventDefault());
-
-  compose.addEventListener('click', () => {
-    if (!form.reportValidity()) return;
-
-    const fields = new FormData(form);
-    const field = name => String(fields.get(name) || '').trim();
-    const type = field('inquiryType');
-    const name = field('name');
-    const company = field('company');
-    const email = field('email');
-    const phone = field('phone');
-    const message = field('message');
-
-    const subject = '[TerraSAVE] ' + type + ' / ' + (company || name);
-    const body = [
-      'TerraSAVE 문의',
-      '',
-      '문의 유형: ' + type,
-      '담당자명: ' + name,
-      '회사명: ' + (company || '-'),
-      '이메일: ' + email,
-      '연락처: ' + (phone || '-'),
-      '',
-      '문의 내용',
-      message
-    ].join('\n');
-
-    if (status) {
-      status.textContent = '메일 프로그램이 열리면 내용을 확인한 뒤 발송해 주세요. 메일 창이 열리지 않으면 info@terracle.im로 직접 문의해 주세요.';
-    }
-
-    window.location.href = 'mailto:info@terracle.im?subject=' +
-      encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
-  });
+ 'use strict';
+ const form=document.getElementById('contactForm');
+ const submit=document.getElementById('contactSubmit');
+ const status=document.getElementById('formStatus');
+ const consent=document.getElementById('privacyConsent');
+ if(!form||!submit||!status||!consent)return;
+ const endpoint='https://terrasave-inquiry-admin.vercel.app/api/inquiries';
+ let startedAt=Date.now();
+ form.addEventListener('submit',async event=>{
+  event.preventDefault();
+  if(!form.reportValidity())return;
+  status.textContent='';
+  submit.disabled=true;
+  submit.textContent='접수 중…';
+  const data=Object.fromEntries(new FormData(form).entries());
+  const payload={
+   inquiryType:String(data.inquiryType||''),name:String(data.name||''),
+   company:String(data.company||''),email:String(data.email||''),
+   phone:String(data.phone||''),message:String(data.message||''),
+   privacyConsent:consent.checked,website:String(data.website||''),startedAt
+  };
+  try{
+   const response=await fetch(endpoint,{
+    method:'POST',
+    mode:'cors',
+    credentials:'omit',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify(payload)
+   });
+   const result=await response.json().catch(()=>({}));
+   if(!response.ok||result.accepted!==true)throw new Error(result.error||'접수에 실패했습니다.');
+   status.textContent='상담 문의가 정상 접수되었습니다. 담당자가 확인 후 안내드리겠습니다.';
+   status.dataset.state='success';
+   form.reset();
+   startedAt=Date.now();
+  }catch(error){
+   status.dataset.state='error';
+   status.textContent=(error.message||'온라인 접수를 완료하지 못했습니다.')+' 이메일(info@terracle.im)로 직접 문의해 주세요. 입력한 내용은 유지됩니다.';
+  }finally{
+   submit.disabled=false;
+   submit.textContent='상담 접수하기';
+  }
+ });
 })();

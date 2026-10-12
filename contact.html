@@ -9,7 +9,7 @@
 <title>Contact — TerraSave</title>
 
 
-<link href="assets/css/site.css?v=20261012-nav2" rel="stylesheet"/><link href="assets/css/contact-layout.css?v=20261011-2" rel="stylesheet"/><link href="assets/img/terrasave-favicon.svg" rel="icon" type="image/svg+xml"/></head>
+<link href="assets/css/site.css?v=20261012-nav2" rel="stylesheet"/><link href="assets/css/contact-layout.css?v=20261012-admin1" rel="stylesheet"/><link href="assets/img/terrasave-favicon.svg" rel="icon" type="image/svg+xml"/></head>
 <body class="ts-contact-page">
 <a class="skip-link" href="#main-content">본문 바로가기</a><header class="site-header" id="siteHeader"><div class="ts-shell header-inner"><a aria-label="TerraSave Home" class="brand" href="index.html"><img alt="TerraSave" class="brand-logo" height="28" src="assets/img/terrasave-logo.svg" width="136"/></a><nav aria-label="주 메뉴" class="nav" id="siteNav"><a href="about.html">About TerraSAVE</a><a href="product.html">Product</a><a href="fruits.html">Freshness Library</a><a href="partnership.html">Partnership</a><a href="why-terrasave.html">Why TerraSAVE</a><a aria-current="page" class="nav-contact" href="contact.html">포장 상담하기</a></nav><a class="ts-button header-cta" href="#inquiry">포장 상담하기</a><button aria-controls="siteNav" aria-expanded="false" aria-label="메뉴 열기" class="menu-toggle" id="menuToggle" type="button"><span aria-hidden="true" class="menu-icon"><span></span><span></span><span></span></span></button></div></header>
 <main id="main-content">
@@ -55,9 +55,15 @@
               <textarea id="contactMessage" name="message" required maxlength="6000" rows="6" placeholder="취급 품목, 포장 형태, 필요한 수량, 보관·운송 조건 등 문의 내용을 작성해 주세요."></textarea>
             </div>
           </div>
+          <div class="ts-contact-consent">
+            <p><strong>개인정보 수집·이용 안내</strong></p>
+            <p>수집 목적: 포장 상담 접수·답변 및 이력 관리. 필수 항목: 문의 유형, 담당자명, 이메일, 문의 내용. 선택 항목: 회사명, 연락처. 보유기간: 접수일로부터 365일.</p>
+            <label for="privacyConsent"><input type="checkbox" id="privacyConsent" name="privacyConsent" value="yes" required/> <span>개인정보 수집 및 이용에 동의합니다. (필수)</span></label>
+          </div>
+          <div class="ts-contact-website" aria-hidden="true"><label for="contactWebsite">Website</label><input id="contactWebsite" name="website" type="text" autocomplete="off" tabindex="-1"/></div>
           <div class="ts-contact-actions">
-            <p class="ts-contact-help">입력한 내용은 이메일 프로그램에서 최종 발송합니다.</p>
-            <button class="ts-button is-dark ts-contact-submit" type="button" id="contactCompose">문의 메일 작성하기</button>
+            <p class="ts-contact-help">접수 후 관리자가 내용을 확인하여 안내드립니다. 첨부파일은 이메일로 보내주세요.</p>
+            <button class="ts-button is-dark ts-contact-submit" type="submit" id="contactSubmit">상담 접수하기</button>
           </div>
           <p class="ts-contact-status" id="formStatus" role="status" aria-live="polite"></p>
           <noscript><p class="ts-contact-help">메일 앱을 직접 열어 <a href="mailto:info@terracle.im">info@terracle.im</a>로 문의해 주세요.</p></noscript>
@@ -87,5 +93,5 @@
 <div class="footer-legal"><span>TerraSave</span><span>Copyright © 2026 Terracle. All Rights Reserved.</span></div>
 </div></footer>
 
-<script src="assets/js/site.js?v=20261012-nav2"></script><script src="assets/js/contact.js?v=20261011-2" defer></script></body>
+<script src="assets/js/site.js?v=20261012-nav2"></script><script src="assets/js/contact.js?v=20261012-admin1" defer></script></body>
 </html>
