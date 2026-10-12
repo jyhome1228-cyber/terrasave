@@ -40,6 +40,31 @@
   const figure=(day,id,group)=>`<figure class="ts-home-test-photo"><button class="ts-home-test-enlarge" type="button" title="点击放大" aria-label="放大查看第${day}天${group==='mof'?'技术应用容器':'普通PET容器'}图片"><img src="${cdn+id}.webp" alt="第${day}天 ${group==='mof'?'TerraSAVE应用容器':'普通PET容器'}的葡萄示意图" loading="lazy" decoding="async"></button><figcaption>${group==='mof'?'TerraSAVE应用容器 <span>MOF</span>':'普通PET容器'}</figcaption></figure>`;
   sections.push(`<div class="ts-home-page ts-fruit-shine-test"><section class="ts-home-section is-soft ts-home-compact-test" id="test"><div class="ts-shell"><div class="ts-home-compact-heading"><span class="ts-kicker">储存测试对比案例</span><h2 class="ts-h2">阳光玫瑰葡萄储存测试</h2><p>对比 TerraSAVE 技术应用容器（MOF）与普通 PET 容器在不同时间的外观变化。</p></div><div class="ts-home-test-gallery">${days.map((d,i)=>`<article class="ts-home-test-day"><h3>Day ${d}</h3>${figure(d,urls.mof[i],'mof')}${figure(d,urls.pet[i],'pet')}</article>`).join('')}</div><p class="ts-home-test-note">该图片为基于试验照片重新制作的可视化示意，不是未经修改的原始试验照片。初始条件、储存环境及样品状态均可能影响结果，不能仅依据图片判断定量性能。</p></div><dialog class="ts-home-lightbox" id="tsHomeLightbox" aria-label="放大查看葡萄图片"><div class="ts-home-lightbox-inner"><button type="button" class="ts-home-lightbox-close" aria-label="关闭">×</button><img class="ts-home-lightbox-image" alt=""/><p class="ts-home-lightbox-caption" aria-live="polite"></p></div></dialog></section></div>`);
  }
+
+ if(slug==='avocado'){
+  const captures=[{"url":"https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261011-230455-1-624eca5f.webp","date":"8月31日","clock":"上午11:20"},{"url":"https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261011-230456-2-f58d903b.webp","date":"9月2日","clock":"下午1:20"},{"url":"https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261011-230456-3-b1d8f2f8.webp","date":"9月4日","clock":"下午3:20"},{"url":"https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261011-230457-4-b98bee71.webp","date":"9月6日","clock":"下午5:20"},{"url":"https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261011-230458-5-9d7714b2.webp","date":"9月8日","clock":"下午7:20"},{"url":"https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261011-230459-6-e33f97be.webp","date":"9月10日","clock":"下午9:20"},{"url":"https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261011-230500-7-5d95e34f.webp","date":"9月12日","clock":"下午11:20"},{"url":"https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261011-230501-8-3646d5ee.webp","date":"9月15日","clock":"上午1:20"},{"url":"https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261011-230501-9-3eaed8ef.webp","date":"9月17日","clock":"上午3:20"},{"url":"https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261011-230502-10-8e275c74.webp","date":"9月19日","clock":"上午5:20"},{"url":"https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261011-230503-11-7b32b21e.webp","date":"9月21日","clock":"上午7:20"},{"url":"https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261011-230503-12-fb0f3aba.webp","date":"9月21日","clock":"上午11:20"}];
+  const photos=captures.map(({url,date,clock})=>{
+    const label=`${date} ${clock}`;
+    return `<article class="ts-avocado-capture">
+      <div class="ts-avocado-capture-time"><strong>${esc(date)}</strong><span>${esc(clock)}</span></div>
+      <button class="ts-home-test-enlarge ts-avocado-capture-zoom" type="button" aria-haspopup="dialog" title="点击放大" aria-label="${esc(label)} 牛油果储存对比图片，点击放大">
+        <img src="${esc(url)}" alt="${esc(label)} 牛油果两种容器储存对比示意图" loading="lazy" decoding="async"/>
+      </button>
+    </article>`;
+  }).join('');
+  sections.push(`<section class="ts-section is-soft ts-fruit-avocado-test" id="avocado-test" aria-labelledby="avocadoTestTitle">
+    <div class="ts-shell"><div class="ts-avocado-test-head">
+      <span class="ts-kicker">储存对比案例</span>
+      <h2 class="ts-h2" id="avocadoTestTitle">牛油果储存过程对比</h2>
+      <p>按照不同时间顺序，对比两个包装容器内牛油果的外观变化。下列图片根据提供资料重新制作，仅作为直观展示，不等同于未经处理的原始试验照片。</p>
+    </div><div class="ts-avocado-test-grid">${photos}</div></div>
+    <dialog class="ts-home-lightbox" id="tsHomeLightbox" aria-label="放大查看牛油果图片"><div class="ts-home-lightbox-inner">
+      <button type="button" class="ts-home-lightbox-close" aria-label="关闭">×</button>
+      <img class="ts-home-lightbox-image" alt=""/>
+      <p class="ts-home-lightbox-caption" aria-live="polite"></p>
+    </div></dialog>
+  </section>`);
+ }
  sections.push(sec('research','研究与参考信息','结合公开资料与实际条件开展评估。',`${name}的储存管理应同时考虑产品成熟度、品种、温湿度、包装结构及物流时间。`,`<div class="ts-detail-research"><article class="ts-detail-research-block"><h3><span class="ts-research-number">01</span>品质变化因素</h3><p>${source[1]}</p></article><article class="ts-detail-research-block"><h3><span class="ts-research-number">02</span>应用与验证条件</h3><p>${source[2]} ${source[3]}</p></article><div class="ts-research-note">本页面提供面向应用的概要资料，建议的储存条件并非对所有品种及包装的保证。实际效果应在具体条件下验证，核心材料配方及制造参数不公开。</div></div>`,true));
  sections.push(`<section class="ts-section"><div class="ts-shell"><div class="ts-cta"><div class="ts-cta-copy"><span class="ts-kicker">查看其他水果</span><h2 class="ts-h2">比较不同水果，<br class="desktop-break">找到适合的保护方式。</h2><nav class="ts-cta-links"><a class="ts-link" href="fruit.html?fruit=${previous.slug}">← ${names[previous.slug]}</a><a class="ts-link" href="fruit.html?fruit=${next.slug}">${names[next.slug]} →</a></nav></div><div class="ts-cta-action"><a class="ts-button is-dark is-large" href="contact.html">咨询包装解决方案</a></div></div></div></section>`);
  root.innerHTML=sections.join('\n');
