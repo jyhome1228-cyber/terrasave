@@ -748,3 +748,14 @@ html.ts-modal-locked,body.ts-modal-locked{overflow:hidden}
   .ts-consult-actions .ts-button{width:100%}
 }
 @media(prefers-reduced-motion:reduce){.ts-consult-modal{transition:none}}
+
+/* Mobile consultation and navigation safety adjustments */
+@media(max-width:767px){
+ .ts-consult-modal{padding:max(8px,env(safe-area-inset-top)) 8px max(8px,env(safe-area-inset-bottom));}
+ .ts-consult-dialog{max-height:calc(100dvh - 16px - env(safe-area-inset-bottom));overscroll-behavior:contain;}
+ .ts-consult-actions .ts-button{min-height:48px;white-space:normal;line-height:1.4}
+ .ts-language-switch{max-width:66px;min-width:58px;padding:0 9px}
+ .site-header .header-inner{min-width:0}
+ .site-header .brand{min-width:0}
+ .site-header .brand-logo{max-width:100%;height:auto}
+}
