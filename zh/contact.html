@@ -27,11 +27,11 @@
               <label for="inquiryType">咨询类型 <span aria-hidden="true">*</span></label>
               <select id="inquiryType" name="inquiryType" required>
                 <option value="" selected disabled>请选择咨询类型</option>
-                <option value="产品采购与供应">产品采购与供应</option>
-                <option value="样品及测试">样品及测试</option>
-                <option value="定制产品开发">定制产品开发</option>
-                <option value="联合研发及技术授权">联合研发及技术授权</option>
-                <option value="其他咨询">其他咨询</option>
+                <option value="제품 구매 및 공급">产品采购与供应</option>
+                <option value="샘플·테스트">样品及测试</option>
+                <option value="맞춤형 제품개발">定制产品开发</option>
+                <option value="공동 R&amp;D·라이선싱">联合研发及技术授权</option>
+                <option value="기타 문의">其他咨询</option>
               </select>
             </div>
             <div class="ts-contact-field">
@@ -55,9 +55,15 @@
               <textarea id="contactMessage" name="message" required maxlength="6000" rows="6" placeholder="请填写产品品类、包装形式、预计数量、储运条件等需求。"></textarea>
             </div>
           </div>
+          <div class="ts-contact-consent">
+            <p><strong>个人信息收集与使用说明</strong></p>
+            <p>收集目的：受理并回复包装咨询、管理咨询记录。必填项目：咨询类型、联系人、电子邮箱、咨询内容。选填项目：公司名称、联系电话。保存期限：自提交之日起365天。</p>
+            <label for="privacyConsent"><input type="checkbox" id="privacyConsent" name="privacyConsent" value="yes" required/> <span>我已阅读并同意个人信息收集与使用条款。（必选）</span></label>
+          </div>
+          <div class="ts-contact-website" aria-hidden="true"><label for="contactWebsite">Website</label><input id="contactWebsite" name="website" type="text" autocomplete="off" tabindex="-1"/></div>
           <div class="ts-contact-actions">
-            <p class="ts-contact-help">填写内容将在电子邮件程序中完成最终发送。</p>
-            <button class="ts-button is-dark ts-contact-submit" type="button" id="contactCompose">撰写咨询邮件</button>
+            <p class="ts-contact-help">提交后，我们的工作人员将查看并回复您的咨询。如需发送附件，请通过电子邮件发送。</p>
+            <button class="ts-button is-dark ts-contact-submit" type="submit" id="contactSubmit">提交咨询</button>
           </div>
           <p class="ts-contact-status" id="formStatus" role="status" aria-live="polite"></p>
           <noscript><p class="ts-contact-help">也可直接通过邮件应用向 <a href="mailto:info@terracle.im">info@terracle.im</a>发送咨询。</p></noscript>
@@ -87,5 +93,5 @@
 <div class="footer-legal"><span>TerraSave</span><span>Copyright © 2026 Terracle. All Rights Reserved.</span></div>
 </div></footer>
 
-<script src="../assets/js/site.js?v=20261012-nav2"></script><script src="contact-zh.js?v=20261012-1" defer></script></body>
+<script src="../assets/js/site.js?v=20261012-nav2"></script><script src="contact-zh.js?v=20261012-admin2" defer></script></body>
 </html>
