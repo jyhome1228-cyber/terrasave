@@ -14,7 +14,7 @@
  const name=names[fruit.slug]||fruit.en;
  const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
  const images=window.TERRASAVE_FRUIT_IMAGES?.[fruit.slug]||[fruit.imageWhole,fruit.imageCut];
- const storage=value=>esc(String(value).replaceAll('미숙과','未熟果').replaceAll('완숙과','成熟果').replaceAll('녹숙과','青熟果').replaceAll('부분후숙','部分后熟').replaceAll('약 ','约 ').replaceAll('단기','短期').replaceAll('장기','长期'));
+ const storage=value=>esc(String(value).replaceAll('미숙과','未熟果').replaceAll('완숙과','成熟果').replaceAll('완숙','成熟').replaceAll('녹숙과','青熟果').replaceAll('부분후숙','部分后熟').replaceAll('약 ','约 ').replaceAll('단기','短期').replaceAll('장기','长期'));
  const ripening={'수확 후에도 계속 익는 과일':'采后继续后熟','수확 후 크게 더 익지 않는 과일':'采后不明显后熟','품종에 따라 익는 방식이 다름':'依品种而异','외부 에틸렌에 쉽게 반응하는 과일':'对外部乙烯敏感','수확 후 단맛이 크게 늘지 않는 과일':'采后甜度不明显增加'};
  const ethylene={'매우 민감':'非常敏感','민감함':'敏感','보통':'中等','영향이 낮음':'影响较小','품종에 따라 보통':'视品种而定','극도로 민감':'极其敏感'};
  const focus={"avocado":"后熟 · 乙烯","blueberry":"保湿 · 霉菌","cherry":"冷链 · 保湿","mango":"后熟 · 冷害","banana":"后熟 · 乙烯","strawberry":"凝露 · 霉菌","shine-muscat":"果梗保湿 · 落粒 · 霉菌","table-grape":"保湿 · 落粒 · 霉菌","apple":"乙烯 · 硬度","asian-pear":"储存 · 保湿 · 冲击","kiwi":"乙烯 · 软化","peach":"软化 · 冷害","nectarine":"软化 · 冷害","persimmon":"乙烯 · 软化","mandarin":"果皮 · 腐败","pomegranate":"果皮保湿 · 冷害","pineapple":"温度 · 水分","plum":"后熟 · 软化"};
