@@ -325,16 +325,31 @@
     home.innerHTML = preferred.map(slug => fruits.find(f => f.slug === slug)).filter(Boolean).map(card).join('');
   }
 
+  // Let headings, copy and cards reveal independently. Never hide entire long sections:
+  // doing so can leave content blank on short/mobile viewports.
   let revealObserver;
+  const revealSelector = [
+    'main .ts-section-head > :is(.ts-kicker, h1, h2, h3, p)',
+    'main .ts-home-head > :is(.ts-kicker, h1, h2, h3, p)',
+    'main .ts-product-hero-head > :is(.ts-kicker, h1, h2, h3, p)',
+    'main .ts-home-compact-hero-copy > :is(.ts-kicker, h1, h2, h3, p, .ts-home-compact-heading)',
+    'main .ts-page-hero .ts-shell > :is(.ts-kicker, .ts-h1, .ts-body-lg)',
+    'main .ts-why-section-heading > :is(.ts-kicker, h1, h2, h3, p)',
+    'main .ts-why-conclusion-head > :is(h2, p)',
+    'main .ts-about-principle-media',
+    'main .ts-about-principle-copy > :is(.ts-about-principle-label, .ts-about-principle-title, .ts-about-principle-body)',
+    'main .ts-product-card',
+    'main .ts-partner-model',
+    'main .ts-value-card',
+    'main .ts-use-card',
+    'main .ts-step',
+    'main .ts-fruit-card',
+    'main .ts-factor-card',
+    'main .ts-home-product-card',
+    'main .ts-business-item'
+  ].join(', ');
   function initReveal() {
-    if (reducedMotion) return;
-    const targets = document.querySelectorAll(
-      'main > section:not(:first-child), .ts-product-card, .ts-partner-model, .ts-value-card, .ts-use-card, .ts-step, .ts-fruit-card, .ts-factor-card, .ts-home-product-card, .ts-business-item'
-    );
-    if (!('IntersectionObserver' in window)) {
-      [...targets].forEach(element => element.classList.add('is-visible'));
-      return;
-    }
+    if (reducedMotion || !('IntersectionObserver' in window)) return;
     if (!revealObserver) {
       revealObserver = new IntersectionObserver(entries => {
         entries.forEach(entry => {
@@ -342,12 +357,14 @@
           entry.target.classList.add('is-visible');
           revealObserver.unobserve(entry.target);
         });
-      }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+      }, { threshold: 0.03, rootMargin: '0px 0px 32px 0px' });
     }
-    [...targets].forEach((element, index) => {
-      if (element.classList.contains('ts-reveal') || element.classList.contains('is-visible')) return;
+    document.querySelectorAll(revealSelector).forEach(element => {
+      if (element.closest('.ts-partner-process') || element.classList.contains('ts-reveal')) return;
+      const siblings = element.parentElement ? [...element.parentElement.children] : [element];
+      const groupIndex = siblings.indexOf(element);
+      element.style.setProperty('--reveal-delay', `${Math.min((groupIndex % 4) * 65, 195)}ms`);
       element.classList.add('ts-reveal');
-      element.style.setProperty('--reveal-delay', `${Math.min((index % 4) * 45, 135)}ms`);
       revealObserver.observe(element);
     });
   }
@@ -355,25 +372,36 @@
   document.body.classList.add('ts-motion-ready');
   requestAnimationFrame(initReveal);
 
+  let transitionTimer;
   window.addEventListener('pageshow', () => {
+    if (transitionTimer) window.clearTimeout(transitionTimer);
+    transitionTimer = null;
     document.body.classList.remove('ts-page-leaving');
   });
 
+  // Only ordinary same-origin page navigation gets a gentle exit. Leave anchors,
+  // downloads, forms, mail links, new tabs and consultation popups untouched.
   document.addEventListener('click', event => {
-    if (reducedMotion || event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
-    const link = event.target.closest('a[href]');
-    if (!link || link.target === '_blank' || link.hasAttribute('download')) return;
+    if (reducedMotion || event.defaultPrevented || event.button !== 0 ||
+        event.metaKey || event.ctrlKey || event.shiftKey || event.altKey ||
+        document.body.classList.contains('ts-page-leaving')) return;
+    const link = event.target.closest?.('a[href]');
+    if (!link || (link.target && link.target !== '_self') ||
+        link.hasAttribute('download') || link.hasAttribute('data-no-transition') ||
+        link.relList?.contains('external')) return;
     const href = link.getAttribute('href');
-    if (!href || href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('tel:') || href.startsWith('javascript:')) return;
-    const destination = new URL(link.href, window.location.href);
-    if (destination.origin !== window.location.origin) return;
-    if (destination.pathname === window.location.pathname && destination.search === window.location.search && destination.hash) return;
+    if (!href || href.startsWith('#') || /^(mailto:|tel:|javascript:)/i.test(href)) return;
+    let destination;
+    try { destination = new URL(link.href, window.location.href); } catch (_) { return; }
+    if (!['http:', 'https:'].includes(destination.protocol) || destination.origin !== window.location.origin) return;
+    if (destination.pathname === window.location.pathname &&
+        destination.search === window.location.search) return;
 
     event.preventDefault();
     closeMenu();
     document.body.classList.add('ts-page-leaving');
-    window.setTimeout(() => {
-      window.location.href = destination.href;
-    }, 190);
+    transitionTimer = window.setTimeout(() => {
+      window.location.assign(destination.href);
+    }, 210);
   });
 })();

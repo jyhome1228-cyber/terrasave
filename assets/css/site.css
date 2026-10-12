@@ -112,11 +112,12 @@ body.modal-locked,body.menu-locked{overscroll-behavior:none}
   .ts-product-card,.ts-home-system-card,.ts-partner-model,.ts-value-card,.ts-use-card,.ts-step,.ts-home-product-card,.ts-factor-card{transition:transform .4s var(--ease-premium),box-shadow .4s var(--ease-premium),border-color .3s ease}
   .ts-product-card:hover,.ts-home-system-card:hover,.ts-partner-model:hover,.ts-home-product-card:hover,.ts-factor-card:hover{transform:translateY(-5px);box-shadow:0 18px 48px rgba(20,28,24,.075);border-color:#d2d8d4}
 }
-body.ts-motion-ready main{animation:ts-page-in .62s var(--ease-premium) both}
-body.ts-motion-ready main,body.ts-motion-ready .footer{transition:opacity .24s ease,transform .3s var(--ease-premium)}
-body.ts-page-leaving main,body.ts-page-leaving .footer{opacity:0;transform:translateY(8px)}
-@keyframes ts-page-in{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
-.ts-reveal{opacity:0;transform:translateY(26px);transition:opacity .72s var(--ease-premium),transform .72s var(--ease-premium);transition-delay:var(--reveal-delay,0ms)}
+/* Light page transitions and element reveals across Korean and Chinese public pages. */
+body.ts-motion-ready main{animation:ts-page-in .56s var(--ease-premium) both}
+body.ts-motion-ready main,body.ts-motion-ready .footer{transition:opacity .21s ease,transform .24s var(--ease-premium)}
+body.ts-page-leaving main,body.ts-page-leaving .footer{opacity:0;transform:translate3d(0,6px,0);pointer-events:none}
+@keyframes ts-page-in{from{opacity:0;transform:translate3d(0,9px,0)}to{opacity:1;transform:none}}
+.ts-reveal{opacity:0;transform:translate3d(0,18px,0);transition:opacity .76s cubic-bezier(.22,1,.36,1),transform .76s cubic-bezier(.22,1,.36,1);transition-delay:var(--reveal-delay,0ms)}
 .ts-reveal.is-visible{opacity:1;transform:none}
 .ts-home-hero-image{transition:transform 1s var(--ease-premium),box-shadow .7s ease}.ts-home-hero-image:hover{transform:scale(.997);box-shadow:0 24px 72px rgba(19,27,23,.08)}
 .ts-fruit-card .ts-fruit-visual{transition:transform .4s var(--ease-premium),box-shadow .4s var(--ease-premium),border-color .3s ease}
