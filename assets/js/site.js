@@ -125,7 +125,7 @@
     guideTitle: '邮件中建议包含',
     guide: ['产品品类', '当前包装方式 / 希望规格', '预计数量', '储存与运输条件'],
     note: '如需发送照片、规格书或其他附件，建议直接通过电子邮件咨询。',
-    mailButton: '通过邮件咨询',
+    mailButton: '发送邮件',
     formButton: '填写详细咨询表',
     close: '关闭咨询窗口',
     subject: '[TerraSAVE] 包装方案咨询',
@@ -138,7 +138,7 @@
     guideTitle: '메일에 함께 적어주세요',
     guide: ['취급 품목', '현재 포장 방식 / 희망 규격', '예상 수량', '보관·운송 조건'],
     note: '사진, 규격서 등 첨부자료가 있는 경우 이메일로 직접 문의해 주시는 것이 가장 편리합니다.',
-    mailButton: '이메일로 문의하기',
+    mailButton: '메일 보내기',
     formButton: '상세 상담폼 작성하기',
     close: '상담창 닫기',
     subject: '[TerraSAVE] 포장 상담 문의',
@@ -214,9 +214,10 @@
 
   document.addEventListener('click', event => {
     const link = event.target.closest('a[href]');
-    if (!link || link.hasAttribute('data-contact-form-link')) return;
+    if (!link || link.hasAttribute('data-contact-form-link') || link.closest('.ts-consult-modal')) return;
     const href = link.getAttribute('href') || '';
-    let isConsultation = href === '#inquiry';
+    let isConsultation = href === '#inquiry' || link.matches('.header-cta, .nav-contact, [data-consult-trigger]') ||
+      (!link.closest('.footer-contact-line, .ts-contact-direct') && /^mailto:info@terracle\.im/i.test(href));
     if (!isConsultation && !href.startsWith('mailto:') && !href.startsWith('tel:') && !href.startsWith('javascript:')) {
       try {
         const url = new URL(link.href, window.location.href);
