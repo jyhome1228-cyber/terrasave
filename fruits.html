@@ -4,13 +4,13 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
-<meta content="TerraSave 과일별 신선도 자료 — 과일별 부패 원인, 저장 조건, 유통 리스크와 신선도 유지 방향을 확인합니다." name="description"/>
+<meta content="TerraSAVE Freshness Library — 과일과 꽃·절화의 신선도 관리 및 포장 검토 정보를 살펴봅니다." name="description"/>
 <meta content="#ffffff" name="theme-color"/>
-<title>과일별 신선도 자료 — TerraSave</title>
+<title>Freshness Library — TerraSAVE 과일·꽃</title>
 
 
 
-<link href="assets/css/site.css?v=20261013-natural-motion1" rel="stylesheet"/><link href="assets/img/terrasave-favicon.svg" rel="icon" type="image/svg+xml"/></head>
+<link href="assets/css/site.css?v=20261013-natural-motion1" rel="stylesheet"/><link href="assets/css/library-flowers.css?v=20261013-flowers1" rel="stylesheet"/><link href="assets/img/terrasave-favicon.svg" rel="icon" type="image/svg+xml"/></head>
 <body class="page-fruits ts-fruits-page">
 <a class="skip-link" href="#main-content">본문 바로가기</a><header class="site-header" id="siteHeader"><div class="ts-shell header-inner"><a aria-label="TerraSave Home" class="brand" href="index.html"><img alt="TerraSave" class="brand-logo" height="28" src="assets/img/terrasave-logo.svg" width="136"/></a><nav aria-label="주 메뉴" class="nav" id="siteNav"><a href="about.html">About TerraSAVE</a><a href="product.html">Product</a><a aria-current="page" href="fruits.html">Freshness Library</a><a href="partnership.html">Partnership</a><a href="why-terrasave.html">Why TerraSAVE</a><a class="nav-contact" href="contact.html">포장 상담하기</a></nav><a class="ts-button header-cta" href="contact.html">포장 상담하기</a><button aria-controls="siteNav" aria-expanded="false" aria-label="메뉴 열기" class="menu-toggle" id="menuToggle" type="button"><span aria-hidden="true" class="menu-icon"><span></span><span></span><span></span></span></button></div></header>
 <main id="main-content">
@@ -18,16 +18,21 @@
 <div class="ts-shell">
 
 <div class="ts-section-head">
-<span class="ts-kicker">FRUIT FRESHNESS LIBRARY</span>
+<span class="ts-kicker">FRESHNESS LIBRARY</span>
 
-<h1 class="ts-h1">보관은 경험이 아니라,<br class="desktop-break"/> 데이터에서 시작됩니다.</h1>
-<p class="ts-body-lg ts-section-copy">과일별 연구 데이터를 통해 부패의 원인과 신선도를 좌우하는 조건을 확인하세요.</p>
+<h1 class="ts-h1">과일과 꽃, 신선함을 지키는<br class="desktop-break"/> 조건은 다릅니다.</h1>
+<p class="ts-body-lg ts-section-copy">과일의 보관·유통 조건과 꽃·절화의 품질 관리 요소를 살펴보세요.</p>
 
 </div>
 </div>
 </section>
 <section class="ts-section fruit-library-section">
 <div class="ts-shell">
+<div class="ts-library-category-nav" role="tablist" aria-label="신선도 자료 카테고리">
+  <button type="button" class="ts-library-category is-active" id="tsFruitsTab" role="tab" aria-controls="tsFruitCategoryPanel" aria-selected="true" tabindex="0" data-library-tab="fruit"><strong>과일</strong><span>FRUITS</span></button>
+  <button type="button" class="ts-library-category" id="tsFlowersTab" role="tab" aria-controls="tsFlowerCategoryPanel" aria-selected="false" tabindex="-1" data-library-tab="flower"><strong>꽃 · 절화</strong><span>FLOWERS</span></button>
+</div>
+<div class="ts-library-panel" id="tsFruitCategoryPanel" role="tabpanel" aria-labelledby="tsFruitsTab">
 <div class="ts-fruit-toolbar">
 <div aria-label="Fruit database filters" class="ts-pills">
 <button class="ts-pill is-active" data-filter="all" type="button">전체 과일</button>
@@ -39,12 +44,62 @@
 </div>
 <div aria-live="polite" class="ts-fruit-grid" id="fruitGrid"></div>
 </div>
+<div class="ts-library-panel ts-flower-panel" id="tsFlowerCategoryPanel" role="tabpanel" aria-labelledby="tsFlowersTab" hidden tabindex="0">
+  <div class="ts-flower-panel-heading">
+    <span class="ts-kicker">FLORAL FRESHNESS LIBRARY</span>
+    <h2 class="ts-h2">꽃의 신선함도, 유통 조건에서 시작됩니다.</h2>
+    <p>꽃·절화류는 과일과 다른 품질 관리가 필요합니다. 품종과 수확·절단 시점, 보관과 운송 환경에 따라 포장 방향을 검토합니다.</p>
+  </div>
+  <article class="ts-flower-feature">
+    <div class="ts-flower-art" aria-hidden="true">
+      <span class="ts-flower-art-label">FLORAL STUDY / TERRASAVE</span>
+      <svg class="ts-flower-artwork" viewBox="0 0 520 420" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <g stroke="#68736A" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M258 371C258 317 252 262 222 185M260 370C289 297 299 226 304 161M257 370C232 322 187 281 153 249"/>
+    <path d="M244 300C205 290 183 263 181 249C220 240 246 273 244 300ZM275 314C311 292 344 292 361 300C343 330 308 340 275 314Z"/>
+    <path d="M284 223C259 208 260 180 282 173C287 190 290 205 284 223ZM215 215C192 215 174 198 174 183C197 182 213 195 215 215Z"/>
+    <path d="M304 159C302 136 292 127 279 119M304 159C321 135 339 127 350 119M222 186C216 164 197 150 180 141"/>
+    <path d="M153 249C144 224 130 209 110 201"/>
+  </g>
+  <g fill="#F5F7F0" stroke="#68736A" stroke-width="2">
+    <ellipse cx="301" cy="108" rx="23" ry="40" transform="rotate(-3 301 108)"/>
+    <ellipse cx="301" cy="108" rx="23" ry="40" transform="rotate(58 301 108)"/>
+    <ellipse cx="301" cy="108" rx="23" ry="40" transform="rotate(115 301 108)"/>
+    <circle cx="301" cy="108" r="18" fill="#D9DDAF"/>
+    <ellipse cx="174" cy="128" rx="19" ry="32" transform="rotate(-10 174 128)"/>
+    <ellipse cx="174" cy="128" rx="19" ry="32" transform="rotate(65 174 128)"/>
+    <ellipse cx="174" cy="128" rx="19" ry="32" transform="rotate(130 174 128)"/>
+    <circle cx="174" cy="128" r="14" fill="#D9DDAF"/>
+    <ellipse cx="105" cy="187" rx="17" ry="27" transform="rotate(10 105 187)"/>
+    <ellipse cx="105" cy="187" rx="17" ry="27" transform="rotate(80 105 187)"/>
+    <ellipse cx="105" cy="187" rx="17" ry="27" transform="rotate(150 105 187)"/>
+    <circle cx="105" cy="187" r="12" fill="#D9DDAF"/>
+  </g>
+</svg>
+      <span class="ts-flower-art-footer">FLOWERS &amp; CUT FLOWERS</span>
+    </div>
+    <div class="ts-flower-feature-copy">
+      <span class="ts-kicker">01 / FLORICULTURE</span>
+      <h3>꽃 · 절화류</h3>
+      <p>절화의 줄기와 꽃잎 상태, 수분 손실, 온도 변화와 운송 중 손상을 함께 살펴봅니다. 실제 적용 여부는 품종과 유통 조건에 맞춰 검토합니다.</p>
+      <dl class="ts-flower-details">
+        <div><dt>주요 확인 항목</dt><dd>수분 유지 · 온도와 결로 · 꽃잎 손상</dd></div>
+        <div><dt>연구 현황</dt><dd>품종별 포장 적용 조건 검토 중</dd></div>
+      </dl>
+      <div class="ts-flower-actions">
+        <a class="ts-button is-dark" href="contact.html">꽃 포장 상담하기</a>
+      </div>
+    </div>
+  </article>
+  <p class="ts-flower-footnote">※ 품종별 시험 결과와 수치 데이터는 검증 후 순차적으로 추가됩니다.</p>
+</div>
+</div>
 </section>
 <section class="ts-section is-soft">
 <div class="ts-shell">
 <div class="ts-section-head">
 <span class="ts-kicker">HOW TO READ</span>
-<h2 class="ts-h2">과일마다 신선도를 좌우하는<br class="desktop-break"/> 조건이 다릅니다.</h2><p class="ts-body ts-section-copy">저장온도나 에틸렌 하나만으로 판단하지 않습니다. 품종과 숙도, 저장기간, 물류환경과 현재 포장 방식까지 함께 확인합니다.</p>
+<h2 class="ts-h2">품목에 따라, 신선도를 좌우하는<br class="desktop-break"/> 조건이 다릅니다.</h2><p class="ts-body ts-section-copy">과일은 후숙과 에틸렌, 꽃은 수분과 온도 관리처럼 품목 특성에 맞는 조건을 함께 살핍니다.</p>
 </div>
 <div class="ts-approach-grid" data-columns="3">
 <article class="ts-approach"><span class="ts-kicker">01 / Storage</span><div><h3 class="ts-h3">온도·습도</h3><p>품질 유지의 기본 조건과 저온장해·수분손실 위험을 함께 봅니다.</p></div></article>
@@ -56,7 +111,7 @@
 <section class="ts-section">
 <div class="ts-shell">
 <div class="ts-cta">
-<div class="ts-cta-copy"><span class="ts-kicker">APPLICATION STUDY</span><h2 class="ts-h2">찾는 품목이 있거나<br class="desktop-break"/> 현재 포장 개선이 필요하신가요?</h2><p class="ts-body ts-section-copy">현재 사용하는 포장 방식과 유통 조건을 알려주시면 과일 데이터와 보호 목적을 기준으로 검토 방향을 정리합니다.</p></div>
+<div class="ts-cta-copy"><span class="ts-kicker">APPLICATION STUDY</span><h2 class="ts-h2">찾는 과일이나 꽃이 있거나<br class="desktop-break"/> 포장 개선이 필요하신가요?</h2><p class="ts-body ts-section-copy">현재 포장 방식과 유통 조건을 알려주시면 품목 특성과 보호 목적을 기준으로 검토합니다.</p></div>
 <div class="ts-cta-action"><a class="ts-button is-dark is-large" href="contact.html">포장 솔루션 상담하기</a></div>
 </div>
 </div>
@@ -95,5 +150,5 @@
 
 
 
-<script src="assets/js/fruits.js?v=20261001-3"></script><script src="assets/js/fruit-images.js?v=20261001-3"></script><script src="assets/js/site.js?v=20261013-natural-motion1"></script></body>
+<script src="assets/js/fruits.js?v=20261001-3"></script><script src="assets/js/fruit-images.js?v=20261001-3"></script><script src="assets/js/site.js?v=20261013-natural-motion1"></script><script src="assets/js/library-categories.js?v=20261013-flowers1"></script></body>
 </html>

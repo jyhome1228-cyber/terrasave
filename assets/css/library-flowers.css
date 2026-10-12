@@ -1,0 +1,58 @@
+/* Flower category is editorial and data-honest, shared by Korean and Chinese libraries. */
+.ts-fruits-page .ts-library-category-nav{display:flex;gap:10px;align-items:stretch;margin:0 0 28px;padding:0 0 18px;border-bottom:1px solid var(--line)}
+.ts-fruits-page .ts-library-category{display:flex;align-items:baseline;justify-content:center;gap:12px;min-width:160px;min-height:52px;padding:12px 22px;border:1px solid var(--line-strong);border-radius:10px;color:var(--ink);background:#fff;font-size:15px;line-height:1.4;transition:background-color .2s ease,color .2s ease,border-color .2s ease;cursor:pointer}
+.ts-fruits-page .ts-library-category strong{font-size:16px;font-weight:650}
+.ts-fruits-page .ts-library-category span{font-size:11px;font-weight:550;letter-spacing:.055em;color:var(--muted)}
+.ts-fruits-page .ts-library-category:hover{border-color:#777e7d}
+.ts-fruits-page .ts-library-category.is-active,.ts-fruits-page .ts-library-category[aria-selected="true"]{color:#fff;background:var(--ink);border-color:var(--ink)}
+.ts-fruits-page .ts-library-category.is-active span,.ts-fruits-page .ts-library-category[aria-selected="true"] span{color:#d4d9dc}
+.ts-fruits-page .ts-library-category:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.ts-fruits-page .ts-library-panel[hidden]{display:none!important}
+.ts-fruits-page .ts-flower-panel-heading{max-width:830px;margin-bottom:32px}
+.ts-fruits-page .ts-flower-panel-heading .ts-kicker{display:block;margin:0 0 11px}
+.ts-fruits-page .ts-flower-panel-heading .ts-h2{font-size:clamp(26px,2.35vw,34px);line-height:1.35;text-align:left}
+.ts-fruits-page .ts-flower-panel-heading p{max-width:800px;margin:16px 0 0;color:var(--text);font-size:16px;line-height:1.8}
+.ts-fruits-page .ts-flower-feature{display:grid;grid-template-columns:minmax(0,.93fr) minmax(0,1.07fr);gap:clamp(24px,4vw,66px);align-items:center;padding:22px;border:1px solid var(--line);border-radius:14px;background:#fff;overflow:hidden}
+.ts-fruits-page .ts-flower-art{position:relative;display:flex;align-items:center;justify-content:center;min-height:410px;aspect-ratio:3/2;overflow:hidden;border-radius:10px;background:#eff1e8}
+.ts-fruits-page .ts-flower-artwork{width:min(90%,440px);max-height:80%;opacity:.92}
+.ts-fruits-page .ts-flower-art-label,.ts-fruits-page .ts-flower-art-footer{position:absolute;left:22px;font-size:10px;font-weight:600;letter-spacing:.1em;color:#637064}
+.ts-fruits-page .ts-flower-art-label{top:18px}
+.ts-fruits-page .ts-flower-art-footer{bottom:17px}
+.ts-fruits-page .ts-flower-feature-copy{max-width:640px;padding:16px 20px 16px 0}
+.ts-fruits-page .ts-flower-feature-copy .ts-kicker{display:block;margin-bottom:13px}
+.ts-fruits-page .ts-flower-feature-copy h3{margin:0;font-size:clamp(25px,2.25vw,33px);line-height:1.3;font-weight:700;letter-spacing:-.035em}
+.ts-fruits-page .ts-flower-feature-copy>p{margin:18px 0 24px;color:var(--text);font-size:16px;line-height:1.85}
+.ts-fruits-page .ts-flower-details{margin:0;border-top:1px solid var(--line)}
+.ts-fruits-page .ts-flower-details>div{display:grid;grid-template-columns:115px minmax(0,1fr);gap:12px;padding:17px 0;border-bottom:1px solid var(--line)}
+.ts-fruits-page .ts-flower-details dt{font-size:13px;color:var(--muted)}
+.ts-fruits-page .ts-flower-details dd{margin:0;font-size:15px;font-weight:550;line-height:1.65}
+.ts-fruits-page .ts-flower-actions{margin-top:25px}
+.ts-fruits-page .ts-flower-footnote{margin:19px 0 0;color:var(--muted);font-size:13px;line-height:1.7}
+@media(max-width:899px){
+ .ts-fruits-page .ts-flower-feature{grid-template-columns:1fr;gap:22px}
+ .ts-fruits-page .ts-flower-art{min-height:300px;aspect-ratio:16/9}
+ .ts-fruits-page .ts-flower-feature-copy{max-width:none;padding:3px 7px 12px}
+}
+@media(max-width:767px){
+ .ts-fruits-page .ts-library-category-nav{gap:8px;margin-bottom:24px;padding-bottom:16px}
+ .ts-fruits-page .ts-library-category{min-width:0;flex:1;gap:6px;flex-wrap:wrap;padding:11px 9px;min-height:51px}
+ .ts-fruits-page .ts-library-category strong{font-size:14px}
+ .ts-fruits-page .ts-library-category span{font-size:10px}
+ .ts-fruits-page .ts-flower-panel-heading{margin-bottom:22px}
+ .ts-fruits-page .ts-flower-panel-heading .ts-h2{font-size:25px}
+ .ts-fruits-page .ts-flower-panel-heading p{font-size:15px}
+ .ts-fruits-page .ts-flower-feature{padding:12px;gap:18px}
+ .ts-fruits-page .ts-flower-art{min-height:235px;aspect-ratio:4/3}
+ .ts-fruits-page .ts-flower-feature-copy{padding:0 7px 12px}
+ .ts-fruits-page .ts-flower-feature-copy>p{font-size:15px;margin:14px 0 18px}
+ .ts-fruits-page .ts-flower-details>div{grid-template-columns:1fr;gap:4px;padding:13px 0}
+ .ts-fruits-page .ts-flower-details dd{font-size:14px}
+}
+@media(prefers-reduced-motion:no-preference){
+ @keyframes ts-flower-enter{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+ .ts-fruits-page .ts-flower-panel:not([hidden]) .ts-flower-panel-heading,
+ .ts-fruits-page .ts-flower-panel:not([hidden]) .ts-flower-feature{
+    animation:ts-flower-enter .6s cubic-bezier(.22,1,.36,1) both;
+ }
+ .ts-fruits-page .ts-flower-panel:not([hidden]) .ts-flower-feature{animation-delay:90ms}
+}

@@ -390,3 +390,9 @@
 @media(prefers-reduced-motion:reduce){
  .ts-why-page .ts-why-tab{transition:none}
 }
+
+/* Tab content appears once on selection; controls remain interactive. */
+@media(prefers-reduced-motion:no-preference){
+  @keyframes ts-why-tab-enter{from{opacity:.01;transform:translate3d(0,9px,0)}to{opacity:1;transform:none}}
+  .ts-why-page .ts-why-panel:not([hidden]){animation:ts-why-tab-enter .48s cubic-bezier(.22,1,.36,1) both}
+}
