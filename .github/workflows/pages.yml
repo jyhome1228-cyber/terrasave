@@ -27,6 +27,7 @@ jobs:
           mkdir -p _site
           cp ./*.html _site/
           cp -R assets prd _site/
+          if [ -d admin ]; then cp -R admin _site/; fi
           if [ -d zh ]; then cp -R zh _site/; fi
           for file in CNAME robots.txt sitemap.xml; do
             if [ -f "$file" ]; then cp "$file" _site/; fi
