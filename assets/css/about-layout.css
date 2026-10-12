@@ -71,6 +71,45 @@
   border: 0;
 }
 
+/* One-time, understated typography entrance; the product photography stays still. */
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes ts-about-hero-text-reveal {
+    from {
+      opacity: 0;
+      transform: translate3d(0, 16px, 0);
+    }
+    to {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+  }
+  .ts-about-page .ts-about-hero-title span,
+  .ts-about-page .ts-about-hero-subtitle {
+    animation-name: ts-about-hero-text-reveal;
+    animation-duration: 1000ms;
+    animation-timing-function: cubic-bezier(.22, 1, .36, 1);
+    animation-fill-mode: both;
+  }
+  .ts-about-page .ts-about-hero-title span:first-child {
+    animation-delay: 120ms;
+  }
+  .ts-about-page .ts-about-hero-title span:last-child {
+    animation-delay: 280ms;
+  }
+  .ts-about-page .ts-about-hero-subtitle {
+    animation-delay: 510ms;
+    animation-duration: 1100ms;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ts-about-page .ts-about-hero-title span,
+  .ts-about-page .ts-about-hero-subtitle {
+    animation: none !important;
+    opacity: 1;
+    transform: none;
+  }
+}
+
 /* Five editorial rows: image left, brand story right. */
 .ts-about-page .ts-section.ts-about-principles {
   padding: 46px 0 100px;
