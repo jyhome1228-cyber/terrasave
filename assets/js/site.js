@@ -120,7 +120,7 @@
   const consultationCopy = chinese ? {
     kicker: 'PACKAGING CONSULTATION',
     title: '咨询包装方案',
-    description: '请告诉我们产品品类、当前包装方式、所需规格和预计数量。我们确认后会通过邮件回复。',
+    description: '请告诉我们产品品类、包装方式、所需规格和预计数量。我们将在收到咨询后24小时内回复。',
     emailLabel: '咨询邮箱',
     guideTitle: '邮件中建议包含',
     guide: ['产品品类', '当前包装方式 / 希望规格', '预计数量', '储存与运输条件'],
@@ -133,7 +133,7 @@
   } : {
     kicker: 'PACKAGING CONSULTATION',
     title: '포장 상담하기',
-    description: '취급 품목과 현재 포장 방식, 필요한 규격과 예상 수량을 알려주시면 확인 후 메일로 안내드립니다.',
+    description: '문의해 주시면 24시간 이내에 답변드리겠습니다. 취급 품목과 포장 방식, 필요한 규격 및 예상 수량을 함께 알려주세요.',
     emailLabel: '문의 메일',
     guideTitle: '메일에 함께 적어주세요',
     guide: ['취급 품목', '현재 포장 방식 / 희망 규격', '예상 수량', '보관·운송 조건'],
