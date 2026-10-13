@@ -14,3 +14,7 @@
 .ts-flower-detail-page .ts-flower-trial-corner{min-height:42px}
 .ts-flower-detail-page .ts-flower-trial-note{font-size:13px}
 }
+
+/* Editorial flower pair, matching fruit detail's image framing. */
+.ts-flower-detail-page .ts-flower-product-photo{background:#fff}
+.ts-flower-detail-page .ts-flower-product-photo img{display:block;width:100%;height:100%;object-fit:contain;object-position:center}
