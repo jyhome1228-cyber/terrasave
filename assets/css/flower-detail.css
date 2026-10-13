@@ -1,0 +1,16 @@
+/* TerraSAVE flower detail: common fruit-page layout + blank photo slots. */
+.ts-flower-detail-page .ts-flower-empty-photo{background:#fafafa;border:1px solid #e9ecee}
+.ts-flower-detail-page .ts-flower-trial-wrap{overflow-x:auto;max-width:100%;-webkit-overflow-scrolling:touch}
+.ts-flower-detail-page .ts-flower-trial-grid{min-width:720px;display:grid;grid-template-columns:124px repeat(3,minmax(0,1fr));gap:12px;align-items:stretch}
+.ts-flower-detail-page .ts-flower-trial-day,.ts-flower-detail-page .ts-flower-trial-row-label{display:flex;align-items:center;justify-content:center;min-width:0;min-height:54px;border:1px solid var(--line);border-radius:10px;font-size:15px;font-weight:650;color:var(--ink);background:#fff}
+.ts-flower-detail-page .ts-flower-trial-corner{min-height:54px}
+.ts-flower-detail-page .ts-flower-trial-image{min-width:0;aspect-ratio:4/3;background:#fafafa;border:1px solid #e9ecee;border-radius:12px}
+.ts-flower-detail-page .ts-flower-trial-row-label{padding:10px;text-align:center}
+.ts-flower-detail-page .ts-flower-trial-note{margin:22px 0 0;color:var(--muted);font-size:14px;line-height:1.8}
+.ts-flower-detail-page .ts-flower-back{display:inline-block;margin-top:22px}
+@media(max-width:767px){
+.ts-flower-detail-page .ts-flower-trial-grid{min-width:620px;grid-template-columns:100px repeat(3,minmax(0,1fr));gap:8px}
+.ts-flower-detail-page .ts-flower-trial-day,.ts-flower-detail-page .ts-flower-trial-row-label{font-size:13px;min-height:42px}
+.ts-flower-detail-page .ts-flower-trial-corner{min-height:42px}
+.ts-flower-detail-page .ts-flower-trial-note{font-size:13px}
+}
