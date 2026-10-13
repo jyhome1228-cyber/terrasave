@@ -85,6 +85,57 @@
   }
 
 
+
+  // Strawberry: day-by-day illustrative comparison; source file numbers 1-5 (control), 6-10 (MOF).
+  if(fruit.slug==='strawberry'){
+    const days=[1,2,3,4,5];
+    const control=[
+    "https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261013-233454-1-efd20a0c.webp",
+    "https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261013-233450-2-8c007fc1.webp",
+    "https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261013-233450-3-5eb91515.webp",
+    "https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261013-233451-4-84f31020.webp",
+    "https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261013-233451-5-b02ce268.webp"
+];
+    const mof=[
+    "https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261013-233449-6-bbc635a5.webp",
+    "https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261013-233452-7-953ef5ae.webp",
+    "https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261013-233452-8-ac4a9be4.webp",
+    "https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261013-233453-9-f972d2fb.webp",
+    "https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261013-233453-10-83a9af9c.webp"
+];
+    const photo=(day,url,isMof)=>`<figure class="ts-home-test-photo">
+      <button class="ts-home-test-enlarge" type="button" aria-haspopup="dialog" aria-label="딸기 ${day}일차 ${isMof?'MOF 적용 용기':'일반 용기'} 비교 이미지 확대 보기" title="이미지 확대 보기">
+        <img src="${esc(url)}" alt="딸기 ${day}일차 ${isMof?'MOF 적용 용기':'일반 용기'} 보관 경과 시각화" width="1000" height="1000" loading="lazy" decoding="async"/>
+      </button>
+      <figcaption>${isMof?'MOF 적용 용기':'일반 용기'}</figcaption>
+    </figure>`;
+    const cards=days.map((day,i)=>`<article class="ts-home-test-day" aria-label="딸기 ${day}일차 일반 용기 및 MOF 적용 용기 비교">
+      <h3>DAY ${day}</h3>
+      ${photo(day,control[i],false)}
+      ${photo(day,mof[i],true)}
+    </article>`).join('');
+    sections.push(`<div class="ts-home-page ts-fruit-strawberry-test">
+      <section class="ts-home-section is-soft ts-home-compact-test" id="strawberry-test" aria-labelledby="strawberryTestTitle">
+        <div class="ts-shell">
+          <div class="ts-home-compact-heading">
+            <span class="ts-kicker">외관 변화 시각화</span>
+            <h2 class="ts-h2" id="strawberryTestTitle">딸기 5일간 외관 변화 비교</h2>
+            <p>일반 용기와 MOF 적용 용기의 시간 경과에 따른 딸기 상태를 DAY 1부터 DAY 5까지 비교합니다. 각 날짜의 위쪽은 일반 용기, 아래쪽은 MOF 적용 용기입니다.</p>
+          </div>
+          <div class="ts-home-test-gallery">${cards}</div>
+          <p class="ts-home-test-note">이 10장의 이미지는 AI로 생성한 시각화 예시이며 실제 날짜별 실험 원본 사진이나 MOF 보존 효과를 입증하는 자료가 아닙니다. 실제 성능은 동일한 조건에서 촬영한 원본 자료 및 검증 결과로 확인해야 합니다.</p>
+        </div>
+        <dialog class="ts-home-lightbox" id="tsHomeLightbox" aria-label="딸기 비교 이미지 확대 보기">
+          <div class="ts-home-lightbox-inner">
+            <button type="button" class="ts-home-lightbox-close" aria-label="확대 이미지 닫기">×</button>
+            <img class="ts-home-lightbox-image" alt="" />
+            <p class="ts-home-lightbox-caption" aria-live="polite"></p>
+          </div>
+        </dialog>
+      </section>
+    </div>`);
+  }
+
   // Avocado: twelve chronological photographs, with both containers visible in each frame.
   // Capture timestamps follow the source sheet exactly; no treatment is assigned to either side.
   if(fruit.slug==='avocado'){
