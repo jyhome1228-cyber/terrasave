@@ -25,8 +25,10 @@
       panel.classList.add('is-appearing');
     }
     active=tab.id;
-    tab.scrollIntoView({behavior:motion?'auto':'smooth',inline:'nearest',block:'nearest'});
-    if(focus)tab.focus({preventScroll:true});
+    if(focus){
+      tab.scrollIntoView({behavior:motion?'auto':'smooth',inline:'nearest',block:'nearest'});
+      tab.focus({preventScroll:true});
+    }
     updateArrows();
   }
 
@@ -59,7 +61,7 @@
     const direction=button.dataset.avocadoDir==='prev'?-1:1;
     const first=track.querySelector('.ts-home-avocado-card');
     const step=(first?.getBoundingClientRect().width||280)+14;
-    track.scrollBy({left:direction*step*2,behavior:motion?'instant':'smooth'});
+    track.scrollBy({left:direction*step*2,behavior:motion?'auto':'smooth'});
   }));
   track?.addEventListener('scroll',updateArrows,{passive:true});
   window.addEventListener('resize',updateArrows,{passive:true});
