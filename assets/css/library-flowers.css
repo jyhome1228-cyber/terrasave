@@ -56,3 +56,10 @@
  }
  .ts-fruits-page .ts-flower-panel:not([hidden]) .ts-flower-feature{animation-delay:90ms}
 }
+
+/* Linked flower card: imagery intentionally left blank until verified photographs arrive. */
+.ts-fruits-page a.ts-flower-card{color:inherit;text-decoration:none;cursor:pointer}
+.ts-fruits-page a.ts-flower-card:hover{border-color:#b4bdc2}
+.ts-fruits-page a.ts-flower-card:focus-visible{outline:2px solid var(--ink);outline-offset:4px}
+.ts-fruits-page .ts-flower-image-empty{background:#fafafa;border:1px solid #e9ecee}
+.ts-fruits-page .ts-flower-card-link{font-size:15px;font-weight:650;color:var(--ink)}
