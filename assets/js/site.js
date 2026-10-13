@@ -10,7 +10,7 @@
   // Preserve the current page (and selected fruit) while switching site language.
   const chinese = /\/zh\//.test(window.location.pathname);
   const page = window.location.pathname.split('/').pop() || 'index.html';
-  const translatedPages = new Set(['index.html','about.html','product.html','fruits.html','fruit.html','partnership.html','why-terrasave.html','contact.html','technology.html']);
+  const translatedPages = new Set(['index.html','about.html','product.html','fruits.html','fruit.html','flower.html','partnership.html','why-terrasave.html','contact.html','technology.html']);
   const counterpartPage = chinese || translatedPages.has(page) ? page : 'index.html';
   const counterpart = new URL((chinese ? '../' : 'zh/') + counterpartPage, window.location.href);
   counterpart.search = window.location.search;
