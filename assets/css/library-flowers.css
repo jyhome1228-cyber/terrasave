@@ -63,3 +63,8 @@
 .ts-fruits-page a.ts-flower-card:focus-visible{outline:2px solid var(--ink);outline-offset:4px}
 .ts-fruits-page .ts-flower-image-empty{background:#fafafa;border:1px solid #e9ecee}
 .ts-fruits-page .ts-flower-card-link{font-size:15px;font-weight:650;color:var(--ink)}
+
+/* The supplied flower product photograph replaces the former illustration. */
+.ts-fruits-page .ts-flower-cover-art{background:#fff;border:1px solid var(--line)}
+.ts-fruits-page .ts-flower-cover-art img{display:block;width:100%;height:100%;max-width:100%;padding:24px;object-fit:contain;object-position:center}
+@media(max-width:767px){.ts-fruits-page .ts-flower-cover-art img{padding:18px}}
