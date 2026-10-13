@@ -62,6 +62,57 @@
   sections.push(`<div class="ts-home-page ts-fruit-shine-test"><section class="ts-home-section is-soft ts-home-compact-test" id="test"><div class="ts-shell"><div class="ts-home-compact-heading"><span class="ts-kicker">储存测试对比案例</span><h2 class="ts-h2">阳光玫瑰葡萄储存测试</h2><p>对比 TerraSAVE 技术应用容器（MOF）与普通 PET 容器在不同时间的外观变化。</p></div><div class="ts-home-test-gallery">${days.map((d,i)=>`<article class="ts-home-test-day"><h3>Day ${d}</h3>${figure(d,urls.mof[i],'mof')}${figure(d,urls.pet[i],'pet')}</article>`).join('')}</div><p class="ts-home-test-note">该图片为基于试验照片重新制作的可视化示意，不是未经修改的原始试验照片。初始条件、储存环境及样品状态均可能影响结果，不能仅依据图片判断定量性能。</p></div><dialog class="ts-home-lightbox" id="tsHomeLightbox" aria-label="放大查看葡萄图片"><div class="ts-home-lightbox-inner"><button type="button" class="ts-home-lightbox-close" aria-label="关闭">×</button><img class="ts-home-lightbox-image" alt=""/><p class="ts-home-lightbox-caption" aria-live="polite"></p></div></dialog></section></div>`);
  }
 
+
+ // Strawberry: 1-5 ordinary containers; 6-10 MOF; illustrative images, not original experimental photographs.
+ if(slug==='strawberry'){
+  const days=[1,2,3,4,5];
+  const control=[
+    "https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261013-233454-1-efd20a0c.webp",
+    "https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261013-233450-2-8c007fc1.webp",
+    "https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261013-233450-3-5eb91515.webp",
+    "https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261013-233451-4-84f31020.webp",
+    "https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261013-233451-5-b02ce268.webp"
+];
+  const mof=[
+    "https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261013-233449-6-bbc635a5.webp",
+    "https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261013-233452-7-953ef5ae.webp",
+    "https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261013-233452-8-ac4a9be4.webp",
+    "https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261013-233453-9-f972d2fb.webp",
+    "https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261013-233453-10-83a9af9c.webp"
+];
+  const photo=(day,url,isMof)=>`<figure class="ts-home-test-photo">
+    <button class="ts-home-test-enlarge" type="button" aria-haspopup="dialog" aria-label="放大查看草莓第${day}天${isMof?'MOF应用容器':'普通容器'}外观对比示意图" title="点击放大">
+      <img src="${esc(url)}" alt="草莓第${day}天${isMof?'MOF应用容器':'普通容器'}外观变化示意图" width="1000" height="1000" loading="lazy" decoding="async"/>
+    </button>
+    <figcaption>${isMof?'MOF应用容器':'普通容器'}</figcaption>
+  </figure>`;
+  const cards=days.map((day,i)=>`<article class="ts-home-test-day" aria-label="草莓第${day}天普通容器与MOF应用容器对比">
+    <h3>DAY ${day}</h3>
+    ${photo(day,control[i],false)}
+    ${photo(day,mof[i],true)}
+  </article>`).join('');
+  sections.push(`<div class="ts-home-page ts-fruit-strawberry-test">
+    <section class="ts-home-section is-soft ts-home-compact-test" id="strawberry-test" aria-labelledby="strawberryTestTitle">
+      <div class="ts-shell">
+        <div class="ts-home-compact-heading">
+          <span class="ts-kicker">外观变化示意</span>
+          <h2 class="ts-h2" id="strawberryTestTitle">草莓五天外观变化对比</h2>
+          <p>按照第1天至第5天，直观比较普通容器与MOF应用容器的草莓外观变化。每天上方为普通容器，下方为MOF应用容器。</p>
+        </div>
+        <div class="ts-home-test-gallery">${cards}</div>
+        <p class="ts-home-test-note">这10张图片是由AI生成的说明性视觉材料，并非逐日实验原始照片，也不能作为MOF保鲜性能的实证。实际效果需通过相同条件下的原始图像与测试数据验证。</p>
+      </div>
+      <dialog class="ts-home-lightbox" id="tsHomeLightbox" aria-label="放大查看草莓对比图片">
+        <div class="ts-home-lightbox-inner">
+          <button type="button" class="ts-home-lightbox-close" aria-label="关闭">×</button>
+          <img class="ts-home-lightbox-image" alt=""/>
+          <p class="ts-home-lightbox-caption" aria-live="polite"></p>
+        </div>
+      </dialog>
+    </section>
+  </div>`);
+ }
+
  if(slug==='avocado'){
   const captures=[{"url":"https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261011-230455-1-624eca5f.webp","date":"8月31日","clock":"上午11:20"},{"url":"https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261011-230456-2-f58d903b.webp","date":"9月2日","clock":"下午1:20"},{"url":"https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261011-230456-3-b1d8f2f8.webp","date":"9月4日","clock":"下午3:20"},{"url":"https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261011-230457-4-b98bee71.webp","date":"9月6日","clock":"下午5:20"},{"url":"https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261011-230458-5-9d7714b2.webp","date":"9月8日","clock":"下午7:20"},{"url":"https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261011-230459-6-e33f97be.webp","date":"9月10日","clock":"下午9:20"},{"url":"https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261011-230500-7-5d95e34f.webp","date":"9月12日","clock":"下午11:20"},{"url":"https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261011-230501-8-3646d5ee.webp","date":"9月15日","clock":"上午1:20"},{"url":"https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261011-230501-9-3eaed8ef.webp","date":"9月17日","clock":"上午3:20"},{"url":"https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261011-230502-10-8e275c74.webp","date":"9月19日","clock":"上午5:20"},{"url":"https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261011-230503-11-7b32b21e.webp","date":"9月21日","clock":"上午7:20"},{"url":"https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261011-230503-12-fb0f3aba.webp","date":"9月21日","clock":"上午11:20"}];
   const photos=captures.map(({url,date,clock})=>{
