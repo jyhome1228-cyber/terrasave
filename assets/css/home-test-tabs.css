@@ -1,0 +1,125 @@
+/* Home freshness showcase: accessible fruit/flower tabs (KO and ZH). */
+.ts-home-page .ts-home-comparison-intro{margin-bottom:26px}
+.ts-home-page .ts-home-comparison-intro p{max-width:860px}
+.ts-home-page .ts-home-comparison-tabs{
+  display:flex;align-items:stretch;gap:8px;
+  margin:0 0 28px;padding:5px;
+  width:max-content;max-width:100%;
+  background:#edf0ed;border:1px solid #e5e9e5;border-radius:13px;
+}
+.ts-home-page .ts-home-comparison-tab{
+  position:relative;display:inline-flex;align-items:center;justify-content:center;
+  gap:9px;min-height:48px;padding:12px 24px;
+  flex:0 0 auto;border:0;border-radius:9px;background:transparent;
+  color:#555e59;font:inherit;font-size:15px;font-weight:600;line-height:1.35;
+  letter-spacing:-.022em;white-space:nowrap;cursor:pointer;
+  transition:background-color .2s ease,color .2s ease,box-shadow .2s ease;
+}
+.ts-home-page .ts-home-comparison-tab:hover{background:rgba(255,255,255,.62);color:#151b17}
+.ts-home-page .ts-home-comparison-tab[aria-selected="true"]{
+  color:#15211a;background:#fff;box-shadow:0 1px 5px rgba(28,47,35,.10);
+}
+.ts-home-page .ts-home-comparison-tab[aria-selected="true"]::after{
+  content:"";position:absolute;left:20px;right:20px;bottom:5px;height:2px;
+  border-radius:2px;background:#477154;
+}
+.ts-home-page .ts-home-comparison-tab:focus-visible{
+  outline:2px solid #477154;outline-offset:2px;
+}
+.ts-home-page .ts-home-test-panel[hidden]{display:none!important}
+.ts-home-page .ts-home-test-panel{outline:none}
+.ts-home-page .ts-home-test-panel.is-appearing{animation:ts-test-panel-in .23s ease both}
+@keyframes ts-test-panel-in{
+  from{opacity:.45;transform:translateY(6px)}
+  to{opacity:1;transform:translateY(0)}
+}
+.ts-home-page .ts-home-test-panel .ts-home-compact-heading{margin-bottom:22px}
+.ts-home-page .ts-home-test-panel .ts-home-compact-heading .ts-h2{
+  font-size:clamp(23px,2.3vw,30px);letter-spacing:-.032em;
+}
+.ts-home-page .ts-home-test-panel .ts-home-compact-heading p{max-width:950px}
+.ts-home-page .ts-home-test-panel .ts-home-test-note,
+.ts-home-page .ts-home-test-panel .ts-flower-comparison-note{
+  margin:20px 0 0;max-width:1040px;color:var(--muted,#667078);
+  font-size:13px;line-height:1.7;
+}
+.ts-home-page .ts-home-comparison-more{
+  display:inline-flex;align-items:center;gap:7px;margin-top:18px;
+  font-size:14px;font-weight:650;color:var(--ink,#151719);
+  text-decoration:underline;text-underline-offset:5px;
+}
+.ts-home-page .ts-home-strawberry-test .ts-home-test-enlarge{aspect-ratio:1/1}
+.ts-home-page .ts-home-strawberry-test .ts-home-test-photo img{object-fit:contain}
+.ts-home-page .ts-home-strawberry-test .ts-home-test-photo figcaption{font-size:13px;font-weight:600}
+.ts-home-page .ts-home-avocado-test .ts-home-compact-heading{margin-bottom:12px}
+.ts-home-page .ts-home-avocado-controls{
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+  margin:0 0 14px;
+}
+.ts-home-page .ts-home-avocado-controls small{
+  color:var(--muted,#667078);font-size:13px;line-height:1.6;
+}
+.ts-home-page .ts-home-avocado-nav{display:flex;align-items:center;gap:7px}
+.ts-home-page .ts-home-avocado-arrow{
+  width:40px;height:40px;display:inline-flex;align-items:center;justify-content:center;
+  border:1px solid var(--line,#dce2df);border-radius:50%;background:#fff;
+  color:var(--ink,#151719);font:inherit;font-size:19px;cursor:pointer;
+}
+.ts-home-page .ts-home-avocado-arrow:hover:not(:disabled){border-color:#8fa498;background:#f6f9f6}
+.ts-home-page .ts-home-avocado-arrow:disabled{opacity:.33;cursor:default}
+.ts-home-page .ts-home-avocado-arrow:focus-visible{outline:2px solid #477154;outline-offset:2px}
+.ts-home-page .ts-home-avocado-track{
+  display:flex;gap:14px;overflow-x:auto;overscroll-behavior-inline:contain;
+  padding:2px 2px 14px;scroll-snap-type:x mandatory;
+  -webkit-overflow-scrolling:touch;scrollbar-width:thin;
+  scrollbar-color:#a4b1a9 transparent;
+}
+.ts-home-page .ts-home-avocado-card{
+  flex:0 0 clamp(215px,24%,315px);min-width:0;
+  border:1px solid var(--line,#e2e5e8);border-radius:12px;overflow:hidden;
+  background:#fff;scroll-snap-align:start;
+}
+.ts-home-page .ts-home-avocado-card-head{
+  display:flex;align-items:center;justify-content:space-between;gap:10px;
+  padding:14px 14px 12px;background:#eef2ee;border-bottom:1px solid var(--line,#e2e5e8);
+}
+.ts-home-page .ts-home-avocado-card-head strong{font-size:14px;font-weight:650;color:var(--ink,#151719)}
+.ts-home-page .ts-home-avocado-card-head span{font-size:12px;color:var(--muted,#667078);white-space:nowrap}
+.ts-home-page .ts-home-avocado-test .ts-home-test-enlarge{
+  width:100%;aspect-ratio:4/3;padding:10px 8px;border:0;border-radius:0;
+  display:flex;align-items:center;justify-content:center;cursor:zoom-in;background:#fff;
+}
+.ts-home-page .ts-home-avocado-test .ts-home-test-enlarge img{
+  width:100%;height:100%;object-fit:contain;object-position:center;
+}
+.ts-home-page .ts-home-avocado-test .ts-home-test-enlarge:hover{background:#f8faf9}
+.ts-home-page .ts-home-avocado-test .ts-home-test-enlarge:focus-visible{
+  outline:2px solid #477154;outline-offset:-3px;
+}
+.ts-home-page .ts-home-flower-test .ts-home-test-gallery{max-width:none}
+@media(max-width:767px){
+  .ts-home-page .ts-home-comparison-intro{margin-bottom:20px}
+  .ts-home-page .ts-home-comparison-tabs{
+    width:100%;max-width:100%;gap:5px;margin-bottom:24px;padding:5px;
+    overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;
+  }
+  .ts-home-page .ts-home-comparison-tabs::-webkit-scrollbar{display:none}
+  .ts-home-page .ts-home-comparison-tab{
+    min-height:44px;padding:10px 15px;font-size:14px;
+  }
+  .ts-home-page .ts-home-comparison-tab[aria-selected="true"]::after{
+    left:12px;right:12px;bottom:4px;
+  }
+  .ts-home-page .ts-home-test-panel .ts-home-compact-heading .ts-h2{font-size:25px}
+  .ts-home-page .ts-home-test-panel .ts-home-test-note,
+  .ts-home-page .ts-home-test-panel .ts-flower-comparison-note{font-size:12px}
+  .ts-home-page .ts-home-avocado-card{flex-basis:min(80vw,320px)}
+  .ts-home-page .ts-home-avocado-track{gap:11px}
+  .ts-home-page .ts-home-avocado-controls small{font-size:12px}
+  .ts-home-page .ts-home-avocado-arrow{width:37px;height:37px}
+  .ts-home-page .ts-home-strawberry-test .ts-home-test-photo figcaption{font-size:11px}
+}
+@media(prefers-reduced-motion:reduce){
+  .ts-home-page .ts-home-test-panel.is-appearing{animation:none}
+  .ts-home-page .ts-home-comparison-tab{transition:none}
+}
