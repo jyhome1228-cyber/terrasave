@@ -265,3 +265,16 @@
     margin-top: 11px;
   }
 }
+
+/* Five core values: three cards on the first row, two on the second. */
+.ts-about-page .ts-section.ts-about-principles{padding:52px 0 100px}
+.ts-about-page .ts-about-principle-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;align-items:stretch}
+.ts-about-page .ts-about-principle,.ts-about-page .ts-about-principle:last-child{display:flex;flex-direction:column;align-items:stretch;gap:26px;min-width:0;width:100%;padding:32px;border:1px solid #e4e4e4;border-radius:16px;background:#fff;text-align:left}
+.ts-about-page .ts-about-principle-icon{display:flex;align-items:center;justify-content:center;width:58px;height:58px;border:1px solid #e8e8e8;border-radius:13px;background:#f8f8f8;color:#252525;flex-shrink:0}
+.ts-about-page .ts-about-principle-icon svg{width:32px;height:32px;display:block}
+.ts-about-page .ts-about-principle-copy,.ts-about-page .ts-about-principle-body{max-width:none;width:100%}
+.ts-about-page .ts-about-principle-label{margin-bottom:9px;font-size:12px}
+.ts-about-page .ts-about-principle-title{font-size:clamp(20px,1.6vw,24px);line-height:1.4;margin-bottom:13px}
+.ts-about-page .ts-about-principle-body p{font-size:15px;line-height:1.75}
+@media(max-width:899px){.ts-about-page .ts-about-principle-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.ts-about-page .ts-about-principle,.ts-about-page .ts-about-principle:last-child{padding:26px;gap:22px}}
+@media(max-width:600px){.ts-about-page .ts-about-principle-grid{grid-template-columns:minmax(0,1fr);gap:12px}.ts-about-page .ts-section.ts-about-principles{padding:24px 0 56px}.ts-about-page .ts-about-principle,.ts-about-page .ts-about-principle:last-child{padding:24px;gap:18px}.ts-about-page .ts-about-principle-title{font-size:21px}}
