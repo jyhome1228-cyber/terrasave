@@ -5,26 +5,26 @@
   display:flex;align-items:stretch;gap:8px;
   margin:0 0 28px;padding:5px;
   width:max-content;max-width:100%;
-  background:#edf0ed;border:1px solid #e5e9e5;border-radius:13px;
+  background:#f2f2f2;border:1px solid #e3e3e3;border-radius:13px;
 }
 .ts-home-page .ts-home-comparison-tab{
   position:relative;display:inline-flex;align-items:center;justify-content:center;
   gap:9px;min-height:48px;padding:12px 24px;
   flex:0 0 auto;border:0;border-radius:9px;background:transparent;
-  color:#555e59;font:inherit;font-size:15px;font-weight:600;line-height:1.35;
+  color:#595959;font:inherit;font-size:15px;font-weight:600;line-height:1.35;
   letter-spacing:-.022em;white-space:nowrap;cursor:pointer;
   transition:background-color .2s ease,color .2s ease,box-shadow .2s ease;
 }
-.ts-home-page .ts-home-comparison-tab:hover{background:rgba(255,255,255,.62);color:#151b17}
+.ts-home-page .ts-home-comparison-tab:hover{background:rgba(255,255,255,.62);color:#191919}
 .ts-home-page .ts-home-comparison-tab[aria-selected="true"]{
-  color:#15211a;background:#fff;box-shadow:0 1px 5px rgba(28,47,35,.10);
+  color:#191919;background:#fff;box-shadow:0 1px 5px rgba(0,0,0,.09);
 }
 .ts-home-page .ts-home-comparison-tab[aria-selected="true"]::after{
   content:"";position:absolute;left:20px;right:20px;bottom:5px;height:2px;
-  border-radius:2px;background:#477154;
+  border-radius:2px;background:#333333;
 }
 .ts-home-page .ts-home-comparison-tab:focus-visible{
-  outline:2px solid #477154;outline-offset:2px;
+  outline:2px solid #333333;outline-offset:2px;
 }
 .ts-home-page .ts-home-test-panel[hidden]{display:none!important}
 .ts-home-page .ts-home-test-panel{outline:none}
@@ -65,14 +65,14 @@
   border:1px solid var(--line,#dce2df);border-radius:50%;background:#fff;
   color:var(--ink,#151719);font:inherit;font-size:19px;cursor:pointer;
 }
-.ts-home-page .ts-home-avocado-arrow:hover:not(:disabled){border-color:#8fa498;background:#f6f9f6}
+.ts-home-page .ts-home-avocado-arrow:hover:not(:disabled){border-color:#a3a3a3;background:#f6f6f6}
 .ts-home-page .ts-home-avocado-arrow:disabled{opacity:.33;cursor:default}
-.ts-home-page .ts-home-avocado-arrow:focus-visible{outline:2px solid #477154;outline-offset:2px}
+.ts-home-page .ts-home-avocado-arrow:focus-visible{outline:2px solid #333333;outline-offset:2px}
 .ts-home-page .ts-home-avocado-track{
   display:flex;gap:14px;overflow-x:auto;overscroll-behavior-inline:contain;
   padding:2px 2px 14px;scroll-snap-type:x mandatory;
   -webkit-overflow-scrolling:touch;scrollbar-width:thin;
-  scrollbar-color:#a4b1a9 transparent;
+  scrollbar-color:#aaaaaa transparent;
 }
 .ts-home-page .ts-home-avocado-card{
   flex:0 0 clamp(215px,24%,315px);min-width:0;
@@ -81,7 +81,7 @@
 }
 .ts-home-page .ts-home-avocado-card-head{
   display:flex;align-items:center;justify-content:space-between;gap:10px;
-  padding:14px 14px 12px;background:#eef2ee;border-bottom:1px solid var(--line,#e2e5e8);
+  padding:14px 14px 12px;background:#f3f3f3;border-bottom:1px solid var(--line,#e2e5e8);
 }
 .ts-home-page .ts-home-avocado-card-head strong{font-size:14px;font-weight:650;color:var(--ink,#151719)}
 .ts-home-page .ts-home-avocado-card-head span{font-size:12px;color:var(--muted,#667078);white-space:nowrap}
@@ -92,9 +92,9 @@
 .ts-home-page .ts-home-avocado-test .ts-home-test-enlarge img{
   width:100%;height:100%;object-fit:contain;object-position:center;
 }
-.ts-home-page .ts-home-avocado-test .ts-home-test-enlarge:hover{background:#f8faf9}
+.ts-home-page .ts-home-avocado-test .ts-home-test-enlarge:hover{background:#f8f8f8}
 .ts-home-page .ts-home-avocado-test .ts-home-test-enlarge:focus-visible{
-  outline:2px solid #477154;outline-offset:-3px;
+  outline:2px solid #333333;outline-offset:-3px;
 }
 .ts-home-page .ts-home-flower-test .ts-home-test-gallery{max-width:none}
 @media(max-width:767px){
@@ -122,4 +122,17 @@
 @media(prefers-reduced-motion:reduce){
   .ts-home-page .ts-home-test-panel.is-appearing{animation:none}
   .ts-home-page .ts-home-comparison-tab{transition:none}
+}
+
+/* Monochrome visual system for all homepage comparison panels (KO / ZH). */
+.ts-home-page .ts-home-comparison .ts-home-test-day > h3,
+.ts-home-page .ts-home-comparison .ts-home-avocado-card-head,
+.ts-home-page .ts-home-comparison .ts-home-flower-test .ts-home-test-day > h3{
+  background:#f3f3f3;
+  border-color:#e2e2e2;
+  color:#1b1b1b;
+}
+.ts-home-page .ts-home-comparison .ts-home-test-day,
+.ts-home-page .ts-home-comparison .ts-home-avocado-card{
+  border-color:#dedede;
 }
