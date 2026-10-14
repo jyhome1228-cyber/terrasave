@@ -136,3 +136,6 @@
 .ts-home-page .ts-home-comparison .ts-home-avocado-card{
   border-color:#dedede;
 }
+
+/* Active comparison tab: no decorative underline (desktop and mobile). */
+.ts-home-page .ts-home-comparison-tab[aria-selected="true"]::after{display:none!important;content:none!important}
