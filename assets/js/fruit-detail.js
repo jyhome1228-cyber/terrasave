@@ -49,17 +49,17 @@
   // Only the Shine Muscat detail page renders this additional section.
   if(fruit.slug==='shine-muscat'){
     const testDays=[0,7,14,20,30];
-    const mof=["https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261011-191314-1-582616d0.webp","https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261011-191315-2-39743dc1.webp","https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261011-191315-3-0b17ae89.webp","https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261011-191315-4-51815101.webp","https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261011-191314-5-88b985e6.webp"];
+    const terraSave=["https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261011-191314-1-582616d0.webp","https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261011-191315-2-39743dc1.webp","https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261011-191315-3-0b17ae89.webp","https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261011-191315-4-51815101.webp","https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261011-191314-5-88b985e6.webp"];
     const pet=["https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261011-191316-1-9bda0b4b.webp","https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261011-191317-2-1e843020.webp","https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261011-191317-3-790d2ad1.webp","https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261011-191318-4-b2a20a0b.webp","https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261011-191316-5-9324caa8.webp"];
-    const testFigure=(day,src,isMof)=>`<figure class="ts-home-test-photo">
-      <button class="ts-home-test-enlarge" type="button" aria-haspopup="dialog" aria-label="Day ${day} ${isMof?'TerraSAVE 적용 용기':'일반 PET 용기'} 사진 확대해서 보기" title="사진 확대 보기">
-        <img src="${src}" alt="샤인머스캣 ${isMof?'TerraSAVE 적용 용기':'일반 PET 용기'} Day ${day} 보관 비교 이미지" loading="lazy" decoding="async" />
+    const testFigure=(day,src,isTerraSave)=>`<figure class="ts-home-test-photo">
+      <button class="ts-home-test-enlarge" type="button" aria-haspopup="dialog" aria-label="Day ${day} ${isTerraSave?'TerraSAVE 적용 용기':'일반 PET 용기'} 사진 확대해서 보기" title="사진 확대 보기">
+        <img src="${src}" alt="샤인머스캣 ${isTerraSave?'TerraSAVE 적용 용기':'일반 PET 용기'} Day ${day} 보관 비교 이미지" loading="lazy" decoding="async" />
       </button>
-      <figcaption>${isMof?'TerraSAVE 적용 용기 <span>MOF</span>':'일반 PET 용기'}</figcaption>
+      <figcaption>${isTerraSave?'TerraSAVE 적용 용기':'일반 PET 용기'}</figcaption>
     </figure>`;
     const daysHtml=testDays.map((day,i)=>`<article class="ts-home-test-day" aria-label="Day ${day} 보관 비교">
       <h3>Day ${day}</h3>
-      ${testFigure(day,mof[i],true)}
+      ${testFigure(day,terraSave[i],true)}
       ${testFigure(day,pet[i],false)}
     </article>`).join('');
     sections.push(`<div class="ts-home-page ts-fruit-shine-test">
@@ -68,7 +68,7 @@
           <div class="ts-home-compact-heading">
             <span class="ts-kicker">보관 테스트 비교 사례</span>
             <h2 class="ts-h2" id="fruitShineTestTitle">샤인머스캣 보관 테스트</h2>
-            <p>TerraSAVE 적용 용기(MOF)와 일반 PET 용기의 시간 경과별 외관 변화를 비교했습니다.</p>
+            <p>TerraSAVE 적용 용기와 일반 PET 용기의 시간 경과별 외관 변화를 비교했습니다.</p>
           </div>
           <div class="ts-home-test-gallery">${daysHtml}</div>
           
@@ -86,7 +86,7 @@
 
 
 
-  // Strawberry: day-by-day illustrative comparison; source file numbers 1-5 (control), 6-10 (MOF).
+  // Strawberry: day-by-day illustrative comparison; source file numbers 1-5 (control), 6-10 (TerraSAVE 적용 용기).
   if(fruit.slug==='strawberry'){
     const days=[1,2,3,4,5];
     const control=[
@@ -96,23 +96,23 @@
     "https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261013-233451-4-84f31020.webp",
     "https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261013-233451-5-b02ce268.webp"
 ];
-    const mof=[
+    const terraSave=[
     "https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261013-233449-6-bbc635a5.webp",
     "https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261013-233452-7-953ef5ae.webp",
     "https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261013-233452-8-ac4a9be4.webp",
     "https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261013-233453-9-f972d2fb.webp",
     "https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261013-233453-10-83a9af9c.webp"
 ];
-    const photo=(day,url,isMof)=>`<figure class="ts-home-test-photo">
-      <button class="ts-home-test-enlarge" type="button" aria-haspopup="dialog" aria-label="딸기 ${day}일차 ${isMof?'MOF 적용 용기':'일반 용기'} 비교 이미지 확대 보기" title="이미지 확대 보기">
-        <img src="${esc(url)}" alt="딸기 ${day}일차 ${isMof?'MOF 적용 용기':'일반 용기'} 보관 경과 시각화" width="1000" height="1000" loading="lazy" decoding="async"/>
+    const photo=(day,url,isTerraSave)=>`<figure class="ts-home-test-photo">
+      <button class="ts-home-test-enlarge" type="button" aria-haspopup="dialog" aria-label="딸기 ${day}일차 ${isTerraSave?'TerraSAVE 적용 용기':'일반 용기'} 비교 이미지 확대 보기" title="이미지 확대 보기">
+        <img src="${esc(url)}" alt="딸기 ${day}일차 ${isTerraSave?'TerraSAVE 적용 용기':'일반 용기'} 보관 경과 시각화" width="1000" height="1000" loading="lazy" decoding="async"/>
       </button>
-      <figcaption>${isMof?'MOF 적용 용기':'일반 용기'}</figcaption>
+      <figcaption>${isTerraSave?'TerraSAVE 적용 용기':'일반 용기'}</figcaption>
     </figure>`;
-    const cards=days.map((day,i)=>`<article class="ts-home-test-day" aria-label="딸기 ${day}일차 일반 용기 및 MOF 적용 용기 비교">
+    const cards=days.map((day,i)=>`<article class="ts-home-test-day" aria-label="딸기 ${day}일차 일반 용기 및 TerraSAVE 적용 용기 비교">
       <h3>DAY ${day}</h3>
       ${photo(day,control[i],false)}
-      ${photo(day,mof[i],true)}
+      ${photo(day,terraSave[i],true)}
     </article>`).join('');
     sections.push(`<div class="ts-home-page ts-fruit-strawberry-test">
       <section class="ts-home-section is-soft ts-home-compact-test" id="strawberry-test" aria-labelledby="strawberryTestTitle">
@@ -120,7 +120,7 @@
           <div class="ts-home-compact-heading">
             <span class="ts-kicker">외관 변화 시각화</span>
             <h2 class="ts-h2" id="strawberryTestTitle">딸기 5일간 외관 변화 비교</h2>
-            <p>일반 용기와 MOF 적용 용기의 시간 경과에 따른 딸기 상태를 DAY 1부터 DAY 5까지 비교합니다. 각 날짜의 위쪽은 일반 용기, 아래쪽은 MOF 적용 용기입니다.</p>
+            <p>일반 용기와 TerraSAVE 적용 용기의 시간 경과에 따른 딸기 상태를 DAY 1부터 DAY 5까지 비교합니다. 각 날짜의 위쪽은 일반 용기, 아래쪽은 TerraSAVE 적용 용기입니다.</p>
           </div>
           <div class="ts-home-test-gallery">${cards}</div>
           
@@ -231,7 +231,7 @@
 
 
   if(fruit.slug==='mango'){
-  sections.push(`<div class="ts-home-page ts-fruit-mango-test"><section class="ts-home-section is-soft ts-home-compact-test" id="mango-test" aria-labelledby="mangoTestTitle"><div class="ts-shell"><div class="ts-home-compact-heading"><span class="ts-kicker">보관 상태 비교</span><h2 class="ts-h2" id="mangoTestTitle">망고 보관 테스트</h2><p>일반 PET 용기(위)와 MOF 적용 용기(아래)의 외관 변화를 Day 0·3·14·17 기준으로 비교합니다.</p></div><div class="ts-home-test-gallery ts-mango-test-gallery"><article class="ts-home-test-day" aria-label="망고 Day 0"><h3>Day 0</h3><figure class="ts-home-test-photo"><button class="ts-home-test-enlarge" type="button" aria-haspopup="dialog" aria-label="망고 Day 0 일반 PET 용기 사진 확대 보기" title="사진 확대 보기"><img src="https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261014-122010-1-839311c8.webp" alt="망고 Day 0 PET 보관 상태 비교 시각화" width="1000" height="1000" loading="lazy" decoding="async"/></button><figcaption>일반 PET 용기</figcaption></figure><figure class="ts-home-test-photo"><button class="ts-home-test-enlarge" type="button" aria-haspopup="dialog" aria-label="망고 Day 0 MOF 적용 용기 사진 확대 보기" title="사진 확대 보기"><img src="https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261014-122012-5-2fe51cbe.webp" alt="망고 Day 0 MOF 보관 상태 비교 시각화" width="1000" height="1000" loading="lazy" decoding="async"/></button><figcaption>MOF 적용 용기</figcaption></figure></article><article class="ts-home-test-day" aria-label="망고 Day 3"><h3>Day 3</h3><figure class="ts-home-test-photo"><button class="ts-home-test-enlarge" type="button" aria-haspopup="dialog" aria-label="망고 Day 3 일반 PET 용기 사진 확대 보기" title="사진 확대 보기"><img src="https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261014-122011-2-b5d201c7.webp" alt="망고 Day 3 PET 보관 상태 비교 시각화" width="1000" height="1000" loading="lazy" decoding="async"/></button><figcaption>일반 PET 용기</figcaption></figure><figure class="ts-home-test-photo"><button class="ts-home-test-enlarge" type="button" aria-haspopup="dialog" aria-label="망고 Day 3 MOF 적용 용기 사진 확대 보기" title="사진 확대 보기"><img src="https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261014-122013-6-28edc9f5.webp" alt="망고 Day 3 MOF 보관 상태 비교 시각화" width="1000" height="1000" loading="lazy" decoding="async"/></button><figcaption>MOF 적용 용기</figcaption></figure></article><article class="ts-home-test-day" aria-label="망고 Day 14"><h3>Day 14</h3><figure class="ts-home-test-photo"><button class="ts-home-test-enlarge" type="button" aria-haspopup="dialog" aria-label="망고 Day 14 일반 PET 용기 사진 확대 보기" title="사진 확대 보기"><img src="https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261014-122011-3-7db8aca7.webp" alt="망고 Day 14 PET 보관 상태 비교 시각화" width="1000" height="1000" loading="lazy" decoding="async"/></button><figcaption>일반 PET 용기</figcaption></figure><figure class="ts-home-test-photo"><button class="ts-home-test-enlarge" type="button" aria-haspopup="dialog" aria-label="망고 Day 14 MOF 적용 용기 사진 확대 보기" title="사진 확대 보기"><img src="https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261014-122013-7-af4307bd.webp" alt="망고 Day 14 MOF 보관 상태 비교 시각화" width="1000" height="1000" loading="lazy" decoding="async"/></button><figcaption>MOF 적용 용기</figcaption></figure></article><article class="ts-home-test-day" aria-label="망고 Day 17"><h3>Day 17</h3><figure class="ts-home-test-photo"><button class="ts-home-test-enlarge" type="button" aria-haspopup="dialog" aria-label="망고 Day 17 일반 PET 용기 사진 확대 보기" title="사진 확대 보기"><img src="https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261014-122012-4-3bf2c3a9.webp" alt="망고 Day 17 PET 보관 상태 비교 시각화" width="1000" height="1000" loading="lazy" decoding="async"/></button><figcaption>일반 PET 용기</figcaption></figure><figure class="ts-home-test-photo"><button class="ts-home-test-enlarge" type="button" aria-haspopup="dialog" aria-label="망고 Day 17 MOF 적용 용기 사진 확대 보기" title="사진 확대 보기"><img src="https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261014-122014-8-9636b381.webp" alt="망고 Day 17 MOF 보관 상태 비교 시각화" width="1000" height="1000" loading="lazy" decoding="async"/></button><figcaption>MOF 적용 용기</figcaption></figure></article></div></div><dialog class="ts-home-lightbox" id="tsHomeLightbox" aria-label="망고 비교 이미지 확대 보기"><div class="ts-home-lightbox-inner"><button type="button" class="ts-home-lightbox-close" aria-label="닫기">×</button><img class="ts-home-lightbox-image" alt=""/><p class="ts-home-lightbox-caption" aria-live="polite"></p></div></dialog></section></div>`);
+  sections.push(`<div class="ts-home-page ts-fruit-mango-test"><section class="ts-home-section is-soft ts-home-compact-test" id="mango-test" aria-labelledby="mangoTestTitle"><div class="ts-shell"><div class="ts-home-compact-heading"><span class="ts-kicker">보관 상태 비교</span><h2 class="ts-h2" id="mangoTestTitle">망고 보관 테스트</h2><p>일반 PET 용기(위)와 TerraSAVE 적용 용기(아래)의 외관 변화를 Day 0·3·14·17 기준으로 비교합니다.</p></div><div class="ts-home-test-gallery ts-mango-test-gallery"><article class="ts-home-test-day" aria-label="망고 Day 0"><h3>Day 0</h3><figure class="ts-home-test-photo"><button class="ts-home-test-enlarge" type="button" aria-haspopup="dialog" aria-label="망고 Day 0 일반 PET 용기 사진 확대 보기" title="사진 확대 보기"><img src="https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261014-122010-1-839311c8.webp" alt="망고 Day 0 PET 보관 상태 비교 시각화" width="1000" height="1000" loading="lazy" decoding="async"/></button><figcaption>일반 PET 용기</figcaption></figure><figure class="ts-home-test-photo"><button class="ts-home-test-enlarge" type="button" aria-haspopup="dialog" aria-label="망고 Day 0 TerraSAVE 적용 용기 사진 확대 보기" title="사진 확대 보기"><img src="https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261014-122012-5-2fe51cbe.webp" alt="망고 Day 0 TerraSAVE 적용 용기 보관 상태 비교 시각화" width="1000" height="1000" loading="lazy" decoding="async"/></button><figcaption>TerraSAVE 적용 용기</figcaption></figure></article><article class="ts-home-test-day" aria-label="망고 Day 3"><h3>Day 3</h3><figure class="ts-home-test-photo"><button class="ts-home-test-enlarge" type="button" aria-haspopup="dialog" aria-label="망고 Day 3 일반 PET 용기 사진 확대 보기" title="사진 확대 보기"><img src="https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261014-122011-2-b5d201c7.webp" alt="망고 Day 3 PET 보관 상태 비교 시각화" width="1000" height="1000" loading="lazy" decoding="async"/></button><figcaption>일반 PET 용기</figcaption></figure><figure class="ts-home-test-photo"><button class="ts-home-test-enlarge" type="button" aria-haspopup="dialog" aria-label="망고 Day 3 TerraSAVE 적용 용기 사진 확대 보기" title="사진 확대 보기"><img src="https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261014-122013-6-28edc9f5.webp" alt="망고 Day 3 TerraSAVE 적용 용기 보관 상태 비교 시각화" width="1000" height="1000" loading="lazy" decoding="async"/></button><figcaption>TerraSAVE 적용 용기</figcaption></figure></article><article class="ts-home-test-day" aria-label="망고 Day 14"><h3>Day 14</h3><figure class="ts-home-test-photo"><button class="ts-home-test-enlarge" type="button" aria-haspopup="dialog" aria-label="망고 Day 14 일반 PET 용기 사진 확대 보기" title="사진 확대 보기"><img src="https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261014-122011-3-7db8aca7.webp" alt="망고 Day 14 PET 보관 상태 비교 시각화" width="1000" height="1000" loading="lazy" decoding="async"/></button><figcaption>일반 PET 용기</figcaption></figure><figure class="ts-home-test-photo"><button class="ts-home-test-enlarge" type="button" aria-haspopup="dialog" aria-label="망고 Day 14 TerraSAVE 적용 용기 사진 확대 보기" title="사진 확대 보기"><img src="https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261014-122013-7-af4307bd.webp" alt="망고 Day 14 TerraSAVE 적용 용기 보관 상태 비교 시각화" width="1000" height="1000" loading="lazy" decoding="async"/></button><figcaption>TerraSAVE 적용 용기</figcaption></figure></article><article class="ts-home-test-day" aria-label="망고 Day 17"><h3>Day 17</h3><figure class="ts-home-test-photo"><button class="ts-home-test-enlarge" type="button" aria-haspopup="dialog" aria-label="망고 Day 17 일반 PET 용기 사진 확대 보기" title="사진 확대 보기"><img src="https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261014-122012-4-3bf2c3a9.webp" alt="망고 Day 17 PET 보관 상태 비교 시각화" width="1000" height="1000" loading="lazy" decoding="async"/></button><figcaption>일반 PET 용기</figcaption></figure><figure class="ts-home-test-photo"><button class="ts-home-test-enlarge" type="button" aria-haspopup="dialog" aria-label="망고 Day 17 TerraSAVE 적용 용기 사진 확대 보기" title="사진 확대 보기"><img src="https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261014-122014-8-9636b381.webp" alt="망고 Day 17 TerraSAVE 적용 용기 보관 상태 비교 시각화" width="1000" height="1000" loading="lazy" decoding="async"/></button><figcaption>TerraSAVE 적용 용기</figcaption></figure></article></div></div><dialog class="ts-home-lightbox" id="tsHomeLightbox" aria-label="망고 비교 이미지 확대 보기"><div class="ts-home-lightbox-inner"><button type="button" class="ts-home-lightbox-close" aria-label="닫기">×</button><img class="ts-home-lightbox-image" alt=""/><p class="ts-home-lightbox-caption" aria-live="polite"></p></div></dialog></section></div>`);
  }
 
   // Source-fidelity layout for the detailed Seolhyang notes. Other fruit profiles keep the standard renderer.
