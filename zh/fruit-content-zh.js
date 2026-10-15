@@ -103,12 +103,19 @@ window.TERRASAVE_FRUIT_CONTENT_ZH={
           "paragraphs": [
             "防止过度失水的同时，也应关注包装内部温差造成的凝露，以及相关微生物风险。"
           ]
+        },
+        {
+          "title": "研究机构与资料来源",
+          "paragraphs": [
+            "美国 UC Davis 采后技术中心（Postharvest Technology Center）、联合国粮食及农业组织（FAO）以及南非牛油果种植者协会（SAAGA）发布的储运研究与技术资料。"
+          ]
         }
       ],
       "references": [
-        "UC Davis Postharvest Technology Center — Avocado",
-        "FAO — Postharvest Handling and Storage of Avocado",
-        "South African Avocado Growers' Association（SAAGA）相关研究"
+        "<strong>UC Davis Postharvest Fact Sheet:</strong>《Avocado: Recommendations for Maintaining Postharvest Quality》（以 Hass 为重点）",
+        "<strong>FAO Agricultural Bulletin:</strong> Hass 牛油果采后处理、储存与运输研究",
+        "<strong>SAAGA Research Report:</strong> 出口 Hass 牛油果炭疽病与果蒂腐烂的采后控制",
+        "<strong>学术期刊参考:</strong>《Postharvest Biology and Technology》有关 Hass 牛油果气调包装、冷害机理及采后病害管理的研究"
       ]
     }
   },
@@ -196,9 +203,10 @@ window.TERRASAVE_FRUIT_CONTENT_ZH={
         }
       ],
       "references": [
-        "日本农业食品产业技术综合研究机构（NARO）葡萄储存及流通研究",
-        "韩国农村振兴厅及地区农业技术院相关储存技术资料",
-        "园艺与采后生物学相关学术研究"
+        "<strong>日本 NARO 研究报告:</strong>《シャインマスカットの高品質長期貯蔵および輸出向け流通技術》——阳光玫瑰葡萄的高品质长期贮藏与出口流通技术",
+        "<strong>庆尚北道农业技术院:</strong> 阳光玫瑰葡萄长期储存期间灰霉病病原与防控技术相关资料",
+        "<strong>韩国农村振兴厅:</strong> 阳光玫瑰葡萄采后预冷及低温储存保鲜技术指南",
+        "<strong>学术期刊参考:</strong> 韩国《Journal of Horticultural Science and Technology》与日本《Horticultural Research》有关葡萄品质和气调包装的研究"
       ]
     }
   },
@@ -311,13 +319,59 @@ window.TERRASAVE_FRUIT_CONTENT_ZH={
           "paragraphs": [
             "在减少失水的同时控制凝露和水渍损伤，是草莓储运包装设计的关键考虑之一。"
           ]
+        },
+        {
+          "title": "研究与发布机构",
+          "paragraphs": [
+            "韩国农村振兴厅、国立园艺特作科学院以及相关园艺学术期刊发布的草莓冷藏、气调包装和凝露控制研究资料。",
+            "资料范围包括低温储存、CO₂ 处理、包装湿度变化和不同品种的储运品质。"
+          ]
         }
       ],
       "references": [
-        "UC Davis Postharvest Research and Extension Center — Strawberry",
-        "韩国农村振兴厅（RDA）草莓储存及气调包装研究",
-        "Journal of Food Engineering 等采后包装研究资料"
-      ]
+        "<strong>UC Davis Postharvest Research and Extension Center — Strawberry:</strong> 储存温度 0±0.5°C、相对湿度 90–95% 与不同温度下的呼吸特性",
+        "<strong>Sousa-Gallagher 等，Journal of Food Engineering (2013):</strong> 草莓蒸腾、包装水蒸气透过率、相对湿度及凝露管理",
+        "<strong>Bovi 等，Biosystems Engineering (2018):</strong> 草莓失水与包装内部温湿度之间的关系",
+        "<strong>Jalali 等，Journal of Food Engineering (2019):</strong> 湿度调节托盘及微孔薄膜的气调包装研究",
+        "<strong>雪香草莓 MAP 研究:</strong> 韩国农村振兴厅相关机构与忠南大学关于 4°C、16 天包装试验的研究；报道中重量损失由 3.5% 降至不足 1.1%，霉菌发生率由 36% 降至不足 7%",
+        "<strong>Mahajan & Lee，Postharvest Biology and Technology (2023):</strong> 温度波动下凝露、微生物增长及气调包装水分管理",
+        "<strong>2026 Strawberry MAP Review:</strong> 草莓柔软果肉、高呼吸率、微生物腐败与品种间包装设计差异"
+      ],
+      "sourceDetail": {
+        "title": "草莓（雪香品种）采后储存研究",
+        "intro": "雪香草莓果肉较柔软。所引用的采后研究报告了其在约 20°C 常温条件下商品品质保持时间较短的情况。",
+        "items": [
+          {
+            "title": "低温储存（5°C）",
+            "body": "据相关研究报道，采后及时预冷并维持约 5°C 的储存环境，商品品质保持时间可由约 3 天延长至最多约 9 天。"
+          },
+          {
+            "title": "CO₂ 与抗菌气体处理",
+            "children": [
+              "相关研究报道，在所测试条件下结合 30% CO₂ 与二氧化氯处理，果肉软化和霉变发生率下降约 15–20%。",
+              "同一类采后处理研究还报告了约 3–4 天的品质保持时间延长；结果受处理条件和品种影响。"
+            ]
+          },
+          {
+            "title": "包装与凝露管理",
+            "body": "通过 MAP（气调包装）减少失水时，还需防止高湿度、凝露及水渍损伤，以维持草莓储运品质。"
+          },
+          {
+            "body": "资料机构：韩国农村振兴厅国立园艺特作科学院（农业技术信息平台）"
+          },
+          {
+            "title": "新闻稿与研究资料",
+            "children": [
+              "韩国农村振兴厅（2021 年 1 月）：草莓 5°C 冷藏与二氧化碳处理对商品品质保持和腐败控制的研究报道。",
+              "韩国农村振兴厅（2020 年 2 月）：有关延长草莓采后保鲜期 3–4 天的处理技术推广报道。"
+            ]
+          },
+          {
+            "title": "期刊参考",
+            "body": "韩国园艺学会《Journal of Horticultural Science and Technology》有关草莓气调包装与贮藏品质变化的研究。"
+          }
+        ]
+      }
     }
   }
 };
