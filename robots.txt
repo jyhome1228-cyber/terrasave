@@ -6,3 +6,4 @@ Disallow: /prd/
 Disallow: /tools/
 
 Sitemap: https://terrasave.co.kr/sitemap.xml
+Sitemap: https://terrasave.co.kr/sitemap-zh.xml
