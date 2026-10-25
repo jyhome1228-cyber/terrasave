@@ -1,45 +1,69 @@
 <!doctype html>
 <html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="robots" content="noindex,nofollow"><title>TerraSAVE | 운영 대시보드</title>
+<meta name="robots" content="noindex,nofollow"><meta name="theme-color" content="#f8f9fb">
+<title>TerraSAVE | Admin Dashboard</title>
+<link rel="icon" href="../assets/img/terrasave-favicon.svg">
 <style>
-:root{font-family:Pretendard,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#202225;line-height:1.55}
-*{box-sizing:border-box}body{margin:0;background:#f7f8f9}.shell{width:min(1280px,calc(100% - 40px));margin:auto}
-header{background:#fff;border-bottom:1px solid #e1e3e6}header .shell{display:flex;justify-content:space-between;align-items:center;padding:22px 0}
-.brand{font-size:20px;font-weight:750;letter-spacing:-.04em}a{color:inherit;text-decoration:none}.muted{color:#6c737a}
-main{padding:62px 0 90px}h1{font-size:clamp(27px,3vw,37px);letter-spacing:-.04em;margin:0 0 8px}h2{font-size:20px;margin:0 0 16px}p{margin:0}
-.label{font-size:12px;color:#6c737a;letter-spacing:.07em;font-weight:700}
-.summary{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:28px 0 26px}
-.stat,.panel{border:1px solid #e2e5e8;background:#fff;border-radius:12px;padding:24px}.stat span{display:block;color:#67707a;font-size:14px}.stat strong{display:block;font-size:32px;margin-top:9px;font-variant-numeric:tabular-nums}
-.panels{display:grid;grid-template-columns:1fr 1fr;gap:18px}.data-row{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid #edf0f2;font-size:14px}
-.data-row span{overflow-wrap:anywhere;color:#626b73}.data-row strong{font-variant-numeric:tabular-nums}.note{margin-top:20px;font-size:13px;color:#737b82}
-button{font:inherit;background:#202225;color:#fff;border:0;border-radius:8px;padding:10px 17px;cursor:pointer}.actions{display:flex;gap:12px;align-items:center;margin:18px 0 0}
-a.link{border:1px solid #cbd1d6;background:#fff;padding:10px 17px;border-radius:8px;font-size:14px}
-@media(max-width:700px){main{padding-top:35px}.summary,.panels{grid-template-columns:1fr}.stat{padding:18px}.panel{padding:18px}}
+@import url('https://cdn.jsdelivr.net/npm/pretendard@1.3.9/dist/web/static/pretendard.css');
+:root{--ink:#171b20;--mute:#7d858c;--line:#e8eaee;--bg:#f8f9fb;--white:#fff;--soft:#f3f5f6;--accent:#262d34}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);font:400 15px/1.65 Pretendard,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;letter-spacing:-.022em;color:var(--ink);word-break:keep-all}
+button,a{font:inherit}a{text-decoration:none;color:inherit}button{cursor:pointer}h1,h2,h3,p{margin:0}button:focus-visible,a:focus-visible{outline:2px solid #556875;outline-offset:3px}
+.layout{display:grid;grid-template-columns:248px minmax(0,1fr);min-height:100vh}.sidebar{background:#fff;border-right:1px solid var(--line);padding:30px 18px;display:flex;flex-direction:column;gap:35px;position:sticky;top:0;height:100vh}
+.logo{font-size:21px;font-weight:800;letter-spacing:-.06em;padding:0 15px}.logo small{font-size:10px;letter-spacing:.14em;color:#a4a8ad;margin-left:7px}
+.sublabel{font-size:11px;font-weight:700;letter-spacing:.09em;color:#9a9fa5;padding:0 16px;margin:0 0 12px}.nav{display:grid;gap:4px}.nav a{display:flex;align-items:center;gap:12px;padding:12px 15px;border-radius:8px;font-size:14px;color:#67717b}.nav a.active{background:#f1f3f5;color:#111820;font-weight:700}.nav svg{height:17px;width:17px;stroke:currentColor;stroke-width:1.7;fill:none}
+.sidebar-foot{margin-top:auto;border-top:1px solid var(--line);padding:20px 14px 0;font-size:12px;color:var(--mute)}
+.content{min-width:0;padding:0 42px 60px}.topbar{height:88px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);gap:16px}.crumb{font-size:13px;color:var(--mute)}.crumb strong{color:var(--ink);font-weight:650}.toplinks{display:flex;align-items:center;gap:16px;font-size:13px}.toplinks a{color:#626a72}
+.body{max-width:1440px;margin:0 auto}.pagehead{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;padding:42px 0 28px}.eyebrow{font-size:12px;font-weight:700;color:#8b949b;letter-spacing:.1em;margin-bottom:9px}.pagehead h1{font-size:clamp(28px,2.5vw,34px);font-weight:750;letter-spacing:-.055em}.muted{font-size:13px;color:var(--mute);margin-top:7px}.actions{display:flex;align-items:center;gap:9px}
+.btn{border:1px solid #dce0e4;background:#fff;border-radius:8px;padding:10px 15px;font-size:13px;font-weight:600;display:inline-flex;gap:8px;align-items:center}.btn.dark{background:#23292f;color:#fff;border-color:#23292f}
+.status{font-size:12px;color:#777f87;margin:12px 0 23px;display:flex;gap:7px;align-items:center}.dot{width:7px;height:7px;border-radius:50%;background:#86a58a;flex-shrink:0}.status.error .dot{background:#d0837c}
+.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-bottom:18px}.kpi{background:#fff;border:1px solid var(--line);border-radius:12px;padding:22px 24px;min-width:0}.kpi .name{color:var(--mute);font-size:13px}.kpi strong{display:block;font-size:32px;letter-spacing:-.05em;font-weight:750;margin-top:9px;line-height:1.3;font-variant-numeric:tabular-nums}.kpi .foot{font-size:11px;color:#9ca3aa;margin-top:10px}
+.grid{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(310px,1fr);gap:16px;margin-bottom:16px}.panel{background:#fff;border:1px solid var(--line);border-radius:12px;padding:26px;min-width:0}.panelhead{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-bottom:24px}.panelhead h2{font-size:17px;font-weight:750;letter-spacing:-.035em}.chip{font-size:11px;background:var(--soft);padding:6px 10px;border-radius:6px;color:#717a82}
+.chart{height:235px;display:flex;align-items:stretch;gap:5px;padding-top:13px;border-bottom:1px solid #e9edf0;position:relative}.chart::before{content:'';position:absolute;inset:25% 0 50% 0;border-top:1px dashed #ecf0f2;border-bottom:1px dashed #ecf0f2;pointer-events:none}
+.barwrap{flex:1;min-width:0;display:flex;align-items:end;height:100%;position:relative}.bar{width:100%;min-height:2px;background:#343d46;border-radius:4px 4px 0 0;position:relative;z-index:1;transition:height .2s}.barwrap:hover .bar{background:#798895}.barwrap[title]{cursor:help}
+.axis{display:flex;justify-content:space-between;margin-top:11px;font-size:11px;color:#9ba2a9}.chartnote{font-size:12px;color:#90979e;margin-top:17px}
+.table{width:100%;border-collapse:collapse}th,td{text-align:left;border-bottom:1px solid #f0f2f4;padding:14px 0;font-size:13px}th{font-size:11px;color:#8e98a0;font-weight:600;padding-top:3px}td:last-child,th:last-child{text-align:right;font-variant-numeric:tabular-nums}td.path{max-width:200px;overflow-wrap:anywhere}.empty{padding:30px 0;color:#9ba3a9;font-size:13px}
+.secondary{display:grid;grid-template-columns:1fr 1fr;gap:16px}.guide{color:#5f6871;font-size:13px;line-height:1.9}.guide strong{color:#222b31}.linkline{margin-top:16px;display:flex;flex-wrap:wrap;gap:10px}.linkline a{font-size:12px;border:1px solid #e4e7eb;border-radius:6px;padding:8px 12px}
+@media(max-width:1150px){.content{padding:0 26px 40px}.grid{grid-template-columns:1fr}.kpis{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:720px){.layout{display:block}.sidebar{height:auto;position:static;padding:13px 20px;display:flex;flex-direction:row;align-items:center;justify-content:space-between;gap:10px}.logo{padding:0}.sublabel,.sidebar-foot{display:none}.nav{display:flex}.nav a{font-size:12px;padding:8px}.nav a:nth-child(n+2){display:none}.content{padding:0 16px 45px}.topbar{height:57px}.pagehead{padding-top:29px;display:block}.actions{margin-top:20px;flex-wrap:wrap}.kpis{gap:10px}.kpi{padding:16px}.kpi strong{font-size:27px}.panel{padding:19px}.secondary{grid-template-columns:1fr}.toplinks{font-size:12px}}
 </style></head><body>
-<header><div class="shell"><a class="brand" href="/admin/">TerraSAVE<span style="color:#d66a38">.</span> ADMIN</a><a class="muted" href="/">사이트 보기</a></div></header>
-<main class="shell"><div class="label">SITE ANALYTICS</div><h1>사이트 방문 현황</h1>
-<p class="muted">국문·중문 페이지를 포함한 조회수입니다.</p>
-<div class="actions"><button id="refresh" type="button">새로고침</button><a class="link" href="https://terrasave-inquiry-admin.vercel.app/admin" rel="noopener noreferrer">문의 관리 (로그인 필요)</a></div>
-<div class="summary"><div class="stat"><span>오늘 페이지뷰</span><strong id="today">—</strong></div><div class="stat"><span>최근 7일</span><strong id="week">—</strong></div><div class="stat"><span>최근 30일</span><strong id="month">—</strong></div></div>
-<div class="panels"><section class="panel"><h2>최근 7일 조회수</h2><div id="daily">집계 정보를 불러오는 중입니다.</div></section>
-<section class="panel"><h2>페이지별 조회수</h2><div id="pages">집계 정보를 불러오는 중입니다.</div></section></div>
-<p id="status" class="note">비밀번호 없이 조회할 수 있는 익명 통계입니다. 개인 식별 정보는 제공하지 않습니다. 순방문자 수가 아닌 페이지뷰(PV) 기준입니다.</p>
-</main>
+<div class="layout"><aside class="sidebar"><a class="logo" href="/admin/">TerraSAVE<small>ADMIN</small></a>
+<div><div class="sublabel">WORKSPACE</div><nav class="nav" aria-label="관리자 메뉴">
+<a class="active" href="/admin/"><svg viewBox="0 0 24 24"><path d="M3 3h8v8H3zM13 3h8v5h-8zM13 10h8v11h-8zM3 13h8v8H3z"/></svg>대시보드</a>
+<a href="#pagesSection"><svg viewBox="0 0 24 24"><path d="M4 20V10m6 10V4m6 16v-7m5 7V8"/></svg>페이지 통계</a>
+<a href="https://terrasave-inquiry-admin.vercel.app/admin"><svg viewBox="0 0 24 24"><path d="M3 5h18v14H3zM3 7l9 7 9-7"/></svg>문의 관리 ↗</a>
+<a href="/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 3h9v9m0-9-11 11M20 14v7H3V4h7"/></svg>사이트 보기 ↗</a>
+</nav></div><div class="sidebar-foot">TerraSAVE · Terracle<br>웹사이트 운영 대시보드</div></aside>
+<div class="content"><header class="topbar"><div class="crumb">Workspace / <strong>Overview</strong></div><div class="toplinks"><span>SEO &amp; Analytics</span><a href="/" target="_blank" rel="noopener">홈페이지 보기 ↗</a></div></header>
+<main class="body"><div class="pagehead"><div><p class="eyebrow">WEBSITE OVERVIEW</p><h1>사이트 운영 현황</h1><p class="muted">테라세이브 웹사이트 방문 및 페이지 성과를 확인합니다.</p></div><div class="actions"><button class="btn" id="refresh" type="button">↻ 새로고침</button><a class="btn dark" href="https://terrasave-inquiry-admin.vercel.app/admin">문의 관리 ↗</a></div></div>
+<div id="status" class="status"><span class="dot"></span><span id="statusText">방문 데이터 연결 중…</span></div>
+<section class="kpis" aria-label="핵심 수치"><div class="kpi"><span class="name">오늘 페이지뷰</span><strong id="today">—</strong><div class="foot">오늘 00:00 ~ 현재 · KST</div></div><div class="kpi"><span class="name">최근 7일 페이지뷰</span><strong id="week">—</strong><div class="foot">최근 7일 전체 조회</div></div><div class="kpi"><span class="name">최근 30일 페이지뷰</span><strong id="month">—</strong><div class="foot">최근 30일 누적 조회</div></div><div class="kpi"><span class="name">조회된 페이지</span><strong id="activePages">—</strong><div class="foot">최근 30일 기준</div></div></section>
+<div class="grid"><section class="panel"><div class="panelhead"><h2>방문 추이</h2><span class="chip">최근 30일</span></div><div class="chart" id="chart" aria-label="일별 페이지뷰 막대 차트"></div><div class="axis" id="axis"><span>30일 전</span><span>오늘</span></div><p class="chartnote">마우스를 막대 위에 올리면 날짜별 조회수를 볼 수 있습니다.</p></section>
+<section class="panel"><div class="panelhead"><h2>최근 7일 방문 내역</h2><span class="chip">DAILY DATA</span></div><table class="table"><thead><tr><th>날짜</th><th>페이지뷰</th></tr></thead><tbody id="daily"></tbody></table></section></div>
+<section class="panel" id="pagesSection" style="margin-bottom:16px"><div class="panelhead"><h2>페이지별 조회 현황</h2><span class="chip">PAGE PERFORMANCE</span></div><table class="table"><thead><tr><th>페이지</th><th>조회수</th></tr></thead><tbody id="pages"></tbody></table></section>
+<div class="secondary"><section class="panel"><div class="panelhead"><h2>운영 바로가기</h2></div><p class="guide">SEO와 사이트 운영에 필요한 링크를 모았습니다.</p><div class="linkline"><a href="https://searchadvisor.naver.com/" target="_blank" rel="noopener">네이버 서치어드바이저 ↗</a><a href="https://search.google.com/search-console" target="_blank" rel="noopener">Google Search Console ↗</a><a href="https://ziyuan.baidu.com/" target="_blank" rel="noopener">바이두 ↗</a></div></section>
+<section class="panel"><div class="panelhead"><h2>통계 안내</h2></div><p class="guide"><strong>PV(페이지뷰)</strong>는 페이지가 조회된 횟수입니다. 서로 다른 사람 수(UV)가 아니며, 국문·중문 페이지를 함께 집계합니다. 개인정보 및 IP 주소는 이 대시보드에 표시하지 않습니다. 배포 이후 방문만 반영됩니다.</p></section></div>
+</main></div></div>
 <script>
-const $=s=>document.querySelector(s);
-const row=(a,b)=>{const div=document.createElement('div');div.className='data-row';const name=document.createElement('span');name.textContent=a;const value=document.createElement('strong');value.textContent=Number(b||0).toLocaleString('ko-KR');div.append(name,value);return div};
+const $=s=>document.querySelector(s),number=n=>Number(n||0).toLocaleString('ko-KR');
+const tr=(a,b)=>{const el=document.createElement('tr');const left=document.createElement('td');left.className='path';left.textContent=a;const right=document.createElement('td');right.textContent=number(b);el.append(left,right);return el};
+function state(message,error=false){$('#status').classList.toggle('error',error);$('#statusText').textContent=message}
 async function load(){
- $('#status').textContent='방문 통계를 업데이트하고 있습니다.';
+ state('방문자 데이터를 확인하고 있습니다…');$('#refresh').disabled=true;
  try{
- const res=await fetch('https://terrasave-inquiry-admin.vercel.app/api/analytics',{mode:'cors',cache:'no-store'});
- if(!res.ok)throw new Error('API 응답 '+res.status);
- const d=await res.json();
- for(const k of ['today','week','month'])$('#'+k).textContent=Number(d[k]||0).toLocaleString('ko-KR');
- $('#daily').replaceChildren(...(d.daily||[]).slice(-7).map(x=>row(x.date,x.count)));
- $('#pages').replaceChildren(...((d.byPage||[]).slice(0,20).map(x=>row(x.path,x.count))));
- if(!(d.byPage||[]).length)$('#pages').textContent='집계된 기록이 없습니다.';
- $('#status').textContent='최근 30일 페이지뷰 기준 · '+(d.truncated?'많은 데이터로 일부 집계가 제한될 수 있습니다.':'문의자의 이름·연락처 등 개인 정보는 공개되지 않습니다.');
- }catch(err){$('#status').textContent='통계를 불러오지 못했습니다: '+err.message+' · API 배포 및 저장소 연결 상태를 확인해 주세요.';$('#daily').textContent='연결 오류';$('#pages').textContent='연결 오류';}
+  const response=await fetch('https://terrasave-inquiry-admin.vercel.app/api/analytics',{cache:'no-store',mode:'cors'});
+  if(!response.ok)throw new Error('통계 서버 오류 ('+response.status+')');
+  const data=await response.json();
+  for(const id of ['today','week','month'])$('#'+id).textContent=number(data[id]);
+  const pages=data.byPage||[];$('#activePages').textContent=number(pages.length);
+  const daily=data.daily||[];$('#daily').replaceChildren(...daily.slice(-7).reverse().map(x=>tr(x.date,x.count)));
+  if(!daily.length)$('#daily').append(tr('수집된 기록 없음',0));
+  $('#pages').replaceChildren(...pages.slice(0,30).map(x=>tr(x.path,x.count)));
+  if(!pages.length)$('#pages').append(tr('아직 집계된 페이지가 없습니다.',0));
+  const chart=$('#chart');chart.replaceChildren();const max=Math.max(1,...daily.map(x=>x.count));
+  daily.forEach(x=>{const col=document.createElement('div');col.className='barwrap';col.title=x.date+' · '+number(x.count)+' PV';const bar=document.createElement('div');bar.className='bar';bar.style.height=Math.max(1,(x.count/max)*100)+'%';col.append(bar);chart.append(col)});
+  state('통계 연결됨 · 최근 30일 페이지뷰'+(data.truncated?' · 일부 집계 제한':''));
+ }catch(e){state('연결 오류: '+e.message+' · 통계 API와 저장소 설정을 확인하세요.',true);}
+ finally{$('#refresh').disabled=false;}
 }
 $('#refresh').addEventListener('click',load);load();
 </script></body></html>
