@@ -1,6 +1,6 @@
 import { randomUUID } from 'node:crypto';
 import { list, put, get } from '@vercel/blob';
-import { cors, loggedIn, send } from '../lib/security.js';
+import { cors, send } from '../lib/security.js';
 const known=new Set(['/','/about.html','/product.html','/fruits.html','/fruit.html','/flower.html','/partnership.html','/why-terrasave.html','/technology.html','/terracle.html','/solutions.html','/problem.html','/what-we-do.html']);
 function normalize(path){
  if(typeof path!=='string'||path.length>160)return null;
@@ -25,7 +25,11 @@ export default async function handler(req,res){
   }catch{return send(res,503,{error:'방문 기록 저장 오류'});}
  }
  if(req.method!=='GET')return send(res,405,{error:'허용되지 않는 요청'});
- if(!loggedIn(req))return send(res,401,{error:'관리자 로그인이 필요합니다.'});
+ // Public aggregate-only endpoint. Never exposes inquiries, IPs or personal records.
+ const origin=req.headers.origin;
+ if(origin && !['https://terrasave.co.kr','https://www.terrasave.co.kr','https://terrasave-inquiry-admin.vercel.app'].includes(origin))
+   return send(res,403,{error:'허용되지 않은 사이트'});
+ if(origin){res.setHeader('Access-Control-Allow-Origin',origin);res.setHeader('Vary','Origin');}
  try{
   const dates=Array.from({length:30},(_,i)=>dateKST(Date.now()-(29-i)*86400000));
   const byPage=new Map();const daily=[];let truncated=false;
