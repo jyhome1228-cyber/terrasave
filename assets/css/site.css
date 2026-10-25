@@ -769,3 +769,20 @@ html.ts-modal-locked,body.ts-modal-locked{overflow:hidden}
  .site-header .brand{min-width:0}
  .site-header .brand-logo{max-width:100%;height:auto}
 }
+
+/* Persona-led B2B navigation: 2026-10-25 */
+.ts-persona-section{padding:clamp(70px,8vw,118px) 0;border-top:1px solid #e9ebeb;background:#fafafa}
+.ts-persona-heading{max-width:810px;margin-bottom:35px}
+.ts-persona-heading .ts-kicker{display:block;margin-bottom:15px}
+.ts-persona-heading h2{margin:0 0 16px}
+.ts-persona-heading>p{font-size:16px;line-height:1.85;color:#677075;word-break:keep-all}
+.ts-persona-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.ts-persona-card{display:flex;flex-direction:column;align-items:flex-start;min-height:345px;padding:27px 24px;border:1px solid #e2e5e5;background:#fff;border-radius:12px;min-width:0}
+.ts-persona-num{font-size:12px;color:#a1a7aa;margin-bottom:24px}
+.ts-persona-card h3{font-size:19px;line-height:1.45;letter-spacing:-.035em;margin:0 0 17px;font-weight:700;word-break:keep-all}
+.ts-persona-card p{font-size:14px;line-height:1.75;color:#646d72;margin:0 0 14px;word-break:keep-all}
+.ts-persona-card .ts-persona-guide{color:#868d92;font-size:13px}
+.ts-persona-card a{display:flex;align-items:center;justify-content:space-between;gap:15px;width:100%;margin-top:auto;border-top:1px solid #eceeee;padding-top:17px;font-size:13px;font-weight:650;color:#252b2e}
+.ts-persona-card a:hover{color:#5d7775}
+@media(max-width:1100px){.ts-persona-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.ts-persona-card{min-height:300px}}
+@media(max-width:650px){.ts-persona-section{padding:63px 0}.ts-persona-grid{grid-template-columns:1fr}.ts-persona-card{min-height:0;padding:23px}.ts-persona-num{margin-bottom:14px}.ts-persona-card a{margin-top:16px}.ts-persona-heading>p{font-size:14px}}
