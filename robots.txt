@@ -5,5 +5,14 @@ Disallow: /inquiry-admin/
 Disallow: /prd/
 Disallow: /tools/
 
+
+# ChatGPT Search discovery (separate from model training)
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /admin/
+Disallow: /inquiry-admin/
+Disallow: /prd/
+Disallow: /tools/
+
 Sitemap: https://terrasave.co.kr/sitemap.xml
 Sitemap: https://terrasave.co.kr/sitemap-zh.xml
