@@ -7,3 +7,19 @@ h1,h2,h3,p{margin:0}h1{font-size:clamp(29px,3vw,36px);line-height:1.35;letter-sp
 @media(max-width:1000px){.workspace{grid-template-columns:minmax(250px,35%) minmax(0,1fr)}.shell{width:min(100% - 42px,1440px)}.filters{grid-template-columns:1fr 170px 170px}}
 @media(max-width:767px){.shell{width:calc(100% - 36px)}.topbar{min-height:66px}.header-side{gap:12px}.header-caption{display:none}.page-heading{padding:38px 0 25px;flex-direction:column;align-items:flex-start}.toolbar{width:100%}.toolbar button{flex:1}.stats{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-bottom:23px}.stat{padding:17px}.stat strong{font-size:24px}.filters{grid-template-columns:1fr 1fr;gap:12px}.filters .search{grid-column:1/-1}.workspace{grid-template-columns:1fr;gap:16px}.inquiry-list{max-height:440px}.detail-inner{padding:22px}.login-card{padding:28px}.login-section{padding:45px 0}.detail-grid{gap:15px}.inquiry-row{padding:17px 20px}}
 @media(max-width:359px){.filters{grid-template-columns:1fr}.filters .search{grid-column:auto}.stats{grid-template-columns:1fr 1fr}.detail-grid{grid-template-columns:1fr}}
+
+/* Analytics summary */
+.visitor-section{border:1px solid var(--line);border-radius:12px;margin:0 0 42px;padding:0 24px 20px}
+.visitor-heading{padding-left:0;padding-right:0;margin-bottom:22px;gap:16px}
+.visitor-heading .eyebrow{margin-bottom:5px}
+.visitor-section .stats{grid-template-columns:repeat(3,minmax(0,1fr));margin-bottom:18px}
+.visitor-tables{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.visitor-box{border:1px solid var(--line);border-radius:10px;padding:20px;min-width:0}
+.visitor-box h3{font-size:15px;margin-bottom:14px}
+.visitor-data-row{display:flex;align-items:center;justify-content:space-between;gap:15px;padding:9px 0;border-bottom:1px solid var(--line);font-size:13px}
+.visitor-data-row:last-child{border-bottom:none}
+.visitor-data-row span{overflow-wrap:anywhere;color:var(--muted)}
+.visitor-data-row strong{font-variant-numeric:tabular-nums;white-space:nowrap}
+.visitor-section .bottom-note{margin-top:18px}
+.section-divider{margin-bottom:20px}
+@media(max-width:700px){.visitor-section{padding:0 16px 16px}.visitor-section .stats{grid-template-columns:1fr}.visitor-tables{grid-template-columns:1fr}.visitor-heading{flex-wrap:wrap}}
