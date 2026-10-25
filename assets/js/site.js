@@ -2,6 +2,17 @@
 (() => {
   'use strict';
 
+  // Anonymous pageview counting: no cookies, visitor identity or referrer saved.
+  if (location.hostname === 'terrasave.co.kr' || location.hostname === 'www.terrasave.co.kr') {
+    const visitPath = location.pathname;
+    if (!navigator.webdriver && document.visibilityState !== 'prerender') {
+      fetch('https://terrasave-inquiry-admin.vercel.app/api/analytics', {
+        method:'POST', mode:'cors', headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({path:visitPath}), keepalive:true
+      }).catch(()=>{});
+    }
+  }
+
   const header = document.getElementById('siteHeader');
   const toggle = document.getElementById('menuToggle');
   const nav = document.getElementById('siteNav');
