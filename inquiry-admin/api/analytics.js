@@ -1,5 +1,5 @@
 import { randomUUID } from 'node:crypto';
-import { list, put, get } from '@vercel/blob';
+import { list, put } from '@vercel/blob';
 import { cors, send } from '../lib/security.js';
 const known=new Set(['/','/about.html','/product.html','/fruits.html','/fruit.html','/flower.html','/partnership.html','/why-terrasave.html','/technology.html','/terracle.html','/solutions.html','/problem.html','/what-we-do.html']);
 function normalize(path){
@@ -20,7 +20,7 @@ export default async function handler(req,res){
   const path=normalize(req.body?.path);
   if(!path)return send(res,400,{error:'지원되지 않는 페이지'});
   try{
-   await put('analytics/views/'+dateKST(Date.now())+'/'+randomUUID()+'.json',JSON.stringify({path}),{access:'private',contentType:'application/json',addRandomSuffix:false});
+   await put('analytics/views/'+dateKST(Date.now())+'/'+encodeURIComponent(path)+'~'+randomUUID()+'.json',JSON.stringify({path}),{access:'private',contentType:'application/json',addRandomSuffix:false});
    return send(res,201,{ok:true});
   }catch{return send(res,503,{error:'방문 기록 저장 오류'});}
  }
@@ -32,26 +32,37 @@ export default async function handler(req,res){
  if(origin){res.setHeader('Access-Control-Allow-Origin',origin);res.setHeader('Vary','Origin');}
  try{
   const dates=Array.from({length:30},(_,i)=>dateKST(Date.now()-(29-i)*86400000));
-  const byPage=new Map();const daily=[];let truncated=false;
-  for(const date of dates){
-   let cursor,count=0;
-   do {
-    const result=await list({prefix:'analytics/views/'+date+'/',limit:1000,cursor});
-    const files=result.blobs||[];
-    count+=files.length;
-    // Private blobs only. Never store personal identifiers.
-    for(let i=0;i<files.length;i+=25){
-     await Promise.all(files.slice(i,i+25).map(async b=>{
-      try{const file=await get(b.pathname,{access:'private'});if(file?.statusCode!==200)return;
-      const {path}=await new Response(file.stream).json();
-      if(normalize(path))byPage.set(path,(byPage.get(path)||0)+1);}catch{}
-     }));
-    }
-    cursor=result.hasMore?result.cursor:undefined;
-    if(count>=10000){truncated=true;break;}
-   }while(cursor);
-   daily.push({date,count});
-  }
-  return send(res,200,{today:daily.at(-1)?.count||0,week:daily.slice(-7).reduce((s,x)=>s+x.count,0),month:daily.reduce((s,x)=>s+x.count,0),daily,byPage:[...byPage].sort((a,b)=>b[1]-a[1]).map(([path,count])=>({path,count})),scope:'pageviews',truncated});
+  const byPage=new Map();
+  // Read lightweight Blob listing metadata, never download thousands of view records.
+  const daily=await Promise.all(dates.map(async date=>{
+    let cursor,count=0,iterations=0;
+    do{
+      const result=await list({prefix:'analytics/views/'+date+'/',limit:1000,cursor});
+      const files=result.blobs||[];
+      count+=files.length;
+      for(const blob of files){
+        const filename=blob.pathname.split('/').pop()||'';
+        const separator=filename.indexOf('~');
+        if(separator<0)continue; // Legacy raw view records still count in daily PV.
+        let path;
+        try{path=decodeURIComponent(filename.slice(0,separator));}catch{continue;}
+        if(normalize(path))byPage.set(path,(byPage.get(path)||0)+1);
+      }
+      cursor=result.hasMore?result.cursor:undefined;
+      iterations++;
+    }while(cursor&&iterations<20);
+    return {date,count,truncated:!!cursor};
+  }));
+  const truncated=daily.some(d=>d.truncated);
+  res.setHeader('Cache-Control','public, s-maxage=60, stale-while-revalidate=120');
+  return res.status(200).json({
+    today:daily.at(-1)?.count||0,
+    week:daily.slice(-7).reduce((s,x)=>s+x.count,0),
+    month:daily.reduce((s,x)=>s+x.count,0),
+    daily:daily.map(({date,count})=>({date,count})),
+    byPage:[...byPage].sort((a,b)=>b[1]-a[1]).map(([path,count])=>({path,count})),
+    scope:'pageviews',truncated,
+    note:'Page breakdown starts with the optimized tracker; older views remain included in totals.'
+  });
  }catch{return send(res,503,{error:'통계 목록을 불러오지 못했습니다.'});}
 }
