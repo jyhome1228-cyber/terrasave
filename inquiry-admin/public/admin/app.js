@@ -58,11 +58,26 @@ function renderList(){
   button.addEventListener('click',()=>{selectedId=item.id;renderList();viewDetail();});return button;
  }));
 }
+
+async function loadVisitors(){
+ const stat=$('#visitorStats'), days=$('#visitorDays'), pages=$('#visitorPages');
+ try {
+  const d=await request('GET','/api/analytics');
+  const items=[['오늘 페이지뷰',d.today],['최근 7일 페이지뷰',d.week],['최근 30일 페이지뷰',d.month]];
+  stat.replaceChildren(...items.map(([name,value])=>{const el=document.createElement('div');el.className='stat';el.append(text('span',name),text('strong',Number(value||0).toLocaleString('ko-KR')));return el;}));
+  const dayData=(d.daily||[]).slice(-7);
+  days.replaceChildren(...dayData.map(x=>{const el=document.createElement('div');el.className='visitor-data-row';el.append(text('span',x.date),text('strong',x.count.toLocaleString('ko-KR')));return el;}));
+  const pageData=(d.byPage||[]).slice(0,20);
+  pages.replaceChildren(...(pageData.length?pageData.map(x=>{const el=document.createElement('div');el.className='visitor-data-row';el.append(text('span',x.path),text('strong',x.count.toLocaleString('ko-KR')));return el;}):[text('p','아직 집계된 방문 기록이 없습니다.','muted')]));
+  if(d.truncated)pages.append(text('p','집계량이 많아 일부 조회수가 제한될 수 있습니다.','muted'));
+ } catch(e){stat.replaceChildren(text('div',e.message,'empty'));days.replaceChildren();pages.replaceChildren();}
+}
+
 async function load(){
  try{
   const data=await request('GET','/api/inquiries');entries=data.inquiries||[];
   const select=$('#filterType'),current=select.value;select.replaceChildren(new Option('전체 유형','all'),...[...new Set(entries.map(e=>e.inquiryType))].map(v=>new Option(v,v)));select.value=[...select.options].some(o=>o.value===current)?current:'all';
-  stats();renderList();viewDetail();
+  stats();renderList();viewDetail();await loadVisitors();
  }catch(error){list.replaceChildren(text('div',error.message,'empty'));}
 }
 loginForm.addEventListener('submit',async event=>{event.preventDefault();$('#loginButton').disabled=true;loginError.textContent='';
@@ -72,6 +87,7 @@ loginForm.addEventListener('submit',async event=>{event.preventDefault();$('#log
 });
 logout.addEventListener('click',async()=>{await request('DELETE','/api/session');entries=[];selectedId=null;visible('login');});
 $('#refresh').addEventListener('click',load);
+$('#refreshVisitors').addEventListener('click',loadVisitors);
 for(const id of ['#search','#filterStatus','#filterType'])$(id).addEventListener(id==='#search'?'input':'change',renderList);
 $('#export').addEventListener('click',()=>{
  if(!entries.length)return;
