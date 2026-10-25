@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /inquiry-admin/
+Disallow: /prd/
+Disallow: /tools/
+
+Sitemap: https://terrasave.co.kr/sitemap.xml
