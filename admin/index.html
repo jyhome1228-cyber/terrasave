@@ -1,11 +1,45 @@
 <!doctype html>
-<html lang="ko"><head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="robots" content="noindex,nofollow">
-<meta http-equiv="refresh" content="0;url=https://terrasave-inquiry-admin.vercel.app/admin">
-<title>TerraSAVE 관리자 페이지 이동</title>
-</head><body>
-<p>관리자 페이지로 이동합니다. <a href="https://terrasave-inquiry-admin.vercel.app/admin">관리자 로그인 열기</a></p>
-<script>location.replace('https://terrasave-inquiry-admin.vercel.app/admin');</script>
-</body></html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow"><title>TerraSAVE | 운영 대시보드</title>
+<style>
+:root{font-family:Pretendard,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#202225;line-height:1.55}
+*{box-sizing:border-box}body{margin:0;background:#f7f8f9}.shell{width:min(1280px,calc(100% - 40px));margin:auto}
+header{background:#fff;border-bottom:1px solid #e1e3e6}header .shell{display:flex;justify-content:space-between;align-items:center;padding:22px 0}
+.brand{font-size:20px;font-weight:750;letter-spacing:-.04em}a{color:inherit;text-decoration:none}.muted{color:#6c737a}
+main{padding:62px 0 90px}h1{font-size:clamp(27px,3vw,37px);letter-spacing:-.04em;margin:0 0 8px}h2{font-size:20px;margin:0 0 16px}p{margin:0}
+.label{font-size:12px;color:#6c737a;letter-spacing:.07em;font-weight:700}
+.summary{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:28px 0 26px}
+.stat,.panel{border:1px solid #e2e5e8;background:#fff;border-radius:12px;padding:24px}.stat span{display:block;color:#67707a;font-size:14px}.stat strong{display:block;font-size:32px;margin-top:9px;font-variant-numeric:tabular-nums}
+.panels{display:grid;grid-template-columns:1fr 1fr;gap:18px}.data-row{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid #edf0f2;font-size:14px}
+.data-row span{overflow-wrap:anywhere;color:#626b73}.data-row strong{font-variant-numeric:tabular-nums}.note{margin-top:20px;font-size:13px;color:#737b82}
+button{font:inherit;background:#202225;color:#fff;border:0;border-radius:8px;padding:10px 17px;cursor:pointer}.actions{display:flex;gap:12px;align-items:center;margin:18px 0 0}
+a.link{border:1px solid #cbd1d6;background:#fff;padding:10px 17px;border-radius:8px;font-size:14px}
+@media(max-width:700px){main{padding-top:35px}.summary,.panels{grid-template-columns:1fr}.stat{padding:18px}.panel{padding:18px}}
+</style></head><body>
+<header><div class="shell"><a class="brand" href="/admin/">TerraSAVE<span style="color:#d66a38">.</span> ADMIN</a><a class="muted" href="/">사이트 보기</a></div></header>
+<main class="shell"><div class="label">SITE ANALYTICS</div><h1>사이트 방문 현황</h1>
+<p class="muted">국문·중문 페이지를 포함한 조회수입니다.</p>
+<div class="actions"><button id="refresh" type="button">새로고침</button><a class="link" href="https://terrasave-inquiry-admin.vercel.app/admin" rel="noopener noreferrer">문의 관리 (로그인 필요)</a></div>
+<div class="summary"><div class="stat"><span>오늘 페이지뷰</span><strong id="today">—</strong></div><div class="stat"><span>최근 7일</span><strong id="week">—</strong></div><div class="stat"><span>최근 30일</span><strong id="month">—</strong></div></div>
+<div class="panels"><section class="panel"><h2>최근 7일 조회수</h2><div id="daily">집계 정보를 불러오는 중입니다.</div></section>
+<section class="panel"><h2>페이지별 조회수</h2><div id="pages">집계 정보를 불러오는 중입니다.</div></section></div>
+<p id="status" class="note">비밀번호 없이 조회할 수 있는 익명 통계입니다. 개인 식별 정보는 제공하지 않습니다. 순방문자 수가 아닌 페이지뷰(PV) 기준입니다.</p>
+</main>
+<script>
+const $=s=>document.querySelector(s);
+const row=(a,b)=>{const div=document.createElement('div');div.className='data-row';const name=document.createElement('span');name.textContent=a;const value=document.createElement('strong');value.textContent=Number(b||0).toLocaleString('ko-KR');div.append(name,value);return div};
+async function load(){
+ $('#status').textContent='방문 통계를 업데이트하고 있습니다.';
+ try{
+ const res=await fetch('https://terrasave-inquiry-admin.vercel.app/api/analytics',{mode:'cors',cache:'no-store'});
+ if(!res.ok)throw new Error('API 응답 '+res.status);
+ const d=await res.json();
+ for(const k of ['today','week','month'])$('#'+k).textContent=Number(d[k]||0).toLocaleString('ko-KR');
+ $('#daily').replaceChildren(...(d.daily||[]).slice(-7).map(x=>row(x.date,x.count)));
+ $('#pages').replaceChildren(...((d.byPage||[]).slice(0,20).map(x=>row(x.path,x.count))));
+ if(!(d.byPage||[]).length)$('#pages').textContent='집계된 기록이 없습니다.';
+ $('#status').textContent='최근 30일 페이지뷰 기준 · '+(d.truncated?'많은 데이터로 일부 집계가 제한될 수 있습니다.':'문의자의 이름·연락처 등 개인 정보는 공개되지 않습니다.');
+ }catch(err){$('#status').textContent='통계를 불러오지 못했습니다: '+err.message+' · API 배포 및 저장소 연결 상태를 확인해 주세요.';$('#daily').textContent='연결 오류';$('#pages').textContent='연결 오류';}
+}
+$('#refresh').addEventListener('click',load);load();
+</script></body></html>
