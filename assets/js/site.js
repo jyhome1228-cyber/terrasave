@@ -263,7 +263,7 @@
   }[c]));
 
   const fruits = window.TERRASAVE_FRUITS || [];
-  const available = new Set(['avocado', 'strawberry', 'shine-muscat', 'mango']);
+  const available = new Set(['avocado', 'strawberry', 'shine-muscat', 'mango', 'banana']);
 
   const namesZh={
     avocado:'牛油果', blueberry:'蓝莓', cherry:'樱桃', mango:'芒果',
@@ -301,8 +301,8 @@
     const name = displayName(fruit);
     const pair = window.TERRASAVE_FRUIT_IMAGES?.[fruit.slug] || [];
     return `<a class="ts-fruit-card" href="fruit.html?fruit=${encodeURIComponent(fruit.slug)}" aria-label="${escape(name)} ${chinese ? '保鲜资料' : '신선도 자료 보기'}">
-      <div class="ts-fruit-visual"><img class="ts-fruit-whole" src="${escape(pair[0] || fruit.imageWhole || '')}" alt="${escape(name)} ${chinese ? '完整外观' : '전체 모습'}" width="1000" height="1000" loading="${index < 4 ? 'eager' : 'lazy'}" decoding="async"><img class="ts-fruit-cut" src="${escape(pair[1] || fruit.imageCut || '')}" alt="" aria-hidden="true" width="1000" height="1000" loading="lazy" decoding="async"></div>
-      <div class="ts-fruit-meta"><div class="ts-fruit-meta-top"><div class="ts-fruit-name"><strong>${escape(name)}</strong><span>${escape(fruit.en)}</span></div><span class="ts-fruit-status${available.has(fruit.slug) ? ' is-available' : ''}">${available.has(fruit.slug) ? (chinese ? '可提供方案' : '솔루션 제공') : (chinese ? '研究中' : '연구중')}</span></div><div class="ts-fruit-tag">${escape(chinese ? focusZh[fruit.slug] || fruit.focus : (fruit.focusKo || fruit.focus))}</div><div class="ts-fruit-data"><span>${chinese ? '储存温度' : '보관 온도'}<strong>${storage(fruit.storage)}</strong></span><span>${chinese ? '乙烯敏感度' : '에틸렌 영향'}<strong>${escape(chinese ? (ethyleneZh[fruit.ethylenePlain] || fruit.ethylene) : (fruit.ethylenePlain || fruit.ethylene))}</strong></span></div></div>
+      <div class="ts-fruit-visual"><span class="ts-fruit-status ts-fruit-status-overlay${available.has(fruit.slug) ? ' is-available' : ''}">${available.has(fruit.slug) ? (chinese ? '可提供方案' : '솔루션 제공') : (chinese ? '研究中' : '연구중')}</span><img class="ts-fruit-whole" src="${escape(pair[0] || fruit.imageWhole || '')}" alt="${escape(name)} ${chinese ? '完整外观' : '전체 모습'}" width="1000" height="1000" loading="${index < 4 ? 'eager' : 'lazy'}" decoding="async"><img class="ts-fruit-cut" src="${escape(pair[1] || fruit.imageCut || '')}" alt="" aria-hidden="true" width="1000" height="1000" loading="lazy" decoding="async"></div>
+      <div class="ts-fruit-meta"><div class="ts-fruit-meta-top"><div class="ts-fruit-name"><strong>${escape(name)}</strong><span>${escape(fruit.en)}</span></div></div><div class="ts-fruit-tag">${escape(chinese ? focusZh[fruit.slug] || fruit.focus : (fruit.focusKo || fruit.focus))}</div><div class="ts-fruit-data"><span>${chinese ? '储存温度' : '보관 온도'}<strong>${storage(fruit.storage)}</strong></span><span>${chinese ? '乙烯敏感度' : '에틸렌 영향'}<strong>${escape(chinese ? (ethyleneZh[fruit.ethylenePlain] || fruit.ethylene) : (fruit.ethylenePlain || fruit.ethylene))}</strong></span></div></div>
     </a>`;
   };
 
@@ -332,7 +332,7 @@
 
   const home = document.getElementById('homeFruitGrid');
   if (home) {
-    const preferred = ['avocado', 'kiwi', 'mango', 'strawberry', 'shine-muscat', 'persimmon'];
+    const preferred = ['banana', 'avocado', 'mango', 'strawberry', 'shine-muscat', 'persimmon'];
     home.innerHTML = preferred.map(slug => fruits.find(f => f.slug === slug)).filter(Boolean).map(card).join('');
   }
 
