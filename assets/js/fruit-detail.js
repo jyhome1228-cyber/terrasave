@@ -9,7 +9,7 @@
   const fruit=fruits[index];
   const name=fruit.ko.replaceAll('샤인머스캣','샤인머스켓');
   const authored=window.TERRASAVE_FRUIT_CONTENT?.[fruit.slug];
-  const available=['avocado','strawberry','shine-muscat','mango'].includes(fruit.slug);
+  const available=['avocado','strawberry','shine-muscat','mango','banana'].includes(fruit.slug);
   const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const normal=value=>String(value??'').replaceAll('샤인머스캣','샤인머스켓').replaceAll('TERRASAVE','TerraSave');
   const prose=values=>(values||[]).map(value=>`<p>${normal(value).replace(/<br\s*\/?>/gi,' ')}</p>`).join('');
