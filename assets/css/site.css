@@ -786,3 +786,8 @@ html.ts-modal-locked,body.ts-modal-locked{overflow:hidden}
 .ts-persona-card a:hover{color:#5d7775}
 @media(max-width:1100px){.ts-persona-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.ts-persona-card{min-height:300px}}
 @media(max-width:650px){.ts-persona-section{padding:63px 0}.ts-persona-grid{grid-template-columns:1fr}.ts-persona-card{min-height:0;padding:23px}.ts-persona-num{margin-bottom:14px}.ts-persona-card a{margin-top:16px}.ts-persona-heading>p{font-size:14px}}
+
+/* 2026-10-26: fruit availability label above photography, desktop/mobile */
+.ts-fruit-visual .ts-fruit-status-overlay{position:absolute;z-index:5;top:14px;left:14px;display:flex;align-items:center;justify-content:center;min-width:104px;min-height:39px;padding:9px 17px;font-size:15px;font-weight:700;letter-spacing:-.025em;line-height:1.2;color:#303438;background:rgba(255,255,255,.94);border:1px solid rgba(0,0,0,.12);border-radius:9px;box-shadow:0 3px 12px rgba(0,0,0,.07);pointer-events:none;backdrop-filter:blur(8px)}
+.ts-fruit-visual .ts-fruit-status-overlay.is-available{background:rgba(34,52,43,.94);border-color:transparent;color:#fff}
+@media(max-width:600px){.ts-fruit-visual .ts-fruit-status-overlay{top:8px;left:8px;min-height:31px;min-width:78px;padding:6px 9px;font-size:12px;border-radius:7px}}
