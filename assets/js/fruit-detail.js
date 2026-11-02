@@ -7,6 +7,7 @@
   const slug=new URLSearchParams(location.search).get('fruit')||'apple';
   const index=Math.max(0,fruits.findIndex(f=>f.slug===slug));
   const fruit=fruits[index];
+  if(fruit.slug==='mango')document.body.classList.add('ts-mango-detail-layout');
   const name=fruit.ko.replaceAll('샤인머스캣','샤인머스켓');
   const authored=window.TERRASAVE_FRUIT_CONTENT?.[fruit.slug];
   const available=['avocado','strawberry','shine-muscat','mango','banana'].includes(fruit.slug);
