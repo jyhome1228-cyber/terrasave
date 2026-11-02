@@ -338,3 +338,23 @@
 .ts-home-page .ts-mango-test-gallery .ts-home-test-day>h3{background:#f3f3f3;color:#222}
 @media(max-width:900px){.ts-home-page .ts-mango-test-gallery{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:450px){.ts-home-page .ts-mango-test-gallery{gap:8px}.ts-home-page .ts-mango-test-gallery .ts-home-test-day>h3{font-size:13px}}
+
+/* Mango detail: one left-aligned editorial axis, Korean and Chinese. */
+body.ts-mango-detail-layout .ts-section-head,
+body.ts-mango-detail-layout .ts-home-page .ts-home-compact-heading {
+  width:100%;max-width:none;margin-left:0;margin-right:0;text-align:left;
+}
+body.ts-mango-detail-layout .ts-section-head>.ts-kicker,
+body.ts-mango-detail-layout .ts-section-head>.ts-h2,
+body.ts-mango-detail-layout .ts-home-page .ts-home-compact-heading>.ts-kicker,
+body.ts-mango-detail-layout .ts-home-page .ts-home-compact-heading>.ts-h2 {
+  text-align:left;margin-left:0;margin-right:0;
+}
+body.ts-mango-detail-layout .ts-section-head>.ts-section-copy,
+body.ts-mango-detail-layout .ts-section-head>p,
+body.ts-mango-detail-layout .ts-home-page .ts-home-compact-heading>p {
+  max-width:820px;margin-left:0;margin-right:0;text-align:left;
+}
+body.ts-mango-detail-layout .ts-section-head>.ts-action-group{justify-content:flex-start;}
+body.ts-mango-detail-layout .ts-home-page .ts-home-compact-heading{margin-bottom:32px;}
+@media(max-width:700px){body.ts-mango-detail-layout .ts-home-page .ts-home-compact-heading{margin-bottom:24px;}}
