@@ -402,5 +402,37 @@
 
 
 
-<script src="../assets/js/site.js?v=20261026-status-overlay"></script><script src="../assets/js/home-lightbox.js?v=20261012-1"></script><script defer src="../assets/js/home-avocado-hero.js?v=20261012-3"></script><script src="../assets/js/home-test-tabs.js?v=20261014-1"></script></body>
+<script src="../assets/js/site.js?v=20261026-status-overlay"></script><script src="../assets/js/home-lightbox.js?v=20261012-1"></script><script defer src="../assets/js/home-avocado-hero.js?v=20261012-3"></script><script src="../assets/js/home-test-tabs.js?v=20261014-1"></script><script>
+/* Banana gallery: retry network failures once and present an explicit status if source is unavailable. */
+(function(){
+  var images=document.querySelectorAll('#banana-study .ts-banana-frame img');
+  images.forEach(function(img){
+    img.addEventListener('error',function(){
+      if(!img.dataset.retryDone){
+        img.dataset.retryDone='1';
+        var src=img.getAttribute('src');
+        window.setTimeout(function(){img.src=src+(src.includes('?')?'&':'?')+'retry=1';},900);
+        return;
+      }
+      var frame=img.closest('.ts-banana-frame');
+      if(!frame || frame.querySelector('.ts-banana-image-error'))return;
+      img.style.display='none';
+      var wrap=document.createElement('div');
+      wrap.className='ts-banana-image-error';
+      wrap.setAttribute('role','status');
+      var label=document.createElement('span');
+      label.textContent="图片暂时无法加载，请稍后重试。";
+      wrap.appendChild(label);
+      img.parentElement.appendChild(wrap);
+    });
+    img.addEventListener('load',function(){
+      img.style.display='';
+      var fallback=img.closest('.ts-banana-frame')?.querySelector('.ts-banana-image-error');
+      if(fallback)fallback.remove();
+    });
+    if(img.complete && img.naturalWidth===0)img.dispatchEvent(new Event('error'));
+  });
+})();
+</script>
+</body>
 </html>
