@@ -15,7 +15,7 @@
 /* Banana detail: compact comparison decision summary */
 .ts-fruit-banana-test .ts-banana-intro{max-width:850px;margin-bottom:25px}
 .ts-fruit-banana-test .ts-banana-intro p{line-height:1.8;color:#6a7379}
-.ts-banana-summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:0 0 22px}
+.ts-banana-summary{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:0 0 22px}
 .ts-banana-summary>div{display:flex;flex-direction:column;gap:7px;padding:20px 22px;background:#fff;border:1px solid #e2e5e7;border-radius:10px}
 .ts-banana-summary span{font-size:12px;color:#859096}
 .ts-banana-summary strong{font-size:15px;line-height:1.5;font-weight:650}
