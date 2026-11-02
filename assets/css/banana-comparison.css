@@ -9,3 +9,5 @@
 .ts-banana-disclosure{font-size:12px;line-height:1.6;color:#686868;margin:20px auto 0;text-align:center}
 @media(min-width:1100px){.ts-banana-strip{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:600px){.ts-banana-strip{grid-template-columns:1fr;gap:12px}.ts-banana-frame figcaption{font-size:13px}.ts-banana-legend{font-size:12px;gap:8px 14px}}
+
+.ts-banana-image-error{display:flex;align-items:center;justify-content:center;min-height:230px;aspect-ratio:3/2;background:#f1f3f4;color:#727b81;font-size:13px;text-align:center;padding:24px;line-height:1.7;width:100%;}
