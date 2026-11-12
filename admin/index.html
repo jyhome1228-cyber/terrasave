@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="robots" content="noindex,nofollow"><meta name="theme-color" content="#f8f9fb">
+<meta name="robots" content="noindex,nofollow"><meta name="theme-color" content="#17191c">
 <title>TerraSAVE | Admin Dashboard</title>
 <link rel="icon" href="../assets/img/terrasave-favicon.svg">
 <style>
@@ -26,8 +26,18 @@ button,a{font:inherit}a{text-decoration:none;color:inherit}button{cursor:pointer
 @media(max-width:1150px){.content{padding:0 26px 40px}.grid{grid-template-columns:1fr}.kpis{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:720px){.layout{display:block}.sidebar{height:auto;position:static;padding:13px 20px;display:flex;flex-direction:row;align-items:center;justify-content:space-between;gap:10px}.logo{padding:0}.sublabel,.sidebar-foot{display:none}.nav{display:flex}.nav a{font-size:12px;padding:8px}.nav a:nth-child(n+2){display:none}.content{padding:0 16px 45px}.topbar{height:57px}.pagehead{padding-top:29px;display:block}.actions{margin-top:20px;flex-wrap:wrap}.kpis{gap:10px}.kpi{padding:16px}.kpi strong{font-size:27px}.panel{padding:19px}.secondary{grid-template-columns:1fr}.toplinks{font-size:12px}}
 .topbar-title{font-size:14px;font-weight:700;letter-spacing:-.02em}.topbar .toplinks a{font-size:12px}.pagehead .eyebrow{display:none}
+ 
+/* TerraSAVE monochrome admin refinement */
+:root{--ink:#151515;--mute:#747474;--line:#e4e4e4;--bg:#f4f4f4;--soft:#eeeeee;--accent:#242424}
+.sidebar{background:#1d1f21;border-color:#303236}.sidebar .sublabel{color:#929292}.sidebar .nav a{color:#b6b6b6}.sidebar .nav a.active{background:#343638;color:#fff}.sidebar .nav a:hover{background:#303234;color:#fff}.sidebar-foot{color:#a3a3a3;border-color:#383838}
+.logo{display:flex;align-items:center;gap:10px}.brand-logo{width:142px;max-height:38px;object-fit:contain;filter:grayscale(1) brightness(0) invert(1)}.logo small{color:#aaa;margin:0}
+.topbar{border-color:#dedede}.btn.dark{background:#1b1b1b;border-color:#1b1b1b}.btn:hover,.linkline a:hover{border-color:#555}
+.dot,.status.error .dot{background:#555}.bar{background:#303030}.barwrap:hover .bar{background:#737373}.barwrap{cursor:crosshair}.barwrap[title]{cursor:crosshair}
+.lang-tabs{display:inline-flex;gap:4px;padding:4px;background:#ececec;border-radius:9px}.lang-tab{background:transparent;border:0;padding:8px 15px;border-radius:6px;font-size:12px;font-weight:700;color:#686868}.lang-tab.active{background:#242424;color:#fff}
+.chart-tooltip{position:absolute;z-index:5;bottom:calc(100% + 9px);left:50%;transform:translateX(-50%);background:#1b1b1b;color:#fff;padding:9px 12px;border-radius:6px;white-space:nowrap;font-size:12px;line-height:1.5;pointer-events:none;opacity:0;visibility:hidden;box-shadow:0 5px 16px #0002}.barwrap:hover .chart-tooltip,.barwrap:focus .chart-tooltip{opacity:1;visibility:visible}.barwrap:focus-visible{outline:2px solid #333;outline-offset:2px}
+@media(max-width:720px){.brand-logo{width:120px}.lang-tabs{width:100%;justify-content:space-between}.lang-tab{flex:1}.pagehead .actions{gap:10px}}
 </style></head><body>
-<div class="layout"><aside class="sidebar"><a class="logo" href="/admin/">TerraSAVE<small>ADMIN</small></a>
+<div class="layout"><aside class="sidebar"><a class="logo" href="/admin/"><img src="../assets/img/terrasave-logo.svg" alt="TerraSAVE" class="brand-logo"><small>ADMIN</small></a>
 <div><div class="sublabel">WORKSPACE</div><nav class="nav" aria-label="관리자 메뉴">
 <a class="active" href="/admin/"><svg viewBox="0 0 24 24"><path d="M3 3h8v8H3zM13 3h8v5h-8zM13 10h8v11h-8zM3 13h8v8H3z"/></svg>대시보드</a>
 <a href="#pagesSection"><svg viewBox="0 0 24 24"><path d="M4 20V10m6 10V4m6 16v-7m5 7V8"/></svg>페이지 통계</a>
@@ -35,19 +45,23 @@ button,a{font:inherit}a{text-decoration:none;color:inherit}button{cursor:pointer
 <a href="/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 3h9v9m0-9-11 11M20 14v7H3V4h7"/></svg>사이트 보기 ↗</a>
 </nav></div><div class="sidebar-foot">TerraSAVE · Terracle<br>웹사이트 운영 대시보드</div></aside>
 <div class="content"><header class="topbar"><div class="topbar-title">대시보드</div><div class="toplinks"><a href="/" target="_blank" rel="noopener">사이트 보기 ↗</a></div></header>
-<main class="body"><div class="pagehead"><div><h1>사이트 통계</h1></div><div class="actions"><button class="btn" id="refresh" type="button">↻ 새로고침</button><a class="btn dark" href="https://terrasave-inquiry-admin.vercel.app/admin">문의 관리 ↗</a></div></div>
+<main class="body"><div class="pagehead"><div><h1>사이트 통계</h1></div><div class="actions"><div class="lang-tabs" role="group" aria-label="통계 언어 선택"><button class="lang-tab active" data-lang="all" aria-pressed="true">전체</button><button class="lang-tab" data-lang="ko" aria-pressed="false">한국어 KR</button><button class="lang-tab" data-lang="zh" aria-pressed="false">중국어 CN</button></div><button class="btn" id="refresh" type="button">↻ 새로고침</button><a class="btn dark" href="https://terrasave-inquiry-admin.vercel.app/admin">문의 관리 ↗</a></div></div>
 <div id="status" class="status"><span class="dot"></span><span id="statusText">방문 데이터 연결 중…</span></div>
 <section class="kpis" aria-label="핵심 수치"><div class="kpi"><span class="name">오늘 페이지뷰</span><strong id="today">—</strong><div class="foot">오늘 00:00 ~ 현재 · KST</div></div><div class="kpi"><span class="name">최근 7일 페이지뷰</span><strong id="week">—</strong><div class="foot">최근 7일 전체 조회</div></div><div class="kpi"><span class="name">최근 30일 페이지뷰</span><strong id="month">—</strong><div class="foot">최근 30일 누적 조회</div></div><div class="kpi"><span class="name">조회된 페이지</span><strong id="activePages">—</strong><div class="foot">최근 30일 기준</div></div></section>
 <div class="grid"><section class="panel"><div class="panelhead"><h2>방문 추이</h2><span class="chip">최근 30일</span></div><div class="chart" id="chart" aria-label="일별 페이지뷰 막대 차트"></div><div class="axis" id="axis"><span>30일 전</span><span>오늘</span></div><p class="chartnote">마우스를 막대 위에 올리면 날짜별 조회수를 볼 수 있습니다.</p></section>
 <section class="panel"><div class="panelhead"><h2>최근 7일 방문 내역</h2><span class="chip">최근 7일</span></div><table class="table"><thead><tr><th>날짜</th><th>페이지뷰</th></tr></thead><tbody id="daily"></tbody></table></section></div>
 <section class="panel" id="pagesSection" style="margin-bottom:16px"><div class="panelhead"><h2>페이지별 조회 현황</h2><span class="chip">최근 30일</span></div><table class="table"><thead><tr><th>페이지</th><th>조회수</th></tr></thead><tbody id="pages"></tbody></table></section>
 <div class="secondary"><section class="panel"><div class="panelhead"><h2>운영 바로가기</h2></div><p class="guide">SEO와 사이트 운영에 필요한 링크를 모았습니다.</p><div class="linkline"><a href="https://searchadvisor.naver.com/" target="_blank" rel="noopener">네이버 서치어드바이저 ↗</a><a href="https://search.google.com/search-console" target="_blank" rel="noopener">Google Search Console ↗</a><a href="https://ziyuan.baidu.com/" target="_blank" rel="noopener">바이두 ↗</a></div></section>
-<section class="panel"><div class="panelhead"><h2>통계 안내</h2></div><p class="guide"><strong>PV(페이지뷰)</strong>는 페이지가 조회된 횟수입니다. 서로 다른 사람 수(UV)가 아니며, 국문·중문 페이지를 함께 집계합니다. 개인정보 및 IP 주소는 이 대시보드에 표시하지 않습니다. 배포 이후 방문만 반영됩니다.</p></section></div>
+<section class="panel"><div class="panelhead"><h2>통계 안내</h2></div><p class="guide"><strong>PV(페이지뷰)</strong>는 페이지가 조회된 횟수입니다. 서로 다른 사람 수(UV)가 아니며, 전체 탭은 국문·중문 페이지를 합산합니다. 언어별 탭의 페이지 목록은 URL 기준으로 분리하며, 일별 언어별 통계는 서버가 별도로 제공할 때만 표시할 수 있습니다. 개인정보 및 IP 주소는 이 대시보드에 표시하지 않습니다. 배포 이후 방문만 반영됩니다.</p></section></div>
 </main></div></div>
 <script>
 const $=s=>document.querySelector(s),number=n=>Number(n||0).toLocaleString('ko-KR');
 const tr=(a,b)=>{const el=document.createElement('tr');const left=document.createElement('td');left.className='path';left.textContent=a;const right=document.createElement('td');right.textContent=number(b);el.append(left,right);return el};
 function state(message,error=false){$('#status').classList.toggle('error',error);$('#statusText').textContent=message}
+let selectedLang='all',cachedData=null;
+function isChinesePath(path){return /^\\/zh(?:\\/|$)/i.test(new URL(path,'https://terrasave.co.kr').pathname)}
+function renderPages(){if(!cachedData)return;const pages=(cachedData.byPage||[]).filter(x=>selectedLang==='all'||(selectedLang==='zh'?isChinesePath(x.path):!isChinesePath(x.path)));/* pages rendered by language-aware renderPages */if(!pages.length)$('#pages').append(tr('해당 언어의 조회 기록이 없습니다.',0));$('#activePages').textContent=number(pages.length);document.querySelector('#pagesSection .chip').textContent=(selectedLang==='all'?'전체':selectedLang==='zh'?'중국어 CN':'한국어 KR')+' · 최근 30일';}
+document.querySelectorAll('.lang-tab').forEach(btn=>btn.addEventListener('click',()=>{selectedLang=btn.dataset.lang;document.querySelectorAll('.lang-tab').forEach(b=>{b.classList.toggle('active',b===btn);b.setAttribute('aria-pressed',String(b===btn))});renderPages();document.querySelector('.chartnote').textContent=selectedLang==='all'?'막대에 마우스를 올리면 날짜별 조회수를 볼 수 있습니다.':'일별 추이와 상단 합계는 전체 사이트 기준입니다. 아래 페이지별 조회 현황만 선택 언어로 필터링됩니다.';}));
 async function load(){
  state('방문자 데이터를 확인하고 있습니다…');$('#refresh').disabled=true;
  try{
@@ -55,13 +69,13 @@ async function load(){
   if(!response.ok)throw new Error('통계 서버 오류 ('+response.status+')');
   const data=await response.json();
   for(const id of ['today','week','month'])$('#'+id).textContent=number(data[id]);
-  const pages=data.byPage||[];$('#activePages').textContent=number(pages.length);
+  cachedData=data;const pages=data.byPage||[];renderPages();
   const daily=data.daily||[];$('#daily').replaceChildren(...daily.slice(-7).reverse().map(x=>tr(x.date,x.count)));
   if(!daily.length)$('#daily').append(tr('수집된 기록 없음',0));
   $('#pages').replaceChildren(...pages.slice(0,30).map(x=>tr(x.path,x.count)));
-  if(!pages.length)$('#pages').append(tr('아직 집계된 페이지가 없습니다.',0));
+  
   const chart=$('#chart');chart.replaceChildren();const max=Math.max(1,...daily.map(x=>x.count));
-  daily.forEach(x=>{const col=document.createElement('div');col.className='barwrap';col.title=x.date+' · '+number(x.count)+' PV';const bar=document.createElement('div');bar.className='bar';bar.style.height=Math.max(1,(x.count/max)*100)+'%';col.append(bar);chart.append(col)});
+  daily.forEach(x=>{const col=document.createElement('div');col.className='barwrap';col.tabIndex=0;col.setAttribute('aria-label',x.date+' · '+number(x.count)+' 페이지뷰');const bar=document.createElement('div');bar.className='bar';bar.style.height=Math.max(1,(x.count/max)*100)+'%';const tip=document.createElement('span');tip.className='chart-tooltip';tip.textContent=x.date+' · '+number(x.count)+' PV';col.append(bar,tip);chart.append(col)});
   state('통계 연결됨 · 최근 30일 페이지뷰'+(data.truncated?' · 일부 집계 제한':''));
  }catch(e){state('연결 오류: '+e.message+' · 통계 API와 저장소 설정을 확인하세요.',true);}
  finally{$('#refresh').disabled=false;}
