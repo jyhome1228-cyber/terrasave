@@ -37,22 +37,7 @@ button,a{font:inherit}a{text-decoration:none;color:inherit}button{cursor:pointer
 .chart-tooltip{position:absolute;z-index:5;bottom:calc(100% + 9px);left:50%;transform:translateX(-50%);background:#1b1b1b;color:#fff;padding:9px 12px;border-radius:6px;white-space:nowrap;font-size:12px;line-height:1.5;pointer-events:none;opacity:0;visibility:hidden;box-shadow:0 5px 16px #0002}.barwrap:hover .chart-tooltip,.barwrap:focus .chart-tooltip{opacity:1;visibility:visible}.barwrap:focus-visible{outline:2px solid #333;outline-offset:2px}
 @media(max-width:720px){.brand-logo{width:120px}.lang-tabs{width:100%;justify-content:space-between}.lang-tab{flex:1}.pagehead .actions{gap:10px}}
 
-/* Simple password-only entry (UI gate; not server-side authorization) */
-html.admin-locked body{overflow:hidden}
-.admin-gate{position:fixed;inset:0;z-index:9999;background:#17191c;display:flex;align-items:center;justify-content:center;padding:24px;color:#f7f7f7}
-.admin-gate[hidden]{display:none!important}
-.admin-gate-card{width:min(100%,390px);padding:42px 36px;background:#242629;border:1px solid #3b3d40;border-radius:14px}
-.admin-gate-logo{display:block;width:165px;max-width:100%;margin-bottom:36px;filter:grayscale(1) brightness(0) invert(1)}
-.admin-gate-card h1{font-size:24px;letter-spacing:-.045em;margin-bottom:8px}
-.admin-gate-card p{font-size:13px;color:#a9aaad;margin-bottom:25px}
-.admin-gate-card label{display:block;font-size:12px;color:#bbb;margin-bottom:9px}
-.admin-gate-card input{width:100%;padding:14px 15px;color:white;background:#17191c;border:1px solid #505257;border-radius:7px;font:inherit;outline:0}
-.admin-gate-card input:focus{border-color:#f1f1f1}
-.admin-gate-card button{width:100%;margin-top:12px;padding:13px;border:0;border-radius:7px;background:#f2f2f2;color:#17191c;font:700 14px Pretendard,sans-serif}
-.admin-gate-error{min-height:20px;color:#ffb7b7!important;margin:10px 0 0!important}
-.admin-logout{border:0;background:transparent;font-size:12px;color:#707070;padding:0 0 0 12px}
 </style></head><body>
-<section class="admin-gate" id="adminGate" aria-label="관리자 로그인"><form class="admin-gate-card" id="adminGateForm"><img class="admin-gate-logo" src="../assets/img/terrasave-logo.svg" alt="TerraSAVE"><h1>관리자 로그인</h1><p>관리자 비밀번호를 입력해 주세요.</p><label for="adminPassword">비밀번호</label><input id="adminPassword" type="password" autocomplete="current-password" required autofocus placeholder="비밀번호 입력"><button type="submit">로그인</button><p class="admin-gate-error" id="adminGateError" role="alert"></p></form></section>
 <div class="layout"><aside class="sidebar"><a class="logo" href="/admin/"><img src="../assets/img/terrasave-logo.svg" alt="TerraSAVE" class="brand-logo"><small>ADMIN</small></a>
 <div><div class="sublabel">WORKSPACE</div><nav class="nav" aria-label="관리자 메뉴">
 <a class="active" href="/admin/"><svg viewBox="0 0 24 24"><path d="M3 3h8v8H3zM13 3h8v5h-8zM13 10h8v11h-8zM3 13h8v8H3z"/></svg>대시보드</a>
@@ -60,7 +45,7 @@ html.admin-locked body{overflow:hidden}
 <a href="#inquiriesSection"><svg viewBox="0 0 24 24"><path d="M3 5h18v14H3zM3 7l9 7 9-7"/></svg>문의 관리</a>
 <a href="/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 3h9v9m0-9-11 11M20 14v7H3V4h7"/></svg>사이트 보기 ↗</a>
 </nav></div><div class="sidebar-foot">TerraSAVE · Terracle<br>웹사이트 운영 대시보드</div></aside>
-<div class="content"><header class="topbar"><div class="topbar-title">대시보드</div><div class="toplinks"><a href="/" target="_blank" rel="noopener">사이트 보기 ↗</a><button type="button" class="admin-logout" id="adminLogout">로그아웃</button></div></header>
+<div class="content"><header class="topbar"><div class="topbar-title">대시보드</div><div class="toplinks"><a href="/" target="_blank" rel="noopener">사이트 보기 ↗</a></div></header>
 <main class="body"><div class="pagehead"><div><h1>사이트 통계</h1></div><div class="actions"><div class="lang-tabs" role="group" aria-label="통계 언어 선택"><button class="lang-tab active" data-lang="all" aria-pressed="true">전체</button><button class="lang-tab" data-lang="ko" aria-pressed="false">한국어 KR</button><button class="lang-tab" data-lang="zh" aria-pressed="false">중국어 CN</button></div><button class="btn" id="refresh" type="button">↻ 새로고침</button><a class="btn dark" href="#inquiriesSection">문의 관리</a></div></div>
 <div id="status" class="status"><span class="dot"></span><span id="statusText">방문 데이터 연결 중…</span></div>
 <section class="kpis" aria-label="핵심 수치"><div class="kpi"><span class="name">오늘 페이지뷰</span><strong id="today">—</strong><div class="foot">오늘 00:00 ~ 현재 · KST</div></div><div class="kpi"><span class="name">최근 7일 페이지뷰</span><strong id="week">—</strong><div class="foot">최근 7일 전체 조회</div></div><div class="kpi"><span class="name">최근 30일 페이지뷰</span><strong id="month">—</strong><div class="foot">최근 30일 누적 조회</div></div><div class="kpi"><span class="name">조회된 페이지</span><strong id="activePages">—</strong><div class="foot">최근 30일 기준</div></div></section>
@@ -96,16 +81,5 @@ async function load(){
  finally{$('#refresh').disabled=false;}
 }
 $('#refresh').addEventListener('click',load);
-// Password-only interface gate. GitHub Pages is public hosting: this does not secure underlying APIs or source.
-const adminGate=document.getElementById('adminGate');
-const adminGateForm=document.getElementById('adminGateForm');
-const adminPassword=document.getElementById('adminPassword');
-const adminGateError=document.getElementById('adminGateError');
-const adminSessionKey='terrasave-admin-ui-v1';
-const adminExpectedHash='5f82264fdc8a5c0f860e50f61ff4e5b45e5667ec35385db24151d15c3975855c';
-async function adminHash(input){const buffer=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(input));return Array.from(new Uint8Array(buffer),v=>v.toString(16).padStart(2,'0')).join('')}
-function adminSetUnlocked(unlocked){adminGate.hidden=unlocked;document.documentElement.classList.toggle('admin-locked',!unlocked);if(unlocked){load()}else{adminPassword.value='';adminPassword.focus()}}
-adminGateForm.addEventListener('submit',async e=>{e.preventDefault();const valid=(await adminHash(adminPassword.value))===adminExpectedHash;if(valid){sessionStorage.setItem(adminSessionKey,'1');adminGateError.textContent='';adminSetUnlocked(true)}else{adminGateError.textContent='비밀번호가 올바르지 않습니다.';adminPassword.value='';adminPassword.focus()}});
-document.getElementById('adminLogout').addEventListener('click',()=>{sessionStorage.removeItem(adminSessionKey);adminSetUnlocked(false)});
-adminSetUnlocked(sessionStorage.getItem(adminSessionKey)==='1');
+load();
 </script></body></html>
