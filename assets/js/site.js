@@ -18,26 +18,32 @@
   const nav = document.getElementById('siteNav');
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // Preserve the current page (and selected fruit) while switching site language.
-  const chinese = /\/zh\//.test(window.location.pathname);
+  // Three-language navigation. Keep the current route and fruit query across locales.
+  const chinese = /\\/zh\\//.test(window.location.pathname);
+  const english = /\\/en\\//.test(window.location.pathname);
   const page = window.location.pathname.split('/').pop() || 'index.html';
-  const translatedPages = new Set(['index.html','about.html','product.html','fruits.html','fruit.html','flower.html','partnership.html','why-terrasave.html','contact.html','technology.html']);
-  const counterpartPage = chinese || translatedPages.has(page) ? page : 'index.html';
-  const counterpart = new URL((chinese ? '../' : 'zh/') + counterpartPage, window.location.href);
-  counterpart.search = window.location.search;
-  counterpart.hash = window.location.hash;
+  const translatedPages = new Set(['index.html','about.html','product.html','fruits.html','fruit.html','flower.html','partnership.html','why-terrasave.html','contact.html']);
+  const counterpartPage = translatedPages.has(page) ? page : 'index.html';
   const headerInner = header?.querySelector('.header-inner');
-  if (headerInner && !headerInner.querySelector('.ts-language-switch')) {
-    const languageSwitch = document.createElement('a');
-    languageSwitch.className = 'ts-language-switch';
-    languageSwitch.href = counterpart.href;
-    languageSwitch.hreflang = chinese ? 'ko' : 'zh-CN';
-    languageSwitch.lang = chinese ? 'ko' : 'zh-CN';
-    languageSwitch.textContent = chinese ? '한국어' : '中文';
-    languageSwitch.setAttribute('aria-label', chinese ? '切换到韩文网站' : '중국어 사이트로 전환');
-    headerInner.appendChild(languageSwitch);
+  if (headerInner && !headerInner.querySelector('.en-lang') && !headerInner.querySelector('.ts-language-switch')) {
+    const switcher = document.createElement('div');
+    switcher.className = 'ts-language-switch';
+    switcher.setAttribute('aria-label', chinese ? '语言选择' : english ? 'Select language' : '언어 선택');
+    switcher.style.cssText = 'display:flex;align-items:center;gap:12px;white-space:nowrap;font-size:12px;letter-spacing:.02em;margin-left:12px;';
+    [['KR','ko',''],['EN','en','en/'],['CN','zh-CN','zh/']].forEach(([label,code,dir]) => {
+      const target = new URL('/' + dir + counterpartPage, window.location.origin);
+      target.search = window.location.search; target.hash = window.location.hash;
+      const link = document.createElement('a');
+      link.href = target.href; link.hreflang = code; link.lang = code;
+      link.textContent = label;
+      link.style.cssText = 'color:inherit;text-decoration:none;opacity:.75;';
+      if ((label === 'KR' && !chinese && !english) || (label === 'EN' && english) || (label === 'CN' && chinese)) {
+        link.setAttribute('aria-current','true');link.style.opacity='1';link.style.fontWeight='700';
+      }
+      switcher.appendChild(link);
+    });
+    headerInner.appendChild(switcher);
   }
-
 
   const menuOpenLabel = chinese ? '打开菜单' : '메뉴 열기';
   const menuCloseLabel = chinese ? '关闭菜单' : '메뉴 닫기';
