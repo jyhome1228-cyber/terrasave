@@ -19,8 +19,8 @@
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   // Three-language navigation. Keep the current route and fruit query across locales.
-  const chinese = /\\/zh\\//.test(window.location.pathname);
-  const english = /\\/en\\//.test(window.location.pathname);
+  const chinese = window.location.pathname.includes('/zh/');
+  const english = window.location.pathname.includes('/en/');
   const page = window.location.pathname.split('/').pop() || 'index.html';
   const translatedPages = new Set(['index.html','about.html','product.html','fruits.html','fruit.html','flower.html','partnership.html','why-terrasave.html','contact.html']);
   const counterpartPage = translatedPages.has(page) ? page : 'index.html';
